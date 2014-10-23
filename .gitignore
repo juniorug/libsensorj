@@ -1,6 +1,9 @@
 #java specific
 *.class
 
+# removend arquivos .lst
+*.lst
+
 #netbeans ignore personal stuff
 nbproject/private/
 
