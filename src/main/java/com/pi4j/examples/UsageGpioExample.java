@@ -52,43 +52,49 @@ import com.pi4j.io.gpio.event.PinEventType;
 // END SNIPPET: usage-import-snippet
 
 /**
- * This example code demonstrates how to setup simple triggers for GPIO pins on the Raspberry Pi.
+ * This example code demonstrates how to setup simple triggers for GPIO pins on
+ * the Raspberry Pi.
  * 
  * @author Robert Savage
  */
 @SuppressWarnings("unused")
 public class UsageGpioExample {
-    
+
     public static void main(String[] args) throws InterruptedException {
-        
+
         // START SNIPPET: usage-create-controller-snippet
         // create gpio controller instance
         final GpioController gpio = GpioFactory.getInstance();
         // END SNIPPET: usage-create-controller-snippet
 
         // START SNIPPET: usage-provision-input-pin-snippet
-        // provision gpio pin #02 as an input pin with its internal pull down resistor enabled
-        // (configure pin edge to both rising and falling to get notified for HIGH and LOW state
+        // provision gpio pin #02 as an input pin with its internal pull down
+        // resistor enabled
+        // (configure pin edge to both rising and falling to get notified for
+        // HIGH and LOW state
         // changes)
-        GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(RaspiPin.GPIO_02,             // PIN NUMBER
-                                                                     "MyButton",                   // PIN FRIENDLY NAME (optional)
-                                                                     PinPullResistance.PULL_DOWN); // PIN RESISTANCE (optional)
+        GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(
+                RaspiPin.GPIO_02, // PIN NUMBER
+                "MyButton", // PIN FRIENDLY NAME (optional)
+                PinPullResistance.PULL_DOWN); // PIN RESISTANCE (optional)
 
         // END SNIPPET: usage-provision-input-pin-snippet
         // START SNIPPET: usage-provision-output-pin-snippet
-        // provision gpio pins #04 as an output pin and make sure is is set to LOW at startup
-        GpioPinDigitalOutput myLed = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04,   // PIN NUMBER
-                                                                   "My LED",           // PIN FRIENDLY NAME (optional)
-                                                                   PinState.LOW);      // PIN STARTUP STATE (optional)
+        // provision gpio pins #04 as an output pin and make sure is is set to
+        // LOW at startup
+        GpioPinDigitalOutput myLed = gpio.provisionDigitalOutputPin(
+                RaspiPin.GPIO_04, // PIN NUMBER
+                "My LED", // PIN FRIENDLY NAME (optional)
+                PinState.LOW); // PIN STARTUP STATE (optional)
         // END SNIPPET: usage-provision-output-pin-snippet
 
         // START SNIPPET: usage-shutdown-pin-snippet
-        // configure the pin shutdown behavior; these settings will be 
+        // configure the pin shutdown behavior; these settings will be
         // automatically applied to the pin when the application is terminated
         // ensure that the LED is turned OFF when the application is shutdown
         myLed.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
         // END SNIPPET: usage-shutdown-pin-snippet
-        
+
         // START SNIPPET: usage-control-pin-snippet
         // explicitly set a state on the pin object
         myLed.setState(PinState.HIGH);
@@ -106,7 +112,8 @@ public class UsageGpioExample {
         // END SNIPPET: usage-control-pin-snippet
 
         // START SNIPPET: usage-read-pin-snippet
-        // get explicit state enumeration for the GPIO pin associated with the button
+        // get explicit state enumeration for the GPIO pin associated with the
+        // button
         PinState myButtonState = myButton.getState();
 
         // use convenience wrapper method to interrogate the button state
@@ -120,7 +127,8 @@ public class UsageGpioExample {
 
         // START SNIPPET: usage-trigger-snippet
         // create a gpio synchronization trigger on the input pin
-        // when the input state changes, also set LED controlling gpio pin to same state
+        // when the input state changes, also set LED controlling gpio pin to
+        // same state
         myButton.addTrigger(new GpioSyncStateTrigger(myLed));
         // END SNIPPET: usage-trigger-snippet
 
@@ -128,20 +136,24 @@ public class UsageGpioExample {
         for (;;) {
             Thread.sleep(500);
         }
-        
+
         // stop all GPIO activity/threads by shutting down the GPIO controller
-        // (this method will forcefully shutdown all GPIO monitoring threads and scheduled tasks)
-        // gpio.shutdown();   <--- implement this method call if you wish to terminate the Pi4J GPIO controller                
+        // (this method will forcefully shutdown all GPIO monitoring threads and
+        // scheduled tasks)
+        // gpio.shutdown(); <--- implement this method call if you wish to
+        // terminate the Pi4J GPIO controller
     }
 
- //START SNIPPET: usage-listener-snippet    
-    public static class GpioUsageExampleListener implements GpioPinListenerDigital {
+    // START SNIPPET: usage-listener-snippet
+    public static class GpioUsageExampleListener implements
+            GpioPinListenerDigital {
         @Override
-        public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
+        public void handleGpioPinDigitalStateChangeEvent(
+                GpioPinDigitalStateChangeEvent event) {
             // display pin state on console
-            System.out.println(" --> GPIO PIN STATE CHANGE: " + event.getPin() + " = "
-                    + event.getState());
+            System.out.println(" --> GPIO PIN STATE CHANGE: " + event.getPin()
+                    + " = " + event.getState());
         }
     }
- // END SNIPPET: usage-listener-snippet
+    // END SNIPPET: usage-listener-snippet
 }

@@ -1,4 +1,5 @@
 package com.pi4j.examples;
+
 /*
  * #%L
  * **********************************************************************
@@ -28,9 +29,9 @@ package com.pi4j.examples;
 import com.pi4j.wiringpi.Serial;
 
 public class WiringPiSerialExample {
-    
+
     public static void main(String args[]) throws InterruptedException {
-        
+
         System.out.println("<--Pi4J--> SERIAL test program");
 
         // open serial port for communication
@@ -41,19 +42,19 @@ public class WiringPiSerialExample {
         }
 
         // infinite loop
-        while(true) {
-            
+        while (true) {
+
             // send test ASCII message
             Serial.serialPuts(fd, "TEST\r\n");
 
             // display data received to console
-            int dataavail = Serial.serialDataAvail(fd);            
-            while(dataavail > 0) {
+            int dataavail = Serial.serialDataAvail(fd);
+            while (dataavail > 0) {
                 int data = Serial.serialGetchar(fd);
-                System.out.print((char)data);                
+                System.out.print((char) data);
                 dataavail = Serial.serialDataAvail(fd);
             }
-            
+
             // wash, rinse, repeat
             Thread.sleep(1000);
         }

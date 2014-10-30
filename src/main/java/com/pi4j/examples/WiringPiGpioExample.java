@@ -1,4 +1,5 @@
 package com.pi4j.examples;
+
 /*
  * #%L
  * **********************************************************************
@@ -29,19 +30,21 @@ import com.pi4j.wiringpi.Gpio;
 import com.pi4j.wiringpi.GpioUtil;
 
 public class WiringPiGpioExample {
-    
+
     // Simple sequencer data
     // Triplets of LED, On/Off and delay
 
-    private static final int data[] = { 
-            0, 1, 1, 1, 1, 1, 0, 0, 0, 2, 1, 1, 1, 0, 0, 3, 1, 1, 2, 0, 0, 4, 1, 1, 3, 0, 0, 5, 1, 1, 4,
-            0, 0, 6, 1, 1, 5, 0, 0, 7, 1, 1, 6, 0, 1, 7, 0, 1,
-            0, 0,
+    private static final int data[] = { 0, 1, 1, 1, 1, 1, 0, 0, 0, 2, 1, 1, 1,
+            0, 0, 3, 1, 1, 2, 0, 0, 4, 1, 1, 3, 0, 0, 5, 1, 1, 4, 0, 0, 6, 1,
+            1, 5, 0, 0, 7, 1, 1, 6, 0, 1, 7, 0,
+            1,
+            0,
+            0,
             1, // Extra delay
-            // Back again
-            7, 1, 1, 6, 1, 1, 7, 0, 0, 5, 1, 1, 6, 0, 0, 4, 1, 1, 5, 0, 0, 3, 1, 1, 4, 0, 0, 2, 1,
-            1, 3, 0, 0, 1, 1, 1, 2, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1,
-            0, 0, 1, // Extra delay
+               // Back again
+            7, 1, 1, 6, 1, 1, 7, 0, 0, 5, 1, 1, 6, 0, 0, 4, 1, 1, 5, 0, 0, 3,
+            1, 1, 4, 0, 0, 2, 1, 1, 3, 0, 0, 1, 1, 1, 2, 0, 0, 0, 1, 1, 1, 0,
+            1, 0, 0, 1, 0, 0, 1, // Extra delay
             9, 9, 9, // End marker
     };
 
@@ -49,7 +52,7 @@ public class WiringPiGpioExample {
         int pin;
         int dataPtr;
         int l, s, d;
-        
+
         System.out.println("<--Pi4J--> GPIO test program");
 
         // setup wiringPi
@@ -58,19 +61,19 @@ public class WiringPiGpioExample {
             return;
         }
 
-        // set GPIO 4 as the input trigger 
+        // set GPIO 4 as the input trigger
         GpioUtil.export(7, GpioUtil.DIRECTION_IN);
         GpioUtil.setEdgeDetection(7, GpioUtil.EDGE_BOTH);
-        Gpio.pinMode (7, Gpio.INPUT) ;  
-        Gpio.pullUpDnControl(7, Gpio.PUD_DOWN);        
+        Gpio.pinMode(7, Gpio.INPUT);
+        Gpio.pullUpDnControl(7, Gpio.PUD_DOWN);
 
         // set all other GPIO as outputs
         for (pin = 0; pin < 7; ++pin) {
             // export all the GPIO pins that we will be using
-            GpioUtil.export(pin, GpioUtil.DIRECTION_OUT);            
+            GpioUtil.export(pin, GpioUtil.DIRECTION_OUT);
             Gpio.pinMode(pin, Gpio.OUTPUT);
         }
-        
+
         dataPtr = 0;
         for (;;) {
             l = data[dataPtr++]; // LED
@@ -83,12 +86,12 @@ public class WiringPiGpioExample {
             }
 
             Gpio.digitalWrite(l, s);
-            
-            if (Gpio.digitalRead(7) == 1) // Pressed as our switch shorts to ground
+
+            if (Gpio.digitalRead(7) == 1) // Pressed as our switch shorts to
+                                          // ground
                 Gpio.delay(d * 10); // Faster!
             else
                 Gpio.delay(d * 100);
         }
     }
 }
-

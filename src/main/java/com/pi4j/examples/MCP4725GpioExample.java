@@ -1,6 +1,7 @@
 package com.pi4j.examples;
+
 /*
-* #%L
+ * #%L
  * **********************************************************************
  * ORGANIZATION  :  Pi4J
  * PROJECT       :  Pi4J :: Java Examples
@@ -35,18 +36,19 @@ import com.pi4j.io.i2c.I2CBus;
 
 /**
  * <p>
- * This example code demonstrates how to setup a custom GpioProvider
- * for analog output pin.
- * </p>  
+ * This example code demonstrates how to setup a custom GpioProvider for analog
+ * output pin.
+ * </p>
  * 
  * <p>
- * This GPIO provider implements the MCP4725 12-Bit Digital-to-Analog Converter as native Pi4J GPIO pins.
- * More information about the board can be found here: 
+ * This GPIO provider implements the MCP4725 12-Bit Digital-to-Analog Converter
+ * as native Pi4J GPIO pins. More information about the board can be found here:
  * http://http://www.adafruit.com/product/935
  * </p>
  * 
  * <p>
- * The MCP4725 is connected via SPI connection to the Raspberry Pi and provides 1 GPIO analog output pin.
+ * The MCP4725 is connected via SPI connection to the Raspberry Pi and provides
+ * 1 GPIO analog output pin.
  * </p>
  * 
  * @author Christian Wehrli
@@ -59,10 +61,12 @@ public class MCP4725GpioExample {
         final GpioController gpio = GpioFactory.getInstance();
 
         // create gpio provider
-        final MCP4725GpioProvider gpioProvider = new MCP4725GpioProvider(I2CBus.BUS_1, MCP4725GpioProvider.MCP4725_ADDRESS_1);
+        final MCP4725GpioProvider gpioProvider = new MCP4725GpioProvider(
+                I2CBus.BUS_1, MCP4725GpioProvider.MCP4725_ADDRESS_1);
 
         // create output pin
-        final GpioPinAnalogOutput vout = gpio.provisionAnalogOutputPin(gpioProvider, MCP4725Pin.OUTPUT);
+        final GpioPinAnalogOutput vout = gpio.provisionAnalogOutputPin(
+                gpioProvider, MCP4725Pin.OUTPUT);
 
         // generate sinus wave on output pin
         for (int i = 0; i < 360; i++) {

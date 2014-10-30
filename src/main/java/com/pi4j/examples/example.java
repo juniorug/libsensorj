@@ -1,4 +1,5 @@
 package com.pi4j.examples;
+
 /*
  * #%L
  * **********************************************************************
@@ -33,17 +34,19 @@ public class example {
     // SPI operations
     public static byte INIT_CMD = (byte) 0xD0;
     public static byte SPI_CHANNEL = 0x0;
-    
+
     public static void main(String args[]) throws InterruptedException {
-        
-        // 
-        // This SPI example is using the WiringPi native library to communicate with 
+
+        //
+        // This SPI example is using the WiringPi native library to communicate
+        // with
         // the SPI hardware interface connected to a MCP23S17 I/O Expander.
         //
-        // Please note the following command are required to enable the SPI driver on
+        // Please note the following command are required to enable the SPI
+        // driver on
         // your Raspberry Pi:
-        // >  sudo modprobe spi_bcm2708
-        // >  sudo chown `id -u`.`id -g` /dev/spidev0.*
+        // > sudo modprobe spi_bcm2708
+        // > sudo chown `id -u`.`id -g` /dev/spidev0.*
         //
         // this source code was adapted from:
         // https://github.com/thomasmacpherson/piface/blob/master/python/piface/pfio.py
@@ -53,63 +56,65 @@ public class example {
         //
         // see the link below for the data sheet on the MCP23S17 chip:
         // http://ww1.microchip.com/downloads/en/devicedoc/21952b.pdf
-        
-        System.out.println("<--Pi4J--> SPI test program using MCP3002 AtoD Chip");
-                
+
+        System.out
+                .println("<--Pi4J--> SPI test program using MCP3002 AtoD Chip");
+
         // setup SPI for communication
-        int fd = Spi.wiringPiSPISetup(SPI_CHANNEL, 1000000);;
+        int fd = Spi.wiringPiSPISetup(SPI_CHANNEL, 1000000);
+        ;
         if (fd <= -1) {
             System.out.println(" ==>> SPI SETUP FAILED");
             return;
         }
-        
+
         // infinite loop
-        while(true) {
-            
+        while (true) {
+
             read();
             Thread.sleep(1000);
         }
     }
 
-    public static void read(){
-        
+    public static void read() {
+
         // send test ASCII message
         byte packet[] = new byte[2];
-        packet[0] = INIT_CMD;  // address byte
-        //packet[0] = (byte)(INIT_CMD | (SPI_CHANNEL<<5));
-        packet[1] = 0x00;  // dummy
-           
+        packet[0] = INIT_CMD; // address byte
+        // packet[0] = (byte)(INIT_CMD | (SPI_CHANNEL<<5));
+        packet[1] = 0x00; // dummy
+
         System.out.println("-----------------------------------------------");
         System.out.println("[TX] " + bytesToHex(packet));
-        Spi.wiringPiSPIDataRW(SPI_CHANNEL, packet, 2);        
+        Spi.wiringPiSPIDataRW(SPI_CHANNEL, packet, 2);
         System.out.println("[RX] " + bytesToHex(packet));
         System.out.println("-----------------------------------------------");
-        
-        //System.out.println(( (packet[0]<<7) | (packet[1]>>1) ) & 0x3FF);
-        System.out.println( ((packet[0]<<8)|packet[1]) & 0x3FF );
-        
+
+        // System.out.println(( (packet[0]<<7) | (packet[1]>>1) ) & 0x3FF);
+        System.out.println(((packet[0] << 8) | packet[1]) & 0x3FF);
+
     }
-    
-    
+
     public static String bytesToBinary(byte[] bytes) {
         StringBuilder sb = new StringBuilder();
         int v;
-        for ( int j = 0; j < bytes.length; j++ ) {
+        for (int j = 0; j < bytes.length; j++) {
             v = bytes[j];
             sb.append(Integer.toBinaryString(v));
         }
         return sb.toString();
-    }    
+    }
 
     public static String bytesToHex(byte[] bytes) {
-        final char[] hexArray = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+        final char[] hexArray = { '0', '1', '2', '3', '4', '5', '6', '7', '8',
+                '9', 'A', 'B', 'C', 'D', 'E', 'F' };
         char[] hexChars = new char[bytes.length * 2];
         int v;
-        for ( int j = 0; j < bytes.length; j++ ) {
+        for (int j = 0; j < bytes.length; j++) {
             v = bytes[j] & 0xFF;
             hexChars[j * 2] = hexArray[v >>> 4];
             hexChars[j * 2 + 1] = hexArray[v & 0x0F];
         }
         return new String(hexChars);
-    }    
+    }
 }

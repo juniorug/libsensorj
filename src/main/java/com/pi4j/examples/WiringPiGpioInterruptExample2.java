@@ -1,4 +1,5 @@
 package com.pi4j.examples;
+
 /*
  * #%L
  * **********************************************************************
@@ -30,7 +31,7 @@ import com.pi4j.wiringpi.Gpio;
 import com.pi4j.wiringpi.GpioInterruptCallback;
 
 public class WiringPiGpioInterruptExample2 {
-    
+
     public static void main(String args[]) throws InterruptedException {
 
         System.out.println("<--Pi4J--> GPIO interrupt test program");
@@ -41,14 +42,14 @@ public class WiringPiGpioInterruptExample2 {
             return;
         }
 
-        Gpio.pinMode (0, Gpio.INPUT) ;
-        Gpio.pinMode (1, Gpio.INPUT) ;
-        Gpio.pinMode (2, Gpio.INPUT) ;
-        Gpio.pinMode (3, Gpio.INPUT) ;
-        Gpio.pinMode (4, Gpio.INPUT) ;
-        Gpio.pinMode (5, Gpio.INPUT) ;
-        Gpio.pinMode (6, Gpio.INPUT) ;
-        Gpio.pinMode (7, Gpio.INPUT) ;
+        Gpio.pinMode(0, Gpio.INPUT);
+        Gpio.pinMode(1, Gpio.INPUT);
+        Gpio.pinMode(2, Gpio.INPUT);
+        Gpio.pinMode(3, Gpio.INPUT);
+        Gpio.pinMode(4, Gpio.INPUT);
+        Gpio.pinMode(5, Gpio.INPUT);
+        Gpio.pinMode(6, Gpio.INPUT);
+        Gpio.pinMode(7, Gpio.INPUT);
 
         Gpio.pullUpDnControl(0, Gpio.PUD_DOWN);
         Gpio.pullUpDnControl(1, Gpio.PUD_DOWN);
@@ -63,49 +64,57 @@ public class WiringPiGpioInterruptExample2 {
         Gpio.wiringPiISR(0, Gpio.INT_EDGE_FALLING, new GpioInterruptCallback() {
             @Override
             public void callback(int pin) {
-                System.out.println(" ==>> GPIO PIN " + pin + " - INTERRUPT DETECTED");
+                System.out.println(" ==>> GPIO PIN " + pin
+                        + " - INTERRUPT DETECTED");
             }
         });
         Gpio.wiringPiISR(1, Gpio.INT_EDGE_FALLING, new GpioInterruptCallback() {
             @Override
             public void callback(int pin) {
-                System.out.println(" ==>> GPIO PIN " + pin + " - INTERRUPT DETECTED");
+                System.out.println(" ==>> GPIO PIN " + pin
+                        + " - INTERRUPT DETECTED");
             }
         });
         Gpio.wiringPiISR(2, Gpio.INT_EDGE_FALLING, new GpioInterruptCallback() {
             @Override
             public void callback(int pin) {
-                System.out.println(" ==>> GPIO PIN " + pin + " - INTERRUPT DETECTED");
+                System.out.println(" ==>> GPIO PIN " + pin
+                        + " - INTERRUPT DETECTED");
             }
         });
         Gpio.wiringPiISR(3, Gpio.INT_EDGE_FALLING, new GpioInterruptCallback() {
             @Override
             public void callback(int pin) {
-                System.out.println(" ==>> GPIO PIN " + pin + " - INTERRUPT DETECTED");
+                System.out.println(" ==>> GPIO PIN " + pin
+                        + " - INTERRUPT DETECTED");
             }
         });
         Gpio.wiringPiISR(4, Gpio.INT_EDGE_FALLING, new GpioInterruptCallback() {
             @Override
             public void callback(int pin) {
-                System.out.println(" ==>> GPIO PIN " + pin + " - INTERRUPT DETECTED");
+                System.out.println(" ==>> GPIO PIN " + pin
+                        + " - INTERRUPT DETECTED");
             }
         });
         Gpio.wiringPiISR(5, Gpio.INT_EDGE_FALLING, new GpioInterruptCallback() {
             @Override
             public void callback(int pin) {
-                System.out.println(" ==>> GPIO PIN " + pin + " - INTERRUPT DETECTED");
+                System.out.println(" ==>> GPIO PIN " + pin
+                        + " - INTERRUPT DETECTED");
             }
         });
         Gpio.wiringPiISR(6, Gpio.INT_EDGE_FALLING, new GpioInterruptCallback() {
             @Override
             public void callback(int pin) {
-                System.out.println(" ==>> GPIO PIN " + pin + " - INTERRUPT DETECTED");
+                System.out.println(" ==>> GPIO PIN " + pin
+                        + " - INTERRUPT DETECTED");
             }
         });
         Gpio.wiringPiISR(7, Gpio.INT_EDGE_FALLING, new GpioInterruptCallback() {
             @Override
             public void callback(int pin) {
-                System.out.println(" ==>> GPIO PIN " + pin + " - INTERRUPT DETECTED");
+                System.out.println(" ==>> GPIO PIN " + pin
+                        + " - INTERRUPT DETECTED");
             }
         });
 
@@ -113,4 +122,3 @@ public class WiringPiGpioInterruptExample2 {
         System.console().readLine("Press <ENTER> to exit program.\r\n");
     }
 }
-

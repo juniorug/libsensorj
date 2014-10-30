@@ -1,4 +1,5 @@
 package com.pi4j.examples;
+
 // START SNIPPET: control-gpio-snippet
 
 /*
@@ -33,32 +34,35 @@ import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 
 /**
- * This example code demonstrates how to perform simple state
- * control of a GPIO pin on the Raspberry Pi.  
+ * This example code demonstrates how to perform simple state control of a GPIO
+ * pin on the Raspberry Pi.
  * 
  * @author Robert Savage
  */
 public class OutputHiGpioExample {
-    
+
     public static void main(String[] args) throws InterruptedException {
-        
+
         System.out.println("<--Pi4J--> GPIO Output HI Example ... started.");
-        
+
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
-        
+
         // provision gpio pin #01 as an output pin and turn on
-        final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MyLED", PinState.HIGH);
+        final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(
+                RaspiPin.GPIO_01, "MyLED", PinState.HIGH);
         System.out.println("--> GPIO state should be: ON");
-        
+
         Thread.sleep(10000);
 
         pin.export(PinMode.DIGITAL_INPUT);
         System.out.println("--> GPIO pin now is INPUT");
 
-        ((GpioPinDigitalOutput)pin).addListener(new GpioPinListenerDigital() {
-            public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
-                System.out.println("--> GPIO pin INPUT event: " + event.toString());
+        ((GpioPinDigitalOutput) pin).addListener(new GpioPinListenerDigital() {
+            public void handleGpioPinDigitalStateChangeEvent(
+                    GpioPinDigitalStateChangeEvent event) {
+                System.out.println("--> GPIO pin INPUT event: "
+                        + event.toString());
             }
         });
         Thread.sleep(10000);
@@ -69,8 +73,9 @@ public class OutputHiGpioExample {
         Thread.sleep(10000);
 
         // stop all GPIO activity/threads by shutting down the GPIO controller
-        // (this method will forcefully shutdown all GPIO monitoring threads and scheduled tasks)
+        // (this method will forcefully shutdown all GPIO monitoring threads and
+        // scheduled tasks)
         gpio.shutdown();
     }
 }
-//END SNIPPET: control-gpio-snippet
+// END SNIPPET: control-gpio-snippet

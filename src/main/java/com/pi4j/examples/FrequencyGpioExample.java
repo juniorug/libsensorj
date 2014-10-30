@@ -1,6 +1,6 @@
 package com.pi4j.examples;
-// START SNIPPET: frequency-gpio-snippet
 
+// START SNIPPET: frequency-gpio-snippet
 
 /*
  * #%L
@@ -29,7 +29,6 @@ package com.pi4j.examples;
  * #L%
  */
 
-
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
@@ -37,33 +36,35 @@ import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 
 /**
- * This example code provides a continuous GPIO pin state 
- * changes on the Raspberry Pi to allow measurement of
- * frequency.  
+ * This example code provides a continuous GPIO pin state changes on the
+ * Raspberry Pi to allow measurement of frequency.
  * 
  * @author Robert Savage
  */
 public class FrequencyGpioExample {
-    
+
     public static void main(String[] args) {
-        
+
         System.out.println("<--Pi4J--> GPIO Frequency Example ... started.");
-        
+
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
-        
+
         // provision gpio pin #01 as an output pin and turn on
-        final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, PinState.LOW);
+        final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(
+                RaspiPin.GPIO_01, PinState.LOW);
 
         // continuous loop
-        while(true) {            
+        while (true) {
             pin.setState(true);
             pin.setState(false);
         }
-        
+
         // stop all GPIO activity/threads by shutting down the GPIO controller
-        // (this method will forcefully shutdown all GPIO monitoring threads and scheduled tasks)
-        // gpio.shutdown();   <--- implement this method call if you wish to terminate the Pi4J GPIO controller        
+        // (this method will forcefully shutdown all GPIO monitoring threads and
+        // scheduled tasks)
+        // gpio.shutdown(); <--- implement this method call if you wish to
+        // terminate the Pi4J GPIO controller
     }
 }
-//END SNIPPET: frequency-gpio-snippet
+// END SNIPPET: frequency-gpio-snippet
