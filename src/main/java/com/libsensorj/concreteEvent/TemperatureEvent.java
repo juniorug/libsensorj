@@ -1,9 +1,9 @@
-package com.source.concreteEvent;
+package com.libsensorj.concreteEvent;
 
-import com.source.interfaces.IEvent;
-import com.source.model.Observer;
+import com.libsensorj.interfaces.IEvent;
+import com.libsensorj.model.Observer;
 
-public class HumidityEvent implements IEvent {
+public class TemperatureEvent implements IEvent {
 
     @Override
     public void attach(Observer obsever) {

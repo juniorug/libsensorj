@@ -1,4 +1,4 @@
-package com.source.model;
+package com.libsensorj.model;
 
 public class Observer {
 

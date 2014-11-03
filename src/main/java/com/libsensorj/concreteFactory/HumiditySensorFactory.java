@@ -1,10 +1,10 @@
-package com.source.concreteFactory;
+package com.libsensorj.concreteFactory;
 
-import com.source.concreteEvent.HumidityEvent;
-import com.source.concreteSensor.DHT11Humidity;
-import com.source.interfaces.IEvent;
-import com.source.interfaces.ISensor;
-import com.source.interfaces.ISensorFactory;
+import com.libsensorj.concreteEvent.HumidityEvent;
+import com.libsensorj.concreteSensor.DHT11Humidity;
+import com.libsensorj.interfaces.IEvent;
+import com.libsensorj.interfaces.ISensor;
+import com.libsensorj.interfaces.ISensorFactory;
 
 public class HumiditySensorFactory implements ISensorFactory {
 

@@ -1,6 +1,6 @@
-package com.source.interfaces;
+package com.libsensorj.interfaces;
 
-import com.source.model.Observer;
+import com.libsensorj.model.Observer;
 
 public interface IEvent {
 

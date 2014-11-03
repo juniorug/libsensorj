@@ -1,4 +1,4 @@
-package com.source.interfaces;
+package com.libsensorj.interfaces;
 
 public interface ISensor {
 
