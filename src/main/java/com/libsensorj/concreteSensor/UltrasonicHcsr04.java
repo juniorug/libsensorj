@@ -23,25 +23,40 @@ public class UltrasonicHcsr04 implements ISensor {
 
     @Override
     public void getInstance() {
-        // TODO Auto-generated method stub
+        
         // Setup GPIO Pins
         GpioController gpio = GpioFactory.getInstance();
 
         // range finder pins
-        firepulse = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_00,
+        firepulse = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_23,
                 "Range Finder Trigger", PinState.LOW);
-        result_pin = gpio.provisionDigitalInputPin(RaspiPin.GPIO_03,
+        result_pin = gpio.provisionDigitalInputPin(RaspiPin.GPIO_24,
                 "Range Pulse Result", PinPullResistance.PULL_DOWN);
 
     }
 
-    public UltrasonicHcsr04(GpioPinDigitalOutput trigger,
+    public UltrasonicHcsr04() {
+        
+        GpioController gpio = GpioFactory.getInstance();
+
+        // range finder pins
+        firepulse = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_23,
+                "Range Finder Trigger", PinState.LOW);
+        result_pin = gpio.provisionDigitalInputPin(RaspiPin.GPIO_24,
+                "Range Pulse Result", PinPullResistance.PULL_DOWN);
+
+    }
+
+    
+    
+    
+    /*public UltrasonicHcsr04(GpioPinDigitalOutput trigger,
             GpioPinDigitalInput result_pin) {
 
         this.firepulse = trigger;
         this.result_pin = result_pin;
 
-    }
+    }*/
 
     public double getRange() {
 

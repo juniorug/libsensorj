@@ -1,7 +1,7 @@
 package com.libsensorj.concreteFactory;
 
-import com.libsensorj.concreteEvent.TemperatureEvent;
-import com.libsensorj.concreteSensor.DHT11Temperature;
+import com.libsensorj.concreteEvent.UltrasonicRangeFinderEvent;
+import com.libsensorj.concreteSensor.UltrasonicHcsr04;
 import com.libsensorj.interfaces.IEvent;
 import com.libsensorj.interfaces.ISensor;
 import com.libsensorj.interfaces.ISensorFactory;
@@ -14,7 +14,7 @@ public class UltrasonicRangeFinderFactory implements ISensorFactory {
         dHT11Temperature.getInstance();
         return dHT11Temperature;*/
         
-        return new DHT11Temperature();
+        return new UltrasonicHcsr04();
     }
 
     @Override
@@ -24,7 +24,7 @@ public class UltrasonicRangeFinderFactory implements ISensorFactory {
         temperatureEvent.trigger();
         return temperatureEvent;*/
         
-        return new TemperatureEvent();
+        return new UltrasonicRangeFinderEvent();
     }
 
 }

@@ -10,6 +10,8 @@ import com.pi4j.io.gpio.PinPullResistance;
 import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
+import com.pi4j.temperature.TemperatureConversion;
+import com.pi4j.temperature.TemperatureScale;
 import com.libsensorj.interfaces.ISensor;
 
 public class DHT11Temperature implements ISensor {
@@ -19,10 +21,6 @@ public class DHT11Temperature implements ISensor {
     private long lastCheck;
     private final int gpioPin;
     private static final int DEFAULT_PIN = 4;
-    private static final int FIVE = 5;
-    private static final int NINE = 9;
-    private static final int THIRTY_TWO = 32;
-    private static final float KELVIN_CONSTANT = 273.15f;
 
     public DHT11Temperature(int gpioPin) {
         this.gpioPin = gpioPin;
@@ -71,26 +69,41 @@ public class DHT11Temperature implements ISensor {
         }
     }
 
-    public synchronized float getTemperatureInCelsius() {
-        checkForUpdates();
-        return parseTemperature(lastValue);
+    public synchronized double getTemperatureInCelsius() {
+        return getTemperature(TemperatureScale.CELSIUS);
     }
 
-    public synchronized float getTemperatureInFahrenheit() {
-        checkForUpdates();
-        return ((parseTemperature(lastValue) * NINE) / FIVE) + THIRTY_TWO;
+    public synchronized double getTemperatureInFahrenheit() {
+        return getTemperature(TemperatureScale.FARENHEIT);
+
     }
 
-    public synchronized float getTemperatureInKelvin() {
-        checkForUpdates();
-        return parseTemperature(lastValue) + KELVIN_CONSTANT;
+    public synchronized double getTemperatureInKelvin() {
+        return getTemperature(TemperatureScale.KELVIN);
     }
 
-    private float parseTemperature(String value) {
-        if (value == null) {
-            return Float.MIN_VALUE;
+    private double getTemperature(TemperatureScale from) {
+        checkForUpdates();
+        switch (from) {
+
+            case FARENHEIT:
+                return TemperatureConversion
+                        .convertCelsiusToFarenheit(parseTemperature(lastValue));
+            case CELSIUS:
+                return parseTemperature(lastValue);
+            case KELVIN:
+                return TemperatureConversion
+                        .convertCelsiusToKelvin(parseTemperature(lastValue));
+            default:
+                throw (new RuntimeException("Invalid temperature conversion"));
         }
-        return Float.parseFloat(value.substring(value.indexOf(TEMP_STR)
+    }
+
+    private double parseTemperature(String value) {
+        if (value == null) {
+            return Double.MIN_VALUE;
+        }
+        return Double.parseDouble(value.substring(value.indexOf(TEMP_STR)
                 + TEMP_STR.length(), value.indexOf('*')));
     }
 
