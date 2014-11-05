@@ -26,18 +26,24 @@ package com.pi4j.examples;
  * limitations under the License.
  * #L%
  */
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.wiringpi.Serial;
 
 public class WiringPiSerialExample {
 
-    public static void main(String args[]) throws InterruptedException {
+    private static final Logger LOGGER = LogManager
+            .getLogger(WiringPiSerialExample.class.getName());
 
-        System.out.println("<--Pi4J--> SERIAL test program");
+    public static void main(String[] args) throws InterruptedException {
+
+        LOGGER.info("<--Pi4J--> SERIAL test program");
 
         // open serial port for communication
         int fd = Serial.serialOpen(Serial.DEFAULT_COM_PORT, 38400);
         if (fd == -1) {
-            System.out.println(" ==>> SERIAL SETUP FAILED");
+            LOGGER.info(" ==>> SERIAL SETUP FAILED");
             return;
         }
 
@@ -51,7 +57,7 @@ public class WiringPiSerialExample {
             int dataavail = Serial.serialDataAvail(fd);
             while (dataavail > 0) {
                 int data = Serial.serialGetchar(fd);
-                System.out.print((char) data);
+                LOGGER.info((char) data);
                 dataavail = Serial.serialDataAvail(fd);
             }
 

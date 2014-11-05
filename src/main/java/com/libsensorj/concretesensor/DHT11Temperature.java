@@ -1,7 +1,10 @@
-package com.libsensorj.concreteSensor;
+package com.libsensorj.concretesensor;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
@@ -21,6 +24,8 @@ public class DHT11Temperature implements ISensor {
     private long lastCheck;
     private final int gpioPin;
     private static final int DEFAULT_PIN = 4;
+    private static final Logger LOGGER = LogManager
+            .getLogger(DHT11Temperature.class.getName());
 
     public DHT11Temperature(int gpioPin) {
         this.gpioPin = gpioPin;
@@ -49,7 +54,7 @@ public class DHT11Temperature implements ISensor {
             public void handleGpioPinDigitalStateChangeEvent(
                     GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
-                System.out.println(" --> GPIO PIN STATE CHANGE: "
+                LOGGER.info(" --> GPIO PIN STATE CHANGE: "
                         + event.getPin() + " = " + event.getState());
             }
         });
@@ -86,16 +91,16 @@ public class DHT11Temperature implements ISensor {
         checkForUpdates();
         switch (from) {
 
-            case FARENHEIT:
-                return TemperatureConversion
-                        .convertCelsiusToFarenheit(parseTemperature(lastValue));
-            case CELSIUS:
-                return parseTemperature(lastValue);
-            case KELVIN:
-                return TemperatureConversion
-                        .convertCelsiusToKelvin(parseTemperature(lastValue));
-            default:
-                throw (new RuntimeException("Invalid temperature conversion"));
+        case FARENHEIT:
+            return TemperatureConversion
+                    .convertCelsiusToFarenheit(parseTemperature(lastValue));
+        case CELSIUS:
+            return parseTemperature(lastValue);
+        case KELVIN:
+            return TemperatureConversion
+                    .convertCelsiusToKelvin(parseTemperature(lastValue));
+        default:
+            throw new RuntimeException("Invalid temperature conversion");
         }
     }
 
@@ -115,13 +120,16 @@ public class DHT11Temperature implements ISensor {
             BufferedReader in = new BufferedReader(new InputStreamReader(
                     p.getInputStream()));
             String line = null;
-            while ((line = in.readLine()) != null) {
+            line = in.readLine();
+            while (line != null) {
                 result += line;
+                line = in.readLine();
             }
         } catch (Exception e) {
-            System.err.println(String.format(
-                    "Could not read the sensor at pin %d", gpioPin));
-            e.printStackTrace();
+
+            LOGGER.error("Exception: Could not read the sensor at pin %d",
+                    gpioPin + e.getMessage(), e);
+            //e.printStackTrace();
             return null;
         }
         return result;

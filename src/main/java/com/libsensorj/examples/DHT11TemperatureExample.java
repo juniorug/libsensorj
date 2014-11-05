@@ -1,6 +1,6 @@
 package com.libsensorj.examples;
 
-import com.libsensorj.concreteFactory.TemperatureSensorFactory;
+import com.libsensorj.concretefactory.TemperatureSensorFactory;
 import com.libsensorj.interfaces.ISensor;
 import com.libsensorj.interfaces.ISensorFactory;
 

@@ -2,8 +2,8 @@ package com.libsensorj.interfaces;
 
 public interface ISensorFactory {
 
-    public ISensor createSensor();
+    ISensor createSensor();
 
-    public IEvent createEvent();
+    IEvent createEvent();
 
 }

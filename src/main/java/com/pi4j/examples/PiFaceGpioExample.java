@@ -27,6 +27,11 @@ package com.pi4j.examples;
  * #L%
  */
 
+import java.io.IOException;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.gpio.extension.piface.PiFaceGpioProvider;
 import com.pi4j.gpio.extension.piface.PiFacePin;
 import com.pi4j.io.gpio.GpioController;
@@ -36,8 +41,6 @@ import com.pi4j.io.gpio.GpioPinDigitalOutput;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 import com.pi4j.wiringpi.Spi;
-
-import java.io.IOException;
 
 /**
  * <p>
@@ -61,11 +64,13 @@ import java.io.IOException;
  */
 public class PiFaceGpioExample {
 
-    public static void main(String args[]) throws InterruptedException,
+    private static final Logger LOGGER = LogManager
+            .getLogger(PiFaceGpioExample.class.getName());
+
+    public static void main(String[] args) throws InterruptedException,
             IOException {
 
-        System.out
-                .println("<--Pi4J--> PiFace (MCP23017) GPIO Example ... started.");
+        LOGGER.info("<--Pi4J--> PiFace (MCP23017) GPIO Example ... started.");
 
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
@@ -90,8 +95,8 @@ public class PiFaceGpioExample {
             public void handleGpioPinDigitalStateChangeEvent(
                     GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
-                System.out.println(" --> GPIO PIN STATE CHANGE: "
-                        + event.getPin() + " = " + event.getState());
+                LOGGER.info(" --> GPIO PIN STATE CHANGE: " + event.getPin()
+                        + " = " + event.getState());
             }
         }, myInputs);
 

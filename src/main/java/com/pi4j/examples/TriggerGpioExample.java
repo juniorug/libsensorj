@@ -31,6 +31,9 @@ package com.pi4j.examples;
 
 import java.util.concurrent.Callable;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalInput;
@@ -51,9 +54,12 @@ import com.pi4j.io.gpio.trigger.GpioSyncStateTrigger;
  */
 public class TriggerGpioExample {
 
+    private static final Logger LOGGER = LogManager
+            .getLogger(TriggerGpioExample.class.getName());
+
     public static void main(String[] args) throws InterruptedException {
 
-        System.out.println("<--Pi4J--> GPIO Trigger Example ... started.");
+        LOGGER.info("<--Pi4J--> GPIO Trigger Example ... started.");
 
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
@@ -63,8 +69,7 @@ public class TriggerGpioExample {
         final GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(
                 RaspiPin.GPIO_02, PinPullResistance.PULL_DOWN);
 
-        System.out
-                .println(" ... complete the GPIO #02 circuit and see the triggers take effect.");
+        LOGGER.info(" ... complete the GPIO #02 circuit and see the triggers take effect.");
 
         // setup gpio pins #04, #05, #06 as an output pins and make sure they
         // are all LOW at startup
@@ -100,7 +105,7 @@ public class TriggerGpioExample {
         // invocation on the user defined 'Callable' class instance
         myButton.addTrigger(new GpioCallbackTrigger(new Callable<Void>() {
             public Void call() throws Exception {
-                System.out.println(" --> GPIO TRIGGER CALLBACK RECEIVED ");
+                LOGGER.info(" --> GPIO TRIGGER CALLBACK RECEIVED ");
                 return null;
             }
         }));

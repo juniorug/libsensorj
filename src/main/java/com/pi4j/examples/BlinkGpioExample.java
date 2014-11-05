@@ -29,6 +29,9 @@ package com.pi4j.examples;
  * #L%
  */
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalInput;
@@ -46,9 +49,12 @@ import com.pi4j.io.gpio.event.GpioPinListenerDigital;
  */
 public class BlinkGpioExample {
 
+    private static final Logger LOGGER = LogManager
+            .getLogger(BlinkGpioExample.class.getName());
+
     public static void main(String[] args) throws InterruptedException {
 
-        System.out.println("<--Pi4J--> GPIO Blink Example ... started.");
+        LOGGER.info("<--Pi4J--> GPIO Blink Example ... started.");
 
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
@@ -83,9 +89,8 @@ public class BlinkGpioExample {
         // continuously blink the led every 1 second
         led2.blink(1000);
 
-        System.out
-                .println(" ... the LED will continue blinking until the program is terminated.");
-        System.out.println(" ... PRESS <CTRL-C> TO STOP THE PROGRAM.");
+        LOGGER.info(" ... the LED will continue blinking until the program is terminated.");
+        LOGGER.info(" ... PRESS <CTRL-C> TO STOP THE PROGRAM.");
 
         // keep program running until user aborts (CTRL-C)
         for (;;) {

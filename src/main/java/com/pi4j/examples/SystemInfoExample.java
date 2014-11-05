@@ -29,11 +29,14 @@ package com.pi4j.examples;
  * #L%
  */
 
-import com.pi4j.system.NetworkInfo;
-import com.pi4j.system.SystemInfo;
-
 import java.io.IOException;
 import java.text.ParseException;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.pi4j.system.NetworkInfo;
+import com.pi4j.system.SystemInfo;
 
 /**
  * This example code demonstrates how to access a few of the system information
@@ -43,145 +46,110 @@ import java.text.ParseException;
  */
 public class SystemInfoExample {
 
+    private static final Logger LOGGER = LogManager
+            .getLogger(SystemInfoExample.class.getName());
+
     public static void main(String[] args) throws InterruptedException,
             IOException, ParseException {
 
         // display a few of the available system information properties
-        System.out
-                .println("----------------------------------------------------");
-        System.out.println("HARDWARE INFO");
-        System.out
-                .println("----------------------------------------------------");
-        System.out.println("Serial Number     :  " + SystemInfo.getSerial());
-        System.out.println("CPU Revision      :  "
-                + SystemInfo.getCpuRevision());
-        System.out.println("CPU Architecture  :  "
-                + SystemInfo.getCpuArchitecture());
-        System.out.println("CPU Part          :  " + SystemInfo.getCpuPart());
-        System.out.println("CPU Temperature   :  "
-                + SystemInfo.getCpuTemperature());
-        System.out
-                .println("CPU Core Voltage  :  " + SystemInfo.getCpuVoltage());
-        System.out.println("CPU Model Name    :  " + SystemInfo.getModelName());
-        System.out.println("Processor         :  " + SystemInfo.getProcessor());
-        System.out.println("Hardware Revision :  " + SystemInfo.getRevision());
-        System.out.println("Is Hard Float ABI :  "
-                + SystemInfo.isHardFloatAbi());
-        System.out.println("Board Type        :  "
-                + SystemInfo.getBoardType().name());
+        LOGGER.info("----------------------------------------------------");
+        LOGGER.info("HARDWARE INFO");
+        LOGGER.info("----------------------------------------------------");
+        LOGGER.info("Serial Number     :  " + SystemInfo.getSerial());
+        LOGGER.info("CPU Revision      :  " + SystemInfo.getCpuRevision());
+        LOGGER.info("CPU Architecture  :  " + SystemInfo.getCpuArchitecture());
+        LOGGER.info("CPU Part          :  " + SystemInfo.getCpuPart());
+        LOGGER.info("CPU Temperature   :  " + SystemInfo.getCpuTemperature());
+        LOGGER.info("CPU Core Voltage  :  " + SystemInfo.getCpuVoltage());
+        LOGGER.info("CPU Model Name    :  " + SystemInfo.getModelName());
+        LOGGER.info("Processor         :  " + SystemInfo.getProcessor());
+        LOGGER.info("Hardware Revision :  " + SystemInfo.getRevision());
+        LOGGER.info("Is Hard Float ABI :  " + SystemInfo.isHardFloatAbi());
+        LOGGER.info("Board Type        :  " + SystemInfo.getBoardType().name());
 
-        System.out
-                .println("----------------------------------------------------");
-        System.out.println("MEMORY INFO");
-        System.out
-                .println("----------------------------------------------------");
-        System.out.println("Total Memory      :  "
-                + SystemInfo.getMemoryTotal());
-        System.out
-                .println("Used Memory       :  " + SystemInfo.getMemoryUsed());
-        System.out
-                .println("Free Memory       :  " + SystemInfo.getMemoryFree());
-        System.out.println("Shared Memory     :  "
-                + SystemInfo.getMemoryShared());
-        System.out.println("Memory Buffers    :  "
-                + SystemInfo.getMemoryBuffers());
-        System.out.println("Cached Memory     :  "
-                + SystemInfo.getMemoryCached());
-        System.out.println("SDRAM_C Voltage   :  "
+        LOGGER.info("----------------------------------------------------");
+        LOGGER.info("MEMORY INFO");
+        LOGGER.info("----------------------------------------------------");
+        LOGGER.info("Total Memory      :  " + SystemInfo.getMemoryTotal());
+        LOGGER.info("Used Memory       :  " + SystemInfo.getMemoryUsed());
+        LOGGER.info("Free Memory       :  " + SystemInfo.getMemoryFree());
+        LOGGER.info("Shared Memory     :  " + SystemInfo.getMemoryShared());
+        LOGGER.info("Memory Buffers    :  " + SystemInfo.getMemoryBuffers());
+        LOGGER.info("Cached Memory     :  " + SystemInfo.getMemoryCached());
+        LOGGER.info("SDRAM_C Voltage   :  "
                 + SystemInfo.getMemoryVoltageSDRam_C());
-        System.out.println("SDRAM_I Voltage   :  "
+        LOGGER.info("SDRAM_I Voltage   :  "
                 + SystemInfo.getMemoryVoltageSDRam_I());
-        System.out.println("SDRAM_P Voltage   :  "
+        LOGGER.info("SDRAM_P Voltage   :  "
                 + SystemInfo.getMemoryVoltageSDRam_P());
 
-        System.out
-                .println("----------------------------------------------------");
-        System.out.println("OPERATING SYSTEM INFO");
-        System.out
-                .println("----------------------------------------------------");
-        System.out.println("OS Name           :  " + SystemInfo.getOsName());
-        System.out.println("OS Version        :  " + SystemInfo.getOsVersion());
-        System.out.println("OS Architecture   :  " + SystemInfo.getOsArch());
-        System.out.println("OS Firmware Build :  "
-                + SystemInfo.getOsFirmwareBuild());
-        System.out.println("OS Firmware Date  :  "
-                + SystemInfo.getOsFirmwareDate());
+        LOGGER.info("----------------------------------------------------");
+        LOGGER.info("OPERATING SYSTEM INFO");
+        LOGGER.info("----------------------------------------------------");
+        LOGGER.info("OS Name           :  " + SystemInfo.getOsName());
+        LOGGER.info("OS Version        :  " + SystemInfo.getOsVersion());
+        LOGGER.info("OS Architecture   :  " + SystemInfo.getOsArch());
+        LOGGER.info("OS Firmware Build :  " + SystemInfo.getOsFirmwareBuild());
+        LOGGER.info("OS Firmware Date  :  " + SystemInfo.getOsFirmwareDate());
 
-        System.out
-                .println("----------------------------------------------------");
-        System.out.println("JAVA ENVIRONMENT INFO");
-        System.out
-                .println("----------------------------------------------------");
-        System.out
-                .println("Java Vendor       :  " + SystemInfo.getJavaVendor());
-        System.out.println("Java Vendor URL   :  "
-                + SystemInfo.getJavaVendorUrl());
-        System.out.println("Java Version      :  "
-                + SystemInfo.getJavaVersion());
-        System.out.println("Java VM           :  "
+        LOGGER.info("----------------------------------------------------");
+        LOGGER.info("JAVA ENVIRONMENT INFO");
+        LOGGER.info("----------------------------------------------------");
+        LOGGER.info("Java Vendor       :  " + SystemInfo.getJavaVendor());
+        LOGGER.info("Java Vendor URL   :  " + SystemInfo.getJavaVendorUrl());
+        LOGGER.info("Java Version      :  " + SystemInfo.getJavaVersion());
+        LOGGER.info("Java VM           :  "
                 + SystemInfo.getJavaVirtualMachine());
-        System.out.println("Java Runtime      :  "
-                + SystemInfo.getJavaRuntime());
+        LOGGER.info("Java Runtime      :  " + SystemInfo.getJavaRuntime());
 
-        System.out
-                .println("----------------------------------------------------");
-        System.out.println("NETWORK INFO");
-        System.out
-                .println("----------------------------------------------------");
+        LOGGER.info("----------------------------------------------------");
+        LOGGER.info("NETWORK INFO");
+        LOGGER.info("----------------------------------------------------");
 
         // display some of the network information
-        System.out.println("Hostname          :  " + NetworkInfo.getHostname());
-        for (String ipAddress : NetworkInfo.getIPAddresses())
-            System.out.println("IP Addresses      :  " + ipAddress);
-        for (String fqdn : NetworkInfo.getFQDNs())
-            System.out.println("FQDN              :  " + fqdn);
-        for (String nameserver : NetworkInfo.getNameservers())
-            System.out.println("Nameserver        :  " + nameserver);
+        LOGGER.info("Hostname          :  " + NetworkInfo.getHostname());
+        for (String ipAddress : NetworkInfo.getIPAddresses()) {
+            LOGGER.info("IP Addresses      :  " + ipAddress);
+        }
+        for (String fqdn : NetworkInfo.getFQDNs()) {
+            LOGGER.info("FQDN              :  " + fqdn);
+        }
+        for (String nameserver : NetworkInfo.getNameservers()) {
+            LOGGER.info("Nameserver        :  " + nameserver);
+        }
 
-        System.out
-                .println("----------------------------------------------------");
-        System.out.println("CODEC INFO");
-        System.out
-                .println("----------------------------------------------------");
-        System.out.println("H264 Codec Enabled:  "
-                + SystemInfo.getCodecH264Enabled());
-        System.out.println("MPG2 Codec Enabled:  "
-                + SystemInfo.getCodecMPG2Enabled());
-        System.out.println("WVC1 Codec Enabled:  "
-                + SystemInfo.getCodecWVC1Enabled());
+        LOGGER.info("----------------------------------------------------");
+        LOGGER.info("CODEC INFO");
+        LOGGER.info("----------------------------------------------------");
+        LOGGER.info("H264 Codec Enabled:  " + SystemInfo.getCodecH264Enabled());
+        LOGGER.info("MPG2 Codec Enabled:  " + SystemInfo.getCodecMPG2Enabled());
+        LOGGER.info("WVC1 Codec Enabled:  " + SystemInfo.getCodecWVC1Enabled());
 
-        System.out
-                .println("----------------------------------------------------");
-        System.out.println("CLOCK INFO");
-        System.out
-                .println("----------------------------------------------------");
-        System.out.println("ARM Frequency     :  "
-                + SystemInfo.getClockFrequencyArm());
-        System.out.println("CORE Frequency    :  "
+        LOGGER.info("----------------------------------------------------");
+        LOGGER.info("CLOCK INFO");
+        LOGGER.info("----------------------------------------------------");
+        LOGGER.info("ARM Frequency     :  " + SystemInfo.getClockFrequencyArm());
+        LOGGER.info("CORE Frequency    :  "
                 + SystemInfo.getClockFrequencyCore());
-        System.out.println("H264 Frequency    :  "
+        LOGGER.info("H264 Frequency    :  "
                 + SystemInfo.getClockFrequencyH264());
-        System.out.println("ISP Frequency     :  "
-                + SystemInfo.getClockFrequencyISP());
-        System.out.println("V3D Frequency     :  "
-                + SystemInfo.getClockFrequencyV3D());
-        System.out.println("UART Frequency    :  "
+        LOGGER.info("ISP Frequency     :  " + SystemInfo.getClockFrequencyISP());
+        LOGGER.info("V3D Frequency     :  " + SystemInfo.getClockFrequencyV3D());
+        LOGGER.info("UART Frequency    :  "
                 + SystemInfo.getClockFrequencyUART());
-        System.out.println("PWM Frequency     :  "
-                + SystemInfo.getClockFrequencyPWM());
-        System.out.println("EMMC Frequency    :  "
+        LOGGER.info("PWM Frequency     :  " + SystemInfo.getClockFrequencyPWM());
+        LOGGER.info("EMMC Frequency    :  "
                 + SystemInfo.getClockFrequencyEMMC());
-        System.out.println("Pixel Frequency   :  "
+        LOGGER.info("Pixel Frequency   :  "
                 + SystemInfo.getClockFrequencyPixel());
-        System.out.println("VEC Frequency     :  "
-                + SystemInfo.getClockFrequencyVEC());
-        System.out.println("HDMI Frequency    :  "
+        LOGGER.info("VEC Frequency     :  " + SystemInfo.getClockFrequencyVEC());
+        LOGGER.info("HDMI Frequency    :  "
                 + SystemInfo.getClockFrequencyHDMI());
-        System.out.println("DPI Frequency     :  "
-                + SystemInfo.getClockFrequencyDPI());
+        LOGGER.info("DPI Frequency     :  " + SystemInfo.getClockFrequencyDPI());
 
-        System.out.println();
-        System.out.println();
+        LOGGER.info("");
+        LOGGER.info("");
     }
 }
 // END SNIPPET: system-info-snippet

@@ -28,6 +28,9 @@ package com.pi4j.examples;
  */
 import java.io.IOException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.gpio.extension.pcf.PCF8574GpioProvider;
 import com.pi4j.gpio.extension.pcf.PCF8574Pin;
 import com.pi4j.io.gpio.GpioController;
@@ -61,10 +64,13 @@ import com.pi4j.io.i2c.I2CBus;
  */
 public class PCF8574GpioExample {
 
-    public static void main(String args[]) throws InterruptedException,
+    private static final Logger LOGGER = LogManager
+            .getLogger(PCF8574GpioExample.class.getName());
+
+    public static void main(String[] args) throws InterruptedException,
             IOException {
 
-        System.out.println("<--Pi4J--> PCF8574 GPIO Example ... started.");
+        LOGGER.info("<--Pi4J--> PCF8574 GPIO Example ... started.");
 
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
@@ -84,8 +90,8 @@ public class PCF8574GpioExample {
             public void handleGpioPinDigitalStateChangeEvent(
                     GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
-                System.out.println(" --> GPIO PIN STATE CHANGE: "
-                        + event.getPin() + " = " + event.getState());
+                LOGGER.info(" --> GPIO PIN STATE CHANGE: " + event.getPin()
+                        + " = " + event.getState());
             }
         }, myInputs);
 

@@ -30,6 +30,9 @@ import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.wiringpi.Gpio;
 import com.pi4j.wiringpi.Lcd;
 
@@ -39,13 +42,16 @@ public class WiringPiLcdExample {
     public final static int LCD_COLUMNS = 16;
     public final static int LCD_BITS = 4;
 
-    public static void main(String args[]) throws InterruptedException,
+    private static final Logger LOGGER = LogManager
+            .getLogger(WiringPiLcdExample.class.getName());
+
+    public static void main(String[] args) throws InterruptedException,
             UnsupportedEncodingException {
-        System.out.println("<--Pi4J--> Wiring Pi LCD test program");
+        LOGGER.info("<--Pi4J--> Wiring Pi LCD test program");
 
         // setup wiringPi
         if (Gpio.wiringPiSetup() == -1) {
-            System.out.println(" ==>> GPIO SETUP FAILED");
+            LOGGER.info(" ==>> GPIO SETUP FAILED");
             return;
         }
 
@@ -66,7 +72,7 @@ public class WiringPiLcdExample {
 
         // verify initialization
         if (lcdHandle == -1) {
-            System.out.println(" ==>> LCD INIT FAILED");
+            LOGGER.info(" ==>> LCD INIT FAILED");
             return;
         }
 

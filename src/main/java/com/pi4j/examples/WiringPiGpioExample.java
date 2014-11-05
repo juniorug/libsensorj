@@ -26,15 +26,21 @@ package com.pi4j.examples;
  * limitations under the License.
  * #L%
  */
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.wiringpi.Gpio;
 import com.pi4j.wiringpi.GpioUtil;
 
 public class WiringPiGpioExample {
 
+    private static final Logger LOGGER = LogManager
+            .getLogger(WiringPiGpioExample.class.getName());
+
     // Simple sequencer data
     // Triplets of LED, On/Off and delay
 
-    private static final int data[] = { 0, 1, 1, 1, 1, 1, 0, 0, 0, 2, 1, 1, 1,
+    private static final int DATA[] = { 0, 1, 1, 1, 1, 1, 0, 0, 0, 2, 1, 1, 1,
             0, 0, 3, 1, 1, 2, 0, 0, 4, 1, 1, 3, 0, 0, 5, 1, 1, 4, 0, 0, 6, 1,
             1, 5, 0, 0, 7, 1, 1, 6, 0, 1, 7, 0,
             1,
@@ -48,16 +54,16 @@ public class WiringPiGpioExample {
             9, 9, 9, // End marker
     };
 
-    public static void main(String args[]) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
         int pin;
         int dataPtr;
         int l, s, d;
 
-        System.out.println("<--Pi4J--> GPIO test program");
+        LOGGER.info("<--Pi4J--> GPIO test program");
 
         // setup wiringPi
         if (Gpio.wiringPiSetup() == -1) {
-            System.out.println(" ==>> GPIO SETUP FAILED");
+            LOGGER.info(" ==>> GPIO SETUP FAILED");
             return;
         }
 
@@ -76,9 +82,9 @@ public class WiringPiGpioExample {
 
         dataPtr = 0;
         for (;;) {
-            l = data[dataPtr++]; // LED
-            s = data[dataPtr++]; // State
-            d = data[dataPtr++]; // Duration (10ths)
+            l = DATA[dataPtr++]; // LED
+            s = DATA[dataPtr++]; // State
+            d = DATA[dataPtr++]; // Duration (10ths)
 
             if ((l + s + d) == 27) {
                 dataPtr = 0;
@@ -87,11 +93,12 @@ public class WiringPiGpioExample {
 
             Gpio.digitalWrite(l, s);
 
-            if (Gpio.digitalRead(7) == 1) // Pressed as our switch shorts to
-                                          // ground
+            if (Gpio.digitalRead(7) == 1) { // Pressed as our switch shorts to
+                                            // ground
                 Gpio.delay(d * 10); // Faster!
-            else
+            } else {
                 Gpio.delay(d * 100);
+            }
         }
     }
 }

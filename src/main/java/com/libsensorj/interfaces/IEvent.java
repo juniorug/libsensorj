@@ -4,9 +4,9 @@ import com.libsensorj.model.Observer;
 
 public interface IEvent {
 
-    public void attach(Observer obsever);
+    void attach(Observer obsever);
 
-    public void detach(Observer obsever);
+    void detach(Observer obsever);
 
-    public void trigger();
+    void trigger();
 }

@@ -29,6 +29,9 @@ package com.pi4j.examples;
  * #L%
  */
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalInput;
@@ -47,10 +50,12 @@ import com.pi4j.io.gpio.trigger.GpioBlinkStopStateTrigger;
  */
 public class BlinkTriggerGpioExample {
 
+    private static final Logger LOGGER = LogManager
+            .getLogger(BlinkTriggerGpioExample.class.getName());
+    
     public static void main(String[] args) throws InterruptedException {
 
-        System.out
-                .println("<--Pi4J--> GPIO Blink Trigger Example ... started.");
+        LOGGER.info("<--Pi4J--> GPIO Blink Trigger Example ... started.");
 
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
@@ -60,8 +65,7 @@ public class BlinkTriggerGpioExample {
         final GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(
                 RaspiPin.GPIO_02, PinPullResistance.PULL_DOWN);
 
-        System.out
-                .println(" ... complete the GPIO #02 circuit and see the blink trigger take effect.");
+        LOGGER.info(" ... complete the GPIO #02 circuit and see the blink trigger take effect.");
 
         // setup gpio pins #04 an output pins and make sure they are all LOW at
         // startup

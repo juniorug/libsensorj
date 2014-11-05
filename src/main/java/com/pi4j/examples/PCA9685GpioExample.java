@@ -29,6 +29,9 @@ package com.pi4j.examples;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.gpio.extension.pca.PCA9685GpioProvider;
 import com.pi4j.gpio.extension.pca.PCA9685Pin;
 import com.pi4j.io.gpio.GpioController;
@@ -63,9 +66,12 @@ public class PCA9685GpioExample {
     private static final int SERVO_DURATION_NEUTRAL = 1500;
     private static final int SERVO_DURATION_MAX = 2100;
 
+    private static final Logger LOGGER = LogManager
+            .getLogger(PCA9685GpioExample.class.getName());
+
     @SuppressWarnings("resource")
-    public static void main(String args[]) throws Exception {
-        System.out.println("<--Pi4J--> PCA9685 PWM Example ... started.");
+    public static void main(String[] args) throws Exception {
+        LOGGER.info("<--Pi4J--> PCA9685 PWM Example ... started.");
         // This would theoretically lead into a resolution of 5 microseconds per
         // step:
         // 4096 Steps (12 Bit)
@@ -110,11 +116,11 @@ public class PCA9685GpioExample {
         // Show PWM values for outputs 0..14
         for (GpioPinPwmOutput output : myOutputs) {
             int[] onOffValues = gpioProvider.getPwmOnOffValues(output.getPin());
-            System.out.println(output.getPin().getName() + " ("
-                    + output.getName() + "): ON value [" + onOffValues[0]
-                    + "], OFF value [" + onOffValues[1] + "]");
+            LOGGER.info(output.getPin().getName() + " (" + output.getName()
+                    + "): ON value [" + onOffValues[0] + "], OFF value ["
+                    + onOffValues[1] + "]");
         }
-        System.out.println("Press <Enter> to terminate...");
+        LOGGER.info("Press <Enter> to terminate...");
         new Scanner(System.in).nextLine();
     }
 

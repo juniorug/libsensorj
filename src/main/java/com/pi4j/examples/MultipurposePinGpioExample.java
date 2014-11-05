@@ -26,6 +26,9 @@ package com.pi4j.examples;
  * limitations under the License.
  * #L%
  */
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalMultipurpose;
@@ -43,10 +46,12 @@ import com.pi4j.io.gpio.event.GpioPinListenerDigital;
  */
 public class MultipurposePinGpioExample {
 
-    public static void main(String args[]) throws InterruptedException {
+    private static final Logger LOGGER = LogManager
+            .getLogger(MultipurposePinGpioExample.class.getName());
 
-        System.out
-                .println("<--Pi4J--> GPIO Multipurpose Pin Example ... started.");
+    public static void main(String[] args) throws InterruptedException {
+
+        LOGGER.info("<--Pi4J--> GPIO Multipurpose Pin Example ... started.");
 
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
@@ -62,13 +67,12 @@ public class MultipurposePinGpioExample {
             public void handleGpioPinDigitalStateChangeEvent(
                     GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
-                System.out.println(" --> GPIO PIN STATE CHANGE: "
-                        + event.getPin() + " = " + event.getState());
+                LOGGER.info(" --> GPIO PIN STATE CHANGE: " + event.getPin()
+                        + " = " + event.getState());
             }
         });
 
-        System.out
-                .println(" ... complete the GPIO #02 circuit and see the listener feedback here in the console.");
+        LOGGER.info(" ... complete the GPIO #02 circuit and see the listener feedback here in the console.");
 
         // keep program running until user aborts (CTRL-C)
         for (;;) {
@@ -79,12 +83,12 @@ public class MultipurposePinGpioExample {
             pin.setMode(PinMode.DIGITAL_OUTPUT);
 
             // perform the pin output operation
-            System.out.println(" --> GPIO PIN - RECONFIGURED AS OUPUT PIN");
+            LOGGER.info(" --> GPIO PIN - RECONFIGURED AS OUPUT PIN");
             pin.pulse(1000, true);
 
             // reconfigure the pin back to an input pin
             pin.setMode(PinMode.DIGITAL_INPUT);
-            System.out.println(" --> GPIO PIN - RECONFIGURED AS INPUT PIN");
+            LOGGER.info(" --> GPIO PIN - RECONFIGURED AS INPUT PIN");
         }
 
         // stop all GPIO activity/threads by shutting down the GPIO controller

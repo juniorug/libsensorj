@@ -29,6 +29,9 @@ package com.pi4j.examples;
  * #L%
  */
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
@@ -44,9 +47,12 @@ import com.pi4j.io.gpio.RaspiPin;
  */
 public class ShutdownGpioExample {
 
+    private static final Logger LOGGER = LogManager
+            .getLogger(ShutdownGpioExample.class.getName());
+
     public static void main(String[] args) throws InterruptedException {
 
-        System.out.println("<--Pi4J--> GPIO Shutdown Example ... started.");
+        LOGGER.info("<--Pi4J--> GPIO Shutdown Example ... started.");
 
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
@@ -59,18 +65,15 @@ public class ShutdownGpioExample {
         // automatically applied to the pin when the application is terminated
         pin.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
 
-        System.out.println("--> GPIO state should be: ON");
-        System.out
-                .println("    This program will automatically terminate in 10 seconds,");
-        System.out
-                .println("    or you can use the CTRL-C keystroke to terminate at any time.");
-        System.out
-                .println("    When the program terminates, the GPIO state should be shutdown and set to: OFF");
+        LOGGER.info("--> GPIO state should be: ON");
+        LOGGER.info("    This program will automatically terminate in 10 seconds,");
+        LOGGER.info("    or you can use the CTRL-C keystroke to terminate at any time.");
+        LOGGER.info("    When the program terminates, the GPIO state should be shutdown and set to: OFF");
 
         // wait 10 seconds
         Thread.sleep(10000);
 
-        System.out.println(" .. shutting down now ...");
+        LOGGER.info(" .. shutting down now ...");
 
         // stop all GPIO activity/threads by shutting down the GPIO controller
         // (this method will forcefully shutdown all GPIO monitoring threads and

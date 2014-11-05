@@ -29,6 +29,9 @@ package com.pi4j.examples;
  * #L%
  */
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
@@ -43,9 +46,12 @@ import com.pi4j.io.gpio.RaspiPin;
  */
 public class FrequencyGpioExample {
 
+    private static final Logger LOGGER = LogManager
+            .getLogger(FrequencyGpioExample.class.getName());
+
     public static void main(String[] args) {
 
-        System.out.println("<--Pi4J--> GPIO Frequency Example ... started.");
+        LOGGER.info("<--Pi4J--> GPIO Frequency Example ... started.");
 
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();

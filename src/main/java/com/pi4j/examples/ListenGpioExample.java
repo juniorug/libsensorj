@@ -29,6 +29,9 @@ package com.pi4j.examples;
  * #L%
  */
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalInput;
@@ -45,8 +48,11 @@ import com.pi4j.io.gpio.event.GpioPinListenerDigital;
  */
 public class ListenGpioExample {
 
-    public static void main(String args[]) throws InterruptedException {
-        System.out.println("<--Pi4J--> GPIO Listen Example ... started.");
+    private static final Logger LOGGER = LogManager
+            .getLogger(ListenGpioExample.class.getName());
+
+    public static void main(String[] args) throws InterruptedException {
+        LOGGER.info("<--Pi4J--> GPIO Listen Example ... started.");
 
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
@@ -61,14 +67,13 @@ public class ListenGpioExample {
             public void handleGpioPinDigitalStateChangeEvent(
                     GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
-                System.out.println(" --> GPIO PIN STATE CHANGE: "
-                        + event.getPin() + " = " + event.getState());
+                LOGGER.info(" --> GPIO PIN STATE CHANGE: " + event.getPin()
+                        + " = " + event.getState());
             }
 
         });
 
-        System.out
-                .println(" ... complete the GPIO #02 circuit and see the listener feedback here in the console.");
+        LOGGER.info(" ... complete the GPIO #02 circuit and see the listener feedback here in the console.");
 
         // keep program running until user aborts (CTRL-C)
         for (;;) {

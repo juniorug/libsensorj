@@ -27,15 +27,21 @@ package com.pi4j.examples;
  * #L%
  */
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.wiringpi.Spi;
 
-public class example {
+public class Example {
+
+    private static final Logger LOGGER = LogManager.getLogger(Example.class
+            .getName());
 
     // SPI operations
-    public static byte INIT_CMD = (byte) 0xD0;
-    public static byte SPI_CHANNEL = 0x0;
+    public static final byte INIT_CMD = (byte) 0xD0;
+    public static final byte SPI_CHANNEL = 0x0;
 
-    public static void main(String args[]) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
 
         //
         // This SPI example is using the WiringPi native library to communicate
@@ -57,14 +63,12 @@ public class example {
         // see the link below for the data sheet on the MCP23S17 chip:
         // http://ww1.microchip.com/downloads/en/devicedoc/21952b.pdf
 
-        System.out
-                .println("<--Pi4J--> SPI test program using MCP3002 AtoD Chip");
+        LOGGER.info("<--Pi4J--> SPI test program using MCP3002 AtoD Chip");
 
         // setup SPI for communication
         int fd = Spi.wiringPiSPISetup(SPI_CHANNEL, 1000000);
-        ;
         if (fd <= -1) {
-            System.out.println(" ==>> SPI SETUP FAILED");
+            LOGGER.info(" ==>> SPI SETUP FAILED");
             return;
         }
 
@@ -84,14 +88,14 @@ public class example {
         // packet[0] = (byte)(INIT_CMD | (SPI_CHANNEL<<5));
         packet[1] = 0x00; // dummy
 
-        System.out.println("-----------------------------------------------");
-        System.out.println("[TX] " + bytesToHex(packet));
+        LOGGER.info("-----------------------------------------------");
+        LOGGER.info("[TX] " + bytesToHex(packet));
         Spi.wiringPiSPIDataRW(SPI_CHANNEL, packet, 2);
-        System.out.println("[RX] " + bytesToHex(packet));
-        System.out.println("-----------------------------------------------");
+        LOGGER.info("[RX] " + bytesToHex(packet));
+        LOGGER.info("-----------------------------------------------");
 
-        // System.out.println(( (packet[0]<<7) | (packet[1]>>1) ) & 0x3FF);
-        System.out.println(((packet[0] << 8) | packet[1]) & 0x3FF);
+        // LOGGER.info(( (packet[0]<<7) | (packet[1]>>1) ) & 0x3FF);
+        LOGGER.info(((packet[0] << 8) | packet[1]) & 0x3FF);
 
     }
 

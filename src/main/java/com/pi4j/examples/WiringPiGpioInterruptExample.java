@@ -26,23 +26,29 @@ package com.pi4j.examples;
  * limitations under the License.
  * #L%
  */
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.wiringpi.Gpio;
 import com.pi4j.wiringpi.GpioInterrupt;
-import com.pi4j.wiringpi.GpioInterruptListener;
 import com.pi4j.wiringpi.GpioInterruptEvent;
+import com.pi4j.wiringpi.GpioInterruptListener;
 import com.pi4j.wiringpi.GpioUtil;
 
 public class WiringPiGpioInterruptExample {
 
-    public static void main(String args[]) throws InterruptedException {
+    private static final Logger LOGGER = LogManager
+            .getLogger(WiringPiGpioInterruptExample.class.getName());
 
-        System.out.println("<--Pi4J--> GPIO INTERRUPT test program");
+    public static void main(String[] args) throws InterruptedException {
+
+        LOGGER.info("<--Pi4J--> GPIO INTERRUPT test program");
 
         // create and add GPIO listener
         GpioInterrupt.addListener(new GpioInterruptListener() {
             @Override
             public void pinStateChange(GpioInterruptEvent event) {
-                System.out.println("Raspberry Pi PIN [" + event.getPin()
+                LOGGER.info("Raspberry Pi PIN [" + event.getPin()
                         + "] is in STATE [" + event.getState() + "]");
 
                 if (event.getPin() == 7) {
@@ -56,7 +62,7 @@ public class WiringPiGpioInterruptExample {
 
         // setup wiring pi
         if (Gpio.wiringPiSetup() == -1) {
-            System.out.println(" ==>> GPIO SETUP FAILED");
+            LOGGER.info(" ==>> GPIO SETUP FAILED");
             return;
         }
 

@@ -1,7 +1,7 @@
-package com.libsensorj.concreteFactory;
+package com.libsensorj.concretefactory;
 
-import com.libsensorj.concreteEvent.HumidityEvent;
-import com.libsensorj.concreteSensor.DHT11Humidity;
+import com.libsensorj.concreteevent.HumidityEvent;
+import com.libsensorj.concretesensor.DHT11Humidity;
 import com.libsensorj.interfaces.IEvent;
 import com.libsensorj.interfaces.ISensor;
 import com.libsensorj.interfaces.ISensorFactory;

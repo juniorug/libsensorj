@@ -30,6 +30,9 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.component.servo.Servo;
 import com.pi4j.component.servo.impl.GenericServo;
 import com.pi4j.component.servo.impl.GenericServo.Orientation;
@@ -51,12 +54,15 @@ import com.pi4j.io.i2c.I2CFactory;
  */
 public class PCA9685GpioServoExample {
 
+    private static final Logger LOGGER = LogManager
+            .getLogger(PCA9685GpioServoExample.class.getName());
+
     // ------------------------------------------------------------------------------------------------------------------
     // main
     // ------------------------------------------------------------------------------------------------------------------
-    public static void main(String args[]) throws Exception {
-        System.out
-                .println("<--Pi4J--> PCA9685 Servo Tester Example ... started.");
+    public static void main(String[] args) throws Exception {
+
+        LOGGER.info("<--Pi4J--> PCA9685 Servo Tester Example ... started.");
         PCA9685GpioServoExample example = new PCA9685GpioServoExample();
         Scanner scanner = new Scanner(System.in);
         char command = ' ';
@@ -89,13 +95,13 @@ public class PCA9685GpioServoExample {
                 example.info();
                 break;
             case 'x': // Exit
-                System.out.println("Servo Example - END.");
+                LOGGER.info("Servo Example - END.");
                 break;
             case ' ':
-                System.err.println("Invalid input.");
+                LOGGER.error("Invalid input.");
                 break;
             default:
-                System.err.println("Unknown command [" + command + "].");
+                LOGGER.error("Unknown command [" + command + "].");
                 break;
             }
         }
@@ -104,36 +110,25 @@ public class PCA9685GpioServoExample {
     private static char readCommand(Scanner scanner) {
         char result = ' ';
         String input = scanner.nextLine();
-        if (input.trim().isEmpty() == false) {
+        if (!input.trim().isEmpty()) {
             result = input.trim().toLowerCase().charAt(0);
         }
         return result;
     }
 
     private static void printUsage() {
-        System.out.println("");
-        System.out
-                .println("|- Commands ---------------------------------------------------------------------");
-        System.out
-                .println("| c : choose active servo channel                                                ");
-        System.out
-                .println("| n : neutral - approach neutral position                                        ");
-        System.out
-                .println("| m : move servo position                                                        ");
-        System.out
-                .println("| s : subtrim                                                                    ");
-        System.out
-                .println("| r : reverse servo direction                                                    ");
-        System.out
-                .println("| t : travel - adjust endpoints                                                  ");
-        System.out
-                .println("| p : sweep - continuously move between max left and max right position)         ");
-        System.out
-                .println("| i : info - provide info for all servo channels                                 ");
-        System.out
-                .println("| x : exit                                                                       ");
-        System.out
-                .println("|--------------------------------------------------------------------------------");
+        LOGGER.info("");
+        LOGGER.info("|- Commands ---------------------------------------------------------------------");
+        LOGGER.info("| c : choose active servo channel                                                ");
+        LOGGER.info("| n : neutral - approach neutral position                                        ");
+        LOGGER.info("| m : move servo position                                                        ");
+        LOGGER.info("| s : subtrim                                                                    ");
+        LOGGER.info("| r : reverse servo direction                                                    ");
+        LOGGER.info("| t : travel - adjust endpoints                                                  ");
+        LOGGER.info("| p : sweep - continuously move between max left and max right position)         ");
+        LOGGER.info("| i : info - provide info for all servo channels                                 ");
+        LOGGER.info("| x : exit                                                                       ");
+        LOGGER.info("|--------------------------------------------------------------------------------");
     }
 
     // ------------------------------------------------------------------------------------------------------------------
@@ -187,19 +182,15 @@ public class PCA9685GpioServoExample {
     }
 
     public void chooseChannel(Scanner scanner) {
-        System.out.println("");
-        System.out
-                .println("|- Choose channel ---------------------------------------------------------------");
-        System.out
-                .println("| Choose active servo channel [0..15]                                            ");
-        System.out
-                .println("| Example: 0<Enter>                                                              ");
-        System.out
-                .println("|--------------------------------------------------------------------------------");
+        LOGGER.info("");
+        LOGGER.info("|- Choose channel ---------------------------------------------------------------");
+        LOGGER.info("| Choose active servo channel [0..15]                                            ");
+        LOGGER.info("| Example: 0<Enter>                                                              ");
+        LOGGER.info("|--------------------------------------------------------------------------------");
 
         int channel = -1;
         boolean isValidChannel = false;
-        while (isValidChannel == false) {
+        while (!isValidChannel) {
             String input = null;
             try {
                 input = scanner.nextLine();
@@ -207,52 +198,42 @@ public class PCA9685GpioServoExample {
                 if (channel >= 0 && channel <= 15) {
                     isValidChannel = true;
                 } else {
-                    System.err.println("Unsupported servo channel [" + channel
+                    LOGGER.error("Unsupported servo channel [" + channel
                             + "], provide number between 0 and 15.");
                 }
             } catch (NumberFormatException e) {
-                System.err.println("Invalid input [" + input
-                        + "], provide number between 0 and 15.");
+                LOGGER.error("Invalid input [" + input
+                        + "], provide number between 0 and 15.", e);
             }
         }
         activeServo = channel;
-        System.out.println("Active servo channel: " + activeServo);
+        LOGGER.info("Active servo channel: " + activeServo);
     }
 
     public void approachNeutralPosition() {
-        System.out.println("Approach neutral position");
+        LOGGER.info("Approach neutral position");
         servos[activeServo].setPosition(0);
     }
 
     public void move(Scanner scanner) {
-        System.out.println("");
-        System.out
-                .println("|- Move Position ----------------------------------------------------------------");
-        System.out
-                .println("| Move servo position to the left or to the right.                               ");
-        System.out
-                .println("| Example: l10<Enter> this would move the servo from its current position to the ");
-        System.out
-                .println("|          left by 10%                                                           ");
-        System.out
-                .println("| Example: r<Enter> this would move the servo from its current position to the   ");
-        System.out
-                .println("|          right by 1%                                                           ");
-        System.out
-                .println("| -> subsequent single <Enter> will repeat the previous command                  ");
-        System.out
-                .println("| -> max travel to either side is 100%                                           ");
-        System.out
-                .println("| Exit command: x<Enter>                                                         ");
-        System.out
-                .println("|--------------------------------------------------------------------------------");
+        LOGGER.info("");
+        LOGGER.info("|- Move Position ----------------------------------------------------------------");
+        LOGGER.info("| Move servo position to the left or to the right.                               ");
+        LOGGER.info("| Example: l10<Enter> this would move the servo from its current position to the ");
+        LOGGER.info("|          left by 10%                                                           ");
+        LOGGER.info("| Example: r<Enter> this would move the servo from its current position to the   ");
+        LOGGER.info("|          right by 1%                                                           ");
+        LOGGER.info("| -> subsequent single <Enter> will repeat the previous command                  ");
+        LOGGER.info("| -> max travel to either side is 100%                                           ");
+        LOGGER.info("| Exit command: x<Enter>                                                         ");
+        LOGGER.info("|--------------------------------------------------------------------------------");
 
         String command = null;
-        while ("x".equals(command) == false) {
+        while (!"x".equals(command)) {
             float currentPosition = servos[activeServo].getPosition();
-            System.out.println("Current servo position: " + currentPosition);
+            LOGGER.info("Current servo position: " + currentPosition);
             String input = scanner.nextLine();
-            if (input.trim().isEmpty() == false) {
+            if (!input.trim().isEmpty()) {
                 command = input.trim().toLowerCase();
             }
             if (command != null) {
@@ -261,11 +242,11 @@ public class PCA9685GpioServoExample {
                     sign = -1;
                 } else if (command.startsWith("r")) {
                     sign = 1;
-                } else if (command.equals("x")) {
-                    continue;
                 } else {
-                    System.err.println("Unknown command [" + command + "].");
-                    command = null;
+                    if (!"x".equals(command)) {
+                        LOGGER.error("Unknown command [" + command + "].");
+                        command = null;
+                    }
                     continue;
                 }
 
@@ -274,24 +255,23 @@ public class PCA9685GpioServoExample {
                     moveAmount = Integer.parseInt(command.substring(1));
                     if (moveAmount < 0 || moveAmount > 100) {
                         moveAmount = 1;
-                        System.out
-                                .println("Move amount is out of range - defaulted to [1].");
+                        LOGGER.info("Move amount is out of range - defaulted to [1].");
                     }
-                    System.out.println("Move amount is [" + moveAmount + "].");
+                    LOGGER.info("Move amount is [" + moveAmount + "].");
                 } catch (Exception e) {
-                    System.out.println("Move amount defaulted to [1].");
+                    LOGGER.info(
+                            "Exception: Move amount defaulted to [1]."
+                                    + e.getMessage(), e);
                 }
                 float newPosition = currentPosition + moveAmount * sign;
                 if (newPosition < Servo.POS_MAX_LEFT) {
                     newPosition = Servo.POS_MAX_LEFT;
-                    System.out
-                            .println("Max left position exceeded - set position to "
-                                    + Servo.POS_MAX_LEFT + "%");
+                    LOGGER.info("Max left position exceeded - set position to "
+                            + Servo.POS_MAX_LEFT + "%");
                 } else if (newPosition > Servo.POS_MAX_RIGHT) {
                     newPosition = Servo.POS_MAX_RIGHT;
-                    System.out
-                            .println("Max right position exceeded - set position to "
-                                    + Servo.POS_MAX_RIGHT + "%");
+                    LOGGER.info("Max right position exceeded - set position to "
+                            + Servo.POS_MAX_RIGHT + "%");
                 }
                 servos[activeServo].setPosition(newPosition);
                 command = (sign == 1 ? "r" : "l") + moveAmount;
@@ -300,38 +280,28 @@ public class PCA9685GpioServoExample {
     }
 
     public void subtrim(Scanner scanner) {
-        System.out.println("");
-        System.out
-                .println("|- Subtrim, adjust servo neutral position ---------------------------------------");
-        System.out
-                .println("| Example: r<Enter> this would move the servos neutral position by one step to   ");
-        System.out
-                .println("|          the right                                                             ");
-        System.out
-                .println("| Example: l<Enter> this would move the servos neutral position by one step to   ");
-        System.out
-                .println("|          the left                                                              ");
-        System.out
-                .println("| -> subsequent single <Enter> will repeat the previous command                  ");
-        System.out
-                .println("| -> max adjustment to either side is 200 steps                                  ");
-        System.out
-                .println("| Exit command: x<Enter>                                                         ");
-        System.out
-                .println("|--------------------------------------------------------------------------------");
-        System.out.println("| Current Servo position: "
+        LOGGER.info("");
+        LOGGER.info("|- Subtrim, adjust servo neutral position ---------------------------------------");
+        LOGGER.info("| Example: r<Enter> this would move the servos neutral position by one step to   ");
+        LOGGER.info("|          the right                                                             ");
+        LOGGER.info("| Example: l<Enter> this would move the servos neutral position by one step to   ");
+        LOGGER.info("|          the left                                                              ");
+        LOGGER.info("| -> subsequent single <Enter> will repeat the previous command                  ");
+        LOGGER.info("| -> max adjustment to either side is 200 steps                                  ");
+        LOGGER.info("| Exit command: x<Enter>                                                         ");
+        LOGGER.info("|--------------------------------------------------------------------------------");
+        LOGGER.info("| Current Servo position: "
                 + servos[activeServo].getPosition() + "]             ");
-        System.out
-                .println("|--------------------------------------------------------------------------------");
+        LOGGER.info("|--------------------------------------------------------------------------------");
 
         String command = null;
-        while ("x".equals(command) == false) {
+        while (!"x".equals(command)) {
             String propertySubtrim = servos[activeServo].getProperty(
                     Servo.PROP_SUBTRIM, Servo.PROP_SUBTRIM_DEFAULT);
             int currentSubtrim = Integer.parseInt(propertySubtrim);
-            System.out.println("Current subtrim: " + currentSubtrim);
+            LOGGER.info("Current subtrim: " + currentSubtrim);
             String input = scanner.nextLine();
-            if (input.trim().isEmpty() == false) {
+            if (!input.trim().isEmpty()) {
                 command = input.trim().toLowerCase();
             }
             if (command != null) {
@@ -340,25 +310,23 @@ public class PCA9685GpioServoExample {
                     moveAmount = -1;
                 } else if (command.startsWith("r")) {
                     moveAmount = 1;
-                } else if (command.equals("x")) {
-                    continue;
                 } else {
-                    System.err.println("Unknown command [" + command + "].");
-                    command = null;
+                    if (!"x".equals(command)) {
+                        LOGGER.error("Unknown command [" + command + "].");
+                        command = null;
+                    }
                     continue;
                 }
 
                 float newSubtrim = currentSubtrim + moveAmount;
                 if (newSubtrim < Servo.SUBTRIM_MAX_LEFT) {
                     newSubtrim = Servo.SUBTRIM_MAX_LEFT;
-                    System.out
-                            .println("Max left subtrim exceeded - set value to "
-                                    + Servo.SUBTRIM_MAX_LEFT);
+                    LOGGER.info("Max left subtrim exceeded - set value to "
+                            + Servo.SUBTRIM_MAX_LEFT);
                 } else if (newSubtrim > Servo.SUBTRIM_MAX_RIGHT) {
                     newSubtrim = Servo.SUBTRIM_MAX_RIGHT;
-                    System.out
-                            .println("Max right subtrim exceeded - set value to "
-                                    + Servo.SUBTRIM_MAX_RIGHT);
+                    LOGGER.info("Max right subtrim exceeded - set value to "
+                            + Servo.SUBTRIM_MAX_RIGHT);
                 }
                 servos[activeServo].setProperty(Servo.PROP_SUBTRIM,
                         Float.toString(newSubtrim));
@@ -372,36 +340,29 @@ public class PCA9685GpioServoExample {
         Boolean newValue = isReverse ? Boolean.FALSE : Boolean.TRUE;
         servos[activeServo].setProperty(Servo.PROP_IS_REVERSE,
                 newValue.toString());
-        System.out.println("is reverse: " + newValue);
+        LOGGER.info("is reverse: " + newValue);
     }
 
     public void travel(Scanner scanner) {
-        System.out.println("");
-        System.out
-                .println("|- Travel -----------------------------------------------------------------------");
-        System.out
-                .println("| Adjust endpoints.                                                              ");
-        System.out
-                .println("| Example: r125<Enter>  adjust RIGHT endpoint to 125                             ");
-        System.out
-                .println("| -> min: 0, max: 150, default 100                                               ");
-        System.out
-                .println("| Exit command: x<Enter>                                                         ");
-        System.out
-                .println("|--------------------------------------------------------------------------------");
+        LOGGER.info("");
+        LOGGER.info("|- Travel -----------------------------------------------------------------------");
+        LOGGER.info("| Adjust endpoints.                                                              ");
+        LOGGER.info("| Example: r125<Enter>  adjust RIGHT endpoint to 125                             ");
+        LOGGER.info("| -> min: 0, max: 150, default 100                                               ");
+        LOGGER.info("| Exit command: x<Enter>                                                         ");
+        LOGGER.info("|--------------------------------------------------------------------------------");
 
         String command = null;
-        while ("x".equals(command) == false) {
+        while (!"x".equals(command)) {
             String propertyEndpointLeft = servos[activeServo].getProperty(
                     Servo.PROP_END_POINT_LEFT, Servo.PROP_END_POINT_DEFAULT);
             String propertyEndpointRight = servos[activeServo].getProperty(
                     Servo.PROP_END_POINT_RIGHT, Servo.PROP_END_POINT_DEFAULT);
-            System.out.println("Current endpoints: LEFT ["
-                    + propertyEndpointLeft + "], RIGHT ["
-                    + propertyEndpointRight + "]");
+            LOGGER.info("Current endpoints: LEFT [" + propertyEndpointLeft
+                    + "], RIGHT [" + propertyEndpointRight + "]");
 
             String input = scanner.nextLine();
-            if (input.trim().isEmpty() == false) {
+            if (!input.trim().isEmpty()) {
                 command = input.trim().toLowerCase();
             }
             if (command != null) {
@@ -410,11 +371,11 @@ public class PCA9685GpioServoExample {
                     propertyToAdjust = Servo.PROP_END_POINT_LEFT;
                 } else if (command.startsWith("r")) {
                     propertyToAdjust = Servo.PROP_END_POINT_RIGHT;
-                } else if (command.equals("x")) {
-                    continue;
                 } else {
-                    System.err.println("Unknown command [" + command + "].");
-                    command = null;
+                    if (!"x".equals(command)) {
+                        LOGGER.error("Unknown command [" + command + "].");
+                        command = null;
+                    }
                     continue;
                 }
 
@@ -423,18 +384,18 @@ public class PCA9685GpioServoExample {
                     newEndpointValue = Integer.parseInt(command.substring(1));
                     if (newEndpointValue < Servo.END_POINT_MIN
                             || newEndpointValue > Servo.END_POINT_MAX) {
-                        System.out
-                                .println("Endpoint value is out of range - defaulted to ["
-                                        + Servo.PROP_END_POINT_DEFAULT + "].");
+                        LOGGER.info("Endpoint value is out of range - defaulted to ["
+                                + Servo.PROP_END_POINT_DEFAULT + "].");
                         newEndpointValue = Integer
                                 .parseInt(Servo.PROP_END_POINT_DEFAULT);
                     }
-                    System.out.println("New value for property ["
-                            + propertyToAdjust + "]: " + newEndpointValue + "");
+                    LOGGER.info("New value for property [" + propertyToAdjust
+                            + "]: " + newEndpointValue + "");
                 } catch (Exception e) {
-                    System.out.println("Endpoint value for property ["
+
+                    LOGGER.info("Endpoint value for property ["
                             + propertyToAdjust + "] defaulted to ["
-                            + Servo.PROP_END_POINT_DEFAULT + "].");
+                            + Servo.PROP_END_POINT_DEFAULT + "].", e);
                     newEndpointValue = Integer
                             .parseInt(Servo.PROP_END_POINT_DEFAULT);
                 }
@@ -445,21 +406,14 @@ public class PCA9685GpioServoExample {
     }
 
     public void sweep(Scanner scanner) throws Exception {
-        System.out.println("");
-        System.out
-                .println("|- Sweep ------------------------------------------------------------------------");
-        System.out
-                .println("| Continuously moves the servo between POS_MAX_LEFT and POS_MAX_RIGHT.           ");
-        System.out
-                .println("| To change speed provide value between 1 and 10 (10 for max speed)              ");
-        System.out
-                .println("| Example: 7<Enter>                                                              ");
-        System.out
-                .println("| Default speed: 5                                                               ");
-        System.out
-                .println("| Exit command: x<Enter>                                                         ");
-        System.out
-                .println("|--------------------------------------------------------------------------------");
+        LOGGER.info("");
+        LOGGER.info("|- Sweep ------------------------------------------------------------------------");
+        LOGGER.info("| Continuously moves the servo between POS_MAX_LEFT and POS_MAX_RIGHT.           ");
+        LOGGER.info("| To change speed provide value between 1 and 10 (10 for max speed)              ");
+        LOGGER.info("| Example: 7<Enter>                                                              ");
+        LOGGER.info("| Default speed: 5                                                               ");
+        LOGGER.info("| Exit command: x<Enter>                                                         ");
+        LOGGER.info("|--------------------------------------------------------------------------------");
 
         // create and start sweeper thread
         Sweeper sweeper = new Sweeper();
@@ -467,21 +421,21 @@ public class PCA9685GpioServoExample {
 
         // handle user commands
         String command = null;
-        while ("x".equals(command) == false) {
+        while (!"x".equals(command)) {
             String input = scanner.nextLine();
-            if (input.trim().isEmpty() == false) {
+            if (!input.trim().isEmpty()) {
                 command = input.trim().toLowerCase();
             }
             if (command != null) {
-                if (command.equals("x")) {
+                if ("x".equals(command)) {
                     continue;
                 }
                 try {
                     int speed = Integer.parseInt(command);
                     sweeper.setSpeed(speed);
                 } catch (NumberFormatException e) {
-                    System.err.println("Invalid speed value [" + command
-                            + "]. Allowed values [1..10] ");
+                    LOGGER.error("NumberFormatException: Invalid speed value ["
+                            + command + "]. Allowed values [1..10] ", e);
                 }
             }
         }
@@ -492,7 +446,7 @@ public class PCA9685GpioServoExample {
     public void info() {
         for (int i = 0; i < servos.length; i++) {
             Servo servo = servos[i];
-            System.out.println("Channel " + (i < 10 ? " " : "") + i + ": "
+            LOGGER.info("Channel " + (i < 10 ? " " : "") + i + ": "
                     + (servo != null ? servo.toString() : "N.A."));
         }
     }
@@ -551,9 +505,9 @@ public class PCA9685GpioServoExample {
     private class Sweeper extends Thread {
 
         private int speed = 5;
-        private final int step = 1; // make sure this is always true: 100 % step
+        private static final int STEP = 1; // make sure this is always true: 100 % step
                                     // = 0
-        private final int maxSleepBetweenSteps = 100;
+        private static final int MAXSLEEPBETWEENSTEPS = 100;
 
         @Override
         public void run() {
@@ -563,31 +517,31 @@ public class PCA9685GpioServoExample {
                 try {
                     if (orientation == Orientation.RIGHT) {
                         if (position < Servo.POS_MAX_RIGHT) {
-                            position += step;
+                            position += STEP;
                         } else {
                             orientation = Orientation.LEFT;
-                            position -= step;
+                            position -= STEP;
                         }
                     } else if (orientation == Orientation.LEFT) {
                         if (position > Servo.POS_MAX_LEFT) {
-                            position -= step;
+                            position -= STEP;
                         } else {
                             orientation = Orientation.RIGHT;
-                            position += step;
+                            position += STEP;
                         }
                     } else {
-                        System.err
-                                .println("Unsupported value for enum <ServoBase.Orientation>: ["
-                                        + orientation + "].");
+                        LOGGER.error("Unsupported value for enum <ServoBase.Orientation>: ["
+                                + orientation + "].");
                     }
 
                     servos[activeServo].setPosition(position);
                     Thread.currentThread();
                     if (position % 10 == 0) {
-                        System.out.println("Position: " + position);
+                        LOGGER.info("Position: " + position);
                     }
-                    Thread.sleep(maxSleepBetweenSteps / speed);
+                    Thread.sleep(MAXSLEEPBETWEENSTEPS / speed);
                 } catch (InterruptedException ex) {
+                    LOGGER.error("InterruptedException: " + ex.getMessage(), ex);
                     Thread.currentThread().interrupt();
                 }
             }

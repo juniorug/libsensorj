@@ -1,10 +1,9 @@
-package com.libsensorj.concreteSensor;
+package com.libsensorj.concretesensor;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.libsensorj.interfaces.ISensor;
-import com.pi4j.examples.I2CWiiMotionPlusExample;
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalInput;
@@ -17,9 +16,9 @@ public class UltrasonicHcsr04 implements ISensor {
 
     private double result = 0;
     private GpioPinDigitalOutput firepulse;
-    private GpioPinDigitalInput result_pin;
-    private static final Logger logger = LogManager
-            .getLogger(I2CWiiMotionPlusExample.class.getName());
+    private GpioPinDigitalInput resultPin;
+    private static final Logger LOGGER = LogManager
+            .getLogger(UltrasonicHcsr04.class.getName());
 
     @Override
     public void getInstance() {
@@ -30,7 +29,7 @@ public class UltrasonicHcsr04 implements ISensor {
         // range finder pins
         firepulse = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_23,
                 "Range Finder Trigger", PinState.LOW);
-        result_pin = gpio.provisionDigitalInputPin(RaspiPin.GPIO_24,
+        resultPin = gpio.provisionDigitalInputPin(RaspiPin.GPIO_24,
                 "Range Pulse Result", PinPullResistance.PULL_DOWN);
 
     }
@@ -42,7 +41,7 @@ public class UltrasonicHcsr04 implements ISensor {
         // range finder pins
         firepulse = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_23,
                 "Range Finder Trigger", PinState.LOW);
-        result_pin = gpio.provisionDigitalInputPin(RaspiPin.GPIO_24,
+        resultPin = gpio.provisionDigitalInputPin(RaspiPin.GPIO_24,
                 "Range Pulse Result", PinPullResistance.PULL_DOWN);
 
     }
@@ -67,9 +66,9 @@ public class UltrasonicHcsr04 implements ISensor {
             Thread.sleep(20);
         } catch (InterruptedException e) {
 
-            e.printStackTrace();
-            logger.error("InterruptedException: Exception triggering range finder "
-                    + e.getMessage());
+            //e.printStackTrace();
+            LOGGER.error("InterruptedException: Exception triggering range finder "
+                    + e.getMessage(),e);
         }
         firepulse.low();
 
@@ -83,7 +82,7 @@ public class UltrasonicHcsr04 implements ISensor {
             if ((System.currentTimeMillis() - startTime) >= 40) {
                 break;
             }
-        } while (result_pin.getState() != PinState.HIGH);
+        } while (resultPin.getState() != PinState.HIGH);
 
         // calculate the range. If the loop stopped after 38 ms set the result
         // to -1 to show it timed out.
@@ -91,7 +90,7 @@ public class UltrasonicHcsr04 implements ISensor {
         if ((stopTime - startTime) <= 38) {
             result = (stopTime - startTime) * 165.7;
         } else {
-            System.out.println("Timed out");
+            LOGGER.info("Timed out");
             result = -1;
         }
 

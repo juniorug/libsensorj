@@ -27,16 +27,22 @@ package com.pi4j.examples;
  * #L%
  */
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.wiringpi.Spi;
 
 public class WiringPiSPIExample {
 
     // SPI operations
-    public static byte WRITE_CMD = 0x40;
-    public static byte READ_CMD = 0x41;
+    public static final byte WRITE_CMD = 0x40;
+    public static final byte READ_CMD = 0x41;
+
+    private static final Logger LOGGER = LogManager
+            .getLogger(WiringPiSPIExample.class.getName());
 
     @SuppressWarnings("unused")
-    public static void main(String args[]) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
 
         //
         // This SPI example is using the WiringPi native library to communicate
@@ -58,8 +64,7 @@ public class WiringPiSPIExample {
         // see the link below for the data sheet on the MCP23S17 chip:
         // http://ww1.microchip.com/downloads/en/devicedoc/21952b.pdf
 
-        System.out
-                .println("<--Pi4J--> SPI test program using MCP23S17 I/O Expander Chip");
+        LOGGER.info("<--Pi4J--> SPI test program using MCP23S17 I/O Expander Chip");
 
         // configuration
         byte IODIRA = 0x00; // I/O direction A
@@ -75,9 +80,8 @@ public class WiringPiSPIExample {
 
         // setup SPI for communication
         int fd = Spi.wiringPiSPISetup(0, 10000000);
-        ;
         if (fd <= -1) {
-            System.out.println(" ==>> SPI SETUP FAILED");
+            LOGGER.info(" ==>> SPI SETUP FAILED");
             return;
         }
 
@@ -96,8 +100,9 @@ public class WiringPiSPIExample {
             // shift the bit to the left in the A register
             // this will cause the next LED to light up and
             // the current LED to turn off.
-            if (pins >= 255)
+            if (pins >= 255) {
                 pins = 1;
+            }
             write(GPIOA, (byte) pins);
             pins = pins << 1;
             Thread.sleep(1000);
@@ -115,11 +120,11 @@ public class WiringPiSPIExample {
         packet[1] = register; // register byte
         packet[2] = (byte) data; // data byte
 
-        System.out.println("-----------------------------------------------");
-        System.out.println("[TX] " + bytesToHex(packet));
+        LOGGER.info("-----------------------------------------------");
+        LOGGER.info("[TX] " + bytesToHex(packet));
         Spi.wiringPiSPIDataRW(0, packet, 3);
-        System.out.println("[RX] " + bytesToHex(packet));
-        System.out.println("-----------------------------------------------");
+        LOGGER.info("[RX] " + bytesToHex(packet));
+        LOGGER.info("-----------------------------------------------");
     }
 
     public static void read(byte register) {
@@ -130,11 +135,11 @@ public class WiringPiSPIExample {
         packet[1] = register; // register byte
         packet[2] = 0b00000000; // data byte
 
-        System.out.println("-----------------------------------------------");
-        System.out.println("[TX] " + bytesToHex(packet));
+        LOGGER.info("-----------------------------------------------");
+        LOGGER.info("[TX] " + bytesToHex(packet));
         Spi.wiringPiSPIDataRW(0, packet, 3);
-        System.out.println("[RX] " + bytesToHex(packet));
-        System.out.println("-----------------------------------------------");
+        LOGGER.info("[RX] " + bytesToHex(packet));
+        LOGGER.info("-----------------------------------------------");
     }
 
     public static String bytesToHex(byte[] bytes) {

@@ -27,6 +27,9 @@ package com.pi4j.examples;
  * #L%
  */
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.component.motor.impl.GpioStepperMotorComponent;
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
@@ -42,10 +45,12 @@ import com.pi4j.io.gpio.RaspiPin;
  */
 public class StepperMotorGpioExample {
 
+    private static final Logger LOGGER = LogManager
+            .getLogger(StepperMotorGpioExample.class.getName());
+
     public static void main(String[] args) throws InterruptedException {
 
-        System.out
-                .println("<--Pi4J--> GPIO Stepper Motor Example ... started.");
+        LOGGER.info("<--Pi4J--> GPIO Stepper Motor Example ... started.");
 
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
@@ -121,49 +126,48 @@ public class StepperMotorGpioExample {
         motor.setStepsPerRevolution(2038);
 
         // test motor control : STEPPING FORWARD
-        System.out.println("   Motor FORWARD for 2038 steps.");
+        LOGGER.info("   Motor FORWARD for 2038 steps.");
         motor.step(2038);
-        System.out.println("   Motor STOPPED for 2 seconds.");
+        LOGGER.info("   Motor STOPPED for 2 seconds.");
         Thread.sleep(2000);
 
         // test motor control : STEPPING REVERSE
-        System.out.println("   Motor REVERSE for 2038 steps.");
+        LOGGER.info("   Motor REVERSE for 2038 steps.");
         motor.step(-2038);
-        System.out.println("   Motor STOPPED for 2 seconds.");
+        LOGGER.info("   Motor STOPPED for 2 seconds.");
         Thread.sleep(2000);
 
         // test motor control : ROTATE FORWARD
-        System.out.println("   Motor FORWARD for 2 revolutions.");
+        LOGGER.info("   Motor FORWARD for 2 revolutions.");
         motor.rotate(2);
-        System.out.println("   Motor STOPPED for 2 seconds.");
+        LOGGER.info("   Motor STOPPED for 2 seconds.");
         Thread.sleep(2000);
 
         // test motor control : ROTATE REVERSE
-        System.out.println("   Motor REVERSE for 2 revolutions.");
+        LOGGER.info("   Motor REVERSE for 2 revolutions.");
         motor.rotate(-2);
-        System.out.println("   Motor STOPPED for 2 seconds.");
+        LOGGER.info("   Motor STOPPED for 2 seconds.");
         Thread.sleep(2000);
 
         // test motor control : TIMED FORWARD
-        System.out.println("   Motor FORWARD for 5 seconds.");
+        LOGGER.info("   Motor FORWARD for 5 seconds.");
         motor.forward(5000);
-        System.out.println("   Motor STOPPED for 2 seconds.");
+        LOGGER.info("   Motor STOPPED for 2 seconds.");
         Thread.sleep(2000);
 
         // test motor control : TIMED REVERSE
-        System.out.println("   Motor REVERSE for 5 seconds.");
+        LOGGER.info("   Motor REVERSE for 5 seconds.");
         motor.reverse(5000);
-        System.out.println("   Motor STOPPED for 2 seconds.");
+        LOGGER.info("   Motor STOPPED for 2 seconds.");
         Thread.sleep(2000);
 
         // test motor control : ROTATE FORWARD with different timing and
         // sequence
-        System.out
-                .println("   Motor FORWARD with slower speed and higher torque for 1 revolution.");
+        LOGGER.info("   Motor FORWARD with slower speed and higher torque for 1 revolution.");
         motor.setStepSequence(double_step_sequence);
         motor.setStepInterval(10);
         motor.rotate(1);
-        System.out.println("   Motor STOPPED.");
+        LOGGER.info("   Motor STOPPED.");
 
         // final stop to ensure no motor activity
         motor.stop();

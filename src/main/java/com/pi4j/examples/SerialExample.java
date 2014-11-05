@@ -48,10 +48,10 @@ import com.pi4j.io.serial.SerialPortException;
  */
 public class SerialExample {
 
-    private static final Logger logger = LogManager
+    private static final Logger LOGGER = LogManager
             .getLogger(SerialExample.class.getName());
 
-    public static void main(String args[]) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
 
         // !! ATTENTION !!
         // By default, the serial port is configured as a console port
@@ -62,11 +62,9 @@ public class SerialExample {
         // the OS console for this port:
         // http://www.irrational.net/2012/04/19/using-the-raspberry-pis-serial-port/
 
-        System.out
-                .println("<--Pi4J--> Serial Communication Example ... started.");
-        System.out.println(" ... connect using settings: 38400, N, 8, 1.");
-        System.out
-                .println(" ... data received on serial port should be displayed below.");
+        LOGGER.info("<--Pi4J--> Serial Communication Example ... started.");
+        LOGGER.info(" ... connect using settings: 38400, N, 8, 1.");
+        LOGGER.info(" ... data received on serial port should be displayed below.");
 
         // create an instance of the serial communications class
         final Serial serial = SerialFactory.createInstance();
@@ -75,7 +73,7 @@ public class SerialExample {
         serial.addListener(new SerialDataListener() {
             public void dataReceived(SerialDataEvent event) {
                 // print out the data received to the console
-                System.out.print(event.getData());
+                LOGGER.info(event.getData());
             }
         });
 
@@ -86,38 +84,37 @@ public class SerialExample {
             // continuous loop to keep the program running until the user
             // terminates the program
             for (;;) {
-                try {
-                    // write a formatted string to the serial transmit buffer
-                    serial.write("CURRENT TIME: %s", new Date().toString());
+                // write a formatted string to the serial transmit buffer
+                serial.write("CURRENT TIME: %s", new Date().toString());
 
-                    // write a individual bytes to the serial transmit buffer
-                    serial.write((byte) 13);
-                    serial.write((byte) 10);
+                // write a individual bytes to the serial transmit buffer
+                serial.write((byte) 13);
+                serial.write((byte) 10);
 
-                    // write a simple string to the serial transmit buffer
-                    serial.write("Second Line");
+                // write a simple string to the serial transmit buffer
+                serial.write("Second Line");
 
-                    // write a individual characters to the serial transmit
-                    // buffer
-                    serial.write('\r');
-                    serial.write('\n');
+                // write a individual characters to the serial transmit
+                // buffer
+                serial.write('\r');
+                serial.write('\n');
 
-                    // write a string terminating with CR+LF to the serial
-                    // transmit buffer
-                    serial.writeln("Third Line");
-                } catch (IllegalStateException ex) {
-                    // ex.printStackTrace();
-                    logger.error("IllegalStateException: " + ex.getMessage());
-                }
+                // write a string terminating with CR+LF to the serial
+                // transmit buffer
+                serial.writeln("Third Line");
 
                 // wait 1 second before continuing
                 Thread.sleep(1000);
             }
 
         } catch (SerialPortException ex) {
-            System.out
-                    .println(" ==>> SERIAL SETUP FAILED : " + ex.getMessage());
+            LOGGER.info(
+                    "SerialPortException: ==>> SERIAL SETUP FAILED : "
+                            + ex.getMessage(), ex);
             return;
+        } catch (IllegalStateException ex) {
+            // ex.printStackTrace();
+            LOGGER.error("IllegalStateException: " + ex.getMessage(), ex);
         }
     }
 }

@@ -27,6 +27,11 @@ package com.pi4j.examples;
  * #L%
  */
 
+import java.io.IOException;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.component.switches.SwitchListener;
 import com.pi4j.component.switches.SwitchState;
 import com.pi4j.component.switches.SwitchStateChangeEvent;
@@ -36,8 +41,6 @@ import com.pi4j.device.piface.PiFaceRelay;
 import com.pi4j.device.piface.PiFaceSwitch;
 import com.pi4j.device.piface.impl.PiFaceDevice;
 import com.pi4j.wiringpi.Spi;
-
-import java.io.IOException;
 
 /**
  * <p>
@@ -51,10 +54,13 @@ public class PiFaceExample {
 
     static int cylonSpeed = 100;
 
-    public static void main(String args[]) throws InterruptedException,
+    private static final Logger LOGGER = LogManager
+            .getLogger(PiFaceExample.class.getName());
+
+    public static void main(String[] args) throws InterruptedException,
             IOException {
 
-        System.out.println("<--Pi4J--> Pi-Face GPIO Example ... started.");
+        LOGGER.info("<--Pi4J--> Pi-Face GPIO Example ... started.");
 
         // create the Pi-Face controller
         final PiFace piface = new PiFaceDevice(PiFace.DEFAULT_ADDRESS,
@@ -68,12 +74,10 @@ public class PiFaceExample {
         piface.getSwitch(PiFaceSwitch.S1).addListener(new SwitchListener() {
             public void onStateChange(SwitchStateChangeEvent event) {
                 if (event.getNewState() == SwitchState.ON) {
-                    System.out
-                            .println("[SWITCH S1 PRESSED ] Turn RELAY-K0 <ON>");
+                    LOGGER.info("[SWITCH S1 PRESSED ] Turn RELAY-K0 <ON>");
                     piface.getRelay(PiFaceRelay.K0).close(); // turn on relay
                 } else {
-                    System.out
-                            .println("[SWITCH S1 RELEASED] Turn RELAY-K0 <OFF>");
+                    LOGGER.info("[SWITCH S1 RELEASED] Turn RELAY-K0 <OFF>");
                     piface.getRelay(PiFaceRelay.K0).open(); // turn off relay
                 }
             }
@@ -86,11 +90,11 @@ public class PiFaceExample {
         piface.getSwitch(PiFaceSwitch.S2).addListener(new SwitchListener() {
             public void onStateChange(SwitchStateChangeEvent event) {
                 if (event.getNewState() == SwitchState.ON) {
-                    System.out.println("[SWITCH S2 PRESSED ] Toggle RELAY-K1");
+                    LOGGER.info("[SWITCH S2 PRESSED ] Toggle RELAY-K1");
                     piface.getRelay(PiFaceRelay.K1).toggle(); // toggle relay
                                                               // state
                 } else {
-                    System.out.println("[SWITCH S2 RELEASED] do nothing");
+                    LOGGER.info("[SWITCH S2 RELEASED] do nothing");
                 }
             }
         });
@@ -104,12 +108,12 @@ public class PiFaceExample {
         piface.getSwitch(PiFaceSwitch.S3).addListener(new SwitchListener() {
             public void onStateChange(SwitchStateChangeEvent event) {
                 if (event.getNewState() == SwitchState.ON) {
-                    System.out.println("[SWITCH S3 PRESSED ] LED02 <BLINK>");
+                    LOGGER.info("[SWITCH S3 PRESSED ] LED02 <BLINK>");
                     piface.getLed(PiFaceLed.LED2).blink(125); // start blinking
                                                               // 8 times per
                                                               // second
                 } else {
-                    System.out.println("[SWITCH S3 RELEASED] LED02 <OFF>");
+                    LOGGER.info("[SWITCH S3 RELEASED] LED02 <OFF>");
                     piface.getLed(PiFaceLed.LED2).blink(0); // stop blinking
                     piface.getLed(PiFaceLed.LED2).off(); // turn off led
                 }
@@ -126,11 +130,10 @@ public class PiFaceExample {
         piface.getSwitch(PiFaceSwitch.S4).addListener(new SwitchListener() {
             public void onStateChange(SwitchStateChangeEvent event) {
                 if (event.getNewState() == SwitchState.ON) {
-                    System.out.println("[SWITCH S4 PRESSED ] CYLON <FAST>");
-                    ;
+                    LOGGER.info("[SWITCH S4 PRESSED ] CYLON <FAST>");
                     cylonSpeed = 30;
                 } else {
-                    System.out.println("[SWITCH S4 RELEASED] CYLON <SLOW>");
+                    LOGGER.info("[SWITCH S4 RELEASED] CYLON <SLOW>");
                     cylonSpeed = 100;
                 }
             }

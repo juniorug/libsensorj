@@ -29,6 +29,9 @@ package com.pi4j.examples;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.component.lcd.LCDTextAlignment;
 import com.pi4j.component.lcd.impl.GpioLcdDisplay;
 import com.pi4j.io.gpio.GpioController;
@@ -48,9 +51,12 @@ public class LcdExample {
     public final static int LCD_COLUMNS = 16;
     public final static int LCD_BITS = 4;
 
-    public static void main(String args[]) throws InterruptedException {
+    private static final Logger LOGGER = LogManager.getLogger(LcdExample.class
+            .getName());
 
-        System.out.println("<--Pi4J--> GPIO 4 bit LCD example program");
+    public static void main(String[] args) throws InterruptedException {
+
+        LOGGER.info("<--Pi4J--> GPIO 4 bit LCD example program");
 
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
@@ -115,14 +121,16 @@ public class LcdExample {
         // single character data replacement
         for (int index = 0; index < lcd.getColumnCount(); index++) {
             lcd.write(LCD_ROW_2, index, ">");
-            if (index > 0)
+            if (index > 0) {
                 lcd.write(LCD_ROW_2, index - 1, "-");
+            }
             Thread.sleep(300);
         }
         for (int index = lcd.getColumnCount() - 1; index >= 0; index--) {
             lcd.write(LCD_ROW_2, index, "<");
-            if (index < lcd.getColumnCount() - 1)
+            if (index < lcd.getColumnCount() - 1) {
                 lcd.write(LCD_ROW_2, index + 1, "-");
+            }
             Thread.sleep(300);
         }
 

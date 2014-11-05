@@ -29,6 +29,9 @@ package com.pi4j.examples;
 
 import java.io.IOException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.gpio.extension.mcp.MCP23S17GpioProvider;
 import com.pi4j.gpio.extension.mcp.MCP23S17Pin;
 import com.pi4j.io.gpio.GpioController;
@@ -63,10 +66,13 @@ import com.pi4j.wiringpi.Spi;
  */
 public class MCP23S17GpioExample {
 
-    public static void main(String args[]) throws InterruptedException,
+    private static final Logger LOGGER = LogManager
+            .getLogger(MCP23S17GpioExample.class.getName());
+
+    public static void main(String[] args) throws InterruptedException,
             IOException {
 
-        System.out.println("<--Pi4J--> MCP23S17 GPIO Example ... started.");
+        LOGGER.info("<--Pi4J--> MCP23S17 GPIO Example ... started.");
 
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
@@ -107,8 +113,8 @@ public class MCP23S17GpioExample {
             public void handleGpioPinDigitalStateChangeEvent(
                     GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
-                System.out.println(" --> GPIO PIN STATE CHANGE: "
-                        + event.getPin() + " = " + event.getState());
+                LOGGER.info(" --> GPIO PIN STATE CHANGE: " + event.getPin()
+                        + " = " + event.getState());
             }
         }, myInputs);
 

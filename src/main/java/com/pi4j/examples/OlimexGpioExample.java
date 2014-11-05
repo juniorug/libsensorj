@@ -27,6 +27,9 @@ package com.pi4j.examples;
  * #L%
  */
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.gpio.extension.olimex.OlimexAVRIOGpioProvider;
 import com.pi4j.gpio.extension.olimex.OlimexAVRIOPin;
 import com.pi4j.io.gpio.GpioController;
@@ -66,9 +69,12 @@ import com.pi4j.io.serial.Serial;
  */
 public class OlimexGpioExample {
 
-    public static void main(String args[]) throws InterruptedException {
+    private static final Logger LOGGER = LogManager
+            .getLogger(OlimexGpioExample.class.getName());
 
-        System.out.println("<--Pi4J--> GPIO Listen Example ... started.");
+    public static void main(String[] args) throws InterruptedException {
+
+        LOGGER.info("<--Pi4J--> GPIO Listen Example ... started.");
 
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
@@ -91,8 +97,8 @@ public class OlimexGpioExample {
             public void handleGpioPinDigitalStateChangeEvent(
                     GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
-                System.out.println(" --> GPIO PIN STATE CHANGE: "
-                        + event.getPin() + " = " + event.getState());
+                LOGGER.info(" --> GPIO PIN STATE CHANGE: " + event.getPin()
+                        + " = " + event.getState());
             }
         };
 
@@ -135,8 +141,7 @@ public class OlimexGpioExample {
         myButton.addTrigger(new GpioPulseStateTrigger(PinState.HIGH,
                 myRelays[3], 1000));
 
-        System.out
-                .println(" ... complete the GPIO #02 circuit and see the listener feedback here in the console.");
+        LOGGER.info(" ... complete the GPIO #02 circuit and see the listener feedback here in the console.");
 
         // keep program running until user aborts (CTRL-C)
         // or we reach 60 seconds
@@ -144,7 +149,7 @@ public class OlimexGpioExample {
             Thread.sleep(1000);
         }
 
-        System.out.println(" ... exiting program.");
+        LOGGER.info(" ... exiting program.");
 
         // stop all GPIO activity/threads by shutting down the GPIO controller
         // (this method will forcefully shutdown all GPIO monitoring threads and

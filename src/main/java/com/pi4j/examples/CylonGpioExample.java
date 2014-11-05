@@ -29,6 +29,9 @@ package com.pi4j.examples;
  * #L%
  */
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
@@ -43,9 +46,12 @@ import com.pi4j.io.gpio.RaspiPin;
  */
 public class CylonGpioExample {
 
+    private static final Logger LOGGER = LogManager
+            .getLogger(CylonGpioExample.class.getName());
+
     public static void main(String[] args) throws InterruptedException {
 
-        System.out.println("<--Pi4J--> GPIO Cylon Example ... started.");
+        LOGGER.info("<--Pi4J--> GPIO Cylon Example ... started.");
 
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
@@ -60,7 +66,7 @@ public class CylonGpioExample {
                 gpio.provisionDigitalOutputPin(RaspiPin.GPIO_05, PinState.LOW),
                 gpio.provisionDigitalOutputPin(RaspiPin.GPIO_06, PinState.LOW),
                 gpio.provisionDigitalOutputPin(RaspiPin.GPIO_07, PinState.LOW) };
-        System.out.println("--> GPIO state should be: ON");
+        LOGGER.info("--> GPIO state should be: ON");
 
         // set shutdown options on all pins
         gpio.setShutdownOptions(true, PinState.LOW, pins);

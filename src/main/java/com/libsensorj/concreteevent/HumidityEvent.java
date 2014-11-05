@@ -1,9 +1,9 @@
-package com.libsensorj.concreteEvent;
+package com.libsensorj.concreteevent;
 
 import com.libsensorj.interfaces.IEvent;
 import com.libsensorj.model.Observer;
 
-public class UltrasonicRangeFinderEvent implements IEvent {
+public class HumidityEvent implements IEvent {
 
     @Override
     public void attach(Observer obsever) {

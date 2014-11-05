@@ -27,6 +27,9 @@ package com.pi4j.examples;
  * #L%
  */
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.pi4j.gpio.extension.mcp.MCP4725GpioProvider;
 import com.pi4j.gpio.extension.mcp.MCP4725Pin;
 import com.pi4j.io.gpio.GpioController;
@@ -55,8 +58,11 @@ import com.pi4j.io.i2c.I2CBus;
  */
 public class MCP4725GpioExample {
 
-    public static void main(String args[]) throws Exception {
-        System.out.println("<--Pi4J--> MCP4725 DAC Example ... started.");
+    private static final Logger LOGGER = LogManager
+            .getLogger(MCP4725GpioExample.class.getName());
+
+    public static void main(String[] args) throws Exception {
+        LOGGER.info("<--Pi4J--> MCP4725 DAC Example ... started.");
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
 

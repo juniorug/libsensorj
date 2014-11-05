@@ -42,14 +42,14 @@ import com.pi4j.io.i2c.I2CFactory;
 
 public class I2CWiiMotionPlusExample {
 
-    private static final Logger logger = LogManager
+    private static final Logger LOGGER = LogManager
             .getLogger(I2CWiiMotionPlusExample.class.getName());
 
     /**
      * @param args
      */
     public static void main(String[] args) throws Exception {
-        System.out.println("Starting:");
+        LOGGER.info("Starting:");
 
         // get I2C bus instance
         final I2CBus bus = I2CFactory.getInstance(I2CBus.BUS_1);
@@ -71,23 +71,23 @@ public class I2CWiiMotionPlusExample {
                 ThreeAxis threeAxis = wiiMotionPlus.read();
                 long lasted = System.currentTimeMillis() - now;
 
-                System.out.print(formatInt(iteration));
-                System.out.print(' ');
+                LOGGER.info(formatInt(iteration));
+                LOGGER.info(' ');
 
-                System.out.print(formatLong(lasted));
-                System.out.print(' ');
+                LOGGER.info(formatLong(lasted));
+                LOGGER.info(' ');
 
-                System.out.print(formatInt(threeAxis.x));
-                System.out.print(' ');
+                LOGGER.info(formatInt(threeAxis.x));
+                LOGGER.info(' ');
 
-                System.out.print(formatInt(threeAxis.y));
-                System.out.print(' ');
+                LOGGER.info(formatInt(threeAxis.y));
+                LOGGER.info(' ');
 
-                System.out.print(formatInt(threeAxis.z));
-                System.out.print(' ');
+                LOGGER.info(formatInt(threeAxis.z));
+                LOGGER.info(' ');
 
-                // System.out.print('\r');
-                System.out.println();
+                // LOGGER.info('\r');
+                LOGGER.info("");
 
                 log.println(formatInt(iteration) + "," + formatLong(lasted)
                         + "," + formatInt(threeAxis.x) + ","
@@ -148,7 +148,7 @@ public class I2CWiiMotionPlusExample {
                 initDevice.write(0xfe, (byte) 0x04);
             } catch (IOException ex) {
                 // ex.printStackTrace();
-                logger.error("IOException: " + ex.getMessage());
+                LOGGER.error("IOException: " + ex.getMessage(),ex);
             }
         }
 
