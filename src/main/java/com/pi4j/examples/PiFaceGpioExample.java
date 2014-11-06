@@ -80,7 +80,7 @@ public class PiFaceGpioExample {
                 PiFaceGpioProvider.DEFAULT_ADDRESS, Spi.CHANNEL_0);
 
         // provision gpio input pins from PiFaceGpioProvider
-        GpioPinDigitalInput myInputs[] = {
+        GpioPinDigitalInput[] myInputs = {
                 gpio.provisionDigitalInputPin(gpioProvider, PiFacePin.INPUT_00),
                 gpio.provisionDigitalInputPin(gpioProvider, PiFacePin.INPUT_01),
                 gpio.provisionDigitalInputPin(gpioProvider, PiFacePin.INPUT_02),
@@ -101,7 +101,7 @@ public class PiFaceGpioExample {
         }, myInputs);
 
         // provision gpio output pins and make sure they are all LOW at startup
-        GpioPinDigitalOutput myOutputs[] = {
+        GpioPinDigitalOutput[] myOutputs = {
                 gpio.provisionDigitalOutputPin(gpioProvider,
                         PiFacePin.OUTPUT_00),
                 gpio.provisionDigitalOutputPin(gpioProvider,

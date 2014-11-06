@@ -108,7 +108,7 @@ public class OlimexGpioExample {
 
         // setup gpio pins #04, #05, #06 as an output pins and make sure they
         // are all LOW at startup
-        GpioPinDigitalOutput myRelays[] = {
+        GpioPinDigitalOutput[] myRelays = {
                 gpio.provisionDigitalOutputPin(olimexProvider,
                         OlimexAVRIOPin.RELAY_01, "RELAY #1", PinState.LOW),
                 gpio.provisionDigitalOutputPin(olimexProvider,

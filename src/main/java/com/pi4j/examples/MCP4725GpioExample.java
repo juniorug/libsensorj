@@ -75,12 +75,15 @@ public class MCP4725GpioExample {
                 gpioProvider, MCP4725Pin.OUTPUT);
 
         // generate sinus wave on output pin
-        for (int i = 0; i < 360; i++) {
-            double y = Math.sin(Math.toRadians(i));
+        int count = 0;
+        while (true) {
+            double y = Math.sin(Math.toRadians(count));
             y = y / 2 + 0.5;
             vout.setValue(y);
-            if (i == 359) {
-                i = 0;
+            if (count == 359) {
+                count = 0;
+            } else {
+                count ++;
             }
         }
     }

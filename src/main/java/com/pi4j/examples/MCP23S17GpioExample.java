@@ -82,7 +82,7 @@ public class MCP23S17GpioExample {
                 MCP23S17GpioProvider.DEFAULT_ADDRESS, Spi.CHANNEL_0);
 
         // provision gpio input pins from MCP23S17
-        GpioPinDigitalInput myInputs[] = {
+        GpioPinDigitalInput[] myInputs = {
                 gpio.provisionDigitalInputPin(gpioProvider,
                         MCP23S17Pin.GPIO_B0, "MyInput-B0",
                         PinPullResistance.PULL_UP),
@@ -119,7 +119,7 @@ public class MCP23S17GpioExample {
         }, myInputs);
 
         // provision gpio output pins and make sure they are all LOW at startup
-        GpioPinDigitalOutput myOutputs[] = {
+        GpioPinDigitalOutput[] myOutputs = {
                 gpio.provisionDigitalOutputPin(gpioProvider,
                         MCP23S17Pin.GPIO_A0, "MyOutput-A0", PinState.LOW),
                 gpio.provisionDigitalOutputPin(gpioProvider,

@@ -48,14 +48,16 @@ public class SystemInfoExample {
 
     private static final Logger LOGGER = LogManager
             .getLogger(SystemInfoExample.class.getName());
-
+    private static final String TRACED_LINE = "----------------------------------------------------";
+    
     public static void main(String[] args) throws InterruptedException,
             IOException, ParseException {
 
+        
         // display a few of the available system information properties
-        LOGGER.info("----------------------------------------------------");
+        LOGGER.info(TRACED_LINE);
         LOGGER.info("HARDWARE INFO");
-        LOGGER.info("----------------------------------------------------");
+        LOGGER.info(TRACED_LINE);
         LOGGER.info("Serial Number     :  " + SystemInfo.getSerial());
         LOGGER.info("CPU Revision      :  " + SystemInfo.getCpuRevision());
         LOGGER.info("CPU Architecture  :  " + SystemInfo.getCpuArchitecture());
@@ -68,9 +70,9 @@ public class SystemInfoExample {
         LOGGER.info("Is Hard Float ABI :  " + SystemInfo.isHardFloatAbi());
         LOGGER.info("Board Type        :  " + SystemInfo.getBoardType().name());
 
-        LOGGER.info("----------------------------------------------------");
+        LOGGER.info(TRACED_LINE);
         LOGGER.info("MEMORY INFO");
-        LOGGER.info("----------------------------------------------------");
+        LOGGER.info(TRACED_LINE);
         LOGGER.info("Total Memory      :  " + SystemInfo.getMemoryTotal());
         LOGGER.info("Used Memory       :  " + SystemInfo.getMemoryUsed());
         LOGGER.info("Free Memory       :  " + SystemInfo.getMemoryFree());
@@ -84,18 +86,18 @@ public class SystemInfoExample {
         LOGGER.info("SDRAM_P Voltage   :  "
                 + SystemInfo.getMemoryVoltageSDRam_P());
 
-        LOGGER.info("----------------------------------------------------");
+        LOGGER.info(TRACED_LINE);
         LOGGER.info("OPERATING SYSTEM INFO");
-        LOGGER.info("----------------------------------------------------");
+        LOGGER.info(TRACED_LINE);
         LOGGER.info("OS Name           :  " + SystemInfo.getOsName());
         LOGGER.info("OS Version        :  " + SystemInfo.getOsVersion());
         LOGGER.info("OS Architecture   :  " + SystemInfo.getOsArch());
         LOGGER.info("OS Firmware Build :  " + SystemInfo.getOsFirmwareBuild());
         LOGGER.info("OS Firmware Date  :  " + SystemInfo.getOsFirmwareDate());
 
-        LOGGER.info("----------------------------------------------------");
+        LOGGER.info(TRACED_LINE);
         LOGGER.info("JAVA ENVIRONMENT INFO");
-        LOGGER.info("----------------------------------------------------");
+        LOGGER.info(TRACED_LINE);
         LOGGER.info("Java Vendor       :  " + SystemInfo.getJavaVendor());
         LOGGER.info("Java Vendor URL   :  " + SystemInfo.getJavaVendorUrl());
         LOGGER.info("Java Version      :  " + SystemInfo.getJavaVersion());
@@ -103,9 +105,9 @@ public class SystemInfoExample {
                 + SystemInfo.getJavaVirtualMachine());
         LOGGER.info("Java Runtime      :  " + SystemInfo.getJavaRuntime());
 
-        LOGGER.info("----------------------------------------------------");
+        LOGGER.info(TRACED_LINE);
         LOGGER.info("NETWORK INFO");
-        LOGGER.info("----------------------------------------------------");
+        LOGGER.info(TRACED_LINE);
 
         // display some of the network information
         LOGGER.info("Hostname          :  " + NetworkInfo.getHostname());
@@ -119,16 +121,16 @@ public class SystemInfoExample {
             LOGGER.info("Nameserver        :  " + nameserver);
         }
 
-        LOGGER.info("----------------------------------------------------");
+        LOGGER.info(TRACED_LINE);
         LOGGER.info("CODEC INFO");
-        LOGGER.info("----------------------------------------------------");
+        LOGGER.info(TRACED_LINE);
         LOGGER.info("H264 Codec Enabled:  " + SystemInfo.getCodecH264Enabled());
         LOGGER.info("MPG2 Codec Enabled:  " + SystemInfo.getCodecMPG2Enabled());
         LOGGER.info("WVC1 Codec Enabled:  " + SystemInfo.getCodecWVC1Enabled());
 
-        LOGGER.info("----------------------------------------------------");
+        LOGGER.info(TRACED_LINE);
         LOGGER.info("CLOCK INFO");
-        LOGGER.info("----------------------------------------------------");
+        LOGGER.info(TRACED_LINE);
         LOGGER.info("ARM Frequency     :  " + SystemInfo.getClockFrequencyArm());
         LOGGER.info("CORE Frequency    :  "
                 + SystemInfo.getClockFrequencyCore());

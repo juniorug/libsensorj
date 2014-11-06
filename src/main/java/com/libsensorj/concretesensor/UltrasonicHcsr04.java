@@ -17,45 +17,45 @@ public class UltrasonicHcsr04 implements ISensor {
     private double result = 0;
     private GpioPinDigitalOutput firepulse;
     private GpioPinDigitalInput resultPin;
+    private static final String RANGE_PULSE_RESULT = "Range Pulse Result";
+    private static final String RANGE_FINDER_TRIGGER = "Range Finder Trigger";
     private static final Logger LOGGER = LogManager
             .getLogger(UltrasonicHcsr04.class.getName());
 
+    public UltrasonicHcsr04() {
+
+        GpioController gpio = GpioFactory.getInstance();
+
+        // range finder pins
+        firepulse = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_23,
+                RANGE_FINDER_TRIGGER, PinState.LOW);
+        resultPin = gpio.provisionDigitalInputPin(RaspiPin.GPIO_24,
+                RANGE_PULSE_RESULT, PinPullResistance.PULL_DOWN);
+
+    }
+
     @Override
     public void getInstance() {
-        
+
         // Setup GPIO Pins
         GpioController gpio = GpioFactory.getInstance();
 
         // range finder pins
         firepulse = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_23,
-                "Range Finder Trigger", PinState.LOW);
+                RANGE_FINDER_TRIGGER, PinState.LOW);
         resultPin = gpio.provisionDigitalInputPin(RaspiPin.GPIO_24,
-                "Range Pulse Result", PinPullResistance.PULL_DOWN);
+                RANGE_PULSE_RESULT, PinPullResistance.PULL_DOWN);
 
     }
 
-    public UltrasonicHcsr04() {
-        
-        GpioController gpio = GpioFactory.getInstance();
-
-        // range finder pins
-        firepulse = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_23,
-                "Range Finder Trigger", PinState.LOW);
-        resultPin = gpio.provisionDigitalInputPin(RaspiPin.GPIO_24,
-                "Range Pulse Result", PinPullResistance.PULL_DOWN);
-
-    }
-
-    
-    
-    
-    /*public UltrasonicHcsr04(GpioPinDigitalOutput trigger,
-            GpioPinDigitalInput result_pin) {
-
-        this.firepulse = trigger;
-        this.result_pin = result_pin;
-
-    }*/
+    /*
+     * public UltrasonicHcsr04(GpioPinDigitalOutput trigger, GpioPinDigitalInput
+     * result_pin) {
+     * 
+     * this.firepulse = trigger; this.result_pin = result_pin;
+     * 
+     * }
+     */
 
     public double getRange() {
 
@@ -66,9 +66,10 @@ public class UltrasonicHcsr04 implements ISensor {
             Thread.sleep(20);
         } catch (InterruptedException e) {
 
-            //e.printStackTrace();
-            LOGGER.error("InterruptedException: Exception triggering range finder "
-                    + e.getMessage(),e);
+            // e.printStackTrace();
+            LOGGER.error(
+                    "InterruptedException: Exception triggering range finder "
+                            + e.getMessage(), e);
         }
         firepulse.low();
 

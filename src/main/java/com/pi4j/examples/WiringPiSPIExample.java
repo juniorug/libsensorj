@@ -37,7 +37,10 @@ public class WiringPiSPIExample {
     // SPI operations
     public static final byte WRITE_CMD = 0x40;
     public static final byte READ_CMD = 0x41;
-
+    private static final String RX = "[RX] ";
+    private static final String TX = "[TX] ";
+    private static final String TRACED_LINE = "-----------------------------------------------";
+    
     private static final Logger LOGGER = LogManager
             .getLogger(WiringPiSPIExample.class.getName());
 
@@ -67,13 +70,20 @@ public class WiringPiSPIExample {
         LOGGER.info("<--Pi4J--> SPI test program using MCP23S17 I/O Expander Chip");
 
         // configuration
-        byte IODIRA = 0x00; // I/O direction A
-        byte IODIRB = 0x01; // I/O direction B
-        byte IOCON = 0x0A; // I/O config
-        byte GPIOA = 0x12; // port A
-        byte GPIOB = 0x13; // port B
-        byte GPPUA = 0x0C; // port A pullups
-        byte GPPUB = 0x0D; // port B pullups
+        // I/O direction A
+        byte IODIRA = 0x00;
+        // I/O direction B
+        byte IODIRB = 0x01;
+        // I/O config
+        byte IOCON = 0x0A;
+        // port A
+        byte GPIOA = 0x12;
+        // port B
+        byte GPIOB = 0x13;
+        // port A pullups
+        byte GPPUA = 0x0C;
+        // port B pullups
+        byte GPPUB = 0x0D;
         byte OUTPUT_PORT = GPIOA;
         byte INPUT_PORT = GPIOB;
         byte INPUT_PULLUPS = GPPUB;
@@ -86,11 +96,16 @@ public class WiringPiSPIExample {
         }
 
         // initialize
-        write(IOCON, 0x08); // enable hardware addressing
-        write(GPIOA, 0x00); // set port A off
-        write(IODIRA, 0); // set port A as outputs
-        write(IODIRB, 0xFF); // set port B as inputs
-        write(GPPUB, 0xFF); // set port B pullups on
+        // enable hardware addressing
+        write(IOCON, 0x08);
+        // set port A off
+        write(GPIOA, 0x00);
+        // set port A as outputs
+        write(IODIRA, 0);
+        // set port B as inputs
+        write(IODIRB, 0xFF);
+        // set port B pullups on
+        write(GPPUB, 0xFF);
 
         int pins = 1;
 
@@ -115,31 +130,37 @@ public class WiringPiSPIExample {
     public static void write(byte register, int data) {
 
         // send test ASCII message
-        byte packet[] = new byte[3];
-        packet[0] = WRITE_CMD; // address byte
-        packet[1] = register; // register byte
-        packet[2] = (byte) data; // data byte
+        byte[] packet = new byte[3];
+        // address byte
+        packet[0] = WRITE_CMD;
+        // register byte
+        packet[1] = register;
+        // data byte
+        packet[2] = (byte) data;
 
-        LOGGER.info("-----------------------------------------------");
-        LOGGER.info("[TX] " + bytesToHex(packet));
+        LOGGER.info(TRACED_LINE);
+        LOGGER.info(TX + bytesToHex(packet));
         Spi.wiringPiSPIDataRW(0, packet, 3);
-        LOGGER.info("[RX] " + bytesToHex(packet));
-        LOGGER.info("-----------------------------------------------");
+        LOGGER.info(RX + bytesToHex(packet));
+        LOGGER.info(TRACED_LINE);
     }
 
     public static void read(byte register) {
 
         // send test ASCII message
-        byte packet[] = new byte[3];
-        packet[0] = READ_CMD; // address byte
-        packet[1] = register; // register byte
-        packet[2] = 0b00000000; // data byte
+        byte[] packet = new byte[3];
+        // address byte
+        packet[0] = READ_CMD;
+        // register byte
+        packet[1] = register;
+        // data byte
+        packet[2] = 0b00000000;
 
-        LOGGER.info("-----------------------------------------------");
-        LOGGER.info("[TX] " + bytesToHex(packet));
+        LOGGER.info(TRACED_LINE);
+        LOGGER.info(TX + bytesToHex(packet));
         Spi.wiringPiSPIDataRW(0, packet, 3);
-        LOGGER.info("[RX] " + bytesToHex(packet));
-        LOGGER.info("-----------------------------------------------");
+        LOGGER.info(RX + bytesToHex(packet));
+        LOGGER.info(TRACED_LINE);
     }
 
     public static String bytesToHex(byte[] bytes) {

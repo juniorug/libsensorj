@@ -42,9 +42,11 @@ import com.pi4j.io.i2c.I2CFactory;
 
 public class I2CWiiMotionPlusExample {
 
+    private static final String LOG_FILE = "log.txt";
     private static final Logger LOGGER = LogManager
             .getLogger(I2CWiiMotionPlusExample.class.getName());
-
+    private static final String EMPTY_STRING = "         ";
+    
     /**
      * @param args
      */
@@ -59,9 +61,9 @@ public class I2CWiiMotionPlusExample {
 
         int iteration = 0;
 
-        makeBackup("log.txt");
+        makeBackup(LOG_FILE);
 
-        FileWriter logFile = new FileWriter("log.txt");
+        FileWriter logFile = new FileWriter(LOG_FILE);
         BufferedWriter bw = new BufferedWriter(logFile, 2048);
         PrintWriter log = new PrintWriter(bw);
 
@@ -122,13 +124,13 @@ public class I2CWiiMotionPlusExample {
     }
 
     public static String formatInt(int i) {
-        String x = "         " + Integer.toString(i);
+        String x = EMPTY_STRING + Integer.toString(i);
         x = x.substring(x.length() - 6, x.length());
         return x;
     }
 
     public static String formatLong(long i) {
-        String x = "         " + Long.toString(i);
+        String x = EMPTY_STRING + Long.toString(i);
         x = x.substring(x.length() - 6, x.length());
         return x;
     }

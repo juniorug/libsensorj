@@ -38,6 +38,8 @@ public class WiringPiGpioInterruptExample2 {
     private static final Logger LOGGER = LogManager
             .getLogger(WiringPiGpioInterruptExample2.class.getName());
 
+    private static final String GPIO_PIN = " ==>> GPIO PIN ";
+    private static final String INTERRUPT_DETECTED = " - INTERRUPT DETECTED";
     public static void main(String[] args) throws InterruptedException {
 
         LOGGER.info("<--Pi4J--> GPIO interrupt test program");
@@ -70,49 +72,49 @@ public class WiringPiGpioInterruptExample2 {
         Gpio.wiringPiISR(0, Gpio.INT_EDGE_FALLING, new GpioInterruptCallback() {
             @Override
             public void callback(int pin) {
-                LOGGER.info(" ==>> GPIO PIN " + pin + " - INTERRUPT DETECTED");
+                LOGGER.info(GPIO_PIN + pin + INTERRUPT_DETECTED);
             }
         });
         Gpio.wiringPiISR(1, Gpio.INT_EDGE_FALLING, new GpioInterruptCallback() {
             @Override
             public void callback(int pin) {
-                LOGGER.info(" ==>> GPIO PIN " + pin + " - INTERRUPT DETECTED");
+                LOGGER.info(GPIO_PIN + pin + INTERRUPT_DETECTED);
             }
         });
         Gpio.wiringPiISR(2, Gpio.INT_EDGE_FALLING, new GpioInterruptCallback() {
             @Override
             public void callback(int pin) {
-                LOGGER.info(" ==>> GPIO PIN " + pin + " - INTERRUPT DETECTED");
+                LOGGER.info(GPIO_PIN + pin + INTERRUPT_DETECTED);
             }
         });
         Gpio.wiringPiISR(3, Gpio.INT_EDGE_FALLING, new GpioInterruptCallback() {
             @Override
             public void callback(int pin) {
-                LOGGER.info(" ==>> GPIO PIN " + pin + " - INTERRUPT DETECTED");
+                LOGGER.info(GPIO_PIN + pin + INTERRUPT_DETECTED);
             }
         });
         Gpio.wiringPiISR(4, Gpio.INT_EDGE_FALLING, new GpioInterruptCallback() {
             @Override
             public void callback(int pin) {
-                LOGGER.info(" ==>> GPIO PIN " + pin + " - INTERRUPT DETECTED");
+                LOGGER.info(GPIO_PIN + pin + INTERRUPT_DETECTED);
             }
         });
         Gpio.wiringPiISR(5, Gpio.INT_EDGE_FALLING, new GpioInterruptCallback() {
             @Override
             public void callback(int pin) {
-                LOGGER.info(" ==>> GPIO PIN " + pin + " - INTERRUPT DETECTED");
+                LOGGER.info(GPIO_PIN + pin + INTERRUPT_DETECTED);
             }
         });
         Gpio.wiringPiISR(6, Gpio.INT_EDGE_FALLING, new GpioInterruptCallback() {
             @Override
             public void callback(int pin) {
-                LOGGER.info(" ==>> GPIO PIN " + pin + " - INTERRUPT DETECTED");
+                LOGGER.info(GPIO_PIN + pin + INTERRUPT_DETECTED);
             }
         });
         Gpio.wiringPiISR(7, Gpio.INT_EDGE_FALLING, new GpioInterruptCallback() {
             @Override
             public void callback(int pin) {
-                LOGGER.info(" ==>> GPIO PIN " + pin + " - INTERRUPT DETECTED");
+                LOGGER.info(GPIO_PIN + pin + INTERRUPT_DETECTED);
             }
         });
 

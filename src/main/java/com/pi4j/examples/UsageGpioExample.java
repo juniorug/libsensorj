@@ -68,19 +68,23 @@ public class UsageGpioExample {
         // (configure pin edge to both rising and falling to get notified for
         // HIGH and LOW state
         // changes)
+        // RaspiPin.GPIO_02: PIN NUMBER
+        // "MyButton": PIN FRIENDLY NAME (optional)
+        // PinPullResistance.PULL_DOWN: PIN RESISTANCE (optional)
         GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(
-                RaspiPin.GPIO_02, // PIN NUMBER
-                "MyButton", // PIN FRIENDLY NAME (optional)
-                PinPullResistance.PULL_DOWN); // PIN RESISTANCE (optional)
+                RaspiPin.GPIO_02, "MyButton", PinPullResistance.PULL_DOWN);
 
         // END SNIPPET: usage-provision-input-pin-snippet
         // START SNIPPET: usage-provision-output-pin-snippet
         // provision gpio pins #04 as an output pin and make sure is is set to
         // LOW at startup
+        // RaspiPin.GPIO_04: PIN NUMBER
+        // "My LED": PIN FRIENDLY NAME (optional)
+        // PinState.LOW: PIN STARTUP STATE (optional)
         GpioPinDigitalOutput myLed = gpio.provisionDigitalOutputPin(
-                RaspiPin.GPIO_04, // PIN NUMBER
-                "My LED", // PIN FRIENDLY NAME (optional)
-                PinState.LOW); // PIN STARTUP STATE (optional)
+                RaspiPin.GPIO_04,
+                "My LED", 
+                PinState.LOW); 
         // END SNIPPET: usage-provision-output-pin-snippet
 
         // START SNIPPET: usage-shutdown-pin-snippet

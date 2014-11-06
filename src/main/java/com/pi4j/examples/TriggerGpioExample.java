@@ -73,7 +73,7 @@ public class TriggerGpioExample {
 
         // setup gpio pins #04, #05, #06 as an output pins and make sure they
         // are all LOW at startup
-        GpioPinDigitalOutput myLed[] = {
+        GpioPinDigitalOutput[] myLed = {
                 gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04, "LED #1",
                         PinState.LOW),
                 gpio.provisionDigitalOutputPin(RaspiPin.GPIO_05, "LED #2",

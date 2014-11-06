@@ -135,7 +135,7 @@ public class PCA9685GpioExample {
     private static GpioPinPwmOutput[] provisionPwmOutputs(
             final PCA9685GpioProvider gpioProvider) {
         GpioController gpio = GpioFactory.getInstance();
-        GpioPinPwmOutput myOutputs[] = {
+        GpioPinPwmOutput[] myOutputs = {
                 gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_00,
                         "Pulse 00"),
                 gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_01,

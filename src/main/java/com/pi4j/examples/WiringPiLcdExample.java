@@ -38,9 +38,9 @@ import com.pi4j.wiringpi.Lcd;
 
 public class WiringPiLcdExample {
 
-    public final static int LCD_ROWS = 2;
-    public final static int LCD_COLUMNS = 16;
-    public final static int LCD_BITS = 4;
+    public static final int LCD_ROWS = 2;
+    public static final int LCD_COLUMNS = 16;
+    public static final int LCD_BITS = 4;
 
     private static final Logger LOGGER = LogManager
             .getLogger(WiringPiLcdExample.class.getName());
@@ -55,20 +55,31 @@ public class WiringPiLcdExample {
             return;
         }
 
-        // initialize LCD
-        int lcdHandle = Lcd.lcdInit(LCD_ROWS, // number of row supported by LCD
-                LCD_COLUMNS, // number of columns supported by LCD
-                LCD_BITS, // number of bits used to communicate to LCD
-                11, // LCD RS pin
-                10, // LCD strobe pin
-                0, // LCD data bit 1
-                1, // LCD data bit 2
-                2, // LCD data bit 3
-                3, // LCD data bit 4
-                0, // LCD data bit 5 (set to 0 if using 4 bit communication)
-                0, // LCD data bit 6 (set to 0 if using 4 bit communication)
-                0, // LCD data bit 7 (set to 0 if using 4 bit communication)
-                0); // LCD data bit 8 (set to 0 if using 4 bit communication)
+      /* initialize LCD
+         LCD_ROWS: number of row supported by LCD
+         LCD_COLUMNS: number of columns supported by LCD
+         LCD_BITS: number of bits used to communicate to LCD*/
+        int lcdHandle = Lcd.lcdInit(LCD_ROWS, LCD_COLUMNS, LCD_BITS, 
+                // LCD RS pin
+                11, 
+                // LCD strobe pin
+                10, 
+                // LCD data bit 1
+                0, 
+                // LCD data bit 2
+                1, 
+                // LCD data bit 3
+                2, 
+                // LCD data bit 4
+                3, 
+                // LCD data bit 5 (set to 0 if using 4 bit communication)
+                0, 
+                // LCD data bit 6 (set to 0 if using 4 bit communication)
+                0, 
+                // LCD data bit 7 (set to 0 if using 4 bit communication)
+                0, 
+                // LCD data bit 8 (set to 0 if using 4 bit communication)
+                0); 
 
         // verify initialization
         if (lcdHandle == -1) {

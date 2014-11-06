@@ -80,7 +80,7 @@ public class PCF8574GpioExample {
                 I2CBus.BUS_1, PCF8574GpioProvider.PCF8574A_0x3F);
 
         // provision gpio input pins from MCP23017
-        GpioPinDigitalInput myInputs[] = {
+        GpioPinDigitalInput[] myInputs = {
                 gpio.provisionDigitalInputPin(gpioProvider, PCF8574Pin.GPIO_00),
                 gpio.provisionDigitalInputPin(gpioProvider, PCF8574Pin.GPIO_01),
                 gpio.provisionDigitalInputPin(gpioProvider, PCF8574Pin.GPIO_02) };
@@ -96,7 +96,7 @@ public class PCF8574GpioExample {
         }, myInputs);
 
         // provision gpio output pins and make sure they are all LOW at startup
-        GpioPinDigitalOutput myOutputs[] = {
+        GpioPinDigitalOutput[] myOutputs = {
                 gpio.provisionDigitalOutputPin(gpioProvider,
                         PCF8574Pin.GPIO_04, PinState.LOW),
                 gpio.provisionDigitalOutputPin(gpioProvider,

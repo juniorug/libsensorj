@@ -34,6 +34,7 @@ import com.pi4j.wiringpi.Spi;
 
 public class Example {
 
+    private static final String TRACED_LINE = "-----------------------------------------------";
     private static final Logger LOGGER = LogManager.getLogger(Example.class
             .getName());
 
@@ -83,16 +84,18 @@ public class Example {
     public static void read() {
 
         // send test ASCII message
-        byte packet[] = new byte[2];
-        packet[0] = INIT_CMD; // address byte
+        byte[] packet = new byte[2];
+        // address byte
+        packet[0] = INIT_CMD;
         // packet[0] = (byte)(INIT_CMD | (SPI_CHANNEL<<5));
-        packet[1] = 0x00; // dummy
+        // dummy
+        packet[1] = 0x00;
 
-        LOGGER.info("-----------------------------------------------");
+        LOGGER.info(TRACED_LINE);
         LOGGER.info("[TX] " + bytesToHex(packet));
         Spi.wiringPiSPIDataRW(SPI_CHANNEL, packet, 2);
         LOGGER.info("[RX] " + bytesToHex(packet));
-        LOGGER.info("-----------------------------------------------");
+        LOGGER.info(TRACED_LINE);
 
         // LOGGER.info(( (packet[0]<<7) | (packet[1]>>1) ) & 0x3FF);
         LOGGER.info(((packet[0] << 8) | packet[1]) & 0x3FF);

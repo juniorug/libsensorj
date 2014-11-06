@@ -40,17 +40,18 @@ public class RPIServoBlasterExample {
 
         long start = System.currentTimeMillis();
 
-        while (System.currentTimeMillis() - start < 120000) { // 2 minutes
+        // 2 minutes
+        while (System.currentTimeMillis() - start < 120000) {
 
             for (int i = 50; i < 150; i++) {
-                servo7.setServoPulseWidth(i); // Set raw value for this servo
-                                              // driver - 50 to 195
+                // Set raw value for this servo driver - 50 to 195
+                servo7.setServoPulseWidth(i);
                 Thread.sleep(10);
             }
 
             for (int i = 150; i > 50; i--) {
-                servo7.setServoPulseWidth(i); // Set raw value for this servo
-                                              // driver - 50 to 195
+                // Set raw value for this servo driver - 50 to 195
+                servo7.setServoPulseWidth(i);
                 Thread.sleep(10);
             }
 

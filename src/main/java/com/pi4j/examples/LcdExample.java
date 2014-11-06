@@ -45,12 +45,13 @@ import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 
 public class LcdExample {
 
-    public final static int LCD_ROWS = 2;
-    public final static int LCD_ROW_1 = 0;
-    public final static int LCD_ROW_2 = 1;
-    public final static int LCD_COLUMNS = 16;
-    public final static int LCD_BITS = 4;
+    public static final int LCD_ROWS = 2;
+    public static final int LCD_ROW_1 = 0;
+    public static final int LCD_ROW_2 = 1;
+    public static final int LCD_COLUMNS = 16;
+    public static final int LCD_BITS = 4;
 
+    private static final String TRACED_LINE = "----------------";
     private static final Logger LOGGER = LogManager.getLogger(LcdExample.class
             .getName());
 
@@ -61,21 +62,27 @@ public class LcdExample {
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
 
-        // initialize LCD
-        final GpioLcdDisplay lcd = new GpioLcdDisplay(LCD_ROWS, // number of row
-                                                                // supported by
-                                                                // LCD
-                LCD_COLUMNS, // number of columns supported by LCD
-                RaspiPin.GPIO_11, // LCD RS pin
-                RaspiPin.GPIO_10, // LCD strobe pin
-                RaspiPin.GPIO_00, // LCD data bit 1
-                RaspiPin.GPIO_01, // LCD data bit 2
-                RaspiPin.GPIO_02, // LCD data bit 3
-                RaspiPin.GPIO_03); // LCD data bit 4
+        /*
+         * initialize LCD LCD_ROWS: number of row supported by LCD LCD_COLUMNS:
+         * number of columns supported by LCD
+         */
+        final GpioLcdDisplay lcd = new GpioLcdDisplay(LCD_ROWS, LCD_COLUMNS,
+        // LCD RS pin
+                RaspiPin.GPIO_11,
+                // LCD strobe pin
+                RaspiPin.GPIO_10,
+                // LCD data bit 1
+                RaspiPin.GPIO_00,
+                // LCD data bit 2
+                RaspiPin.GPIO_01,
+                // LCD data bit 3
+                RaspiPin.GPIO_02,
+                // LCD data bit 4
+                RaspiPin.GPIO_03);
 
         // provision gpio pins as input pins with its internal pull up resistor
         // enabled
-        final GpioPinDigitalInput myButtons[] = {
+        final GpioPinDigitalInput[] myButtons = {
                 gpio.provisionDigitalInputPin(RaspiPin.GPIO_13, "B1",
                         PinPullResistance.PULL_UP),
                 gpio.provisionDigitalInputPin(RaspiPin.GPIO_07, "B2",
@@ -107,16 +114,16 @@ public class LcdExample {
         lcd.write(LCD_ROW_1, "The Pi4J Project");
 
         // write line 2 to LCD
-        lcd.write(LCD_ROW_2, "----------------");
+        lcd.write(LCD_ROW_2, TRACED_LINE);
 
         // line data replacement
         for (int index = 0; index < 5; index++) {
-            lcd.write(LCD_ROW_2, "----------------");
+            lcd.write(LCD_ROW_2, TRACED_LINE);
             Thread.sleep(500);
             lcd.write(LCD_ROW_2, "****************");
             Thread.sleep(500);
         }
-        lcd.write(LCD_ROW_2, "----------------");
+        lcd.write(LCD_ROW_2, TRACED_LINE);
 
         // single character data replacement
         for (int index = 0; index < lcd.getColumnCount(); index++) {
@@ -135,25 +142,25 @@ public class LcdExample {
         }
 
         // left alignment, full line data
-        lcd.write(LCD_ROW_2, "----------------");
+        lcd.write(LCD_ROW_2, TRACED_LINE);
         Thread.sleep(500);
         lcd.writeln(LCD_ROW_2, "<< LEFT");
         Thread.sleep(1000);
 
         // right alignment, full line data
-        lcd.write(LCD_ROW_2, "----------------");
+        lcd.write(LCD_ROW_2, TRACED_LINE);
         Thread.sleep(500);
         lcd.writeln(LCD_ROW_2, "RIGHT >>", LCDTextAlignment.ALIGN_RIGHT);
         Thread.sleep(1000);
 
         // center alignment, full line data
-        lcd.write(LCD_ROW_2, "----------------");
+        lcd.write(LCD_ROW_2, TRACED_LINE);
         Thread.sleep(500);
         lcd.writeln(LCD_ROW_2, "<< CENTER >>", LCDTextAlignment.ALIGN_CENTER);
         Thread.sleep(1000);
 
         // mixed alignments, partial line data
-        lcd.write(LCD_ROW_2, "----------------");
+        lcd.write(LCD_ROW_2, TRACED_LINE);
         Thread.sleep(500);
         lcd.write(LCD_ROW_2, "<L>", LCDTextAlignment.ALIGN_LEFT);
         lcd.write(LCD_ROW_2, "<R>", LCDTextAlignment.ALIGN_RIGHT);

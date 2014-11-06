@@ -75,10 +75,12 @@ public class PiFaceExample {
             public void onStateChange(SwitchStateChangeEvent event) {
                 if (event.getNewState() == SwitchState.ON) {
                     LOGGER.info("[SWITCH S1 PRESSED ] Turn RELAY-K0 <ON>");
-                    piface.getRelay(PiFaceRelay.K0).close(); // turn on relay
+                    // turn on relay
+                    piface.getRelay(PiFaceRelay.K0).close();
                 } else {
                     LOGGER.info("[SWITCH S1 RELEASED] Turn RELAY-K0 <OFF>");
-                    piface.getRelay(PiFaceRelay.K0).open(); // turn off relay
+                    // turn off relay
+                    piface.getRelay(PiFaceRelay.K0).open();
                 }
             }
         });
@@ -91,8 +93,8 @@ public class PiFaceExample {
             public void onStateChange(SwitchStateChangeEvent event) {
                 if (event.getNewState() == SwitchState.ON) {
                     LOGGER.info("[SWITCH S2 PRESSED ] Toggle RELAY-K1");
-                    piface.getRelay(PiFaceRelay.K1).toggle(); // toggle relay
-                                                              // state
+                    // toggle relay state
+                    piface.getRelay(PiFaceRelay.K1).toggle();
                 } else {
                     LOGGER.info("[SWITCH S2 RELEASED] do nothing");
                 }
@@ -109,13 +111,14 @@ public class PiFaceExample {
             public void onStateChange(SwitchStateChangeEvent event) {
                 if (event.getNewState() == SwitchState.ON) {
                     LOGGER.info("[SWITCH S3 PRESSED ] LED02 <BLINK>");
-                    piface.getLed(PiFaceLed.LED2).blink(125); // start blinking
-                                                              // 8 times per
-                                                              // second
+                    // start blinking 8 times per second
+                    piface.getLed(PiFaceLed.LED2).blink(125);
                 } else {
                     LOGGER.info("[SWITCH S3 RELEASED] LED02 <OFF>");
-                    piface.getLed(PiFaceLed.LED2).blink(0); // stop blinking
-                    piface.getLed(PiFaceLed.LED2).off(); // turn off led
+                    // stop blinking
+                    piface.getLed(PiFaceLed.LED2).blink(0);
+                    // turn off led
+                    piface.getLed(PiFaceLed.LED2).off();
                 }
             }
         });

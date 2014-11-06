@@ -19,7 +19,7 @@ import com.libsensorj.interfaces.ISensor;
 
 public class DHT11Temperature implements ISensor {
 
-    private final static String TEMP_STR = "Temperature =";
+    private static final String TEMP_STR = "Temperature =";
     private String lastValue;
     private long lastCheck;
     private final int gpioPin;

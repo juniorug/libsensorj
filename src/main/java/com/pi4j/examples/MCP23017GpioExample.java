@@ -82,7 +82,7 @@ public class MCP23017GpioExample {
                 I2CBus.BUS_1, 0x21);
 
         // provision gpio input pins from MCP23017
-        GpioPinDigitalInput myInputs[] = {
+        GpioPinDigitalInput[] myInputs = {
                 gpio.provisionDigitalInputPin(gpioProvider,
                         MCP23017Pin.GPIO_A0, "MyInput-A0",
                         PinPullResistance.PULL_UP),
@@ -119,7 +119,7 @@ public class MCP23017GpioExample {
         }, myInputs);
 
         // provision gpio output pins and make sure they are all LOW at startup
-        GpioPinDigitalOutput myOutputs[] = {
+        GpioPinDigitalOutput[] myOutputs = {
                 gpio.provisionDigitalOutputPin(gpioProvider,
                         MCP23017Pin.GPIO_B0, "MyOutput-B0", PinState.LOW),
                 gpio.provisionDigitalOutputPin(gpioProvider,

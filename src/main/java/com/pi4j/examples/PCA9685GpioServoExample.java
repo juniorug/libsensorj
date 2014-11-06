@@ -54,93 +54,27 @@ import com.pi4j.io.i2c.I2CFactory;
  */
 public class PCA9685GpioServoExample {
 
+    private static final String SUBSEQUENT_SINGLE = "| -> subsequent single <Enter> will repeat the previous command                  ";
+    private static final String EXIT_COMMAND = "| Exit command: x<Enter>                                                         ";
     private static final Logger LOGGER = LogManager
             .getLogger(PCA9685GpioServoExample.class.getName());
 
-    // ------------------------------------------------------------------------------------------------------------------
-    // main
-    // ------------------------------------------------------------------------------------------------------------------
-    public static void main(String[] args) throws Exception {
-
-        LOGGER.info("<--Pi4J--> PCA9685 Servo Tester Example ... started.");
-        PCA9685GpioServoExample example = new PCA9685GpioServoExample();
-        Scanner scanner = new Scanner(System.in);
-        char command = ' ';
-        while (command != 'x') {
-            printUsage();
-            command = readCommand(scanner);
-            switch (command) {
-            case 'c': // Choose Channel
-                example.chooseChannel(scanner);
-                break;
-            case 'n': // Neutral Position
-                example.approachNeutralPosition();
-                break;
-            case 'm': // Move
-                example.move(scanner);
-                break;
-            case 's': // Sub Trim
-                example.subtrim(scanner);
-                break;
-            case 'r': // Reverse
-                example.reverse();
-                break;
-            case 't': // Travel (adjust endpoints)
-                example.travel(scanner);
-                break;
-            case 'p': // Sweep
-                example.sweep(scanner);
-                break;
-            case 'i': // Info
-                example.info();
-                break;
-            case 'x': // Exit
-                LOGGER.info("Servo Example - END.");
-                break;
-            case ' ':
-                LOGGER.error("Invalid input.");
-                break;
-            default:
-                LOGGER.error("Unknown command [" + command + "].");
-                break;
-            }
-        }
-    }
-
-    private static char readCommand(Scanner scanner) {
-        char result = ' ';
-        String input = scanner.nextLine();
-        if (!input.trim().isEmpty()) {
-            result = input.trim().toLowerCase().charAt(0);
-        }
-        return result;
-    }
-
-    private static void printUsage() {
-        LOGGER.info("");
-        LOGGER.info("|- Commands ---------------------------------------------------------------------");
-        LOGGER.info("| c : choose active servo channel                                                ");
-        LOGGER.info("| n : neutral - approach neutral position                                        ");
-        LOGGER.info("| m : move servo position                                                        ");
-        LOGGER.info("| s : subtrim                                                                    ");
-        LOGGER.info("| r : reverse servo direction                                                    ");
-        LOGGER.info("| t : travel - adjust endpoints                                                  ");
-        LOGGER.info("| p : sweep - continuously move between max left and max right position)         ");
-        LOGGER.info("| i : info - provide info for all servo channels                                 ");
-        LOGGER.info("| x : exit                                                                       ");
-        LOGGER.info("|--------------------------------------------------------------------------------");
-    }
+    private static String UNKNOWN_COMMAND = "Unknown command [";
+    private static String NOT_USED = "not used";
+    private static String TRACED_LINE = "|--------------------------------------------------------------------------------";
+    private static String PROVIDE_NUMBER_BETWEEN_0_AND_15 = "], provide number between 0 and 15.";
 
     // ------------------------------------------------------------------------------------------------------------------
     // PCA9685GpioProvider
     // ------------------------------------------------------------------------------------------------------------------
-    private final PCA9685GpioProvider gpioProvider;
-    private final PCA9685GpioServoProvider gpioServoProvider;
 
     private final Servo[] servos;
     private int activeServo;
 
     public PCA9685GpioServoExample() throws Exception {
+        final PCA9685GpioProvider gpioProvider;
+        final PCA9685GpioServoProvider gpioServoProvider;
+
         gpioProvider = createProvider();
 
         // Define outputs in use for this example
@@ -181,12 +115,95 @@ public class PCA9685GpioServoExample {
         activeServo = 0;
     }
 
+    // ------------------------------------------------------------------------------------------------------------------
+    // main
+    // ------------------------------------------------------------------------------------------------------------------
+    public static void main(String[] args) throws Exception {
+
+        LOGGER.info("<--Pi4J--> PCA9685 Servo Tester Example ... started.");
+        PCA9685GpioServoExample example = new PCA9685GpioServoExample();
+        Scanner scanner = new Scanner(System.in);
+        char command = ' ';
+        while (command != 'x') {
+            printUsage();
+            command = readCommand(scanner);
+            switch (command) {
+            // Choose Channel
+            case 'c':
+                example.chooseChannel(scanner);
+                break;
+            // Neutral Position
+            case 'n':
+                example.approachNeutralPosition();
+                break;
+            // Move
+            case 'm':
+                example.move(scanner);
+                break;
+            // Sub Trim
+            case 's':
+                example.subtrim(scanner);
+                break;
+            // Reverse
+            case 'r':
+                example.reverse();
+                break;
+            // Travel (adjust endpoints)
+            case 't':
+                example.travel(scanner);
+                break;
+            // Sweep
+            case 'p':
+                example.sweep(scanner);
+                break;
+            // Info
+            case 'i':
+                example.info();
+                break;
+            // Exit
+            case 'x':
+                LOGGER.info("Servo Example - END.");
+                break;
+            case ' ':
+                LOGGER.error("Invalid input.");
+                break;
+            default:
+                LOGGER.error(UNKNOWN_COMMAND + command + "].");
+                break;
+            }
+        }
+    }
+
+    private static char readCommand(Scanner scanner) {
+        char result = ' ';
+        String input = scanner.nextLine();
+        if (!input.trim().isEmpty()) {
+            result = input.trim().toLowerCase().charAt(0);
+        }
+        return result;
+    }
+
+    private static void printUsage() {
+        LOGGER.info("");
+        LOGGER.info("|- Commands ---------------------------------------------------------------------");
+        LOGGER.info("| c : choose active servo channel                                                ");
+        LOGGER.info("| n : neutral - approach neutral position                                        ");
+        LOGGER.info("| m : move servo position                                                        ");
+        LOGGER.info("| s : subtrim                                                                    ");
+        LOGGER.info("| r : reverse servo direction                                                    ");
+        LOGGER.info("| t : travel - adjust endpoints                                                  ");
+        LOGGER.info("| p : sweep - continuously move between max left and max right position)         ");
+        LOGGER.info("| i : info - provide info for all servo channels                                 ");
+        LOGGER.info("| x : exit                                                                       ");
+        LOGGER.info(TRACED_LINE);
+    }
+
     public void chooseChannel(Scanner scanner) {
         LOGGER.info("");
         LOGGER.info("|- Choose channel ---------------------------------------------------------------");
         LOGGER.info("| Choose active servo channel [0..15]                                            ");
         LOGGER.info("| Example: 0<Enter>                                                              ");
-        LOGGER.info("|--------------------------------------------------------------------------------");
+        LOGGER.info(TRACED_LINE);
 
         int channel = -1;
         boolean isValidChannel = false;
@@ -199,11 +216,11 @@ public class PCA9685GpioServoExample {
                     isValidChannel = true;
                 } else {
                     LOGGER.error("Unsupported servo channel [" + channel
-                            + "], provide number between 0 and 15.");
+                            + PROVIDE_NUMBER_BETWEEN_0_AND_15);
                 }
             } catch (NumberFormatException e) {
                 LOGGER.error("Invalid input [" + input
-                        + "], provide number between 0 and 15.", e);
+                        + PROVIDE_NUMBER_BETWEEN_0_AND_15, e);
             }
         }
         activeServo = channel;
@@ -223,10 +240,10 @@ public class PCA9685GpioServoExample {
         LOGGER.info("|          left by 10%                                                           ");
         LOGGER.info("| Example: r<Enter> this would move the servo from its current position to the   ");
         LOGGER.info("|          right by 1%                                                           ");
-        LOGGER.info("| -> subsequent single <Enter> will repeat the previous command                  ");
+        LOGGER.info(SUBSEQUENT_SINGLE);
         LOGGER.info("| -> max travel to either side is 100%                                           ");
-        LOGGER.info("| Exit command: x<Enter>                                                         ");
-        LOGGER.info("|--------------------------------------------------------------------------------");
+        LOGGER.info(EXIT_COMMAND);
+        LOGGER.info(TRACED_LINE);
 
         String command = null;
         while (!"x".equals(command)) {
@@ -244,7 +261,7 @@ public class PCA9685GpioServoExample {
                     sign = 1;
                 } else {
                     if (!"x".equals(command)) {
-                        LOGGER.error("Unknown command [" + command + "].");
+                        LOGGER.error(UNKNOWN_COMMAND + command + "].");
                         command = null;
                     }
                     continue;
@@ -286,13 +303,13 @@ public class PCA9685GpioServoExample {
         LOGGER.info("|          the right                                                             ");
         LOGGER.info("| Example: l<Enter> this would move the servos neutral position by one step to   ");
         LOGGER.info("|          the left                                                              ");
-        LOGGER.info("| -> subsequent single <Enter> will repeat the previous command                  ");
+        LOGGER.info(SUBSEQUENT_SINGLE);
         LOGGER.info("| -> max adjustment to either side is 200 steps                                  ");
-        LOGGER.info("| Exit command: x<Enter>                                                         ");
-        LOGGER.info("|--------------------------------------------------------------------------------");
+        LOGGER.info(EXIT_COMMAND);
+        LOGGER.info(TRACED_LINE);
         LOGGER.info("| Current Servo position: "
                 + servos[activeServo].getPosition() + "]             ");
-        LOGGER.info("|--------------------------------------------------------------------------------");
+        LOGGER.info(TRACED_LINE);
 
         String command = null;
         while (!"x".equals(command)) {
@@ -312,7 +329,7 @@ public class PCA9685GpioServoExample {
                     moveAmount = 1;
                 } else {
                     if (!"x".equals(command)) {
-                        LOGGER.error("Unknown command [" + command + "].");
+                        LOGGER.error(UNKNOWN_COMMAND + command + "].");
                         command = null;
                     }
                     continue;
@@ -349,8 +366,8 @@ public class PCA9685GpioServoExample {
         LOGGER.info("| Adjust endpoints.                                                              ");
         LOGGER.info("| Example: r125<Enter>  adjust RIGHT endpoint to 125                             ");
         LOGGER.info("| -> min: 0, max: 150, default 100                                               ");
-        LOGGER.info("| Exit command: x<Enter>                                                         ");
-        LOGGER.info("|--------------------------------------------------------------------------------");
+        LOGGER.info(EXIT_COMMAND);
+        LOGGER.info(TRACED_LINE);
 
         String command = null;
         while (!"x".equals(command)) {
@@ -373,7 +390,7 @@ public class PCA9685GpioServoExample {
                     propertyToAdjust = Servo.PROP_END_POINT_RIGHT;
                 } else {
                     if (!"x".equals(command)) {
-                        LOGGER.error("Unknown command [" + command + "].");
+                        LOGGER.error(UNKNOWN_COMMAND + command + "].");
                         command = null;
                     }
                     continue;
@@ -412,8 +429,8 @@ public class PCA9685GpioServoExample {
         LOGGER.info("| To change speed provide value between 1 and 10 (10 for max speed)              ");
         LOGGER.info("| Example: 7<Enter>                                                              ");
         LOGGER.info("| Default speed: 5                                                               ");
-        LOGGER.info("| Exit command: x<Enter>                                                         ");
-        LOGGER.info("|--------------------------------------------------------------------------------");
+        LOGGER.info(EXIT_COMMAND);
+        LOGGER.info(TRACED_LINE);
 
         // create and start sweeper thread
         Sweeper sweeper = new Sweeper();
@@ -466,47 +483,47 @@ public class PCA9685GpioServoExample {
     private GpioPinPwmOutput[] provisionPwmOutputs(
             final PCA9685GpioProvider gpioProvider) {
         GpioController gpio = GpioFactory.getInstance();
-        GpioPinPwmOutput myOutputs[] = {
+        GpioPinPwmOutput[] myOutputs = {
                 gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_00,
                         "Servo 00"),
                 gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_01,
-                        "not used"),
+                        NOT_USED),
                 gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_02,
-                        "not used"),
+                        NOT_USED),
                 gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_03,
-                        "not used"),
+                        NOT_USED),
                 gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_04,
-                        "not used"),
+                        NOT_USED),
                 gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_05,
-                        "not used"),
+                        NOT_USED),
                 gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_06,
-                        "not used"),
+                        NOT_USED),
                 gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_07,
-                        "not used"),
+                        NOT_USED),
                 gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_08,
-                        "not used"),
+                        NOT_USED),
                 gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_09,
-                        "not used"),
+                        NOT_USED),
                 gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_10,
-                        "not used"),
+                        NOT_USED),
                 gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_11,
-                        "not used"),
+                        NOT_USED),
                 gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_12,
-                        "not used"),
+                        NOT_USED),
                 gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_13,
-                        "not used"),
+                        NOT_USED),
                 gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_14,
-                        "not used"),
+                        NOT_USED),
                 gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_15,
-                        "not used") };
+                        NOT_USED) };
         return myOutputs;
     }
 
     private class Sweeper extends Thread {
 
         private int speed = 5;
-        private static final int STEP = 1; // make sure this is always true: 100 % step
-                                    // = 0
+        // make sure this is always true: 100 % step = 0
+        private static final int STEP = 1;
         private static final int MAXSLEEPBETWEENSTEPS = 100;
 
         @Override

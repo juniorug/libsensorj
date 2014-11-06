@@ -52,6 +52,7 @@ public class OutputHiGpioExample {
     private static final Logger LOGGER = LogManager
             .getLogger(OutputHiGpioExample.class.getName());
 
+    private static final String GPIO_STATE_SHOULD_BE_ON = "--> GPIO state should be: ON";
     public static void main(String[] args) throws InterruptedException {
 
         LOGGER.info("<--Pi4J--> GPIO Output HI Example ... started.");
@@ -62,7 +63,7 @@ public class OutputHiGpioExample {
         // provision gpio pin #01 as an output pin and turn on
         final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(
                 RaspiPin.GPIO_01, "MyLED", PinState.HIGH);
-        LOGGER.info("--> GPIO state should be: ON");
+        LOGGER.info(GPIO_STATE_SHOULD_BE_ON);
 
         Thread.sleep(10000);
 
@@ -76,7 +77,7 @@ public class OutputHiGpioExample {
             }
         });
         Thread.sleep(10000);
-        LOGGER.info("--> GPIO state should be: ON");
+        LOGGER.info(GPIO_STATE_SHOULD_BE_ON);
         pin.export(PinMode.DIGITAL_OUTPUT);
         pin.setState(true);
 

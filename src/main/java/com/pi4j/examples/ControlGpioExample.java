@@ -48,6 +48,8 @@ public class ControlGpioExample {
 
     private static final Logger LOGGER = LogManager
             .getLogger(ControlGpioExample.class.getName());
+    private static final String GPIO_STATE_SHOULD_BE_ON = "--> GPIO state should be: ON";
+    private static final String GPIO_STATE_SHOULD_BE_OFF = "--> GPIO state should be: OFF";
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -59,32 +61,32 @@ public class ControlGpioExample {
         // provision gpio pin #01 as an output pin and turn on
         final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(
                 RaspiPin.GPIO_01, "MyLED", PinState.HIGH);
-        LOGGER.info("--> GPIO state should be: ON");
+        LOGGER.info(GPIO_STATE_SHOULD_BE_ON);
 
         Thread.sleep(5000);
 
         // turn off gpio pin #01
         pin.low();
-        LOGGER.info("--> GPIO state should be: OFF");
+        LOGGER.info(GPIO_STATE_SHOULD_BE_OFF);
 
         Thread.sleep(5000);
 
         // toggle the current state of gpio pin #01 (should turn on)
         pin.toggle();
-        LOGGER.info("--> GPIO state should be: ON");
+        LOGGER.info(GPIO_STATE_SHOULD_BE_ON);
 
         Thread.sleep(5000);
 
         // toggle the current state of gpio pin #01 (should turn off)
         pin.toggle();
-        LOGGER.info("--> GPIO state should be: OFF");
+        LOGGER.info(GPIO_STATE_SHOULD_BE_OFF);
 
         Thread.sleep(5000);
 
         // turn on gpio pin #01 for 1 second and then off
-        LOGGER.info("--> GPIO state should be: ON for only 1 second");
-        pin.pulse(1000, true); // set second argument to 'true' use a blocking
-                               // call
+        LOGGER.info(GPIO_STATE_SHOULD_BE_ON + "for only 1 second");
+        // set second argument to 'true' use a blocking call
+        pin.pulse(1000, true);
 
         // stop all GPIO activity/threads by shutting down the GPIO controller
         // (this method will forcefully shutdown all GPIO monitoring threads and

@@ -48,6 +48,7 @@ public class StepperMotorGpioExample {
     private static final Logger LOGGER = LogManager
             .getLogger(StepperMotorGpioExample.class.getName());
 
+    private static final String MOTOR_STOPPED_FOR_2_SECONDS = "   Motor STOPPED for 2 seconds.";
     public static void main(String[] args) throws InterruptedException {
 
         LOGGER.info("<--Pi4J--> GPIO Stepper Motor Example ... started.");
@@ -128,37 +129,37 @@ public class StepperMotorGpioExample {
         // test motor control : STEPPING FORWARD
         LOGGER.info("   Motor FORWARD for 2038 steps.");
         motor.step(2038);
-        LOGGER.info("   Motor STOPPED for 2 seconds.");
+        LOGGER.info(MOTOR_STOPPED_FOR_2_SECONDS);
         Thread.sleep(2000);
 
         // test motor control : STEPPING REVERSE
         LOGGER.info("   Motor REVERSE for 2038 steps.");
         motor.step(-2038);
-        LOGGER.info("   Motor STOPPED for 2 seconds.");
+        LOGGER.info(MOTOR_STOPPED_FOR_2_SECONDS);
         Thread.sleep(2000);
 
         // test motor control : ROTATE FORWARD
         LOGGER.info("   Motor FORWARD for 2 revolutions.");
         motor.rotate(2);
-        LOGGER.info("   Motor STOPPED for 2 seconds.");
+        LOGGER.info(MOTOR_STOPPED_FOR_2_SECONDS);
         Thread.sleep(2000);
 
         // test motor control : ROTATE REVERSE
         LOGGER.info("   Motor REVERSE for 2 revolutions.");
         motor.rotate(-2);
-        LOGGER.info("   Motor STOPPED for 2 seconds.");
+        LOGGER.info(MOTOR_STOPPED_FOR_2_SECONDS);
         Thread.sleep(2000);
 
         // test motor control : TIMED FORWARD
         LOGGER.info("   Motor FORWARD for 5 seconds.");
         motor.forward(5000);
-        LOGGER.info("   Motor STOPPED for 2 seconds.");
+        LOGGER.info(MOTOR_STOPPED_FOR_2_SECONDS);
         Thread.sleep(2000);
 
         // test motor control : TIMED REVERSE
         LOGGER.info("   Motor REVERSE for 5 seconds.");
         motor.reverse(5000);
-        LOGGER.info("   Motor STOPPED for 2 seconds.");
+        LOGGER.info(MOTOR_STOPPED_FOR_2_SECONDS);
         Thread.sleep(2000);
 
         // test motor control : ROTATE FORWARD with different timing and

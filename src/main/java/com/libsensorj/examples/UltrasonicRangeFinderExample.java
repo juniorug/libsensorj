@@ -24,7 +24,8 @@ public class UltrasonicRangeFinderExample {
             double distance = ((UltrasonicHcsr04) hcsr).getRange();
 
             LOGGER.info("RangeFinder result = " + distance + "mm");
-        } while (true); //false != true
+        } while (true); 
+        //while (false != true)
 
     }
 
