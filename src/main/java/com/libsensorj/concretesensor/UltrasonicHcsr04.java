@@ -19,6 +19,10 @@ public class UltrasonicHcsr04 implements ISensor {
     private GpioPinDigitalInput resultPin;
     private static final String RANGE_PULSE_RESULT = "Range Pulse Result";
     private static final String RANGE_FINDER_TRIGGER = "Range Finder Trigger";
+    private static final int TWENTY = 20;
+    private static final int FORTY = 40;
+    private static final int THIRTY_EIGHT = 38;
+    private static final double DISTANCE_FACTOR = 165.7;
     private static final Logger LOGGER = LogManager
             .getLogger(UltrasonicHcsr04.class.getName());
 
@@ -34,7 +38,6 @@ public class UltrasonicHcsr04 implements ISensor {
 
     }
 
-    @Override
     public void getInstance() {
 
         // Setup GPIO Pins
@@ -63,7 +66,7 @@ public class UltrasonicHcsr04 implements ISensor {
             // fire the trigger pulse
             firepulse.high();
 
-            Thread.sleep(20);
+            Thread.sleep(TWENTY);
         } catch (InterruptedException e) {
 
             // e.printStackTrace();
@@ -80,7 +83,7 @@ public class UltrasonicHcsr04 implements ISensor {
         do {
 
             stopTime = System.currentTimeMillis();
-            if ((System.currentTimeMillis() - startTime) >= 40) {
+            if ((System.currentTimeMillis() - startTime) >= FORTY) {
                 break;
             }
         } while (resultPin.getState() != PinState.HIGH);
@@ -88,8 +91,8 @@ public class UltrasonicHcsr04 implements ISensor {
         // calculate the range. If the loop stopped after 38 ms set the result
         // to -1 to show it timed out.
 
-        if ((stopTime - startTime) <= 38) {
-            result = (stopTime - startTime) * 165.7;
+        if ((stopTime - startTime) <= THIRTY_EIGHT) {
+            result = (stopTime - startTime) * DISTANCE_FACTOR;
         } else {
             LOGGER.info("Timed out");
             result = -1;

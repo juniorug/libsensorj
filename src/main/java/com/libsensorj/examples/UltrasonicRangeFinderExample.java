@@ -1,12 +1,12 @@
 package com.libsensorj.examples;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.libsensorj.concretefactory.UltrasonicRangeFinderFactory;
 import com.libsensorj.concretesensor.UltrasonicHcsr04;
 import com.libsensorj.interfaces.ISensor;
 import com.libsensorj.interfaces.ISensorFactory;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class UltrasonicRangeFinderExample {
     private static ISensor hcsr;

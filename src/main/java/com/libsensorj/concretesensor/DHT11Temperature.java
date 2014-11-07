@@ -24,17 +24,18 @@ public class DHT11Temperature implements ISensor {
     private long lastCheck;
     private final int gpioPin;
     private static final int DEFAULT_PIN = 4;
+    private static final long LAST_CHECK_DIFF = 3000;
     private static final Logger LOGGER = LogManager
             .getLogger(DHT11Temperature.class.getName());
 
     public DHT11Temperature(int gpioPin) {
         this.gpioPin = gpioPin;
-        this.lastCheck = System.currentTimeMillis() - 3000;
+        this.lastCheck = System.currentTimeMillis() - LAST_CHECK_DIFF;
     }
 
     public DHT11Temperature() {
         this.gpioPin = DEFAULT_PIN;
-        this.lastCheck = System.currentTimeMillis() - 3000;
+        this.lastCheck = System.currentTimeMillis() - LAST_CHECK_DIFF;
     }
 
     @Override
@@ -65,7 +66,7 @@ public class DHT11Temperature implements ISensor {
 
     private void checkForUpdates() {
         long now = System.currentTimeMillis();
-        if (now - lastCheck > 3000) {
+        if (now - lastCheck > LAST_CHECK_DIFF) {
             String newValues = readValues();
             if (newValues.indexOf('%') > 0) {
                 lastValue = newValues;
