@@ -1,0 +1,21 @@
+#Start sonarqube:
+sudo /opt/sonarqube-4.5/bin/linux-x86-64/./sonar.sh start
+
+# checking sonar server:
+http://localhost:9000/
+
+#sonar database:
+mysql -u sonar -p
+
+#running sonar analyzer
+Run as > Maven build > goals: sonar:sonar
+
+
+#Start Jenkins
+sudo service jenkins start
+
+#checking jenkins server:
+http://localhost:8080/ 
+
+
+
