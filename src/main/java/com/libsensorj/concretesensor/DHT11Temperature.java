@@ -55,8 +55,8 @@ public class DHT11Temperature implements ISensor {
             public void handleGpioPinDigitalStateChangeEvent(
                     GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
-                LOGGER.info(" --> GPIO PIN STATE CHANGE: "
-                        + event.getPin() + " = " + event.getState());
+                LOGGER.info(" --> GPIO PIN STATE CHANGE: " + event.getPin()
+                        + " = " + event.getState());
             }
         });
 
@@ -130,7 +130,6 @@ public class DHT11Temperature implements ISensor {
 
             LOGGER.error("Exception: Could not read the sensor at pin %d",
                     gpioPin + e.getMessage(), e);
-            //e.printStackTrace();
             return null;
         }
         return result;

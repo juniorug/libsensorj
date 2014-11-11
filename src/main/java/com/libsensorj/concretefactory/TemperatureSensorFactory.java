@@ -26,5 +26,7 @@ public class TemperatureSensorFactory implements ISensorFactory {
         
         return new TemperatureEvent();
     }
+    
+    
 
 }

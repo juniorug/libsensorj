@@ -1,21 +1,22 @@
 package com.libsensorj.concretefactory;
 
-import com.libsensorj.concreteevent.UltrasonicRangeFinderEvent;
-import com.libsensorj.concretesensor.UltrasonicHcsr04;
+import com.libsensorj.concreteevent.TemperatureEvent;
+import com.libsensorj.concretesensor.DHT11V2;
 import com.libsensorj.interfaces.IEvent;
 import com.libsensorj.interfaces.ISensor;
 import com.libsensorj.interfaces.ISensorFactory;
 
-public class UltrasonicRangeFinderFactory implements ISensorFactory {
+public class DHT11V2Factory implements ISensorFactory {
 
     @Override
     public ISensor createSensor() {
-        return new UltrasonicHcsr04();
+        return new DHT11V2();
     }
 
     @Override
     public IEvent createEvent() {
-        return new UltrasonicRangeFinderEvent();
+
+        return new TemperatureEvent();
     }
 
 }

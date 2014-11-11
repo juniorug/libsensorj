@@ -3,12 +3,12 @@ package com.libsensorj.examples;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.libsensorj.concretefactory.TemperatureSensorFactory;
-import com.libsensorj.concretesensor.DHT11Temperature;
+import com.libsensorj.concretefactory.DHT11V2Factory;
+import com.libsensorj.concretesensor.DHT11V2;
 import com.libsensorj.interfaces.ISensor;
 import com.libsensorj.interfaces.ISensorFactory;
 
-public class DHT11TemperatureExample {
+public class DHT11V2Example {
 
     private static ISensor dht11;
     private static final Logger LOGGER = LogManager
@@ -16,26 +16,26 @@ public class DHT11TemperatureExample {
 
     public static void main(String[] args) {
 
-        ISensorFactory isf = new TemperatureSensorFactory();
+        ISensorFactory isf = new DHT11V2Factory();
         dht11 = isf.createSensor();
         dht11.getInstance();
 
         do {
             // Get the range
 
-            double temperature = ((DHT11Temperature) dht11)
+            double temperature = ((DHT11V2) dht11)
                     .getTemperatureInCelsius();
 
             LOGGER.info("temperature in Celcius: "
-                    + ((DHT11Temperature) dht11).getTemperatureInCelsius()
+                    + ((DHT11V2) dht11).getTemperatureInCelsius()
                     + "°C");
 
             LOGGER.info("temperature in Kelvin: "
-                    + ((DHT11Temperature) dht11).getTemperatureInKelvin()
+                    + ((DHT11V2) dht11).getTemperatureInKelvin()
                     + "°C");
 
             LOGGER.info("temperature in Fahrenheit: "
-                    + ((DHT11Temperature) dht11).getTemperatureInFahrenheit()
+                    + ((DHT11V2) dht11).getTemperatureInFahrenheit()
                     + "°C");
 
             try {
