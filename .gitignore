@@ -5,7 +5,6 @@
 *.lst
 
 #removing hidden files
-.classpath
 .project
 .settings/
 .settings/*
