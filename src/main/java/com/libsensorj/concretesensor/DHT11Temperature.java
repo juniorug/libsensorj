@@ -117,7 +117,7 @@ public class DHT11Temperature implements ISensor {
         String result = "";
         try {
             Process p = Runtime.getRuntime().exec(
-                    String.format("Adafruit_DHT %d", gpioPin));
+                    String.format("Adafruit_DHT 11 %d", gpioPin));
             BufferedReader in = new BufferedReader(new InputStreamReader(
                     p.getInputStream()));
             String line = null;

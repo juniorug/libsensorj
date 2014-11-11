@@ -40,14 +40,6 @@ public class UltrasonicHcsr04 implements ISensor {
 
     public void getInstance() {
 
-        // Setup GPIO Pins
-        GpioController gpio = GpioFactory.getInstance();
-
-        // range finder pins
-        firepulse = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_23,
-                RANGE_FINDER_TRIGGER, PinState.LOW);
-        resultPin = gpio.provisionDigitalInputPin(RaspiPin.GPIO_24,
-                RANGE_PULSE_RESULT, PinPullResistance.PULL_DOWN);
 
     }
 
@@ -86,7 +78,7 @@ public class UltrasonicHcsr04 implements ISensor {
             if ((System.currentTimeMillis() - startTime) >= FORTY) {
                 break;
             }
-        } while (resultPin.getState() != PinState.HIGH);
+        } while (!resultPin.isHigh());
 
         // calculate the range. If the loop stopped after 38 ms set the result
         // to -1 to show it timed out.
