@@ -19,7 +19,7 @@ import com.libsensorj.interfaces.ISensor;
 
 public class DHT11Temperature implements ISensor {
 
-    private static final String TEMP_STR = "Temperature =";
+    private static final String TEMP_STR = "Temp =";
     private String lastValue;
     private long lastCheck;
     private final int gpioPin;
@@ -109,6 +109,15 @@ public class DHT11Temperature implements ISensor {
         if (value == null) {
             return Double.MIN_VALUE;
         }
+        System.out.println("dentro do parseTemperature. value: " + value);
+        System.out.println("meu parsedouble:");
+        System.out.println("[value = " + value + "]");
+        System.out.println("[TEMP_STR = " + TEMP_STR + "]");
+        System.out.println("[value.indexOf(TEMP_STR) = " + value.indexOf(TEMP_STR) + "]");
+        System.out.println("[TEMP_STR.length() = " + TEMP_STR.length() + "]");
+        System.out.println("[value.indexOf('*') = " + value.indexOf('*') + "]");
+        System.out.println("[value.substring(value.indexOf(TEMP_STR) PLUS TEMP_STR.length(),value.indexOf('*')) = " + value.substring(value.indexOf(TEMP_STR) 
+                   + TEMP_STR.length(),value.indexOf('*')) + "]");
         return Double.parseDouble(value.substring(value.indexOf(TEMP_STR)
                 + TEMP_STR.length(), value.indexOf('*')));
     }
