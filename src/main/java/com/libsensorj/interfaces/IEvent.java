@@ -1,12 +1,13 @@
 package com.libsensorj.interfaces;
 
 import com.libsensorj.model.Observer;
+import com.pi4j.component.ObserveableComponentBase;
 
-public interface IEvent {
+public abstract class IEvent extends ObserveableComponentBase {
 
-    void attach(Observer obsever);
+    public abstract void attach(Observer obsever);
 
-    void detach(Observer obsever);
+    public abstract void detach(Observer obsever);
 
-    void trigger();
+    public abstract void trigger();
 }

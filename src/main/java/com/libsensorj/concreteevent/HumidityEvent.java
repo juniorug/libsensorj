@@ -3,7 +3,7 @@ package com.libsensorj.concreteevent;
 import com.libsensorj.interfaces.IEvent;
 import com.libsensorj.model.Observer;
 
-public class HumidityEvent implements IEvent {
+public class HumidityEvent extends IEvent {
 
     @Override
     public void attach(Observer obsever) {

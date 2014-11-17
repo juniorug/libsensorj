@@ -5,8 +5,8 @@ import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.libsensorj.interfaces.ISensor;
 import com.libsensorj.utils.LibPins;
+import com.pi4j.component.ObserveableComponentBase;
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalMultipurpose;
@@ -18,22 +18,22 @@ import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.temperature.TemperatureConversion;
 import com.pi4j.temperature.TemperatureScale;
 
-public class DHT11V2 implements ISensor {
+public class DHT11 extends ObserveableComponentBase {
 
     private static final Pin DEFAULT_PIN = RaspiPin.GPIO_04;
     private static final int MAXTIMINGS = 85;
     private int[] dht11_dat = { 0, 0, 0, 0, 0 };
     private GpioPinDigitalMultipurpose dht11Pin;
-    private static final Logger LOGGER = LogManager.getLogger(DHT11V2.class
+    private static final Logger LOGGER = LogManager.getLogger(DHT11.class
             .getName());
 
-    public DHT11V2() {
+    public DHT11() {
         final GpioController gpio = GpioFactory.getInstance();
         dht11Pin = gpio.provisionDigitalMultipurposePin(DEFAULT_PIN,
                 PinMode.DIGITAL_INPUT, PinPullResistance.PULL_UP);
     }
 
-    public DHT11V2(int pin) {
+    public DHT11(int pin) {
         final GpioController gpio = GpioFactory.getInstance();
         dht11Pin = gpio.provisionDigitalMultipurposePin(LibPins.getPin(pin),
                 PinMode.DIGITAL_INPUT, PinPullResistance.PULL_UP);
@@ -52,7 +52,7 @@ public class DHT11V2 implements ISensor {
             dht11Pin.high();
             TimeUnit.MICROSECONDS.sleep(40);
             dht11Pin.setMode(PinMode.DIGITAL_INPUT);
-           
+
             for (int i = 0; i < MAXTIMINGS; i++) {
                 int counter = 0;
                 while (dht11Pin.getState() == laststate) {
@@ -90,7 +90,7 @@ public class DHT11V2 implements ISensor {
 
             LOGGER.error("InterruptedException: " + e.getMessage(), e);
         }
-        if (value.toString().isEmpty()){
+        if (value.toString().isEmpty()) {
             value.append(-1);
         }
         return Double.parseDouble(value.toString());
@@ -108,31 +108,23 @@ public class DHT11V2 implements ISensor {
     public synchronized double getTemperatureInKelvin() {
         return getTemperature(TemperatureScale.KELVIN);
     }
-    
+
     private double getTemperature(TemperatureScale from) {
         switch (from) {
 
         case FARENHEIT:
-            return TemperatureConversion
-                    .convertCelsiusToFarenheit(readValue());
+            return TemperatureConversion.convertCelsiusToFarenheit(readValue());
         case CELSIUS:
             return (readValue());
         case KELVIN:
-            return TemperatureConversion
-                    .convertCelsiusToKelvin(readValue());
+            return TemperatureConversion.convertCelsiusToKelvin(readValue());
         default:
             throw new RuntimeException("Invalid temperature conversion");
         }
     }
-    
-    
+
     private boolean checkParity() {
         return (dht11_dat[4] == ((dht11_dat[0] + dht11_dat[1] + dht11_dat[2] + dht11_dat[3]) & 0xFF));
-    }
-
-    @Override
-    public void getInstance() {
-
     }
 
 }
