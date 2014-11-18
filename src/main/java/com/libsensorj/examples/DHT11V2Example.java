@@ -6,7 +6,6 @@ import org.apache.logging.log4j.Logger;
 import com.libsensorj.concretefactory.DHT11V2Factory;
 import com.libsensorj.concretesensor.DHT11V2;
 import com.libsensorj.interfaces.ISensor;
-import com.libsensorj.interfaces.ISensorFactory;
 
 public class DHT11V2Example {
 
@@ -16,24 +15,19 @@ public class DHT11V2Example {
 
     public static void main(String[] args) {
 
-        ISensorFactory isf = new DHT11V2Factory();
-        dht11 = isf.createSensor();
-        dht11.getInstance();
+        dht11 = DHT11V2Factory.getInstance();
 
         do {
             // Get the range
 
             LOGGER.info("temperature in Celcius: "
-                    + ((DHT11V2) dht11).getTemperatureInCelsius()
-                    + "°C");
+                    + ((DHT11V2) dht11).getTemperatureInCelsius() + "°C");
 
             LOGGER.info("temperature in Kelvin: "
-                    + ((DHT11V2) dht11).getTemperatureInKelvin()
-                    + "°C");
+                    + ((DHT11V2) dht11).getTemperatureInKelvin() + "°C");
 
             LOGGER.info("temperature in Fahrenheit: "
-                    + ((DHT11V2) dht11).getTemperatureInFahrenheit()
-                    + "°C");
+                    + ((DHT11V2) dht11).getTemperatureInFahrenheit() + "°C");
 
             try {
                 Thread.sleep(1000);
