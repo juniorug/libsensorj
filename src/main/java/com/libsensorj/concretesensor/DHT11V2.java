@@ -15,6 +15,8 @@ import com.pi4j.io.gpio.PinMode;
 import com.pi4j.io.gpio.PinPullResistance;
 import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
+import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
+import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 import com.pi4j.temperature.TemperatureConversion;
 import com.pi4j.temperature.TemperatureScale;
 
@@ -28,16 +30,30 @@ public class DHT11V2 implements ISensor {
             .getName());
 
     public DHT11V2() {
-        final GpioController gpio = GpioFactory.getInstance();
-        dht11Pin = gpio.provisionDigitalMultipurposePin(DEFAULT_PIN,
-                PinMode.DIGITAL_INPUT, PinPullResistance.PULL_UP);
+        this(DEFAULT_PIN);
     }
 
     public DHT11V2(int pin) {
+        this(LibPins.getPin(pin));
+    } 
+    
+    public DHT11V2(Pin pin) {
         final GpioController gpio = GpioFactory.getInstance();
-        dht11Pin = gpio.provisionDigitalMultipurposePin(LibPins.getPin(pin),
+        dht11Pin = gpio.provisionDigitalMultipurposePin(pin,
                 PinMode.DIGITAL_INPUT, PinPullResistance.PULL_UP);
+        
+        // create and register gpio pin listener
+        dht11Pin.addListener(new GpioPinListenerDigital() {
+            @Override
+            public void handleGpioPinDigitalStateChangeEvent(
+                    GpioPinDigitalStateChangeEvent event) {
+                // display pin state on console
+                LOGGER.info(" --> GPIO PIN STATE CHANGE: " + event.getPin()
+                        + " = " + event.getState());
+            }
+        });
     }
+    
 
     public double readValue() {
         PinState laststate = PinState.HIGH;
@@ -132,7 +148,9 @@ public class DHT11V2 implements ISensor {
 
     @Override
     public void getInstance() {
-
+        // 
+        
     }
+
 
 }

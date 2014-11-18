@@ -23,9 +23,6 @@ public class DHT11TemperatureExample {
         do {
             // Get the range
 
-            /*double temperature = ((DHT11Temperature) dht11)
-                    .getTemperatureInCelsius();*/
-
             LOGGER.info("temperature in Celcius: "
                     + ((DHT11Temperature) dht11).getTemperatureInCelsius()
                     + "°C");
