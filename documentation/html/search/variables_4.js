@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['firepulse',['firepulse',['../classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04.html#a3ee094cf624224f6ba5d945f444148a5',1,'com::libsensorj::concretesensor::UltrasonicHcsr04']]]
+  ['hcsr',['hcsr',['../classcom_1_1libsensorj_1_1examples_1_1HCSR04DeviceExample.html#aa4f457230d5989c781e4c142492cf9c2',1,'com.libsensorj.examples.HCSR04DeviceExample.hcsr()'],['../classcom_1_1libsensorj_1_1examples_1_1UltrasonicRangeFinderExample.html#af4703590c0c8bce89386204ea46afc76',1,'com.libsensorj.examples.UltrasonicRangeFinderExample.hcsr()']]]
 ];

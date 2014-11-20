@@ -1,3 +1,22 @@
+/*
+ * #%L
+ * **********************************************************************
+ * ORGANIZATION  :  IFBA
+ * PROJECT       :  libsensorj
+ * FILENAME      :  DHT11V3.java  
+ * 
+ * This file is part of the LibsensorJ project,
+ * An extensible library for sensors / actuators using the Pi4J framework of the Raspberry Pi.
+ * **********************************************************************
+ * 
+ * Created:      [yyyy/mm/dd creation date]
+ * Last Changed: 20/11/2014 
+ * 
+ * @author: Júnior Mascarenhas       <A HREF="mailto:[juniorug@gmail.com]">[Júnior]</A>
+ * @see [https://github.com/juniorug/libsensorj]
+ * 
+ * #L%
+ */
 package com.libsensorj.concretesensor;
 
 import java.util.concurrent.TimeUnit;
@@ -19,27 +38,50 @@ import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 import com.pi4j.temperature.TemperatureConversion;
 import com.pi4j.temperature.TemperatureScale;
 
+/**
+ * The Class DHT11V3.
+ */
 public class DHT11V3 implements ISensor {
 
+    /** The Constant DEFAULT_PIN. */
     private static final Pin DEFAULT_PIN = RaspiPin.GPIO_04;
+    
+    /** The temperature. */
     private int temperature;
+    
+    /** The dht11 pin. */
     private GpioPinDigitalMultipurpose dht11Pin;
+    
+    /** The Constant LOGGER. */
     private static final Logger LOGGER = LogManager.getLogger(DHT11V3.class
             .getName());
 
+    /**
+     * Instantiates a new DHt11 v3.
+     */
     public DHT11V3() {
         this(DEFAULT_PIN);
     }
 
+    /**
+     * Instantiates a new DHt11 v3.
+     *
+     * @param pin the pin
+     */
     public DHT11V3(int pin) {
         this(LibPins.getPin(pin));
-    } 
-    
+    }
+
+    /**
+     * Instantiates a new DHt11 v3.
+     *
+     * @param pin the pin
+     */
     public DHT11V3(Pin pin) {
         final GpioController gpio = GpioFactory.getInstance();
         dht11Pin = gpio.provisionDigitalMultipurposePin(pin,
                 PinMode.DIGITAL_INPUT, PinPullResistance.PULL_UP);
-        
+
         // create and register gpio pin listener
         dht11Pin.addListener(new GpioPinListenerDigital() {
             @Override
@@ -56,6 +98,11 @@ public class DHT11V3 implements ISensor {
     // 0 : OK - returns temperature readed
     // -1 : checksum error
     // -2 : timeout
+    /**
+     * Read value.
+     *
+     * @return the value readed
+     */
     public double readValue() {
         byte[] bits = new byte[] { 0, 0, 0, 0, 0 }; // empty buffer
         byte cnt = 7;
@@ -128,19 +175,40 @@ public class DHT11V3 implements ISensor {
 
     }
 
+    /**
+     * Gets the temperature in celsius.
+     *
+     * @return the temperature in celsius
+     */
     public synchronized double getTemperatureInCelsius() {
         return getTemperature(TemperatureScale.CELSIUS);
     }
 
+    /**
+     * Gets the temperature in fahrenheit.
+     *
+     * @return the temperature in fahrenheit
+     */
     public synchronized double getTemperatureInFahrenheit() {
         return getTemperature(TemperatureScale.FARENHEIT);
 
     }
 
+    /**
+     * Gets the temperature in kelvin.
+     *
+     * @return the temperature in kelvin
+     */
     public synchronized double getTemperatureInKelvin() {
         return getTemperature(TemperatureScale.KELVIN);
     }
 
+    /**
+     * Gets the temperature.
+     *
+     * @param from the TemperatureScale
+     * @return the temperature
+     */
     private double getTemperature(TemperatureScale from) {
         switch (from) {
 
@@ -155,7 +223,9 @@ public class DHT11V3 implements ISensor {
         }
     }
 
-
+    /* (non-Javadoc)
+     * @see com.libsensorj.interfaces.ISensor#getInstance()
+     */
     @Override
     public void getInstance() {
 

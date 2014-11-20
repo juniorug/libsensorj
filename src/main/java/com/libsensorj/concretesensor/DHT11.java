@@ -1,3 +1,22 @@
+/*
+ * #%L
+ * **********************************************************************
+ * ORGANIZATION  :  IFBA
+ * PROJECT       :  libsensorj
+ * FILENAME      :  DHT11.java  
+ * 
+ * This file is part of the LibsensorJ project,
+ * An extensible library for sensors / actuators using the Pi4J framework of the Raspberry Pi.
+ * **********************************************************************
+ * 
+ * Created:      [yyyy/mm/dd creation date]
+ * Last Changed: 20/11/2014 
+ * 
+ * @author: Júnior Mascarenhas       <A HREF="mailto:[juniorug@gmail.com]">[Júnior]</A>
+ * @see [https://github.com/juniorug/libsensorj]
+ * 
+ * #L%
+ */
 package com.libsensorj.concretesensor;
 
 import java.util.concurrent.TimeUnit;
@@ -18,27 +37,52 @@ import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.temperature.TemperatureConversion;
 import com.pi4j.temperature.TemperatureScale;
 
+/**
+ * The Class DHT11.
+ */
 public class DHT11 extends ObserveableComponentBase {
 
+    /** The Constant DEFAULT_PIN. */
     private static final Pin DEFAULT_PIN = RaspiPin.GPIO_04;
+    
+    /** The Constant MAXTIMINGS. */
     private static final int MAXTIMINGS = 85;
+    
+    /** The dht11_dat. */
     private int[] dht11_dat = { 0, 0, 0, 0, 0 };
+    
+    /** The dht11 pin. */
     private GpioPinDigitalMultipurpose dht11Pin;
+    
+    /** The Constant LOGGER. */
     private static final Logger LOGGER = LogManager.getLogger(DHT11.class
             .getName());
 
+    /**
+     * Instantiates a new DHt11.
+     */
     public DHT11() {
         final GpioController gpio = GpioFactory.getInstance();
         dht11Pin = gpio.provisionDigitalMultipurposePin(DEFAULT_PIN,
                 PinMode.DIGITAL_INPUT, PinPullResistance.PULL_UP);
     }
 
+    /**
+     * Instantiates a new DHt11.
+     *
+     * @param pin the pin
+     */
     public DHT11(int pin) {
         final GpioController gpio = GpioFactory.getInstance();
         dht11Pin = gpio.provisionDigitalMultipurposePin(LibPins.getPin(pin),
                 PinMode.DIGITAL_INPUT, PinPullResistance.PULL_UP);
     }
 
+    /**
+     * Read value.
+     *
+     * @return the value readed
+     */
     public double readValue() {
         PinState laststate = PinState.HIGH;
         int j = 0;
@@ -96,19 +140,40 @@ public class DHT11 extends ObserveableComponentBase {
         return Double.parseDouble(value.toString());
     }
 
+    /**
+     * Gets the temperature in celsius.
+     *
+     * @return the temperature in celsius
+     */
     public synchronized double getTemperatureInCelsius() {
         return getTemperature(TemperatureScale.CELSIUS);
     }
 
+    /**
+     * Gets the temperature in fahrenheit.
+     *
+     * @return the temperature in fahrenheit
+     */
     public synchronized double getTemperatureInFahrenheit() {
         return getTemperature(TemperatureScale.FARENHEIT);
 
     }
 
+    /**
+     * Gets the temperature in kelvin.
+     *
+     * @return the temperature in kelvin
+     */
     public synchronized double getTemperatureInKelvin() {
         return getTemperature(TemperatureScale.KELVIN);
     }
 
+    /**
+     * Gets the temperature.
+     *
+     * @param from the TemperatureScale
+     * @return the temperature
+     */
     private double getTemperature(TemperatureScale from) {
         switch (from) {
 
@@ -123,6 +188,11 @@ public class DHT11 extends ObserveableComponentBase {
         }
     }
 
+    /**
+     * Check parity.
+     *
+     * @return true, if successful
+     */
     private boolean checkParity() {
         return (dht11_dat[4] == ((dht11_dat[0] + dht11_dat[1] + dht11_dat[2] + dht11_dat[3]) & 0xFF));
     }

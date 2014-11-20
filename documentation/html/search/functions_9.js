@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['observer',['Observer',['../classcom_1_1libsensorj_1_1model_1_1Observer.html#a477725e32a58d3a8762d404799ec0161',1,'com.libsensorj.model.Observer.Observer()'],['../classcom_1_1libsensorj_1_1model_1_1Observer.html#a4933adee4c8da771eaa94415f6f840a7',1,'com.libsensorj.model.Observer.Observer(String observerName)']]]
+  ['readvalue',['readValue',['../classcom_1_1libsensorj_1_1concretesensor_1_1DHT11.html#a84f4c759756e582eb0e3d12675525c87',1,'com.libsensorj.concretesensor.DHT11.readValue()'],['../classcom_1_1libsensorj_1_1concretesensor_1_1DHT11V2.html#a883913b8d65fc3e747e22374a8d16bc2',1,'com.libsensorj.concretesensor.DHT11V2.readValue()'],['../classcom_1_1libsensorj_1_1concretesensor_1_1DHT11V3.html#a15f5982dba996cc76bb7d0722ed70d31',1,'com.libsensorj.concretesensor.DHT11V3.readValue()']]],
+  ['readvalues',['readValues',['../classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature.html#a2e5125c490d1b7b28a359cf702334fd7',1,'com::libsensorj::concretesensor::DHT11Temperature']]]
 ];

@@ -1,3 +1,22 @@
+/*
+ * #%L
+ * **********************************************************************
+ * ORGANIZATION  :  IFBA
+ * PROJECT       :  libsensorj
+ * FILENAME      :  DHT11Temperature.java  
+ * 
+ * This file is part of the LibsensorJ project,
+ * An extensible library for sensors / actuators using the Pi4J framework of the Raspberry Pi.
+ * **********************************************************************
+ * 
+ * Created:      [yyyy/mm/dd creation date]
+ * Last Changed: 20/11/2014 
+ * 
+ * @author: Júnior Mascarenhas       <A HREF="mailto:[juniorug@gmail.com]">[Júnior]</A>
+ * @see [https://github.com/juniorug/libsensorj]
+ * 
+ * #L%
+ */
 package com.libsensorj.concretesensor;
 
 import java.io.BufferedReader;
@@ -17,27 +36,54 @@ import com.pi4j.temperature.TemperatureConversion;
 import com.pi4j.temperature.TemperatureScale;
 import com.libsensorj.interfaces.ISensor;
 
+/**
+ * The Class DHT11Temperature.
+ */
 public class DHT11Temperature implements ISensor {
 
+    /** The Constant TEMP_STR. */
     private static final String TEMP_STR = "Temp =";
+    
+    /** The last value. */
     private String lastValue;
+    
+    /** The last check. */
     private long lastCheck;
+    
+    /** The gpio pin. */
     private final int gpioPin;
+    
+    /** The Constant DEFAULT_PIN. */
     private static final int DEFAULT_PIN = 4;
+    
+    /** The Constant LAST_CHECK_DIFF. */
     private static final long LAST_CHECK_DIFF = 3000;
+    
+    /** The Constant LOGGER. */
     private static final Logger LOGGER = LogManager
             .getLogger(DHT11Temperature.class.getName());
 
+    /**
+     * Instantiates a new DHt11 temperature.
+     *
+     * @param gpioPin the gpio pin
+     */
     public DHT11Temperature(int gpioPin) {
         this.gpioPin = gpioPin;
         this.lastCheck = System.currentTimeMillis() - LAST_CHECK_DIFF;
     }
 
+    /**
+     * Instantiates a new DHt11 temperature.
+     */
     public DHT11Temperature() {
         this.gpioPin = DEFAULT_PIN;
         this.lastCheck = System.currentTimeMillis() - LAST_CHECK_DIFF;
     }
 
+    /* (non-Javadoc)
+     * @see com.libsensorj.interfaces.ISensor#getInstance()
+     */
     @Override
     public void getInstance() {
 
@@ -64,6 +110,9 @@ public class DHT11Temperature implements ISensor {
 
     }
 
+    /**
+     * Check for updates.
+     */
     private void checkForUpdates() {
         long now = System.currentTimeMillis();
         if (now - lastCheck > LAST_CHECK_DIFF) {
@@ -75,19 +124,40 @@ public class DHT11Temperature implements ISensor {
         }
     }
 
+    /**
+     * Gets the temperature in celsius.
+     *
+     * @return the temperature in celsius
+     */
     public synchronized double getTemperatureInCelsius() {
         return getTemperature(TemperatureScale.CELSIUS);
     }
 
+    /**
+     * Gets the temperature in fahrenheit.
+     *
+     * @return the temperature in fahrenheit
+     */
     public synchronized double getTemperatureInFahrenheit() {
         return getTemperature(TemperatureScale.FARENHEIT);
 
     }
 
+    /**
+     * Gets the temperature in kelvin.
+     *
+     * @return the temperature in kelvin
+     */
     public synchronized double getTemperatureInKelvin() {
         return getTemperature(TemperatureScale.KELVIN);
     }
 
+    /**
+     * Gets the temperature.
+     *
+     * @param from the from
+     * @return the temperature
+     */
     private double getTemperature(TemperatureScale from) {
         checkForUpdates();
         switch (from) {
@@ -105,6 +175,12 @@ public class DHT11Temperature implements ISensor {
         }
     }
 
+    /**
+     * Parses the temperature.
+     *
+     * @param value the value
+     * @return the double
+     */
     private double parseTemperature(String value) {
         if (value == null) {
             return Double.MIN_VALUE;
@@ -113,15 +189,24 @@ public class DHT11Temperature implements ISensor {
         System.out.println("meu parsedouble:");
         System.out.println("[value = " + value + "]");
         System.out.println("[TEMP_STR = " + TEMP_STR + "]");
-        System.out.println("[value.indexOf(TEMP_STR) = " + value.indexOf(TEMP_STR) + "]");
+        System.out.println("[value.indexOf(TEMP_STR) = "
+                + value.indexOf(TEMP_STR) + "]");
         System.out.println("[TEMP_STR.length() = " + TEMP_STR.length() + "]");
         System.out.println("[value.indexOf('*') = " + value.indexOf('*') + "]");
-        System.out.println("[value.substring(value.indexOf(TEMP_STR) PLUS TEMP_STR.length(),value.indexOf('*')) = " + value.substring(value.indexOf(TEMP_STR) 
-                   + TEMP_STR.length(),value.indexOf('*')) + "]");
+        System.out
+                .println("[value.substring(value.indexOf(TEMP_STR) PLUS TEMP_STR.length(),value.indexOf('*')) = "
+                        + value.substring(
+                                value.indexOf(TEMP_STR) + TEMP_STR.length(),
+                                value.indexOf('*')) + "]");
         return Double.parseDouble(value.substring(value.indexOf(TEMP_STR)
                 + TEMP_STR.length(), value.indexOf('*')));
     }
 
+    /**
+     * Read values.
+     *
+     * @return the value readed as a string
+     */
     private String readValues() {
         String result = "";
         try {

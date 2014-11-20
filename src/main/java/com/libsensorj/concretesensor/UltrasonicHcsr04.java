@@ -1,3 +1,22 @@
+/*
+ * #%L
+ * **********************************************************************
+ * ORGANIZATION  :  IFBA
+ * PROJECT       :  libsensorj
+ * FILENAME      :  UltrasonicHcsr04.java  
+ * 
+ * This file is part of the LibsensorJ project,
+ * An extensible library for sensors / actuators using the Pi4J framework of the Raspberry Pi.
+ * **********************************************************************
+ * 
+ * Created:      [yyyy/mm/dd creation date]
+ * Last Changed: 20/11/2014 
+ * 
+ * @author: Júnior Mascarenhas       <A HREF="mailto:[juniorug@gmail.com]">[Júnior]</A>
+ * @see [https://github.com/juniorug/libsensorj]
+ * 
+ * #L%
+ */
 package com.libsensorj.concretesensor;
 
 import org.apache.logging.log4j.LogManager;
@@ -16,36 +35,67 @@ import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 
+/**
+ * The Class UltrasonicHcsr04.
+ */
 public class UltrasonicHcsr04 implements ISensor {
 
+    /** The result. */
     private double result = 0;
+    
+    /** The trigger. */
     private GpioPinDigitalOutput trigger;
+    
+    /** The echo. */
     private GpioPinDigitalInput echo;
+    
+    /** The Constant TWENTY. */
     private static final int TWENTY = 20;
+    
+    /** The Constant FORTY. */
     private static final int FORTY = 40;
+    
+    /** The Constant THIRTY_EIGHT. */
     private static final int THIRTY_EIGHT = 38;
+    
+    /** The Constant DISTANCE_FACTOR. */
     private static final double DISTANCE_FACTOR = 165.7;
+    
+    /** The Constant LOGGER. */
     private static final Logger LOGGER = LogManager
             .getLogger(UltrasonicHcsr04.class.getName());
 
-    
+    /**
+     * Instantiates a new ultrasonic hcsr04.
+     */
     public UltrasonicHcsr04() {
 
-        this(RaspiPin.GPIO_23,RaspiPin.GPIO_24);
+        this(RaspiPin.GPIO_23, RaspiPin.GPIO_24);
     }
 
+    /**
+     * Instantiates a new ultrasonic hcsr04.
+     *
+     * @param _trigger the trigger pin
+     * @param _echo the echo pin
+     */
     public UltrasonicHcsr04(int _trigger, int _echo) {
 
-        this(LibPins.getPin(_trigger),LibPins.getPin(_echo));
+        this(LibPins.getPin(_trigger), LibPins.getPin(_echo));
     }
-    
+
+    /**
+     * Instantiates a new ultrasonic hcsr04.
+     *
+     * @param _trigger the trigger pin
+     * @param _echo the echo pin
+     */
     public UltrasonicHcsr04(Pin _trigger, Pin _echo) {
         final GpioController gpio = GpioFactory.getInstance();
-        trigger = gpio.provisionDigitalOutputPin(_trigger,
-                PinState.LOW);
-        echo = gpio.provisionDigitalInputPin(_echo,
-                PinPullResistance.PULL_DOWN);
-        
+        trigger = gpio.provisionDigitalOutputPin(_trigger, PinState.LOW);
+        echo = gpio
+                .provisionDigitalInputPin(_echo, PinPullResistance.PULL_DOWN);
+
         // create and register gpio pin listener
         echo.addListener(new GpioPinListenerDigital() {
             @Override
@@ -58,11 +108,18 @@ public class UltrasonicHcsr04 implements ISensor {
         });
     }
 
+    /* (non-Javadoc)
+     * @see com.libsensorj.interfaces.ISensor#getInstance()
+     */
     public void getInstance() {
-
 
     }
 
+    /**
+     * Gets the range.
+     *
+     * @return the range
+     */
     public double getRange() {
 
         try {
@@ -72,7 +129,6 @@ public class UltrasonicHcsr04 implements ISensor {
             Thread.sleep(TWENTY);
         } catch (InterruptedException e) {
 
-            // e.printStackTrace();
             LOGGER.error(
                     "InterruptedException: Exception triggering range finder "
                             + e.getMessage(), e);

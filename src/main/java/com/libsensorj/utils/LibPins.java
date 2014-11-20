@@ -1,3 +1,22 @@
+/*
+ * #%L
+ * **********************************************************************
+ * ORGANIZATION  :  IFBA
+ * PROJECT       :  libsensorj
+ * FILENAME      :  LibPins.java  
+ * 
+ * This file is part of the LibsensorJ project,
+ * An extensible library for sensors / actuators using the Pi4J framework of the Raspberry Pi.
+ * **********************************************************************
+ * 
+ * Created:      [yyyy/mm/dd creation date]
+ * Last Changed: 20/11/2014 
+ * 
+ * @author: Júnior Mascarenhas       <A HREF="mailto:[juniorug@gmail.com]">[Júnior]</A>
+ * @see [https://github.com/juniorug/libsensorj]
+ * 
+ * #L%
+ */
 package com.libsensorj.utils;
 
 import java.util.HashMap;
@@ -6,13 +25,17 @@ import java.util.Map;
 import com.pi4j.io.gpio.Pin;
 import com.pi4j.io.gpio.RaspiPin;
 
+/**
+ * The Class LibPins.
+ */
 public class LibPins {
-    private static Map <Integer,Pin> gpioPins;// new HashMap();
     
-    
+    /** The gpio pins. */
+    private static Map<Integer, Pin> gpioPins;
+
     static {
-        gpioPins =  new HashMap<Integer, Pin>();
-        
+        gpioPins = new HashMap<Integer, Pin>();
+
         gpioPins.put(0, RaspiPin.GPIO_00);
         gpioPins.put(1, RaspiPin.GPIO_01);
         gpioPins.put(2, RaspiPin.GPIO_02);
@@ -43,11 +66,17 @@ public class LibPins {
         gpioPins.put(27, RaspiPin.GPIO_27);
         gpioPins.put(28, RaspiPin.GPIO_28);
         gpioPins.put(29, RaspiPin.GPIO_29);
-        
+
     }
-    
-    public static Pin getPin(int pinNumber){
-        return (Pin)gpioPins.get(pinNumber);
+
+    /**
+     * Gets the pin.
+     *
+     * @param pinNumber the pin number
+     * @return the pin
+     */
+    public static Pin getPin(int pinNumber) {
+        return (Pin) gpioPins.get(pinNumber);
     }
 
 }

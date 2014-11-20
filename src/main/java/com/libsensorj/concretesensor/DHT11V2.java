@@ -1,3 +1,22 @@
+/*
+ * #%L
+ * **********************************************************************
+ * ORGANIZATION  :  IFBA
+ * PROJECT       :  libsensorj
+ * FILENAME      :  DHT11V2.java  
+ * 
+ * This file is part of the LibsensorJ project,
+ * An extensible library for sensors / actuators using the Pi4J framework of the Raspberry Pi.
+ * **********************************************************************
+ * 
+ * Created:      [yyyy/mm/dd creation date]
+ * Last Changed: 20/11/2014 
+ * 
+ * @author: Júnior Mascarenhas       <A HREF="mailto:[juniorug@gmail.com]">[Júnior]</A>
+ * @see [https://github.com/juniorug/libsensorj]
+ * 
+ * #L%
+ */
 package com.libsensorj.concretesensor;
 
 import java.util.concurrent.TimeUnit;
@@ -20,28 +39,53 @@ import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 import com.pi4j.temperature.TemperatureConversion;
 import com.pi4j.temperature.TemperatureScale;
 
+/**
+ * The Class DHT11V2.
+ */
 public class DHT11V2 implements ISensor {
 
+    /** The Constant DEFAULT_PIN. */
     private static final Pin DEFAULT_PIN = RaspiPin.GPIO_04;
+    
+    /** The Constant MAXTIMINGS. */
     private static final int MAXTIMINGS = 85;
+    
+    /** The dht11_dat. */
     private int[] dht11_dat = { 0, 0, 0, 0, 0 };
+    
+    /** The dht11 pin. */
     private GpioPinDigitalMultipurpose dht11Pin;
+    
+    /** The Constant LOGGER. */
     private static final Logger LOGGER = LogManager.getLogger(DHT11V2.class
             .getName());
 
+    /**
+     * Instantiates a new DHt11 v2.
+     */
     public DHT11V2() {
         this(DEFAULT_PIN);
     }
 
+    /**
+     * Instantiates a new DHt11 v2.
+     *
+     * @param pin the pin
+     */
     public DHT11V2(int pin) {
         this(LibPins.getPin(pin));
-    } 
-    
+    }
+
+    /**
+     * Instantiates a new DHt11 v2.
+     *
+     * @param pin the pin
+     */
     public DHT11V2(Pin pin) {
         final GpioController gpio = GpioFactory.getInstance();
         dht11Pin = gpio.provisionDigitalMultipurposePin(pin,
                 PinMode.DIGITAL_INPUT, PinPullResistance.PULL_UP);
-        
+
         // create and register gpio pin listener
         dht11Pin.addListener(new GpioPinListenerDigital() {
             @Override
@@ -53,8 +97,12 @@ public class DHT11V2 implements ISensor {
             }
         });
     }
-    
 
+    /**
+     * Read value.
+     *
+     * @return the value readed
+     */
     public double readValue() {
         PinState laststate = PinState.HIGH;
         int j = 0;
@@ -68,7 +116,7 @@ public class DHT11V2 implements ISensor {
             dht11Pin.high();
             TimeUnit.MICROSECONDS.sleep(40);
             dht11Pin.setMode(PinMode.DIGITAL_INPUT);
-           
+
             for (int i = 0; i < MAXTIMINGS; i++) {
                 int counter = 0;
                 while (dht11Pin.getState() == laststate) {
@@ -106,51 +154,76 @@ public class DHT11V2 implements ISensor {
 
             LOGGER.error("InterruptedException: " + e.getMessage(), e);
         }
-        if (value.toString().isEmpty()){
+        if (value.toString().isEmpty()) {
             value.append(-1);
         }
         return Double.parseDouble(value.toString());
     }
 
+    /**
+     * Gets the temperature in celsius.
+     *
+     * @return the temperature in celsius
+     */
     public synchronized double getTemperatureInCelsius() {
         return getTemperature(TemperatureScale.CELSIUS);
     }
 
+    /**
+     * Gets the temperature in fahrenheit.
+     *
+     * @return the temperature in fahrenheit
+     */
     public synchronized double getTemperatureInFahrenheit() {
         return getTemperature(TemperatureScale.FARENHEIT);
 
     }
 
+    /**
+     * Gets the temperature in kelvin.
+     *
+     * @return the temperature in kelvin
+     */
     public synchronized double getTemperatureInKelvin() {
         return getTemperature(TemperatureScale.KELVIN);
     }
-    
+
+    /**
+     * Gets the temperature.
+     *
+     * @param from the from
+     * @return the temperature
+     */
     private double getTemperature(TemperatureScale from) {
         switch (from) {
 
         case FARENHEIT:
-            return TemperatureConversion
-                    .convertCelsiusToFarenheit(readValue());
+            return TemperatureConversion.convertCelsiusToFarenheit(readValue());
         case CELSIUS:
             return (readValue());
         case KELVIN:
-            return TemperatureConversion
-                    .convertCelsiusToKelvin(readValue());
+            return TemperatureConversion.convertCelsiusToKelvin(readValue());
         default:
             throw new RuntimeException("Invalid temperature conversion");
         }
     }
-    
-    
+
+    /**
+     * Check parity.
+     *
+     * @return true, if successful
+     */
     private boolean checkParity() {
         return (dht11_dat[4] == ((dht11_dat[0] + dht11_dat[1] + dht11_dat[2] + dht11_dat[3]) & 0xFF));
     }
 
+    /* (non-Javadoc)
+     * @see com.libsensorj.interfaces.ISensor#getInstance()
+     */
     @Override
     public void getInstance() {
-        // 
-        
-    }
+        //
 
+    }
 
 }

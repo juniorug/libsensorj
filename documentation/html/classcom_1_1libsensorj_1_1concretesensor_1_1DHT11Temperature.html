@@ -144,14 +144,18 @@ Private Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:a123ae6845e0cc1d1ec859cf7cfb78004"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature.html#a123ae6845e0cc1d1ec859cf7cfb78004">TEMP_STR</a> = &quot;Temperature =&quot;</td></tr>
+<tr class="memitem:a123ae6845e0cc1d1ec859cf7cfb78004"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature.html#a123ae6845e0cc1d1ec859cf7cfb78004">TEMP_STR</a> = &quot;Temp =&quot;</td></tr>
 <tr class="separator:a123ae6845e0cc1d1ec859cf7cfb78004"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8bf5091500d4dcb3b5a0663279359e2"><td class="memItemLeft" align="right" valign="top">static final int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature.html#af8bf5091500d4dcb3b5a0663279359e2">DEFAULT_PIN</a> = 4</td></tr>
 <tr class="separator:af8bf5091500d4dcb3b5a0663279359e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a5b6b6685407c05809a7e4c97358dd4"><td class="memItemLeft" align="right" valign="top">static final long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature.html#a7a5b6b6685407c05809a7e4c97358dd4">LAST_CHECK_DIFF</a> = 3000</td></tr>
+<tr class="separator:a7a5b6b6685407c05809a7e4c97358dd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96d485fc09496c1b5a320a30bb3400c9"><td class="memItemLeft" align="right" valign="top">static final Logger&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature.html#a96d485fc09496c1b5a320a30bb3400c9">LOGGER</a></td></tr>
 <tr class="separator:a96d485fc09496c1b5a320a30bb3400c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The Class <a class="el" href="classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature.html">DHT11Temperature</a>. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a81324fa18ad12062d493a880f3fbda67"></a>
 <div class="memitem">
 <div class="memproto">
@@ -165,6 +169,13 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Instantiates a new DHt11 temperature.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpioPin</td><td>the gpio pin </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -180,6 +191,7 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Instantiates a new DHt11 temperature. </p>
 
 </div>
 </div>
@@ -204,6 +216,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Check for updates. </p>
 
 </div>
 </div>
@@ -219,6 +232,8 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Gets the single instance of ISensor.</p>
+<dl class="section return"><dt>Returns</dt><dd>single instance of ISensor </dd></dl>
 
 <p>Implements <a class="el" href="interfacecom_1_1libsensorj_1_1interfaces_1_1ISensor.html#a3c3db93a33adecde81a528651790f75e">com.libsensorj.interfaces.ISensor</a>.</p>
 
@@ -245,6 +260,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Gets the temperature.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">from</td><td>the from </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the temperature </dd></dl>
 
 </div>
 </div>
@@ -260,6 +283,8 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Gets the temperature in celsius.</p>
+<dl class="section return"><dt>Returns</dt><dd>the temperature in celsius </dd></dl>
 
 </div>
 </div>
@@ -275,6 +300,8 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Gets the temperature in fahrenheit.</p>
+<dl class="section return"><dt>Returns</dt><dd>the temperature in fahrenheit </dd></dl>
 
 </div>
 </div>
@@ -290,6 +317,8 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Gets the temperature in kelvin.</p>
+<dl class="section return"><dt>Returns</dt><dd>the temperature in kelvin </dd></dl>
 
 </div>
 </div>
@@ -314,6 +343,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Parses the temperature.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>the value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the double </dd></dl>
 
 </div>
 </div>
@@ -337,6 +374,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Read values.</p>
+<dl class="section return"><dt>Returns</dt><dd>the value readed as a string </dd></dl>
 
 </div>
 </div>
@@ -358,6 +397,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The Constant DEFAULT_PIN. </p>
 
 </div>
 </div>
@@ -378,6 +418,28 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The gpio pin. </p>
+
+</div>
+</div>
+<a class="anchor" id="a7a5b6b6685407c05809a7e4c97358dd4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final long com.libsensorj.concretesensor.DHT11Temperature.LAST_CHECK_DIFF = 3000</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The Constant LAST_CHECK_DIFF. </p>
 
 </div>
 </div>
@@ -398,6 +460,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The last check. </p>
 
 </div>
 </div>
@@ -418,6 +481,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The last value. </p>
 
 </div>
 </div>
@@ -440,7 +504,8 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= LogManager</div>
 <div class="line">            .getLogger(<a class="code" href="classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature.html#a02bbdf30c922adcbde84597bf698ff41">DHT11Temperature</a>.class.getName())</div>
-</div><!-- fragment -->
+</div><!-- fragment --><p>The Constant LOGGER. </p>
+
 </div>
 </div>
 <a class="anchor" id="a123ae6845e0cc1d1ec859cf7cfb78004"></a>
@@ -451,7 +516,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">final String com.libsensorj.concretesensor.DHT11Temperature.TEMP_STR = &quot;Temperature =&quot;</td>
+          <td class="memname">final String com.libsensorj.concretesensor.DHT11Temperature.TEMP_STR = &quot;Temp =&quot;</td>
         </tr>
       </table>
   </td>
@@ -460,6 +525,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The Constant TEMP_STR. </p>
 
 </div>
 </div>
@@ -469,7 +535,7 @@ Static Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 6 2014 17:13:46 for libsensorj by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 20 2014 16:42:33 for libsensorj by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

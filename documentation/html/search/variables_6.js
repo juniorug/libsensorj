@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hcsr',['hcsr',['../classcom_1_1libsensorj_1_1examples_1_1UltrasonicRangeFinderExample.html#af4703590c0c8bce89386204ea46afc76',1,'com::libsensorj::examples::UltrasonicRangeFinderExample']]]
+  ['maxtimings',['MAXTIMINGS',['../classcom_1_1libsensorj_1_1concretesensor_1_1DHT11.html#ad986e37718b89038ff2702c80a2bb320',1,'com.libsensorj.concretesensor.DHT11.MAXTIMINGS()'],['../classcom_1_1libsensorj_1_1concretesensor_1_1DHT11V2.html#ad64749b474c180fea185aecd512eb656',1,'com.libsensorj.concretesensor.DHT11V2.MAXTIMINGS()']]]
 ];

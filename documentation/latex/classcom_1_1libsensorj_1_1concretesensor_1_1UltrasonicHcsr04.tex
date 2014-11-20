@@ -11,6 +11,10 @@ Inheritance diagram for com.\+libsensorj.\+concretesensor.\+Ultrasonic\+Hcsr04\+
 \item 
 \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a7e02068d9acb1b3cf1d15d45afbf377b}{Ultrasonic\+Hcsr04} ()
 \item 
+\hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a2304a7d1085f3c1d122d35299ed25ed5}{Ultrasonic\+Hcsr04} (int \+\_\+trigger, int \+\_\+echo)
+\item 
+\hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a80adba05f0dbb21f53a02d8e890d06ba}{Ultrasonic\+Hcsr04} (Pin \+\_\+trigger, Pin \+\_\+echo)
+\item 
 void \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a170167614b330d79518647a9a9722b62}{get\+Instance} ()
 \item 
 double \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_aec68f4aadd8faa618025dfa37c89c696}{get\+Range} ()
@@ -20,20 +24,27 @@ double \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a
 \item 
 double \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_aad32f417f9106fa8f3f2e2a7416f033b}{result} = 0
 \item 
-Gpio\+Pin\+Digital\+Output \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a3ee094cf624224f6ba5d945f444148a5}{firepulse}
+Gpio\+Pin\+Digital\+Output \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a13705a8251de22d0f52caa3e17d23376}{trigger}
 \item 
-Gpio\+Pin\+Digital\+Input \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_ae9065bb5c2cdf04f273996ffbb2b75af}{result\+Pin}
+Gpio\+Pin\+Digital\+Input \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a3695a560e3157a5e6f7896532d717456}{echo}
 \end{DoxyCompactItemize}
 \subsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-static final String \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a5830907d5ffebb25e4f034db830666df}{R\+A\+N\+G\+E\+\_\+\+P\+U\+L\+S\+E\+\_\+\+R\+E\+S\+U\+L\+T} = \char`\"{}Range Pulse Result\char`\"{}
+static final int \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_aa04a319fc4ef2ccf8de8a70bf27da2da}{T\+W\+E\+N\+T\+Y} = 20
 \item 
-static final String \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_aec436e6fc9cf31f68514e3600b7fa02d}{R\+A\+N\+G\+E\+\_\+\+F\+I\+N\+D\+E\+R\+\_\+\+T\+R\+I\+G\+G\+E\+R} = \char`\"{}Range Finder Trigger\char`\"{}
+static final int \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a7106eaa9f89d876a4749d502232964df}{F\+O\+R\+T\+Y} = 40
+\item 
+static final int \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a25452283296d3780a7fefbfa20e40a93}{T\+H\+I\+R\+T\+Y\+\_\+\+E\+I\+G\+H\+T} = 38
+\item 
+static final double \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a0483c4e470b1ab9e1a437fbeec6595e9}{D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+F\+A\+C\+T\+O\+R} = 165.\+7
 \item 
 static final Logger \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a9a3534d952f2668b69b0888b9e929abb}{L\+O\+G\+G\+E\+R}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+The Class \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04}{Ultrasonic\+Hcsr04}. 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a7e02068d9acb1b3cf1d15d45afbf377b}{}\index{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}!Ultrasonic\+Hcsr04@{Ultrasonic\+Hcsr04}}
@@ -43,6 +54,40 @@ static final Logger \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1Ultra
 {}
 \end{DoxyParamCaption}
 )}\label{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a7e02068d9acb1b3cf1d15d45afbf377b}
+Instantiates a new ultrasonic hcsr04. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a2304a7d1085f3c1d122d35299ed25ed5}{}\index{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}!Ultrasonic\+Hcsr04@{Ultrasonic\+Hcsr04}}
+\index{Ultrasonic\+Hcsr04@{Ultrasonic\+Hcsr04}!com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}}
+\subsubsection[{Ultrasonic\+Hcsr04}]{\setlength{\rightskip}{0pt plus 5cm}com.\+libsensorj.\+concretesensor.\+Ultrasonic\+Hcsr04.\+Ultrasonic\+Hcsr04 (
+\begin{DoxyParamCaption}
+\item[{int}]{\+\_\+trigger, }
+\item[{int}]{\+\_\+echo}
+\end{DoxyParamCaption}
+)}\label{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a2304a7d1085f3c1d122d35299ed25ed5}
+Instantiates a new ultrasonic hcsr04.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+trigger} & the trigger pin \\
+\hline
+{\em \+\_\+echo} & the echo pin \\
+\hline
+\end{DoxyParams}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a80adba05f0dbb21f53a02d8e890d06ba}{}\index{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}!Ultrasonic\+Hcsr04@{Ultrasonic\+Hcsr04}}
+\index{Ultrasonic\+Hcsr04@{Ultrasonic\+Hcsr04}!com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}}
+\subsubsection[{Ultrasonic\+Hcsr04}]{\setlength{\rightskip}{0pt plus 5cm}com.\+libsensorj.\+concretesensor.\+Ultrasonic\+Hcsr04.\+Ultrasonic\+Hcsr04 (
+\begin{DoxyParamCaption}
+\item[{Pin}]{\+\_\+trigger, }
+\item[{Pin}]{\+\_\+echo}
+\end{DoxyParamCaption}
+)}\label{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a80adba05f0dbb21f53a02d8e890d06ba}
+Instantiates a new ultrasonic hcsr04.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+trigger} & the trigger pin \\
+\hline
+{\em \+\_\+echo} & the echo pin \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Member Function Documentation}
@@ -53,6 +98,11 @@ static final Logger \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1Ultra
 {}
 \end{DoxyParamCaption}
 )}\label{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a170167614b330d79518647a9a9722b62}
+Gets the single instance of I\+Sensor.
+
+\begin{DoxyReturn}{Returns}
+single instance of I\+Sensor 
+\end{DoxyReturn}
 
 
 Implements \hyperlink{interfacecom_1_1libsensorj_1_1interfaces_1_1ISensor_a3c3db93a33adecde81a528651790f75e}{com.\+libsensorj.\+interfaces.\+I\+Sensor}.
@@ -64,13 +114,24 @@ Implements \hyperlink{interfacecom_1_1libsensorj_1_1interfaces_1_1ISensor_a3c3db
 {}
 \end{DoxyParamCaption}
 )}\label{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_aec68f4aadd8faa618025dfa37c89c696}
+Gets the range.
+
+\begin{DoxyReturn}{Returns}
+the range 
+\end{DoxyReturn}
 
 
 \subsection{Member Data Documentation}
-\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a3ee094cf624224f6ba5d945f444148a5}{}\index{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}!firepulse@{firepulse}}
-\index{firepulse@{firepulse}!com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}}
-\subsubsection[{firepulse}]{\setlength{\rightskip}{0pt plus 5cm}Gpio\+Pin\+Digital\+Output com.\+libsensorj.\+concretesensor.\+Ultrasonic\+Hcsr04.\+firepulse\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a3ee094cf624224f6ba5d945f444148a5}
-\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a9a3534d952f2668b69b0888b9e929abb}{}\index{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}!L\+O\+G\+G\+E\+R@{L\+O\+G\+G\+E\+R}}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a0483c4e470b1ab9e1a437fbeec6595e9}{}\index{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}!D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+F\+A\+C\+T\+O\+R@{D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+F\+A\+C\+T\+O\+R}}
+\index{D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+F\+A\+C\+T\+O\+R@{D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+F\+A\+C\+T\+O\+R}!com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}}
+\subsubsection[{D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+F\+A\+C\+T\+O\+R}]{\setlength{\rightskip}{0pt plus 5cm}final double com.\+libsensorj.\+concretesensor.\+Ultrasonic\+Hcsr04.\+D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+F\+A\+C\+T\+O\+R = 165.\+7\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a0483c4e470b1ab9e1a437fbeec6595e9}
+The Constant D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+F\+A\+C\+T\+O\+R. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a3695a560e3157a5e6f7896532d717456}{}\index{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}!echo@{echo}}
+\index{echo@{echo}!com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}}
+\subsubsection[{echo}]{\setlength{\rightskip}{0pt plus 5cm}Gpio\+Pin\+Digital\+Input com.\+libsensorj.\+concretesensor.\+Ultrasonic\+Hcsr04.\+echo\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a3695a560e3157a5e6f7896532d717456}
+The echo. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a7106eaa9f89d876a4749d502232964df}{}\index{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}!F\+O\+R\+T\+Y@{F\+O\+R\+T\+Y}}
+\index{F\+O\+R\+T\+Y@{F\+O\+R\+T\+Y}!com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}}
+\subsubsection[{F\+O\+R\+T\+Y}]{\setlength{\rightskip}{0pt plus 5cm}final int com.\+libsensorj.\+concretesensor.\+Ultrasonic\+Hcsr04.\+F\+O\+R\+T\+Y = 40\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a7106eaa9f89d876a4749d502232964df}
+The Constant F\+O\+R\+T\+Y. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a9a3534d952f2668b69b0888b9e929abb}{}\index{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}!L\+O\+G\+G\+E\+R@{L\+O\+G\+G\+E\+R}}
 \index{L\+O\+G\+G\+E\+R@{L\+O\+G\+G\+E\+R}!com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}}
 \subsubsection[{L\+O\+G\+G\+E\+R}]{\setlength{\rightskip}{0pt plus 5cm}final Logger com.\+libsensorj.\+concretesensor.\+Ultrasonic\+Hcsr04.\+L\+O\+G\+G\+E\+R\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a9a3534d952f2668b69b0888b9e929abb}
 {\bfseries Initial value\+:}
@@ -78,19 +139,19 @@ Implements \hyperlink{interfacecom_1_1libsensorj_1_1interfaces_1_1ISensor_a3c3db
 = LogManager
             .getLogger(\hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a7e02068d9acb1b3cf1d15d45afbf377b}{UltrasonicHcsr04}.class.getName())
 \end{DoxyCode}
-\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_aec436e6fc9cf31f68514e3600b7fa02d}{}\index{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}!R\+A\+N\+G\+E\+\_\+\+F\+I\+N\+D\+E\+R\+\_\+\+T\+R\+I\+G\+G\+E\+R@{R\+A\+N\+G\+E\+\_\+\+F\+I\+N\+D\+E\+R\+\_\+\+T\+R\+I\+G\+G\+E\+R}}
-\index{R\+A\+N\+G\+E\+\_\+\+F\+I\+N\+D\+E\+R\+\_\+\+T\+R\+I\+G\+G\+E\+R@{R\+A\+N\+G\+E\+\_\+\+F\+I\+N\+D\+E\+R\+\_\+\+T\+R\+I\+G\+G\+E\+R}!com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}}
-\subsubsection[{R\+A\+N\+G\+E\+\_\+\+F\+I\+N\+D\+E\+R\+\_\+\+T\+R\+I\+G\+G\+E\+R}]{\setlength{\rightskip}{0pt plus 5cm}final String com.\+libsensorj.\+concretesensor.\+Ultrasonic\+Hcsr04.\+R\+A\+N\+G\+E\+\_\+\+F\+I\+N\+D\+E\+R\+\_\+\+T\+R\+I\+G\+G\+E\+R = \char`\"{}Range Finder Trigger\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_aec436e6fc9cf31f68514e3600b7fa02d}
-\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a5830907d5ffebb25e4f034db830666df}{}\index{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}!R\+A\+N\+G\+E\+\_\+\+P\+U\+L\+S\+E\+\_\+\+R\+E\+S\+U\+L\+T@{R\+A\+N\+G\+E\+\_\+\+P\+U\+L\+S\+E\+\_\+\+R\+E\+S\+U\+L\+T}}
-\index{R\+A\+N\+G\+E\+\_\+\+P\+U\+L\+S\+E\+\_\+\+R\+E\+S\+U\+L\+T@{R\+A\+N\+G\+E\+\_\+\+P\+U\+L\+S\+E\+\_\+\+R\+E\+S\+U\+L\+T}!com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}}
-\subsubsection[{R\+A\+N\+G\+E\+\_\+\+P\+U\+L\+S\+E\+\_\+\+R\+E\+S\+U\+L\+T}]{\setlength{\rightskip}{0pt plus 5cm}final String com.\+libsensorj.\+concretesensor.\+Ultrasonic\+Hcsr04.\+R\+A\+N\+G\+E\+\_\+\+P\+U\+L\+S\+E\+\_\+\+R\+E\+S\+U\+L\+T = \char`\"{}Range Pulse Result\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a5830907d5ffebb25e4f034db830666df}
-\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_aad32f417f9106fa8f3f2e2a7416f033b}{}\index{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}!result@{result}}
+The Constant L\+O\+G\+G\+E\+R. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_aad32f417f9106fa8f3f2e2a7416f033b}{}\index{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}!result@{result}}
 \index{result@{result}!com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}}
 \subsubsection[{result}]{\setlength{\rightskip}{0pt plus 5cm}double com.\+libsensorj.\+concretesensor.\+Ultrasonic\+Hcsr04.\+result = 0\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_aad32f417f9106fa8f3f2e2a7416f033b}
-\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_ae9065bb5c2cdf04f273996ffbb2b75af}{}\index{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}!result\+Pin@{result\+Pin}}
-\index{result\+Pin@{result\+Pin}!com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}}
-\subsubsection[{result\+Pin}]{\setlength{\rightskip}{0pt plus 5cm}Gpio\+Pin\+Digital\+Input com.\+libsensorj.\+concretesensor.\+Ultrasonic\+Hcsr04.\+result\+Pin\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_ae9065bb5c2cdf04f273996ffbb2b75af}
-
+The result. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a25452283296d3780a7fefbfa20e40a93}{}\index{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}!T\+H\+I\+R\+T\+Y\+\_\+\+E\+I\+G\+H\+T@{T\+H\+I\+R\+T\+Y\+\_\+\+E\+I\+G\+H\+T}}
+\index{T\+H\+I\+R\+T\+Y\+\_\+\+E\+I\+G\+H\+T@{T\+H\+I\+R\+T\+Y\+\_\+\+E\+I\+G\+H\+T}!com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}}
+\subsubsection[{T\+H\+I\+R\+T\+Y\+\_\+\+E\+I\+G\+H\+T}]{\setlength{\rightskip}{0pt plus 5cm}final int com.\+libsensorj.\+concretesensor.\+Ultrasonic\+Hcsr04.\+T\+H\+I\+R\+T\+Y\+\_\+\+E\+I\+G\+H\+T = 38\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a25452283296d3780a7fefbfa20e40a93}
+The Constant T\+H\+I\+R\+T\+Y\+\_\+\+E\+I\+G\+H\+T. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a13705a8251de22d0f52caa3e17d23376}{}\index{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}!trigger@{trigger}}
+\index{trigger@{trigger}!com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}}
+\subsubsection[{trigger}]{\setlength{\rightskip}{0pt plus 5cm}Gpio\+Pin\+Digital\+Output com.\+libsensorj.\+concretesensor.\+Ultrasonic\+Hcsr04.\+trigger\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_a13705a8251de22d0f52caa3e17d23376}
+The trigger. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_aa04a319fc4ef2ccf8de8a70bf27da2da}{}\index{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}!T\+W\+E\+N\+T\+Y@{T\+W\+E\+N\+T\+Y}}
+\index{T\+W\+E\+N\+T\+Y@{T\+W\+E\+N\+T\+Y}!com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04@{com\+::libsensorj\+::concretesensor\+::\+Ultrasonic\+Hcsr04}}
+\subsubsection[{T\+W\+E\+N\+T\+Y}]{\setlength{\rightskip}{0pt plus 5cm}final int com.\+libsensorj.\+concretesensor.\+Ultrasonic\+Hcsr04.\+T\+W\+E\+N\+T\+Y = 20\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04_aa04a319fc4ef2ccf8de8a70bf27da2da}
+The Constant T\+W\+E\+N\+T\+Y. 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

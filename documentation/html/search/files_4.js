@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['frequencygpioexample_2ejava',['FrequencyGpioExample.java',['../FrequencyGpioExample_8java.html',1,'']]]
+  ['myexample_2ejava',['MyExample.java',['../MyExample_8java.html',1,'']]]
 ];

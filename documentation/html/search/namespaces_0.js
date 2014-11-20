@@ -9,5 +9,6 @@ var searchData=
   ['interfaces',['interfaces',['../namespacecom_1_1libsensorj_1_1interfaces.html',1,'com::libsensorj']]],
   ['libsensorj',['libsensorj',['../namespacecom_1_1libsensorj.html',1,'com']]],
   ['model',['model',['../namespacecom_1_1libsensorj_1_1model.html',1,'com::libsensorj']]],
-  ['pi4j',['pi4j',['../namespacecom_1_1pi4j.html',1,'com']]]
+  ['pi4j',['pi4j',['../namespacecom_1_1pi4j.html',1,'com']]],
+  ['utils',['utils',['../namespacecom_1_1libsensorj_1_1utils.html',1,'com::libsensorj']]]
 ];
