@@ -1,16 +1,19 @@
 package com.libsensorj.concretesensor.test;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.powermock.api.mockito.PowerMockito.when;
+import static org.powermock.api.support.membermodification.MemberMatcher.method;
 
 import java.util.Collection;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.easymock.EasyMock;
 import org.junit.runner.RunWith;
-import org.powermock.api.easymock.PowerMock;
-import org.powermock.api.support.membermodification.MemberMatcher;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
@@ -29,6 +32,7 @@ import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(DHT11Temperature.class)
+@PowerMockIgnore( {"javax.management.*"}) 
 public class DHT11TemperatureTests {
 
     private static MockGpioProvider provider;
@@ -38,6 +42,10 @@ public class DHT11TemperatureTests {
     private static final String DATA_READED = "Using pin #4Data (40): 0x32 0x0 0x1d 0x0 0x4fTemp = 29 *C, Hum = 50 %";
     private static final String READVALUES_METHOD = "readValues";
 
+    /** The Constant LOGGER. */
+    private static final Logger LOGGER = LogManager
+            .getLogger(DHT11TemperatureTests.class.getName());
+    
     @BeforeClass 
     public static void setup() {
         // create a mock gpio provider and controller
@@ -49,7 +57,6 @@ public class DHT11TemperatureTests {
         
         // register pin listener
         pin.addListener(new GpioPinListenerDigital() {
-                @Override
                 public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
                     // set pin state
                     if (event.getPin() == pin) {
@@ -68,12 +75,22 @@ public class DHT11TemperatureTests {
     
     @Test 
     public void testDHT11(){
-        DHT11Temperature dht11 = PowerMock.createPartialMock(DHT11Temperature.class, READVALUES_METHOD);
-        PowerMock.expectPrivate(dht11, READVALUES_METHOD).andReturn(DATA_READED);
+        DHT11Temperature dht11 =  PowerMockito.spy(new DHT11Temperature());
+        
+        try {
+            when(dht11, method(DHT11Temperature.class, READVALUES_METHOD)).withNoArguments().thenReturn(DATA_READED);
+        } catch (Exception e) {
+            LOGGER.error("Exception: Could not test the method "+ e.getMessage(), e );
+        }
+        
+        Assert.assertEquals(29,dht11.getTemperatureInCelsius(),0);
+        
+        /*DHT11Temperature dht11 = PowerMock.createPartialMock(DHT11Temperature.class, READVALUES_METHOD);
+        PowerMock.expectPrivate(dht11, READVALUES_METHOD,null).andReturn(DATA_READED);
         
         replay(dht11);
         assertequals(29,dht11.getTemperatureInCelsius());
-        verify(dht11);
+        verify(dht11);*/
     }
     
     
