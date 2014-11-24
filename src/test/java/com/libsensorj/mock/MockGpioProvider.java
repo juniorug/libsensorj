@@ -1,3 +1,22 @@
+/*
+ * #%L
+ * **********************************************************************
+ * ORGANIZATION  :  IFBA
+ * PROJECT       :  libsensorj
+ * FILENAME      :  MockGpioProvider.java  
+ * 
+ * This file is part of the LibsensorJ project,
+ * An extensible library for sensors / actuators using the Pi4J framework of the Raspberry Pi.
+ * **********************************************************************
+ * 
+ * Created:      [yyyy/mm/dd creation date]
+ * Last Changed: 24/11/2014 
+ * 
+ * @author: Júnior Mascarenhas       <A HREF="mailto:[juniorug@gmail.com]">[Júnior]</A>
+ * @see [https://github.com/juniorug/libsensorj]
+ * 
+ * #L%
+ */
 package com.libsensorj.mock;
 
 /*
@@ -33,15 +52,28 @@ import com.pi4j.io.gpio.GpioProviderBase;
 import com.pi4j.io.gpio.Pin;
 import com.pi4j.io.gpio.PinState;
 
+/**
+ * The Class MockGpioProvider.
+ */
 public class MockGpioProvider extends GpioProviderBase implements GpioProvider {
 
+    /** The Constant NAME. */
     public static final String NAME = "MockGpioProvider";
 
+    /* (non-Javadoc)
+     * @see com.pi4j.io.gpio.GpioProviderBase#getName()
+     */
     @Override
     public String getName() {
         return NAME;
     }
     
+    /**
+     * Sets the mock state.
+     *
+     * @param pin the pin
+     * @param state the state
+     */
     public void setMockState(Pin pin, PinState state) {
         // cache pin state
         getPinCache(pin).setState(state);    
@@ -50,6 +82,12 @@ public class MockGpioProvider extends GpioProviderBase implements GpioProvider {
         dispatchPinDigitalStateChangeEvent(pin, state);
     }
     
+    /**
+     * Sets the mock analog value.
+     *
+     * @param pin the pin
+     * @param value the value
+     */
     public void setMockAnalogValue(Pin pin, double value) {
         // cache pin state
         getPinCache(pin).setAnalogValue(value);    

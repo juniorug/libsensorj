@@ -1,0 +1,88 @@
+\hypertarget{classcom_1_1libsensorj_1_1mock_1_1MockGpioFactory}{}\section{com.\+libsensorj.\+mock.\+Mock\+Gpio\+Factory Class Reference}
+\label{classcom_1_1libsensorj_1_1mock_1_1MockGpioFactory}\index{com.\+libsensorj.\+mock.\+Mock\+Gpio\+Factory@{com.\+libsensorj.\+mock.\+Mock\+Gpio\+Factory}}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Gpio\+Controller \hyperlink{classcom_1_1libsensorj_1_1mock_1_1MockGpioFactory_a58463148954717dc22f75886523d4771}{get\+Instance} ()
+\item 
+static \hyperlink{classcom_1_1libsensorj_1_1mock_1_1MockGpioProvider}{Mock\+Gpio\+Provider} \hyperlink{classcom_1_1libsensorj_1_1mock_1_1MockGpioFactory_adbc2afeac5d0b886eef76f1984f0c382}{get\+Mock\+Provider} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classcom_1_1libsensorj_1_1mock_1_1MockGpioFactory_ad4fb10cfe04911a6104bbb1e0b3a3252}{Mock\+Gpio\+Factory} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classcom_1_1libsensorj_1_1mock_1_1MockGpioProvider}{Mock\+Gpio\+Provider} \hyperlink{classcom_1_1libsensorj_1_1mock_1_1MockGpioFactory_aa7cf0e5787b3ffe138f0cea0668df93e}{provider} = null
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This factory class provides a static method to create new 'Gpio\+Controller' instances. 
+
+Before using the Pi4\+J library, you need to ensure that the Java V\+M in configured with access to the following system libraries\+: 
+\begin{DoxyItemize}
+\item \hyperlink{namespacecom_1_1pi4j}{pi4j} 
+\item wiring\+Pi 
+\end{DoxyItemize}\begin{quote}
+This library depends on the wiring\+Pi native system library. (developed by Gordon Henderson @ \href{https://projects.drogon.net/}{\tt https\+://projects.\+drogon.\+net/}) \end{quote}
+
+
+\begin{DoxyAuthor}{Author}
+Robert Savage (\href{http://www.savagehomeautomation.com}{\tt http\+://www.\+savagehomeautomation.\+com}) 
+\end{DoxyAuthor}
+\begin{DoxySeeAlso}{See also}
+\#com.\+pi4j.\+io.\+gpio.\+Gpio 
+
+\href{http://www.pi4j.com/}{\tt http\+://www.\+pi4j.\+com/} 
+\end{DoxySeeAlso}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcom_1_1libsensorj_1_1mock_1_1MockGpioFactory_ad4fb10cfe04911a6104bbb1e0b3a3252}{}\index{com\+::libsensorj\+::mock\+::\+Mock\+Gpio\+Factory@{com\+::libsensorj\+::mock\+::\+Mock\+Gpio\+Factory}!Mock\+Gpio\+Factory@{Mock\+Gpio\+Factory}}
+\index{Mock\+Gpio\+Factory@{Mock\+Gpio\+Factory}!com\+::libsensorj\+::mock\+::\+Mock\+Gpio\+Factory@{com\+::libsensorj\+::mock\+::\+Mock\+Gpio\+Factory}}
+\subsubsection[{Mock\+Gpio\+Factory}]{\setlength{\rightskip}{0pt plus 5cm}com.\+libsensorj.\+mock.\+Mock\+Gpio\+Factory.\+Mock\+Gpio\+Factory (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1mock_1_1MockGpioFactory_ad4fb10cfe04911a6104bbb1e0b3a3252}
+Instantiates a new mock gpio factory. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classcom_1_1libsensorj_1_1mock_1_1MockGpioFactory_a58463148954717dc22f75886523d4771}{}\index{com\+::libsensorj\+::mock\+::\+Mock\+Gpio\+Factory@{com\+::libsensorj\+::mock\+::\+Mock\+Gpio\+Factory}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!com\+::libsensorj\+::mock\+::\+Mock\+Gpio\+Factory@{com\+::libsensorj\+::mock\+::\+Mock\+Gpio\+Factory}}
+\subsubsection[{get\+Instance}]{\setlength{\rightskip}{0pt plus 5cm}static Gpio\+Controller com.\+libsensorj.\+mock.\+Mock\+Gpio\+Factory.\+get\+Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classcom_1_1libsensorj_1_1mock_1_1MockGpioFactory_a58463148954717dc22f75886523d4771}
+Create New G\+P\+I\+O Controller instance.
+
+\begin{DoxyReturn}{Returns}
+Return a new Gpio\+Controller impl instance. 
+\end{DoxyReturn}
+\hypertarget{classcom_1_1libsensorj_1_1mock_1_1MockGpioFactory_adbc2afeac5d0b886eef76f1984f0c382}{}\index{com\+::libsensorj\+::mock\+::\+Mock\+Gpio\+Factory@{com\+::libsensorj\+::mock\+::\+Mock\+Gpio\+Factory}!get\+Mock\+Provider@{get\+Mock\+Provider}}
+\index{get\+Mock\+Provider@{get\+Mock\+Provider}!com\+::libsensorj\+::mock\+::\+Mock\+Gpio\+Factory@{com\+::libsensorj\+::mock\+::\+Mock\+Gpio\+Factory}}
+\subsubsection[{get\+Mock\+Provider}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Mock\+Gpio\+Provider} com.\+libsensorj.\+mock.\+Mock\+Gpio\+Factory.\+get\+Mock\+Provider (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classcom_1_1libsensorj_1_1mock_1_1MockGpioFactory_adbc2afeac5d0b886eef76f1984f0c382}
+Gets the mock provider.
+
+\begin{DoxyReturn}{Returns}
+the mock provider 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classcom_1_1libsensorj_1_1mock_1_1MockGpioFactory_aa7cf0e5787b3ffe138f0cea0668df93e}{}\index{com\+::libsensorj\+::mock\+::\+Mock\+Gpio\+Factory@{com\+::libsensorj\+::mock\+::\+Mock\+Gpio\+Factory}!provider@{provider}}
+\index{provider@{provider}!com\+::libsensorj\+::mock\+::\+Mock\+Gpio\+Factory@{com\+::libsensorj\+::mock\+::\+Mock\+Gpio\+Factory}}
+\subsubsection[{provider}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Mock\+Gpio\+Provider} com.\+libsensorj.\+mock.\+Mock\+Gpio\+Factory.\+provider = null\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1mock_1_1MockGpioFactory_aa7cf0e5787b3ffe138f0cea0668df93e}
+The provider. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+test/java/com/libsensorj/mock/\hyperlink{MockGpioFactory_8java}{Mock\+Gpio\+Factory.\+java}\end{DoxyCompactItemize}

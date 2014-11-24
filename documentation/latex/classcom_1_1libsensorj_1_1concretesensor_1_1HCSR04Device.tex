@@ -1,0 +1,162 @@
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device}{}\section{com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+Device Class Reference}
+\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device}\index{com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+Device@{com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+Device}}
+Inheritance diagram for com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+Device\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_ae0c7cdd02e374f360dff8d06a59b7c6d}{H\+C\+S\+R04\+Device} ()
+\item 
+\hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a1c5c889b5ffe83c5fe8f7263bb8c8d33}{H\+C\+S\+R04\+Device} (int \+\_\+trigger, int \+\_\+echo)
+\item 
+\hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a5148b245ef2aa510af815ecb3aeeb18b}{H\+C\+S\+R04\+Device} (Pin \+\_\+trigger, Pin \+\_\+echo)
+\item 
+void \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a3395de7d81b875516fb5c539accb27d1}{get\+Instance} ()
+\item 
+double \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_aa30e4f6775819a36bc231a226c397bef}{get\+Distance} ()
+\item 
+void \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a69a3472b508507649ccb57e6fef81d6c}{close} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Gpio\+Pin\+Digital\+Output \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_ac898198f98143f7a1a4f281ea3c7c607}{trigger} = null
+\item 
+Gpio\+Pin\+Digital\+Input \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_adf8ec00f094aefba690583e5a349c99d}{echo} = null
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final int \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a1468a6c38c0086477a54eddbfe288299}{S\+P\+E\+E\+D\+O\+F\+S\+O\+U\+N\+D} = 34029
+\item 
+static final int \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a8f69accf3efa61a642b5e8693f7f158a}{T\+W\+O} = 2
+\item 
+static final long \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_aaa527e39259b9e1be1b6360a397b3d30}{P\+U\+L\+S\+E\+\_\+\+T\+I\+M\+E} = 1
+\item 
+static final long \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a70071e4956bf93391031789b18039b6c}{D\+E\+L\+A\+Y} = 1000000000\+L
+\item 
+static final Logger \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a53449c0a7229928ddbb88c0d586cc63d}{L\+O\+G\+G\+E\+R}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The Class \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device}{H\+C\+S\+R04\+Device}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_ae0c7cdd02e374f360dff8d06a59b7c6d}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}!H\+C\+S\+R04\+Device@{H\+C\+S\+R04\+Device}}
+\index{H\+C\+S\+R04\+Device@{H\+C\+S\+R04\+Device}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}}
+\subsubsection[{H\+C\+S\+R04\+Device}]{\setlength{\rightskip}{0pt plus 5cm}com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+Device.\+H\+C\+S\+R04\+Device (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_ae0c7cdd02e374f360dff8d06a59b7c6d}
+Instantiates a new H\+C\+S r04 device. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a1c5c889b5ffe83c5fe8f7263bb8c8d33}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}!H\+C\+S\+R04\+Device@{H\+C\+S\+R04\+Device}}
+\index{H\+C\+S\+R04\+Device@{H\+C\+S\+R04\+Device}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}}
+\subsubsection[{H\+C\+S\+R04\+Device}]{\setlength{\rightskip}{0pt plus 5cm}com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+Device.\+H\+C\+S\+R04\+Device (
+\begin{DoxyParamCaption}
+\item[{int}]{\+\_\+trigger, }
+\item[{int}]{\+\_\+echo}
+\end{DoxyParamCaption}
+)}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a1c5c889b5ffe83c5fe8f7263bb8c8d33}
+Instantiates a new H\+C\+S r04 device.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+trigger} & the trigger \\
+\hline
+{\em \+\_\+echo} & the echo \\
+\hline
+\end{DoxyParams}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a5148b245ef2aa510af815ecb3aeeb18b}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}!H\+C\+S\+R04\+Device@{H\+C\+S\+R04\+Device}}
+\index{H\+C\+S\+R04\+Device@{H\+C\+S\+R04\+Device}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}}
+\subsubsection[{H\+C\+S\+R04\+Device}]{\setlength{\rightskip}{0pt plus 5cm}com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+Device.\+H\+C\+S\+R04\+Device (
+\begin{DoxyParamCaption}
+\item[{Pin}]{\+\_\+trigger, }
+\item[{Pin}]{\+\_\+echo}
+\end{DoxyParamCaption}
+)}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a5148b245ef2aa510af815ecb3aeeb18b}
+Instantiates a new H\+C\+S r04 device.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+trigger} & the \+\_\+trigger \\
+\hline
+{\em \+\_\+echo} & the \+\_\+echo \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a69a3472b508507649ccb57e6fef81d6c}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}!close@{close}}
+\index{close@{close}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}void com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+Device.\+close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a69a3472b508507649ccb57e6fef81d6c}
+Close. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_aa30e4f6775819a36bc231a226c397bef}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}!get\+Distance@{get\+Distance}}
+\index{get\+Distance@{get\+Distance}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}}
+\subsubsection[{get\+Distance}]{\setlength{\rightskip}{0pt plus 5cm}double com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+Device.\+get\+Distance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_aa30e4f6775819a36bc231a226c397bef}
+Gets the distance.
+
+\begin{DoxyReturn}{Returns}
+the distance 
+\end{DoxyReturn}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a3395de7d81b875516fb5c539accb27d1}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}}
+\subsubsection[{get\+Instance}]{\setlength{\rightskip}{0pt plus 5cm}void com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+Device.\+get\+Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a3395de7d81b875516fb5c539accb27d1}
+Gets the single instance of I\+Sensor.
+
+\begin{DoxyReturn}{Returns}
+single instance of I\+Sensor 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfacecom_1_1libsensorj_1_1interfaces_1_1ISensor_a3c3db93a33adecde81a528651790f75e}{com.\+libsensorj.\+interfaces.\+I\+Sensor}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a70071e4956bf93391031789b18039b6c}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}!D\+E\+L\+A\+Y@{D\+E\+L\+A\+Y}}
+\index{D\+E\+L\+A\+Y@{D\+E\+L\+A\+Y}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}}
+\subsubsection[{D\+E\+L\+A\+Y}]{\setlength{\rightskip}{0pt plus 5cm}final long com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+Device.\+D\+E\+L\+A\+Y = 1000000000\+L\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a70071e4956bf93391031789b18039b6c}
+The Constant D\+E\+L\+A\+Y. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_adf8ec00f094aefba690583e5a349c99d}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}!echo@{echo}}
+\index{echo@{echo}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}}
+\subsubsection[{echo}]{\setlength{\rightskip}{0pt plus 5cm}Gpio\+Pin\+Digital\+Input com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+Device.\+echo = null\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_adf8ec00f094aefba690583e5a349c99d}
+The echo. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a53449c0a7229928ddbb88c0d586cc63d}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}!L\+O\+G\+G\+E\+R@{L\+O\+G\+G\+E\+R}}
+\index{L\+O\+G\+G\+E\+R@{L\+O\+G\+G\+E\+R}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}}
+\subsubsection[{L\+O\+G\+G\+E\+R}]{\setlength{\rightskip}{0pt plus 5cm}final Logger com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+Device.\+L\+O\+G\+G\+E\+R\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a53449c0a7229928ddbb88c0d586cc63d}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= LogManager
+            .getLogger(\hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_ae0c7cdd02e374f360dff8d06a59b7c6d}{HCSR04Device}.class.getName())
+\end{DoxyCode}
+The Constant L\+O\+G\+G\+E\+R. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_aaa527e39259b9e1be1b6360a397b3d30}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}!P\+U\+L\+S\+E\+\_\+\+T\+I\+M\+E@{P\+U\+L\+S\+E\+\_\+\+T\+I\+M\+E}}
+\index{P\+U\+L\+S\+E\+\_\+\+T\+I\+M\+E@{P\+U\+L\+S\+E\+\_\+\+T\+I\+M\+E}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}}
+\subsubsection[{P\+U\+L\+S\+E\+\_\+\+T\+I\+M\+E}]{\setlength{\rightskip}{0pt plus 5cm}final long com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+Device.\+P\+U\+L\+S\+E\+\_\+\+T\+I\+M\+E = 1\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_aaa527e39259b9e1be1b6360a397b3d30}
+The Constant P\+U\+L\+S\+E\+\_\+\+T\+I\+M\+E. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a1468a6c38c0086477a54eddbfe288299}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}!S\+P\+E\+E\+D\+O\+F\+S\+O\+U\+N\+D@{S\+P\+E\+E\+D\+O\+F\+S\+O\+U\+N\+D}}
+\index{S\+P\+E\+E\+D\+O\+F\+S\+O\+U\+N\+D@{S\+P\+E\+E\+D\+O\+F\+S\+O\+U\+N\+D}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}}
+\subsubsection[{S\+P\+E\+E\+D\+O\+F\+S\+O\+U\+N\+D}]{\setlength{\rightskip}{0pt plus 5cm}final int com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+Device.\+S\+P\+E\+E\+D\+O\+F\+S\+O\+U\+N\+D = 34029\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a1468a6c38c0086477a54eddbfe288299}
+The Constant S\+P\+E\+E\+D\+O\+F\+S\+O\+U\+N\+D. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_ac898198f98143f7a1a4f281ea3c7c607}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}!trigger@{trigger}}
+\index{trigger@{trigger}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}}
+\subsubsection[{trigger}]{\setlength{\rightskip}{0pt plus 5cm}Gpio\+Pin\+Digital\+Output com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+Device.\+trigger = null\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_ac898198f98143f7a1a4f281ea3c7c607}
+The trigger. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a8f69accf3efa61a642b5e8693f7f158a}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}!T\+W\+O@{T\+W\+O}}
+\index{T\+W\+O@{T\+W\+O}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+Device}}
+\subsubsection[{T\+W\+O}]{\setlength{\rightskip}{0pt plus 5cm}final int com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+Device.\+T\+W\+O = 2\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device_a8f69accf3efa61a642b5e8693f7f158a}
+The Constant T\+W\+O. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+main/java/com/libsensorj/concretesensor/\hyperlink{HCSR04Device_8java}{H\+C\+S\+R04\+Device.\+java}\end{DoxyCompactItemize}

@@ -1,3 +1,22 @@
+/*
+ * #%L
+ * **********************************************************************
+ * ORGANIZATION  :  IFBA
+ * PROJECT       :  libsensorj
+ * FILENAME      :  MockGpioFactory.java  
+ * 
+ * This file is part of the LibsensorJ project,
+ * An extensible library for sensors / actuators using the Pi4J framework of the Raspberry Pi.
+ * **********************************************************************
+ * 
+ * Created:      [yyyy/mm/dd creation date]
+ * Last Changed: 24/11/2014 
+ * 
+ * @author: Júnior Mascarenhas       <A HREF="mailto:[juniorug@gmail.com]">[Júnior]</A>
+ * @see [https://github.com/juniorug/libsensorj]
+ * 
+ * #L%
+ */
 package com.libsensorj.mock;
 
 /*
@@ -47,26 +66,29 @@ import com.pi4j.io.gpio.impl.GpioControllerImpl;
  * Gordon Henderson @ <a href="https://projects.drogon.net/">https://projects.drogon.net/</a>)
  * </blockquote>
  * </p>
- * 
- * @see #com.pi4j.io.gpio.Gpio
- * 
- * @see <a href="http://www.pi4j.com/">http://www.pi4j.com/</a>
+ *
  * @author Robert Savage (<a
  *         href="http://www.savagehomeautomation.com">http://www.savagehomeautomation.com</a>)
+ * @see #com.pi4j.io.gpio.Gpio
+ * @see <a href="http://www.pi4j.com/">http://www.pi4j.com/</a>
  */
 public class MockGpioFactory {
 
     // we only allow a single default provider to exists
+    /** The provider. */
     private static MockGpioProvider provider = null;
     
     // private constructor 
+    /**
+     * Instantiates a new mock gpio factory.
+     */
     private MockGpioFactory() {
         // forbid object construction 
     }
     
     /**
-     * Create New GPIO Controller instance
-     * 
+     * Create New GPIO Controller instance.
+     *
      * @return Return a new GpioController impl instance.
      */
     public static GpioController getInstance() {
@@ -75,6 +97,11 @@ public class MockGpioFactory {
     }
     
     
+    /**
+     * Gets the mock provider.
+     *
+     * @return the mock provider
+     */
     public static MockGpioProvider getMockProvider() {
         // if a provider has not been created, then create a new instance
         if (provider == null) {

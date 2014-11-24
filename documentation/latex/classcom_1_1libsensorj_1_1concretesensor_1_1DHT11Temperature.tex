@@ -1,0 +1,223 @@
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature}{}\section{com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Temperature Class Reference}
+\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature}\index{com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Temperature@{com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Temperature}}
+Inheritance diagram for com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Temperature\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a81324fa18ad12062d493a880f3fbda67}{D\+H\+T11\+Temperature} (int \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a312572f2f0bad8b41d171481ef4e3138}{gpio\+Pin})
+\item 
+\hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a02bbdf30c922adcbde84597bf698ff41}{D\+H\+T11\+Temperature} ()
+\item 
+void \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a599358623598fb0076dc0a2e07978f0b}{get\+Instance} ()
+\item 
+synchronized double \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_ab0b6a73583d9244271174a3d896f5ed3}{get\+Temperature\+In\+Celsius} ()
+\item 
+synchronized double \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_aa564f9c66609426711cbd0fbfe6837e3}{get\+Temperature\+In\+Fahrenheit} ()
+\item 
+synchronized double \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a2c1a2bfaaf97612a862079979394ff34}{get\+Temperature\+In\+Kelvin} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a0ed494577e6a3c68dc737b60f926269d}{check\+For\+Updates} ()
+\item 
+double \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_abb836186013ae429e2cfde981154969b}{get\+Temperature} (Temperature\+Scale from)
+\item 
+double \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a061220e6439c2014ab81384738c07734}{parse\+Temperature} (String value)
+\item 
+String \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a2e5125c490d1b7b28a359cf702334fd7}{read\+Values} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+String \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_af16dd6a4c88dedacb8a4d69d90eff670}{last\+Value}
+\item 
+long \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a00ec2e3e31bcaf04f497d5c503a84c5e}{last\+Check}
+\item 
+final int \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a312572f2f0bad8b41d171481ef4e3138}{gpio\+Pin}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final String \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a123ae6845e0cc1d1ec859cf7cfb78004}{T\+E\+M\+P\+\_\+\+S\+T\+R} = \char`\"{}Temp =\char`\"{}
+\item 
+static final int \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_af8bf5091500d4dcb3b5a0663279359e2}{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+I\+N} = 4
+\item 
+static final long \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a7a5b6b6685407c05809a7e4c97358dd4}{L\+A\+S\+T\+\_\+\+C\+H\+E\+C\+K\+\_\+\+D\+I\+F\+F} = 3000
+\item 
+static final Logger \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a96d485fc09496c1b5a320a30bb3400c9}{L\+O\+G\+G\+E\+R}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The Class \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature}{D\+H\+T11\+Temperature}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a81324fa18ad12062d493a880f3fbda67}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}!D\+H\+T11\+Temperature@{D\+H\+T11\+Temperature}}
+\index{D\+H\+T11\+Temperature@{D\+H\+T11\+Temperature}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}}
+\subsubsection[{D\+H\+T11\+Temperature}]{\setlength{\rightskip}{0pt plus 5cm}com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Temperature.\+D\+H\+T11\+Temperature (
+\begin{DoxyParamCaption}
+\item[{int}]{gpio\+Pin}
+\end{DoxyParamCaption}
+)}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a81324fa18ad12062d493a880f3fbda67}
+Instantiates a new D\+Ht11 temperature.
+
+
+\begin{DoxyParams}{Parameters}
+{\em gpio\+Pin} & the gpio pin \\
+\hline
+\end{DoxyParams}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a02bbdf30c922adcbde84597bf698ff41}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}!D\+H\+T11\+Temperature@{D\+H\+T11\+Temperature}}
+\index{D\+H\+T11\+Temperature@{D\+H\+T11\+Temperature}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}}
+\subsubsection[{D\+H\+T11\+Temperature}]{\setlength{\rightskip}{0pt plus 5cm}com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Temperature.\+D\+H\+T11\+Temperature (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a02bbdf30c922adcbde84597bf698ff41}
+Instantiates a new D\+Ht11 temperature. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a0ed494577e6a3c68dc737b60f926269d}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}!check\+For\+Updates@{check\+For\+Updates}}
+\index{check\+For\+Updates@{check\+For\+Updates}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}}
+\subsubsection[{check\+For\+Updates}]{\setlength{\rightskip}{0pt plus 5cm}void com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Temperature.\+check\+For\+Updates (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a0ed494577e6a3c68dc737b60f926269d}
+Check for updates. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a599358623598fb0076dc0a2e07978f0b}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}}
+\subsubsection[{get\+Instance}]{\setlength{\rightskip}{0pt plus 5cm}void com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Temperature.\+get\+Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a599358623598fb0076dc0a2e07978f0b}
+Gets the single instance of I\+Sensor.
+
+\begin{DoxyReturn}{Returns}
+single instance of I\+Sensor 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{interfacecom_1_1libsensorj_1_1interfaces_1_1ISensor_a3c3db93a33adecde81a528651790f75e}{com.\+libsensorj.\+interfaces.\+I\+Sensor}.
+
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_abb836186013ae429e2cfde981154969b}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}!get\+Temperature@{get\+Temperature}}
+\index{get\+Temperature@{get\+Temperature}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}}
+\subsubsection[{get\+Temperature}]{\setlength{\rightskip}{0pt plus 5cm}double com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Temperature.\+get\+Temperature (
+\begin{DoxyParamCaption}
+\item[{Temperature\+Scale}]{from}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_abb836186013ae429e2cfde981154969b}
+Gets the temperature.
+
+
+\begin{DoxyParams}{Parameters}
+{\em from} & the from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the temperature 
+\end{DoxyReturn}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_ab0b6a73583d9244271174a3d896f5ed3}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}!get\+Temperature\+In\+Celsius@{get\+Temperature\+In\+Celsius}}
+\index{get\+Temperature\+In\+Celsius@{get\+Temperature\+In\+Celsius}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}}
+\subsubsection[{get\+Temperature\+In\+Celsius}]{\setlength{\rightskip}{0pt plus 5cm}synchronized double com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Temperature.\+get\+Temperature\+In\+Celsius (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_ab0b6a73583d9244271174a3d896f5ed3}
+Gets the temperature in celsius.
+
+\begin{DoxyReturn}{Returns}
+the temperature in celsius 
+\end{DoxyReturn}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_aa564f9c66609426711cbd0fbfe6837e3}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}!get\+Temperature\+In\+Fahrenheit@{get\+Temperature\+In\+Fahrenheit}}
+\index{get\+Temperature\+In\+Fahrenheit@{get\+Temperature\+In\+Fahrenheit}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}}
+\subsubsection[{get\+Temperature\+In\+Fahrenheit}]{\setlength{\rightskip}{0pt plus 5cm}synchronized double com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Temperature.\+get\+Temperature\+In\+Fahrenheit (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_aa564f9c66609426711cbd0fbfe6837e3}
+Gets the temperature in fahrenheit.
+
+\begin{DoxyReturn}{Returns}
+the temperature in fahrenheit 
+\end{DoxyReturn}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a2c1a2bfaaf97612a862079979394ff34}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}!get\+Temperature\+In\+Kelvin@{get\+Temperature\+In\+Kelvin}}
+\index{get\+Temperature\+In\+Kelvin@{get\+Temperature\+In\+Kelvin}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}}
+\subsubsection[{get\+Temperature\+In\+Kelvin}]{\setlength{\rightskip}{0pt plus 5cm}synchronized double com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Temperature.\+get\+Temperature\+In\+Kelvin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a2c1a2bfaaf97612a862079979394ff34}
+Gets the temperature in kelvin.
+
+\begin{DoxyReturn}{Returns}
+the temperature in kelvin 
+\end{DoxyReturn}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a061220e6439c2014ab81384738c07734}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}!parse\+Temperature@{parse\+Temperature}}
+\index{parse\+Temperature@{parse\+Temperature}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}}
+\subsubsection[{parse\+Temperature}]{\setlength{\rightskip}{0pt plus 5cm}double com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Temperature.\+parse\+Temperature (
+\begin{DoxyParamCaption}
+\item[{String}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a061220e6439c2014ab81384738c07734}
+Parses the temperature.
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the double 
+\end{DoxyReturn}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a2e5125c490d1b7b28a359cf702334fd7}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}!read\+Values@{read\+Values}}
+\index{read\+Values@{read\+Values}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}}
+\subsubsection[{read\+Values}]{\setlength{\rightskip}{0pt plus 5cm}String com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Temperature.\+read\+Values (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a2e5125c490d1b7b28a359cf702334fd7}
+Read values.
+
+\begin{DoxyReturn}{Returns}
+the value readed as a string 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_af8bf5091500d4dcb3b5a0663279359e2}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}!D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+I\+N@{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+I\+N}}
+\index{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+I\+N@{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+I\+N}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}}
+\subsubsection[{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+I\+N}]{\setlength{\rightskip}{0pt plus 5cm}final int com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Temperature.\+D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+I\+N = 4\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_af8bf5091500d4dcb3b5a0663279359e2}
+The Constant D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+I\+N. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a312572f2f0bad8b41d171481ef4e3138}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}!gpio\+Pin@{gpio\+Pin}}
+\index{gpio\+Pin@{gpio\+Pin}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}}
+\subsubsection[{gpio\+Pin}]{\setlength{\rightskip}{0pt plus 5cm}final int com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Temperature.\+gpio\+Pin\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a312572f2f0bad8b41d171481ef4e3138}
+The gpio pin. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a7a5b6b6685407c05809a7e4c97358dd4}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}!L\+A\+S\+T\+\_\+\+C\+H\+E\+C\+K\+\_\+\+D\+I\+F\+F@{L\+A\+S\+T\+\_\+\+C\+H\+E\+C\+K\+\_\+\+D\+I\+F\+F}}
+\index{L\+A\+S\+T\+\_\+\+C\+H\+E\+C\+K\+\_\+\+D\+I\+F\+F@{L\+A\+S\+T\+\_\+\+C\+H\+E\+C\+K\+\_\+\+D\+I\+F\+F}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}}
+\subsubsection[{L\+A\+S\+T\+\_\+\+C\+H\+E\+C\+K\+\_\+\+D\+I\+F\+F}]{\setlength{\rightskip}{0pt plus 5cm}final long com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Temperature.\+L\+A\+S\+T\+\_\+\+C\+H\+E\+C\+K\+\_\+\+D\+I\+F\+F = 3000\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a7a5b6b6685407c05809a7e4c97358dd4}
+The Constant L\+A\+S\+T\+\_\+\+C\+H\+E\+C\+K\+\_\+\+D\+I\+F\+F. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a00ec2e3e31bcaf04f497d5c503a84c5e}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}!last\+Check@{last\+Check}}
+\index{last\+Check@{last\+Check}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}}
+\subsubsection[{last\+Check}]{\setlength{\rightskip}{0pt plus 5cm}long com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Temperature.\+last\+Check\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a00ec2e3e31bcaf04f497d5c503a84c5e}
+The last check. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_af16dd6a4c88dedacb8a4d69d90eff670}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}!last\+Value@{last\+Value}}
+\index{last\+Value@{last\+Value}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}}
+\subsubsection[{last\+Value}]{\setlength{\rightskip}{0pt plus 5cm}String com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Temperature.\+last\+Value\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_af16dd6a4c88dedacb8a4d69d90eff670}
+The last value. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a96d485fc09496c1b5a320a30bb3400c9}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}!L\+O\+G\+G\+E\+R@{L\+O\+G\+G\+E\+R}}
+\index{L\+O\+G\+G\+E\+R@{L\+O\+G\+G\+E\+R}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}}
+\subsubsection[{L\+O\+G\+G\+E\+R}]{\setlength{\rightskip}{0pt plus 5cm}final Logger com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Temperature.\+L\+O\+G\+G\+E\+R\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a96d485fc09496c1b5a320a30bb3400c9}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= LogManager
+            .getLogger(\hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a02bbdf30c922adcbde84597bf698ff41}{DHT11Temperature}.class.getName())
+\end{DoxyCode}
+The Constant L\+O\+G\+G\+E\+R. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a123ae6845e0cc1d1ec859cf7cfb78004}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}!T\+E\+M\+P\+\_\+\+S\+T\+R@{T\+E\+M\+P\+\_\+\+S\+T\+R}}
+\index{T\+E\+M\+P\+\_\+\+S\+T\+R@{T\+E\+M\+P\+\_\+\+S\+T\+R}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Temperature}}
+\subsubsection[{T\+E\+M\+P\+\_\+\+S\+T\+R}]{\setlength{\rightskip}{0pt plus 5cm}final String com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Temperature.\+T\+E\+M\+P\+\_\+\+S\+T\+R = \char`\"{}Temp =\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature_a123ae6845e0cc1d1ec859cf7cfb78004}
+The Constant T\+E\+M\+P\+\_\+\+S\+T\+R. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+main/java/com/libsensorj/concretesensor/\hyperlink{DHT11Temperature_8java}{D\+H\+T11\+Temperature.\+java}\end{DoxyCompactItemize}

@@ -1,3 +1,22 @@
+/*
+ * #%L
+ * **********************************************************************
+ * ORGANIZATION  :  IFBA
+ * PROJECT       :  libsensorj
+ * FILENAME      :  DHT11TemperatureTests.java  
+ * 
+ * This file is part of the LibsensorJ project,
+ * An extensible library for sensors / actuators using the Pi4J framework of the Raspberry Pi.
+ * **********************************************************************
+ * 
+ * Created:      [yyyy/mm/dd creation date]
+ * Last Changed: 24/11/2014 
+ * 
+ * @author: Júnior Mascarenhas       <A HREF="mailto:[juniorug@gmail.com]">[Júnior]</A>
+ * @see [https://github.com/juniorug/libsensorj]
+ * 
+ * #L%
+ */
 package com.libsensorj.concretesensor.test;
 
 import static org.junit.Assert.assertTrue;
@@ -30,22 +49,39 @@ import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 
 
+/**
+ * The Class DHT11TemperatureTests.
+ */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(DHT11Temperature.class)
 @PowerMockIgnore( {"javax.management.*"}) 
 public class DHT11TemperatureTests {
 
+    /** The provider. */
     private static MockGpioProvider provider;
+    
+    /** The gpio. */
     private static GpioController gpio;
+    
+    /** The pin. */
     private static GpioPinDigitalInput pin;
+    
+    /** The pin monitored state. */
     private static PinState pinMonitoredState;
+    
+    /** The Constant DATA_READED. */
     private static final String DATA_READED = "Using pin #4Data (40): 0x32 0x0 0x1d 0x0 0x4fTemp = 29 *C, Hum = 50 %";
+    
+    /** The Constant READVALUES_METHOD. */
     private static final String READVALUES_METHOD = "readValues";
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LogManager
             .getLogger(DHT11TemperatureTests.class.getName());
     
+    /**
+     * Setup.
+     */
     @BeforeClass 
     public static void setup() {
         // create a mock gpio provider and controller
@@ -66,6 +102,9 @@ public class DHT11TemperatureTests {
             });
     }
     
+    /**
+     * Test pin provisioned.
+     */
     @Test
     public void testPinProvisioned()  {
         // make sure that pin is provisioned
@@ -73,6 +112,9 @@ public class DHT11TemperatureTests {
         assertTrue(pins.contains(pin));
     }  
     
+    /**
+     * Test dh t11.
+     */
     @Test 
     public void testDHT11(){
         DHT11Temperature dht11 =  PowerMockito.spy(new DHT11Temperature());
