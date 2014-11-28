@@ -1,0 +1,54 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.libsensorj:libsensorj:jar:0.0.1-SNAPSHOT
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.powermock:powermock-module-junit4:jar -> duplicate declaration of version 1.5.6 @ line 111, column 15
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] Using the builder org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder with a thread count of 1
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building libsensorj 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+Downloading: https://oss.sonatype.org/content/groups/public/com/pi4j/pi4j-core/1.0-SNAPSHOT/maven-metadata.xml
+2/2 KB            Downloaded: https://oss.sonatype.org/content/groups/public/com/pi4j/pi4j-core/1.0-SNAPSHOT/maven-metadata.xml (2 KB at 0.5 KB/sec)
+Downloading: https://oss.sonatype.org/content/groups/public/com/pi4j/pi4j-parent/1.0-SNAPSHOT/maven-metadata.xml
+2/2 KB            Downloaded: https://oss.sonatype.org/content/groups/public/com/pi4j/pi4j-parent/1.0-SNAPSHOT/maven-metadata.xml (2 KB at 3.1 KB/sec)
+Downloading: https://oss.sonatype.org/content/groups/public/com/pi4j/pi4j-gpio-extension/1.0-SNAPSHOT/maven-metadata.xml
+2/2 KB            Downloaded: https://oss.sonatype.org/content/groups/public/com/pi4j/pi4j-gpio-extension/1.0-SNAPSHOT/maven-metadata.xml (2 KB at 3.3 KB/sec)
+Downloading: https://oss.sonatype.org/content/groups/public/com/pi4j/pi4j-native/1.0-SNAPSHOT/maven-metadata.xml
+765/765 B               Downloaded: https://oss.sonatype.org/content/groups/public/com/pi4j/pi4j-native/1.0-SNAPSHOT/maven-metadata.xml (765 B at 2.0 KB/sec)
+Downloading: https://oss.sonatype.org/content/groups/public/com/pi4j/pi4j-device/1.0-SNAPSHOT/maven-metadata.xml
+2/2 KB               Downloaded: https://oss.sonatype.org/content/groups/public/com/pi4j/pi4j-device/1.0-SNAPSHOT/maven-metadata.xml (2 KB at 3.1 KB/sec)
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ libsensorj ---
+[INFO] com.libsensorj:libsensorj:jar:0.0.1-SNAPSHOT
+[INFO] +- com.pi4j:pi4j-core:jar:1.0-SNAPSHOT:compile
+[INFO] +- com.pi4j:pi4j-gpio-extension:jar:1.0-SNAPSHOT:compile
+[INFO] +- com.pi4j:pi4j-device:jar:1.0-SNAPSHOT:compile
+[INFO] +- org.apache.logging.log4j:log4j-api:jar:2.1:compile
+[INFO] +- org.apache.logging.log4j:log4j-core:jar:2.1:compile
+[INFO] +- junit:junit:jar:4.11:test
+[INFO] +- org.hamcrest:hamcrest-all:jar:1.3:compile
+[INFO] +- cglib:cglib:jar:3.1:test
+[INFO] |  \- org.ow2.asm:asm:jar:4.2:test
+[INFO] +- org.powermock:powermock-module-junit4:jar:1.5.6:test
+[INFO] |  \- org.powermock:powermock-module-junit4-common:jar:1.5.6:test
+[INFO] |     +- org.powermock:powermock-core:jar:1.5.6:test
+[INFO] |     |  \- org.javassist:javassist:jar:3.18.2-GA:test
+[INFO] |     \- org.powermock:powermock-reflect:jar:1.5.6:test
+[INFO] |        \- org.objenesis:objenesis:jar:2.1:test
+[INFO] +- org.powermock:powermock-api-easymock:jar:1.5.6:test
+[INFO] |  \- org.powermock:powermock-api-support:jar:1.5.6:test
+[INFO] \- org.powermock:powermock-api-mockito:jar:1.5.6:test
+[INFO]    \- org.mockito:mockito-all:jar:1.9.5:test
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 10.929 s
+[INFO] Finished at: 2014-11-25T14:40:40-03:00
+[INFO] Final Memory: 16M/164M
+[INFO] ------------------------------------------------------------------------

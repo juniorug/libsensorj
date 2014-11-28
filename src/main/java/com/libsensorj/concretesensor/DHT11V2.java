@@ -75,7 +75,6 @@ public class DHT11V2 implements ISensor {
     public DHT11V2(int pin) {
         this(LibPins.getPin(pin));
     }
-
     /**
      * Instantiates a new DHt11 v2.
      *
