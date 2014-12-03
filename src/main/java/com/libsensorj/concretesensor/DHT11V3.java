@@ -88,7 +88,7 @@ public class DHT11V3 implements ISensor {
             public void handleGpioPinDigitalStateChangeEvent(
                     GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
-                LOGGER.info(" --> GPIO PIN STATE CHANGE: " + event.getPin()
+            	System.out.println(" --> GPIO PIN STATE CHANGE: " + event.getPin()
                         + " = " + event.getState());
             }
         });
