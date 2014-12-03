@@ -91,7 +91,7 @@ public class DHT11V2 implements ISensor {
             public void handleGpioPinDigitalStateChangeEvent(
                     GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
-                LOGGER.info(" --> GPIO PIN STATE CHANGE: " + event.getPin()
+            	System.out.println(" --> GPIO PIN STATE CHANGE: " + event.getPin()
                         + " = " + event.getState());
             }
         });
@@ -122,6 +122,7 @@ public class DHT11V2 implements ISensor {
                     counter++;
                     TimeUnit.MICROSECONDS.sleep(1);
                     if (counter == 255) {
+                    	System.out.println("first counter ==255");
                         break;
                     }
                 }
@@ -129,6 +130,7 @@ public class DHT11V2 implements ISensor {
                 laststate = dht11Pin.getState();
 
                 if (counter == 255) {
+                	System.out.println("second counter ==255. will break");
                     break;
                 }
 
@@ -146,7 +148,7 @@ public class DHT11V2 implements ISensor {
             // byte
             if ((j >= 40) && checkParity()) {
                 value.append(dht11_dat[2]).append(".").append(dht11_dat[3]);
-                LOGGER.info("temperature value readed: " + value.toString());
+                System.out.println("temperature value readed: " + value.toString());
             }
 
         } catch (InterruptedException e) {
@@ -154,6 +156,7 @@ public class DHT11V2 implements ISensor {
             LOGGER.error("InterruptedException: " + e.getMessage(), e);
         }
         if (value.toString().isEmpty()) {
+        	System.out.println("value is empty");
             value.append(-1);
         }
         return Double.parseDouble(value.toString());

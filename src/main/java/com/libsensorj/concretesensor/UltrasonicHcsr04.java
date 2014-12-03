@@ -102,7 +102,17 @@ public class UltrasonicHcsr04 implements ISensor {
             public void handleGpioPinDigitalStateChangeEvent(
                     GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
-                LOGGER.info(" --> GPIO PIN STATE CHANGE: " + event.getPin()
+            	System.out.println(" --> GPIO ECHO PIN STATE CHANGE: " + event.getPin()
+                        + " = " + event.getState());
+            }
+        });
+        
+        trigger.addListener(new GpioPinListenerDigital() {
+            @Override
+            public void handleGpioPinDigitalStateChangeEvent(
+                    GpioPinDigitalStateChangeEvent event) {
+                // display pin state on console
+            	System.out.println(" --> GPIO TRIGGER PIN STATE CHANGE: " + event.getPin()
                         + " = " + event.getState());
             }
         });
@@ -153,7 +163,7 @@ public class UltrasonicHcsr04 implements ISensor {
         if ((stopTime - startTime) <= THIRTY_EIGHT) {
             result = (stopTime - startTime) * DISTANCE_FACTOR;
         } else {
-            LOGGER.info("Timed out");
+        	System.out.println("Timed out");
             result = -1;
         }
 

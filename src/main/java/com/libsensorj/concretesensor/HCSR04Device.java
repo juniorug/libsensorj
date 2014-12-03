@@ -100,7 +100,17 @@ public class HCSR04Device implements ISensor {
             public void handleGpioPinDigitalStateChangeEvent(
                     GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
-                LOGGER.info(" --> GPIO PIN STATE CHANGE: " + event.getPin()
+            	System.out.println(" --> GPIO PIN STATE CHANGE: " + event.getPin()
+                        + " = " + event.getState());
+            }
+        });
+        
+        trigger.addListener(new GpioPinListenerDigital() {
+            @Override
+            public void handleGpioPinDigitalStateChangeEvent(
+                    GpioPinDigitalStateChangeEvent event) {
+                // display pin state on console
+            	System.out.println(" --> GPIO TRIGGER PIN STATE CHANGE: " + event.getPin()
                         + " = " + event.getState());
             }
         });
@@ -136,7 +146,7 @@ public class HCSR04Device implements ISensor {
         long delta = (stop - start);
         // echo from 0 to 1 depending on object distance cm/s
         distance = delta * SPEEDOFSOUND;
-        LOGGER.info("distance calculated: " + (distance / 2.0 / (DELAY)));
+        System.out.println("distance calculated: " + (distance / 2.0 / (DELAY)));
         return distance / 2.0 / (DELAY);
     }
 
@@ -150,6 +160,6 @@ public class HCSR04Device implements ISensor {
             echo.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
             ;
         }
-        LOGGER.info("closing sensor pins");
+        System.out.println("closing sensor pins");
     }
 }
