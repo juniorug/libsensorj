@@ -102,7 +102,17 @@ public class UltrasonicHcsr04 implements ISensor {
             public void handleGpioPinDigitalStateChangeEvent(
                     GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
-            	System.out.println(" --> GPIO PIN STATE CHANGE: " + event.getPin()
+            	System.out.println(" --> GPIO ECHO PIN STATE CHANGE: " + event.getPin()
+                        + " = " + event.getState());
+            }
+        });
+        
+        trigger.addListener(new GpioPinListenerDigital() {
+            @Override
+            public void handleGpioPinDigitalStateChangeEvent(
+                    GpioPinDigitalStateChangeEvent event) {
+                // display pin state on console
+            	System.out.println(" --> GPIO TRIGGER PIN STATE CHANGE: " + event.getPin()
                         + " = " + event.getState());
             }
         });

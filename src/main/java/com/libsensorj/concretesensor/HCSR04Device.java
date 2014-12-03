@@ -104,6 +104,16 @@ public class HCSR04Device implements ISensor {
                         + " = " + event.getState());
             }
         });
+        
+        trigger.addListener(new GpioPinListenerDigital() {
+            @Override
+            public void handleGpioPinDigitalStateChangeEvent(
+                    GpioPinDigitalStateChangeEvent event) {
+                // display pin state on console
+            	System.out.println(" --> GPIO TRIGGER PIN STATE CHANGE: " + event.getPin()
+                        + " = " + event.getState());
+            }
+        });
     }
 
     /* (non-Javadoc)
