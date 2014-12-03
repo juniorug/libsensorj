@@ -101,7 +101,7 @@ public class DHT11Temperature implements ISensor {
             public void handleGpioPinDigitalStateChangeEvent(
                     GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
-                LOGGER.info(" --> GPIO PIN STATE CHANGE: " + event.getPin()
+                System.out.println(" --> GPIO PIN STATE CHANGE: " + event.getPin()
                         + " = " + event.getState());
             }
         });
@@ -114,12 +114,14 @@ public class DHT11Temperature implements ISensor {
      * Check for updates.
      */
     private void checkForUpdates() {
+    	System.out.println("inside checkForUpdate");
         long now = System.currentTimeMillis();
         if (now - lastCheck > LAST_CHECK_DIFF) {
             String newValues = readValues();
             if (newValues.indexOf('%') > 0) {
                 lastValue = newValues;
                 lastCheck = now;
+                System.out.println("value Updated");
             }
         }
     }
@@ -208,6 +210,7 @@ public class DHT11Temperature implements ISensor {
      * @return the value readed as a string
      */
     private String readValues() {
+    	System.out.println("inside readValues");
         String result = "";
         try {
             Process p = Runtime.getRuntime().exec(
