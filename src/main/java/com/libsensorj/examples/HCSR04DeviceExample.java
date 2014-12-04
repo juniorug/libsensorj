@@ -54,7 +54,7 @@ public class HCSR04DeviceExample {
             // Get the range
             double distance = ((HCSR04Device) hcsr).getDistance();
 
-            LOGGER.info("RangeFinder result = " + distance + "mm");
+            System.out.println("RangeFinder result = " + distance + "mm");
         } while (true);
         // while (false != true)
 

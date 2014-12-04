@@ -17,11 +17,17 @@ public class HCSR04V3Example {
         final GpioController gpio = GpioFactory.getInstance();
         
       //range sensor pins
-        GpioPinDigitalOutput sensor_trigger = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, 
+        /*GpioPinDigitalOutput sensor_trigger = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, 
             "Sensor Trigger", PinState.LOW);
 
         GpioPinDigitalInput sensor_result = gpio.provisionDigitalInputPin(RaspiPin.GPIO_04, 
-            "Sensor Result", PinPullResistance.PULL_DOWN);
+            "Sensor Result", PinPullResistance.PULL_DOWN);*/
+        
+        GpioPinDigitalOutput sensor_trigger = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_23, 
+                "Sensor Trigger", PinState.LOW);
+
+            GpioPinDigitalInput sensor_result = gpio.provisionDigitalInputPin(RaspiPin.GPIO_24, 
+                "Sensor Result", PinPullResistance.PULL_DOWN);
         
         
      // Create the range sensor

@@ -31,10 +31,15 @@ public class HC_SR04_NOSENSORCLASS {
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
 
-        final GpioPinDigitalOutput trigPin = gpio.provisionDigitalOutputPin(
+        /*final GpioPinDigitalOutput trigPin = gpio.provisionDigitalOutputPin(
                 RaspiPin.GPIO_04, "Trig", PinState.LOW);
         final GpioPinDigitalInput echoPin = gpio.provisionDigitalInputPin(
-                RaspiPin.GPIO_05, "Echo");
+                RaspiPin.GPIO_05, "Echo");*/
+        
+        final GpioPinDigitalOutput trigPin = gpio.provisionDigitalOutputPin(
+                RaspiPin.GPIO_23, "Trig", PinState.LOW);
+        final GpioPinDigitalInput echoPin = gpio.provisionDigitalInputPin(
+                RaspiPin.GPIO_24, "Echo");
 
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {

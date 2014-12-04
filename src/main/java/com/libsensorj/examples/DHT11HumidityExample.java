@@ -24,12 +24,12 @@ public class DHT11HumidityExample {
 
         do {
 
-            LOGGER.info("Humidity in percent: "
+            System.out.println("Humidity in percent: "
                     + ((DHT11Humidity) dht11).getHumidity() + "%");
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-                LOGGER.error("InterruptedException: " + e.getMessage(), e);
+                System.out.println("InterruptedException: " + e.getMessage());
             }
         } while (true);
 
