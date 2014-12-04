@@ -68,7 +68,7 @@ public class HCSR04Device implements ISensor {
      */
     public HCSR04Device() {
 
-        this(RaspiPin.GPIO_23, RaspiPin.GPIO_24);
+        this(RaspiPin.GPIO_01, RaspiPin.GPIO_02);
     }
 
     /**
@@ -112,6 +112,14 @@ public class HCSR04Device implements ISensor {
                 // display pin state on console
             	System.out.println(" --> GPIO TRIGGER PIN STATE CHANGE: " + event.getPin()
                         + " = " + event.getState());
+            }
+        });
+        
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            public void run() {
+                System.out.println("Oops!");
+                gpio.shutdown();
+                System.out.println("Exiting nicely.");
             }
         });
     }

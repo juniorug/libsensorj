@@ -13,8 +13,8 @@ public class HCSR04V2Example {
     public static void main(String[] args) {
         /*Pin echoPin = RaspiPin.GPIO_00; // PI4J custom numbering (pin 11)
         Pin trigPin = RaspiPin.GPIO_07; // PI4J custom numbering (pin 7) */
-        Pin echoPin = RaspiPin.GPIO_24; // PI4J custom numbering (pin 11)
-        Pin trigPin = RaspiPin.GPIO_23; // PI4J custom numbering (pin 7)
+        Pin echoPin = RaspiPin.GPIO_02; // PI4J custom numbering (pin 11)
+        Pin trigPin = RaspiPin.GPIO_01; // PI4J custom numbering (pin 7)
         HCSR04V2 monitor = new HCSR04V2(echoPin, trigPin);
 
         while (true) {

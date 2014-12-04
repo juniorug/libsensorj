@@ -106,6 +106,13 @@ public class DHT11Temperature implements ISensor {
             }
         });
 
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            public void run() {
+                System.out.println("Oops!");
+                gpio.shutdown();
+                System.out.println("Exiting nicely.");
+            }
+        });
         // return instance;
 
     }

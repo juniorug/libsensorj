@@ -23,6 +23,14 @@ public class HCSR04V2 {
         this.echoPin = gpio.provisionDigitalInputPin(echoPin);
         this.trigPin = gpio.provisionDigitalOutputPin(trigPin);
         this.trigPin.low();
+        
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            public void run() {
+                System.out.println("Oops!");
+                gpio.shutdown();
+                System.out.println("Exiting nicely.");
+            }
+        });
     }
 
     /*
