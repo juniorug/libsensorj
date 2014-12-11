@@ -32,6 +32,7 @@ import com.pi4j.io.gpio.GpioPinDigitalMultipurpose;
 import com.pi4j.io.gpio.Pin;
 import com.pi4j.io.gpio.PinMode;
 import com.pi4j.io.gpio.PinPullResistance;
+import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
@@ -93,6 +94,9 @@ public class DHT11V3 implements ISensor {
             }
         });
         
+        // configure the pin shutdown behavior; these settings will be 
+        // automatically applied to the pin when the application is terminated 
+        dht11Pin.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
                 System.out.println("Oops!");

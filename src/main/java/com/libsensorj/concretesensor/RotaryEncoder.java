@@ -11,6 +11,7 @@ import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalInput;
 import com.pi4j.io.gpio.Pin;
 import com.pi4j.io.gpio.PinPullResistance;
+import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
@@ -75,6 +76,10 @@ public class RotaryEncoder implements ISensor{
         
         inputA.addListener(inputAListener);
  
+        // configure the pins shutdown behavior; these settings will be 
+        // automatically applied to the pin when the application is terminated 
+        inputA.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+        inputB.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
             public void run() {

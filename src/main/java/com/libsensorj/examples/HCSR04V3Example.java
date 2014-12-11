@@ -33,6 +33,10 @@ public class HCSR04V3Example {
 		GpioPinDigitalInput sensor_result = gpio.provisionDigitalInputPin(
 				RaspiPin.GPIO_02, "Sensor Result", PinPullResistance.PULL_DOWN);
 
+		// configure the pins shutdown behavior; these settings will be 
+        // automatically applied to the pin when the application is terminated 
+        sensor_trigger.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+        sensor_result.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 			public void run() {
 				System.out.println("Oops!");

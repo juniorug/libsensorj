@@ -30,6 +30,7 @@ import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalInput;
 import com.pi4j.io.gpio.PinPullResistance;
+import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
@@ -84,6 +85,9 @@ public class DHT11Humidity implements ISensor {
         final GpioPinDigitalInput dht11Hum = gpio.provisionDigitalInputPin(
                 RaspiPin.GPIO_04, PinPullResistance.PULL_DOWN);
 
+        
+        
+        
         // create and register gpio pin listener
         dht11Hum.addListener(new GpioPinListenerDigital() {
             @Override
@@ -95,6 +99,9 @@ public class DHT11Humidity implements ISensor {
             }
         });
         
+        // configure the pin shutdown behavior; these settings will be 
+        // automatically applied to the pin when the application is terminated 
+        dht11Hum.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
                 System.out.println("Oops!");

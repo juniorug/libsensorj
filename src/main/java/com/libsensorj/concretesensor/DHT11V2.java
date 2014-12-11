@@ -96,6 +96,9 @@ public class DHT11V2 implements ISensor {
             }
         });
         
+        // configure the pin shutdown behavior; these settings will be 
+        // automatically applied to the pin when the application is terminated 
+        dht11Pin.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
                 System.out.println("Oops!");

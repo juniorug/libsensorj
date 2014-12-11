@@ -117,6 +117,10 @@ public class UltrasonicHcsr04 implements ISensor {
             }
         });
         
+        // configure the pins shutdown behavior; these settings will be 
+        // automatically applied to the pin when the application is terminated 
+        echo.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+        trigger.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
                 System.out.println("Oops!");

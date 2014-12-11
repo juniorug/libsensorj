@@ -100,7 +100,7 @@ public class HCSR04Device implements ISensor {
             public void handleGpioPinDigitalStateChangeEvent(
                     GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
-            	System.out.println(" --> GPIO PIN STATE CHANGE: " + event.getPin()
+            	System.out.println(" --> GPIO ECHO PIN "+ echo.getPin().toString() + " STATE CHANGE: " + event.getPin()
                         + " = " + event.getState());
             }
         });
@@ -110,11 +110,15 @@ public class HCSR04Device implements ISensor {
             public void handleGpioPinDigitalStateChangeEvent(
                     GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
-            	System.out.println(" --> GPIO TRIGGER PIN STATE CHANGE: " + event.getPin()
+            	System.out.println(" --> GPIO TRIGGER PIN "+ trigger.getPin().toString() + " STATE CHANGE: " + event.getPin()
                         + " = " + event.getState());
             }
         });
         
+        // configure the pins shutdown behavior; these settings will be 
+        // automatically applied to the pin when the application is terminated 
+        echo.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+        trigger.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
                 System.out.println("Oops!");

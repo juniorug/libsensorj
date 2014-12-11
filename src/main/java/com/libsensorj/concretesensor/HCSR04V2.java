@@ -7,6 +7,8 @@ import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalInput;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
 import com.pi4j.io.gpio.Pin;
+import com.pi4j.io.gpio.PinPullResistance;
+import com.pi4j.io.gpio.PinState;
 
 public class HCSR04V2 {
     private final static float SOUND_SPEED = 340.29f; // speed of sound in m/s
@@ -24,6 +26,10 @@ public class HCSR04V2 {
         this.trigPin = gpio.provisionDigitalOutputPin(trigPin);
         this.trigPin.low();
         
+        // configure the pins shutdown behavior; these settings will be 
+        // automatically applied to the pin when the application is terminated 
+        this.echoPin.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+        this.trigPin.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
                 System.out.println("Oops!");
