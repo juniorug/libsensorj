@@ -134,5 +134,12 @@ public class StepperMotorExample {
 
         // final stop to ensure no motor activity
         motor.stop();
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            public void run() {
+                System.out.println("Oops!");
+                gpio.shutdown();
+                System.out.println("Exiting nicely.");
+            }
+        });
     }
 }

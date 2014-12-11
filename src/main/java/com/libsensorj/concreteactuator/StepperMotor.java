@@ -4,6 +4,7 @@ import com.libsensorj.interfaces.IActuator;
 import com.pi4j.component.motor.MotorState;
 import com.pi4j.component.motor.StepperMotorBase;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
+import com.pi4j.io.gpio.PinPullResistance;
 import com.pi4j.io.gpio.PinState;
 
 public class StepperMotor extends StepperMotorBase implements IActuator {
@@ -33,6 +34,11 @@ public class StepperMotor extends StepperMotorBase implements IActuator {
         this.pins = pins;
         this.onState = onState;
         this.offState = offState;
+        
+        for(GpioPinDigitalOutput pin: pins) {
+            pin.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+        }
+        
     }
 
     /**
@@ -45,6 +51,10 @@ public class StepperMotor extends StepperMotorBase implements IActuator {
      */
     public StepperMotor(GpioPinDigitalOutput pins[]) {
         this.pins = pins;
+        
+        for(GpioPinDigitalOutput pin: pins) {
+            pin.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+        }
     }
 
     /**
