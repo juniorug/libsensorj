@@ -9,6 +9,8 @@ import com.pi4j.io.gpio.GpioPinDigitalOutput;
 import com.pi4j.io.gpio.Pin;
 import com.pi4j.io.gpio.PinPullResistance;
 import com.pi4j.io.gpio.PinState;
+import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
+import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 
 public class HCSR04V2 {
     private final static float SOUND_SPEED = 340.29f; // speed of sound in m/s
@@ -25,6 +27,29 @@ public class HCSR04V2 {
         this.echoPin = gpio.provisionDigitalInputPin(echoPin);
         this.trigPin = gpio.provisionDigitalOutputPin(trigPin);
         this.trigPin.low();
+        
+        
+     // create and register gpio pin listener
+        this.echoPin.addListener(new GpioPinListenerDigital() {
+            @Override
+            public void handleGpioPinDigitalStateChangeEvent(
+                    GpioPinDigitalStateChangeEvent event) {
+                // display pin state on console
+                System.out.println(" --> GPIO ECHO PIN STATE CHANGE: " + event.getPin()
+                        + " = " + event.getState());
+            }
+        });
+        
+        this.trigPin.addListener(new GpioPinListenerDigital() {
+            @Override
+            public void handleGpioPinDigitalStateChangeEvent(
+                    GpioPinDigitalStateChangeEvent event) {
+                // display pin state on console
+                System.out.println(" --> GPIO TRIGGER PIN STATE CHANGE: " + event.getPin()
+                        + " = " + event.getState());
+            }
+        });
+        
         
         // configure the pins shutdown behavior; these settings will be 
         // automatically applied to the pin when the application is terminated 
@@ -45,10 +70,14 @@ public class HCSR04V2 {
      * @throws TimeoutException if a timeout occurs
      */
     public float measureDistance() throws TimeoutException {
+        System.out.println("dentro do measureDistance. chamando método triggerSensor");
         this.triggerSensor();
+        System.out.println("dentro do measureDistance.retornou do metodo triggerSensor, chamando método waitForSignal");
         this.waitForSignal();
+        System.out.println("dentro do measureDistance.retornou do metodo waitForSignal");
         long duration = this.measureSignal();
-
+        System.out.println("dentro do measureDistance.duration: " + duration);
+        System.out.println("dentro do measureDistance. valor de retorno: " + (duration * SOUND_SPEED / (2 * 10000)));
         return duration * SOUND_SPEED / (2 * 10000);
     }
 
@@ -58,8 +87,10 @@ public class HCSR04V2 {
     private void triggerSensor() {
         try {
             this.trigPin.high();
+            System.out.println("inside triggerSensor. trigpin is hight = " + trigPin.isHigh()); 
             Thread.sleep(0, TRIG_DURATION_IN_MICROS * 1000);
             this.trigPin.low();
+            System.out.println("inside triggerSensor. trigpin is low = " + trigPin.isLow()); 
         } catch (InterruptedException ex) {
             System.err.println("Interrupt during trigger");
         }
@@ -72,10 +103,12 @@ public class HCSR04V2 {
      *             if no high appears in time
      */
     private void waitForSignal() throws TimeoutException {
+        System.out.println("inside waitforsingnal");
         int countdown = TIMEOUT;
 
         while (this.echoPin.isLow() && countdown > 0) {
             countdown--;
+            System.out.println("inside waitforsingnal. ehcopin is low and countdown:" + countdown);
         }
 
         if (countdown <= 0) {
@@ -89,17 +122,20 @@ public class HCSR04V2 {
      *             if no low appears in time
      */
     private long measureSignal() throws TimeoutException {
+        System.out.println("inside measureSignal");
         int countdown = TIMEOUT;
+        
         long start = System.nanoTime();
         while (this.echoPin.isHigh() && countdown > 0) {
             countdown--;
+            System.out.println("inside measuresingnal. ehcopin is high and countdown:" + countdown);
         }
         long end = System.nanoTime();
 
         if (countdown <= 0) {
             throw new TimeoutException("Timeout waiting for signal end");
         }
-
+        System.out.println("retornando o valor em microsegundos:" + (long) Math.ceil((end - start) / 1000.0));
         return (long) Math.ceil((end - start) / 1000.0); // Return micro seconds
     }
 }
