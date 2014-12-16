@@ -105,12 +105,12 @@ public class HCSR04V2 {
     private void waitForSignal() throws TimeoutException {
         System.out.println("inside waitforsingnal");
         int countdown = TIMEOUT;
-
+        System.out.println("inside waitforsingnal. entrando no while");
         while (this.echoPin.isLow() && countdown > 0) {
             countdown--;
-            System.out.println("inside waitforsingnal. ehcopin is low and countdown:" + countdown);
+            
         }
-
+        System.out.println("inside waitforsingnal.saiu do while ehcopin.islow=" + echoPin.isLow() +" and countdown:" + countdown);
         if (countdown <= 0) {
             throw new TimeoutException("Timeout waiting for signal start");
         }
@@ -126,10 +126,11 @@ public class HCSR04V2 {
         int countdown = TIMEOUT;
         
         long start = System.nanoTime();
+        System.out.println("inside measuresingnal. entrando no while");
         while (this.echoPin.isHigh() && countdown > 0) {
             countdown--;
-            System.out.println("inside measuresingnal. ehcopin is high and countdown:" + countdown);
         }
+        System.out.println("inside measuresingnal.saiu do while ehcopin.ishigh=" + echoPin.isHigh() +" and countdown:" + countdown);
         long end = System.nanoTime();
 
         if (countdown <= 0) {
