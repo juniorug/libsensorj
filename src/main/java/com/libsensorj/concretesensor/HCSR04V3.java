@@ -17,24 +17,28 @@ public class HCSR04V3 {
      * Trigger the Range Sensor and return the result
      */
     public double getRange() {
-      System.out.println("Range Sensor Triggered");
+      System.out.println("inside getrange. Range Sensor Triggered");
 
       long start = 0;
       long diff = 0;
 
       try {
         firepulse.high();
+        System.out.println("firepulse is high = " + firepulse.isHigh());
         Thread.sleep(10);
         firepulse.low();
+        System.out.println("firepulse is low = " + firepulse.isLow());
 
         while (result_pin.isLow()) {
           start = System.nanoTime();
         }
 
+        System.out.println("fora do primeiro while");
         while (result_pin.isHigh()) {
         }
 
         diff = (System.nanoTime() - start) / 58000;
+        System.out.println("diff calculado: " + diff);
 
         return diff;
       } catch (InterruptedException e) {

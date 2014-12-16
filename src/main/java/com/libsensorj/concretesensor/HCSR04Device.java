@@ -175,7 +175,6 @@ public class HCSR04Device implements ISensor {
             trigger.setShutdownOptions(true, PinState.LOW,
                     PinPullResistance.OFF);
             echo.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-            ;
         }
         System.out.println("closing sensor pins");
     }

@@ -25,7 +25,7 @@ public class HC_SR04_NOSENSORCLASS {
 
     public static void main(String[] args) throws InterruptedException {
         System.out.println("GPIO Control - Range Sensor HC-SR04.");
-        System.out.println("Will stop is distance is smaller than " + MIN_DIST
+        System.out.println("Will stop if distance is smaller than " + MIN_DIST
                 + " cm");
 
         // create gpio controller
@@ -57,6 +57,7 @@ public class HC_SR04_NOSENSORCLASS {
                 + MIN_DIST + " cm");
         while (go) {
             double start = 0d, end = 0d;
+            System.out.println("trigger is going high");
             trigPin.high();
             // 10 microsec to trigger the module (8 ultrasound bursts at 40 kHz)
             // https://www.dropbox.com/s/615w1321sg9epjj/hc-sr04-ultrasound-timing-diagram.png
@@ -66,18 +67,22 @@ public class HC_SR04_NOSENSORCLASS {
                 ex.printStackTrace();
             }
             trigPin.low();
-
+            System.out.println("trigger is low now. will receive data. echopin.islow = " + echoPin.isLow());
             // Wait for the signal to return
-            while (echoPin.isLow())
+            while (echoPin.isLow()){
                 start = System.nanoTime();
-            // There it is
-            while (echoPin.isHigh())
+                // There it is
+            }
+            System.out.println("fora do primeiro while. echopin.ishigh = " + echoPin.isHigh());
+            while (echoPin.isHigh()) {
                 end = System.nanoTime();
-
+            }
+            System.out.println("fora do segundo while. echopin.islow = " + echoPin.isLow());
             if (end > 0 && start > 0) {
-                double pulseDuration = (end - start) / 1000000000d; // in
-                                                                    // seconds
+                double pulseDuration = (end - start) / 1000000000d; // in seconds
+                System.out.println("[start: " + start + "] [end: " + end + "] [ pulseDuration: " + pulseDuration + "]");
                 double distance = pulseDuration * DIST_FACT;
+                System.out.println("distance: " + distance);
                 if (distance < 1000) // Less than 10 meters
                     System.out.println("Distance: " + DF22.format(distance)
                             + " cm."); // + " (" + pulseDuration + " = " + end +

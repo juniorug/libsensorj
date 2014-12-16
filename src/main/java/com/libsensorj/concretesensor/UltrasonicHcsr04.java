@@ -145,6 +145,7 @@ public class UltrasonicHcsr04 implements ISensor {
     public double getRange() {
 
         try {
+            System.out.println("inside getRange, trigger is going high");
             // fire the trigger pulse
             trigger.high();
 
@@ -156,7 +157,7 @@ public class UltrasonicHcsr04 implements ISensor {
                             + e.getMessage(), e);
         }
         trigger.low();
-
+        System.out.println("inside getRange. trigger is low now = " + trigger.isLow());
         // wait for the result
 
         double startTime = System.currentTimeMillis();
@@ -165,6 +166,7 @@ public class UltrasonicHcsr04 implements ISensor {
 
             stopTime = System.currentTimeMillis();
             if ((System.currentTimeMillis() - startTime) >= FORTY) {
+                System.out.println("timeout. will break");
                 break;
             }
         } while (!echo.isHigh());
@@ -173,6 +175,7 @@ public class UltrasonicHcsr04 implements ISensor {
         // to -1 to show it timed out.
 
         if ((stopTime - startTime) <= THIRTY_EIGHT) {
+            System.out.println("stop - start < 38. result = " + ((stopTime - startTime) * DISTANCE_FACTOR));
             result = (stopTime - startTime) * DISTANCE_FACTOR;
         } else {
         	System.out.println("Timed out");
