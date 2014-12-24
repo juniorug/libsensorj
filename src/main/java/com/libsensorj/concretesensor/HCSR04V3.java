@@ -22,18 +22,18 @@ public class HCSR04V3 {
       long start = 0;
       long diff = 0;
 
-     /* try {*/
+      try {
         firepulse.high();
-        //System.out.println("firepulse is high = " + firepulse.isHigh());
-        //Thread.sleep(10);
+        System.out.println("firepulse is high = " + firepulse.isHigh());
+        Thread.sleep(10);
         firepulse.low();
-        //System.out.println("firepulse is low = " + firepulse.isLow());
+        System.out.println("firepulse is low = " + firepulse.isLow());
 
         while (result_pin.isLow()) {
           start = System.nanoTime();
         }
 
-        //System.out.println("fora do primeiro while");
+        System.out.println("fora do primeiro while");
         while (result_pin.isHigh()) {
         }
 
@@ -41,9 +41,9 @@ public class HCSR04V3 {
         System.out.println("diff calculado: " + diff);
 
         return diff;
-      /*} catch (InterruptedException e) {
+      } catch (InterruptedException e) {
         e.printStackTrace();
       }
-      return -1;*/
+      return -1;
     }
 }

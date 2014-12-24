@@ -144,20 +144,20 @@ public class UltrasonicHcsr04 implements ISensor {
      */
     public double getRange() {
 
-       /* try {*/
-           // System.out.println("inside getRange, trigger is going high");
+        try {
+            System.out.println("inside getRange, trigger is going high");
             // fire the trigger pulse
             trigger.high();
 
-           /* Thread.sleep(TWENTY);
+            Thread.sleep(TWENTY);
         } catch (InterruptedException e) {
 
             LOGGER.error(
                     "InterruptedException: Exception triggering range finder "
                             + e.getMessage(), e);
-        }*/
+        }
         trigger.low();
-        //System.out.println("inside getRange. trigger is low now = " + trigger.isLow());
+        System.out.println("inside getRange. trigger is low now = " + trigger.isLow());
         // wait for the result
 
         double startTime = System.currentTimeMillis();

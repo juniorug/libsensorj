@@ -145,7 +145,7 @@ public class HCSR04Device implements ISensor {
         // Send a pulse trigger; must be 1 and 0 with a 10 µs wait
         trigger.pulse(PULSE_TIME);
         long starttime = System.nanoTime(); // ns
-        //System.out.println("start time: " + starttime );
+        System.out.println("start time: " + starttime );
         long stop = starttime;
         long start = starttime;
         // echo will go 0 to 1 and need to save time for that. 2 seconds
@@ -154,13 +154,13 @@ public class HCSR04Device implements ISensor {
             //System.out.println("dentro do ṕrimeiro while. echo.state:" + echo.getState() + " trigger.state: " + trigger.getState());
             start = System.nanoTime();
         }
-        //System.out.println("saiu do primeiro while. [echo.state:" + echo.getState() + "] [trigger.state: " + trigger.getState() + "]");
+        System.out.println("saiu do primeiro while. [echo.state:" + echo.getState() + "] [trigger.state: " + trigger.getState() + "]");
         while ((echo.isHigh()) && (stop < starttime + DELAY * TWO)) {
             //System.out.println("dentro do segundo while. echo.state:" + echo.getState() + " trigger.state: " + trigger.getState());
             stop = System.nanoTime();
         }
         long delta = (stop - start);
-        //System.out.println("saiu do segundo while. [start: " + start + "] [stop: " + stop + "] [delta: " + delta);
+        System.out.println("saiu do segundo while. [start: " + start + "] [stop: " + stop + "] [delta: " + delta);
         // echo from 0 to 1 depending on object distance cm/s
         distance = delta * SPEEDOFSOUND;
         System.out.println("distance: " + distance);

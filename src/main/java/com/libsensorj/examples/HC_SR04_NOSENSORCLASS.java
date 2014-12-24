@@ -57,35 +57,35 @@ public class HC_SR04_NOSENSORCLASS {
                 + MIN_DIST + " cm");
         while (go) {
             double start = 0d, end = 0d;
-         //   System.out.println("trigger is going high");
+            System.out.println("trigger is going high");
             trigPin.high();
             // 10 microsec to trigger the module (8 ultrasound bursts at 40 kHz)
             // https://www.dropbox.com/s/615w1321sg9epjj/hc-sr04-ultrasound-timing-diagram.png
-           /* try {
+            try {
                 Thread.sleep(0, 10000);
             } catch (Exception ex) {
                 ex.printStackTrace();
-            }*/
+            }
             trigPin.low();
-           // System.out.println("trigger is low now. will receive data. echopin.islow = " + echoPin.isLow());
+            System.out.println("trigger is low now. will receive data. echopin.islow = " + echoPin.isLow());
             // Wait for the signal to return
             while (echoPin.isLow()){
                 start = System.nanoTime();
                 // There it is
             }
-           // System.out.println("fora do primeiro while. echopin.ishigh = " + echoPin.isHigh());
+            System.out.println("fora do primeiro while. echopin.ishigh = " + echoPin.isHigh());
             while (echoPin.isHigh()) {
                 end = System.nanoTime();
             }
-            //System.out.println("fora do segundo while. echopin.islow = " + echoPin.isLow());
+            System.out.println("fora do segundo while. echopin.islow = " + echoPin.isLow());
             if (end > 0 && start > 0) {
                 double pulseDuration = (end - start) / 1000000000d; // in seconds
-               // System.out.println("[start: " + start + "] [end: " + end + "] [ pulseDuration: " + pulseDuration + "]");
+                System.out.println("[start: " + start + "] [end: " + end + "] [ pulseDuration: " + pulseDuration + "]");
                 double distance = pulseDuration * DIST_FACT;
-                //System.out.println("distance: " + distance);
+                System.out.println("distance: " + distance);
                 if (distance < 1000) // Less than 10 meters
-                 //   System.out.println("Distance: " + DF22.format(distance)
-                   //         + " cm."); // + " (" + pulseDuration + " = " + end +
+                    System.out.println("Distance: " + DF22.format(distance)
+                            + " cm."); // + " (" + pulseDuration + " = " + end +
                                        // " - " + start + ")");
                 if (distance > 0 && distance < MIN_DIST)
                     go = false;
@@ -93,10 +93,10 @@ public class HC_SR04_NOSENSORCLASS {
                     if (distance < 0)
                         System.out.println("Dist:" + distance + ", start:"
                                 + start + ", end:" + end);
-                    /*try {
+                    try {
                         Thread.sleep(1000L);
                     } catch (Exception ex) {
-                    }*/
+                    }
                 }
             } else {
                 System.out.println("Hiccup!");
@@ -106,7 +106,7 @@ public class HC_SR04_NOSENSORCLASS {
                 }
             }
         }
-       // System.out.println("Done.");
+        System.out.println("Done.");
         trigPin.low(); // Off
 
         gpio.shutdown();

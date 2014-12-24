@@ -70,14 +70,14 @@ public class HCSR04V2 {
      * @throws TimeoutException if a timeout occurs
      */
     public float measureDistance() throws TimeoutException {
-        //System.out.println("dentro do measureDistance. chamando método triggerSensor");
+        System.out.println("dentro do measureDistance. chamando método triggerSensor");
         this.triggerSensor();
-        //System.out.println("dentro do measureDistance.retornou do metodo triggerSensor, chamando método waitForSignal");
+        System.out.println("dentro do measureDistance.retornou do metodo triggerSensor, chamando método waitForSignal");
         this.waitForSignal();
-        //System.out.println("dentro do measureDistance.retornou do metodo waitForSignal");
+        System.out.println("dentro do measureDistance.retornou do metodo waitForSignal");
         long duration = this.measureSignal();
-        //System.out.println("dentro do measureDistance.duration: " + duration);
-        //System.out.println("dentro do measureDistance. valor de retorno: " + (duration * SOUND_SPEED / (2 * 10000)));
+        System.out.println("dentro do measureDistance.duration: " + duration);
+        System.out.println("dentro do measureDistance. valor de retorno: " + (duration * SOUND_SPEED / (2 * 10000)));
         return duration * SOUND_SPEED / (2 * 10000);
     }
 
@@ -85,15 +85,15 @@ public class HCSR04V2 {
      * Put a high on the trig pin for TRIG_DURATION_IN_MICROS
      */
     private void triggerSensor() {
-        /*try {*/
+        try {
             this.trigPin.high();
-          //  System.out.println("inside triggerSensor. trigpin is hight = " + trigPin.isHigh()); 
-           // Thread.sleep(0, TRIG_DURATION_IN_MICROS * 1000);
+            System.out.println("inside triggerSensor. trigpin is hight = " + trigPin.isHigh()); 
+            Thread.sleep(0, TRIG_DURATION_IN_MICROS * 1000);
             this.trigPin.low();
-            //System.out.println("inside triggerSensor. trigpin is low = " + trigPin.isLow()); 
-        /*} catch (InterruptedException ex) {
+            System.out.println("inside triggerSensor. trigpin is low = " + trigPin.isLow()); 
+        } catch (InterruptedException ex) {
             System.err.println("Interrupt during trigger");
-        }*/
+        }
     }
 
     /**
@@ -103,9 +103,9 @@ public class HCSR04V2 {
      *             if no high appears in time
      */
     private void waitForSignal() throws TimeoutException {
-        //System.out.println("inside waitforsingnal");
+        System.out.println("inside waitforsingnal");
         int countdown = TIMEOUT;
-        //System.out.println("inside waitforsingnal. entrando no while");
+        System.out.println("inside waitforsingnal. entrando no while");
         while (this.echoPin.isLow() && countdown > 0) {
             countdown--;
             
@@ -122,11 +122,11 @@ public class HCSR04V2 {
      *             if no low appears in time
      */
     private long measureSignal() throws TimeoutException {
-        //System.out.println("inside measureSignal");
+        System.out.println("inside measureSignal");
         int countdown = TIMEOUT;
         
         long start = System.nanoTime();
-        //System.out.println("inside measuresingnal. entrando no while");
+        System.out.println("inside measuresingnal. entrando no while");
         while (this.echoPin.isHigh() && countdown > 0) {
             countdown--;
         }
