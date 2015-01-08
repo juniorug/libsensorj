@@ -30,7 +30,9 @@ import com.libsensorj.interfaces.ISensorFactory;
  */
 public class TemperatureSensorFactory implements ISensorFactory {
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.libsensorj.interfaces.ISensorFactory#createSensor()
      */
     @Override
@@ -43,7 +45,9 @@ public class TemperatureSensorFactory implements ISensorFactory {
         return new DHT11Temperature();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.libsensorj.interfaces.ISensorFactory#createEvent()
      */
     @Override

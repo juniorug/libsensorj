@@ -44,16 +44,16 @@ public class DHT11 extends ObserveableComponentBase {
 
     /** The Constant DEFAULT_PIN. */
     private static final Pin DEFAULT_PIN = RaspiPin.GPIO_04;
-    
+
     /** The Constant MAXTIMINGS. */
     private static final int MAXTIMINGS = 85;
-    
+
     /** The dht11Dat. */
     private int[] dht11Dat = { 0, 0, 0, 0, 0 };
-    
+
     /** The dht11 pin. */
     private GpioPinDigitalMultipurpose dht11Pin;
-    
+
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LogManager.getLogger(DHT11.class
             .getName());
@@ -70,7 +70,8 @@ public class DHT11 extends ObserveableComponentBase {
     /**
      * Instantiates a new DHt11.
      *
-     * @param pin the pin
+     * @param pin
+     *            the pin
      */
     public DHT11(int pin) {
         final GpioController gpio = GpioFactory.getInstance();
@@ -171,7 +172,8 @@ public class DHT11 extends ObserveableComponentBase {
     /**
      * Gets the temperature.
      *
-     * @param from the TemperatureScale
+     * @param from
+     *            the TemperatureScale
      * @return the temperature
      */
     private double getTemperature(TemperatureScale from) {

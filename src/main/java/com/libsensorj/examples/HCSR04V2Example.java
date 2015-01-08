@@ -32,15 +32,18 @@ public class HCSR04V2Example {
 
     /** The Constant WAIT_DURATION_IN_MILLIS. */
     private final static int WAIT_DURATION_IN_MILLIS = 60; // wait 60 milli s
-    
+
     /**
      * The main method.
      *
-     * @param args the arguments
+     * @param args
+     *            the arguments
      */
     public static void main(String[] args) {
-        /*Pin echoPin = RaspiPin.GPIO_00; // PI4J custom numbering (pin 11)
-        Pin trigPin = RaspiPin.GPIO_07; // PI4J custom numbering (pin 7) */
+        /*
+         * Pin echoPin = RaspiPin.GPIO_00; // PI4J custom numbering (pin 11) Pin
+         * trigPin = RaspiPin.GPIO_07; // PI4J custom numbering (pin 7)
+         */
         Pin echoPin = RaspiPin.GPIO_02; // PI4J custom numbering (pin 11)
         Pin trigPin = RaspiPin.GPIO_01; // PI4J custom numbering (pin 7)
         HCSR04V2 monitor = new HCSR04V2(echoPin, trigPin);

@@ -30,7 +30,9 @@ import com.libsensorj.interfaces.ISensorFactory;
  */
 public class HumiditySensorFactory implements ISensorFactory {
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.libsensorj.interfaces.ISensorFactory#createSensor()
      */
     @Override
@@ -40,7 +42,9 @@ public class HumiditySensorFactory implements ISensorFactory {
         return dHT11Humidity;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.libsensorj.interfaces.ISensorFactory#createEvent()
      */
     @Override

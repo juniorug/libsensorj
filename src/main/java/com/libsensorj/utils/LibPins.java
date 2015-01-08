@@ -29,7 +29,7 @@ import com.pi4j.io.gpio.RaspiPin;
  * The Class LibPins.
  */
 public class LibPins {
-    
+
     /** The gpio pins. */
     private static Map<Integer, Pin> gpioPins;
 
@@ -72,7 +72,8 @@ public class LibPins {
     /**
      * Gets the pin.
      *
-     * @param pinNumber the pin number
+     * @param pinNumber
+     *            the pin number
      * @return the pin
      */
     public static Pin getPin(int pinNumber) {

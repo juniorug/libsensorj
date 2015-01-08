@@ -37,7 +37,8 @@ public class Observer {
     /**
      * Instantiates a new observer.
      *
-     * @param observerName the observer name
+     * @param observerName
+     *            the observer name
      */
     public Observer(String observerName) {
         this.setObserverName(observerName);
@@ -55,7 +56,8 @@ public class Observer {
     /**
      * Sets the observer name.
      *
-     * @param observerName the new observer name
+     * @param observerName
+     *            the new observer name
      */
     public void setObserverName(String observerName) {
         this.observerName = observerName;

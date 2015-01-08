@@ -53,7 +53,9 @@ public class DHT11V2Factory implements ISensorFactory {
         return dht11;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.libsensorj.interfaces.ISensorFactory#createSensor()
      */
     @Override
@@ -62,7 +64,9 @@ public class DHT11V2Factory implements ISensorFactory {
         return dht11;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.libsensorj.interfaces.ISensorFactory#createEvent()
      */
     @Override

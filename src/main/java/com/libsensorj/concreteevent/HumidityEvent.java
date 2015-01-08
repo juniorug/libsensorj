@@ -27,8 +27,11 @@ import com.libsensorj.model.Observer;
  */
 public class HumidityEvent extends IEvent {
 
-    /* (non-Javadoc)
-     * @see com.libsensorj.interfaces.IEvent#attach(com.libsensorj.model.Observer)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.libsensorj.interfaces.IEvent#attach(com.libsensorj.model.Observer)
      */
     @Override
     public void attach(Observer obsever) {
@@ -36,8 +39,11 @@ public class HumidityEvent extends IEvent {
 
     }
 
-    /* (non-Javadoc)
-     * @see com.libsensorj.interfaces.IEvent#detach(com.libsensorj.model.Observer)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.libsensorj.interfaces.IEvent#detach(com.libsensorj.model.Observer)
      */
     @Override
     public void detach(Observer obsever) {
@@ -45,7 +51,9 @@ public class HumidityEvent extends IEvent {
 
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.libsensorj.interfaces.IEvent#trigger()
      */
     @Override

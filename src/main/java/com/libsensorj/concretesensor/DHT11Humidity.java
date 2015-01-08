@@ -46,26 +46,27 @@ public class DHT11Humidity implements ISensor {
 
     /** The Constant TEMP_STR. */
     private static final String HUM_STR = "Hum =";
-    
+
     /** The last value. */
     private String lastValue;
-    
+
     /** The last check. */
     private long lastCheck;
-    
+
     /** The gpio pin. */
     private final int gpioPin;
-    
+
     /** The Constant DEFAULT_PIN. */
     private static final int DEFAULT_PIN = 4;
-    
+
     /** The Constant LAST_CHECK_DIFF. */
     private static final long LAST_CHECK_DIFF = 3000;
-    
+
     /**
      * Instantiates a new DH t11 humidity.
      *
-     * @param gpioPin the gpio pin
+     * @param gpioPin
+     *            the gpio pin
      */
     public DHT11Humidity(int gpioPin) {
         this.gpioPin = gpioPin;
@@ -79,8 +80,10 @@ public class DHT11Humidity implements ISensor {
         this.gpioPin = DEFAULT_PIN;
         this.lastCheck = System.currentTimeMillis() - LAST_CHECK_DIFF;
     }
-    
-    /* (non-Javadoc)
+
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.libsensorj.interfaces.ISensor#getInstance()
      */
     @Override
@@ -90,9 +93,6 @@ public class DHT11Humidity implements ISensor {
         final GpioPinDigitalInput dht11Hum = gpio.provisionDigitalInputPin(
                 RaspiPin.GPIO_04, PinPullResistance.PULL_DOWN);
 
-        
-        
-        
         // create and register gpio pin listener
         dht11Hum.addListener(new GpioPinListenerDigital() {
             @Override
@@ -103,9 +103,9 @@ public class DHT11Humidity implements ISensor {
                         + " = " + event.getState());
             }
         });
-        
-        // configure the pin shutdown behavior; these settings will be 
-        // automatically applied to the pin when the application is terminated 
+
+        // configure the pin shutdown behavior; these settings will be
+        // automatically applied to the pin when the application is terminated
         dht11Hum.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
@@ -116,7 +116,7 @@ public class DHT11Humidity implements ISensor {
         });
         // return instance;
     }
-    
+
     /**
      * Check for updates.
      */
@@ -130,7 +130,7 @@ public class DHT11Humidity implements ISensor {
             }
         }
     }
-    
+
     /**
      * Gets the humidity.
      *
@@ -140,22 +140,23 @@ public class DHT11Humidity implements ISensor {
         checkForUpdates();
         return parseHumidity(lastValue);
     }
-    
+
     /**
      * Parses the Humidity.
      *
-     * @param value the string returned by adafruit
+     * @param value
+     *            the string returned by adafruit
      * @return the humidity in percent.
      */
     private double parseHumidity(String value) {
         if (value == null) {
             return Double.MIN_VALUE;
         }
-        
+
         return Double.parseDouble(value.substring(value.indexOf(HUM_STR)
                 + HUM_STR.length(), value.indexOf('%')));
     }
-    
+
     /**
      * Read values.
      *

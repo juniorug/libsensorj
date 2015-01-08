@@ -34,8 +34,10 @@ public class StepperMotorExample {
     /**
      * The main method.
      *
-     * @param args the arguments
-     * @throws InterruptedException the interrupted exception
+     * @param args
+     *            the arguments
+     * @throws InterruptedException
+     *             the interrupted exception
      */
     public static void main(String[] args) throws InterruptedException {
         System.out

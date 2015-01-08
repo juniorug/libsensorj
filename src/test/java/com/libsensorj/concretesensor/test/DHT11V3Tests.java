@@ -56,7 +56,6 @@ import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 @PowerMockIgnore({ "javax.management.*" })
 public class DHT11V3Tests {
 
-    
     /** The provider. */
     /* private static MockGpioProvider provider; */
 
@@ -70,7 +69,7 @@ public class DHT11V3Tests {
     private static PinState pinMonitoredState;
 
     /** The Constant DATA_READED. */
-    private static final double DATA_READED = 29 ;
+    private static final double DATA_READED = 29;
 
     /** The Constant READVALUES_METHOD. */
     private static final String READVALUE_METHOD = "readValue";
@@ -78,7 +77,7 @@ public class DHT11V3Tests {
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LogManager
             .getLogger(DHT11V3Tests.class.getName());
-    
+
     /**
      * Setup.
      */
@@ -105,7 +104,7 @@ public class DHT11V3Tests {
             }
         });
     }
-    
+
     /**
      * Test pin provisioned.
      */

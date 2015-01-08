@@ -87,8 +87,10 @@ public class HCSR04Device implements ISensor {
     /**
      * Instantiates a new HCS r04 device.
      *
-     * @param trigger the trigger
-     * @param echo the echo
+     * @param trigger
+     *            the trigger
+     * @param echo
+     *            the echo
      */
     public HCSR04Device(Pin trigger, Pin echo) {
         final GpioController gpio = GpioFactory.getInstance();

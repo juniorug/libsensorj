@@ -30,14 +30,16 @@ public abstract class IEvent extends ObserveableComponentBase {
     /**
      * Attach.
      *
-     * @param obsever the obsever
+     * @param obsever
+     *            the obsever
      */
     public abstract void attach(Observer obsever);
 
     /**
      * Detach.
      *
-     * @param obsever the obsever
+     * @param obsever
+     *            the obsever
      */
     public abstract void detach(Observer obsever);
 

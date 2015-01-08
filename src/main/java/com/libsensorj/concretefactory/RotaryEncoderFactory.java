@@ -28,9 +28,11 @@ import com.libsensorj.interfaces.ISensorFactory;
 /**
  * A factory for creating RotaryEncoder objects.
  */
-public class RotaryEncoderFactory implements ISensorFactory{
+public class RotaryEncoderFactory implements ISensorFactory {
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.libsensorj.interfaces.ISensorFactory#createSensor()
      */
     @Override
@@ -38,12 +40,14 @@ public class RotaryEncoderFactory implements ISensorFactory{
         return new RotaryEncoder();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.libsensorj.interfaces.ISensorFactory#createEvent()
      */
     @Override
     public IEvent createEvent() {
-        //CHANGE IT!!!
+        // CHANGE IT!!!
         return new TemperatureEvent();
     }
 

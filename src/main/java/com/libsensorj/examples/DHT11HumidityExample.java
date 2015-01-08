@@ -42,7 +42,8 @@ public class DHT11HumidityExample {
     /**
      * The main method.
      *
-     * @param args the arguments
+     * @param args
+     *            the arguments
      */
     public static void main(String[] args) {
         ISensorFactory isf = new HumiditySensorFactory();

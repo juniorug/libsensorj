@@ -33,7 +33,7 @@ public class DHT11V2Example {
 
     /** The ISensor dht11. */
     private static ISensor dht11;
-    
+
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LogManager
             .getLogger(DHT11TemperatureExample.class.getName());
@@ -41,7 +41,8 @@ public class DHT11V2Example {
     /**
      * The main method.
      *
-     * @param args the arguments
+     * @param args
+     *            the arguments
      */
     public static void main(String[] args) {
 

@@ -167,7 +167,7 @@ public class DHT11V3 implements ISensor {
                 bits[idx] |= (1 << cnt);
             }
             if (cnt == 0) { // next byte?
-            
+
                 cnt = 7; // restart at MSB
                 idx++; // next byte!
             } else {

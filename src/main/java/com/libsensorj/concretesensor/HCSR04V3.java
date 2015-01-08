@@ -29,54 +29,56 @@ public class HCSR04V3 {
 
     /** The trigger. */
     GpioPinDigitalOutput trigger;
-    
+
     /** The echo. */
     GpioPinDigitalInput echo;
-    
+
     /**
      * Instantiates a new HCS r04 v3.
      *
-     * @param trigger the trigger
-     * @param echo the echo
+     * @param trigger
+     *            the trigger
+     * @param echo
+     *            the echo
      */
     public HCSR04V3(GpioPinDigitalOutput trigger, GpioPinDigitalInput echo) {
         this.trigger = trigger;
         this.echo = echo;
-      }
- 
+    }
+
     /**
      * Gets the range.
      *
      * @return the range
      */
     public double getRange() {
-      System.out.println("inside getrange. Range Sensor Triggered");
+        System.out.println("inside getrange. Range Sensor Triggered");
 
-      long start = 0;
-      long diff = 0;
+        long start = 0;
+        long diff = 0;
 
-      try {
-        trigger.high();
-        System.out.println("trigger is high = " + trigger.isHigh());
-        Thread.sleep(10);
-        trigger.low();
-        System.out.println("trigger is low = " + trigger.isLow());
+        try {
+            trigger.high();
+            System.out.println("trigger is high = " + trigger.isHigh());
+            Thread.sleep(10);
+            trigger.low();
+            System.out.println("trigger is low = " + trigger.isLow());
 
-        while (echo.isLow()) {
-          start = System.nanoTime();
+            while (echo.isLow()) {
+                start = System.nanoTime();
+            }
+
+            System.out.println("fora do primeiro while");
+            while (echo.isHigh()) {
+            }
+
+            diff = (System.nanoTime() - start) / 58000;
+            System.out.println("diff calculado: " + diff);
+
+            return diff;
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-
-        System.out.println("fora do primeiro while");
-        while (echo.isHigh()) {
-        }
-
-        diff = (System.nanoTime() - start) / 58000;
-        System.out.println("diff calculado: " + diff);
-
-        return diff;
-      } catch (InterruptedException e) {
-        e.printStackTrace();
-      }
-      return -1;
+        return -1;
     }
 }

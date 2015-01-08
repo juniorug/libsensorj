@@ -50,6 +50,9 @@ int \hyperlink{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_adc7f8
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+The Class \hyperlink{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor}{Stepper\+Motor}. 
+
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_a8b5f85a0849fd8de39b415e5cb2903ba}{}\index{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}!Stepper\+Motor@{Stepper\+Motor}}
 \index{Stepper\+Motor@{Stepper\+Motor}!com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}}
@@ -60,7 +63,7 @@ int \hyperlink{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_adc7f8
 \item[{Pin\+State}]{off\+State}
 \end{DoxyParamCaption}
 )}\label{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_a8b5f85a0849fd8de39b415e5cb2903ba}
-using this constructor requires that the consumer define the S\+T\+E\+P O\+N and S\+T\+E\+P O\+F\+F pin states
+using this constructor requires that the consumer define the S\+T\+E\+P O\+N and S\+T\+E\+P O\+F\+F pin states.
 
 
 \begin{DoxyParams}{Parameters}
@@ -78,7 +81,7 @@ using this constructor requires that the consumer define the S\+T\+E\+P O\+N and
 \item[{Gpio\+Pin\+Digital\+Output}]{pins\mbox{[}$\,$\mbox{]}}
 \end{DoxyParamCaption}
 )}\label{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_a9ac4472f2583dd20460992528a0ca370}
-default constructor; using this constructor assumes that\+: (1) a pin state of H\+I\+G\+H is M\+O\+T\+O\+R S\+T\+E\+P O\+N (2) a pin state of L\+O\+W is M\+O\+T\+O\+R S\+T\+E\+P O\+F\+F
+default constructor; using this constructor assumes that\+: (1) a pin state of H\+I\+G\+H is M\+O\+T\+O\+R S\+T\+E\+P O\+N (2) a pin state of L\+O\+W is M\+O\+T\+O\+R S\+T\+E\+P O\+F\+F.
 
 
 \begin{DoxyParams}{Parameters}
@@ -95,11 +98,11 @@ default constructor; using this constructor assumes that\+: (1) a pin state of H
 \item[{boolean}]{forward}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_a70da2be5b98bdcd51b1098cbef0525f1}
-this method performs the calculations and work to control the G\+P\+I\+O pins to move the stepper motor forward or reverse
+this method performs the calculations and work to control the G\+P\+I\+O pins to move the stepper motor forward or reverse.
 
 
 \begin{DoxyParams}{Parameters}
-{\em forward} & \\
+{\em forward} & the forward \\
 \hline
 \end{DoxyParams}
 \hypertarget{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_a589071fa722a01fd7baf7a0133038c74}{}\index{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}!get\+State@{get\+State}}
@@ -109,7 +112,7 @@ this method performs the calculations and work to control the G\+P\+I\+O pins to
 {}
 \end{DoxyParamCaption}
 )}\label{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_a589071fa722a01fd7baf7a0133038c74}
-Return the current motor state
+Return the current motor state.
 
 \begin{DoxyReturn}{Returns}
 Motor\+State 
@@ -121,6 +124,13 @@ Motor\+State
 \item[{Motor\+State}]{state}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_a8e8e397c042af5e2b00f909de199acd1}
+Motor start.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & the state \\
+\hline
+\end{DoxyParams}
 \hypertarget{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_a063d16fae6c8b67b14efd441a05dbfd6}{}\index{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}!motor\+Stop@{motor\+Stop}}
 \index{motor\+Stop@{motor\+Stop}!com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}}
 \subsubsection[{motor\+Stop}]{\setlength{\rightskip}{0pt plus 5cm}void com.\+libsensorj.\+concreteactuator.\+Stepper\+Motor.\+motor\+Stop (
@@ -128,14 +138,14 @@ Motor\+State
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_a063d16fae6c8b67b14efd441a05dbfd6}
-\hypertarget{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_a683524a2de1c7e967bc89486f9b9164b}{}\index{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}!set\+State@{set\+State}}
+Motor stop. \hypertarget{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_a683524a2de1c7e967bc89486f9b9164b}{}\index{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}!set\+State@{set\+State}}
 \index{set\+State@{set\+State}!com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}}
 \subsubsection[{set\+State}]{\setlength{\rightskip}{0pt plus 5cm}void com.\+libsensorj.\+concreteactuator.\+Stepper\+Motor.\+set\+State (
 \begin{DoxyParamCaption}
 \item[{Motor\+State}]{state}
 \end{DoxyParamCaption}
 )}\label{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_a683524a2de1c7e967bc89486f9b9164b}
-change the current stepper motor state
+change the current stepper motor state.
 
 
 \begin{DoxyParams}{Parameters}
@@ -155,22 +165,22 @@ change the current stepper motor state
 \hypertarget{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_a3fbdbefa640e24fa09c78962c56aabef}{}\index{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}!control\+Thread@{control\+Thread}}
 \index{control\+Thread@{control\+Thread}!com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}}
 \subsubsection[{control\+Thread}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Gpio\+Stepper\+Motor\+Control} com.\+libsensorj.\+concreteactuator.\+Stepper\+Motor.\+control\+Thread = new {\bf Gpio\+Stepper\+Motor\+Control}()\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_a3fbdbefa640e24fa09c78962c56aabef}
-\hypertarget{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_a89b1f9ca70656dedab935870972acf79}{}\index{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}!current\+State@{current\+State}}
+The control thread. \hypertarget{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_a89b1f9ca70656dedab935870972acf79}{}\index{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}!current\+State@{current\+State}}
 \index{current\+State@{current\+State}!com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}}
 \subsubsection[{current\+State}]{\setlength{\rightskip}{0pt plus 5cm}Motor\+State com.\+libsensorj.\+concreteactuator.\+Stepper\+Motor.\+current\+State = Motor\+State.\+S\+T\+O\+P\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_a89b1f9ca70656dedab935870972acf79}
-\hypertarget{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_a44204d0df9f310e95185bea229c1d23d}{}\index{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}!off\+State@{off\+State}}
+The current state. \hypertarget{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_a44204d0df9f310e95185bea229c1d23d}{}\index{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}!off\+State@{off\+State}}
 \index{off\+State@{off\+State}!com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}}
 \subsubsection[{off\+State}]{\setlength{\rightskip}{0pt plus 5cm}Pin\+State com.\+libsensorj.\+concreteactuator.\+Stepper\+Motor.\+off\+State = Pin\+State.\+L\+O\+W\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_a44204d0df9f310e95185bea229c1d23d}
-\hypertarget{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_abcf0537132ae7308214b40125aaeef27}{}\index{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}!on\+State@{on\+State}}
+The off state. \hypertarget{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_abcf0537132ae7308214b40125aaeef27}{}\index{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}!on\+State@{on\+State}}
 \index{on\+State@{on\+State}!com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}}
 \subsubsection[{on\+State}]{\setlength{\rightskip}{0pt plus 5cm}Pin\+State com.\+libsensorj.\+concreteactuator.\+Stepper\+Motor.\+on\+State = Pin\+State.\+H\+I\+G\+H\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_abcf0537132ae7308214b40125aaeef27}
-\hypertarget{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_aefca907f907fd398b7bcdd902e04b928}{}\index{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}!pins@{pins}}
+The on state. \hypertarget{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_aefca907f907fd398b7bcdd902e04b928}{}\index{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}!pins@{pins}}
 \index{pins@{pins}!com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}}
 \subsubsection[{pins}]{\setlength{\rightskip}{0pt plus 5cm}Gpio\+Pin\+Digital\+Output com.\+libsensorj.\+concreteactuator.\+Stepper\+Motor.\+pins\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_aefca907f907fd398b7bcdd902e04b928}
-\hypertarget{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_adc7f82436f61b2a32539f5af34b1c681}{}\index{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}!sequence\+Index@{sequence\+Index}}
+The pins. \hypertarget{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_adc7f82436f61b2a32539f5af34b1c681}{}\index{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}!sequence\+Index@{sequence\+Index}}
 \index{sequence\+Index@{sequence\+Index}!com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor@{com\+::libsensorj\+::concreteactuator\+::\+Stepper\+Motor}}
 \subsubsection[{sequence\+Index}]{\setlength{\rightskip}{0pt plus 5cm}int com.\+libsensorj.\+concreteactuator.\+Stepper\+Motor.\+sequence\+Index = 0\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor_adc7f82436f61b2a32539f5af34b1c681}
-
+The sequence index. 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

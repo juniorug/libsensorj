@@ -30,7 +30,9 @@ import com.libsensorj.interfaces.ISensorFactory;
  */
 public class UltrasonicRangeFinderFactory implements ISensorFactory {
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.libsensorj.interfaces.ISensorFactory#createSensor()
      */
     @Override
@@ -38,7 +40,9 @@ public class UltrasonicRangeFinderFactory implements ISensorFactory {
         return new UltrasonicHcsr04();
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.libsensorj.interfaces.ISensorFactory#createEvent()
      */
     @Override

@@ -104,7 +104,6 @@ public class DHT11HumidityTests {
         });
     }
 
-  
     /**
      * Test pin provisioned.
      */

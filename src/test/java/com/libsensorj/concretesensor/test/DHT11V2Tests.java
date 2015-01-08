@@ -59,13 +59,12 @@ import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 @PowerMockIgnore({ "javax.management.*" })
 public class DHT11V2Tests {
 
-    
     /** The provider. */
-     private static MockGpioProvider provider; 
+    private static MockGpioProvider provider;
 
     /** The gpio. */
     private static GpioController gpio;
-    
+
     /** The Constant DEFAULT_PIN. */
     private static final Pin DEFAULT_PIN = RaspiPin.GPIO_04;
 
@@ -76,7 +75,7 @@ public class DHT11V2Tests {
     private static PinState pinMonitoredState;
 
     /** The Constant DATA_READED. */
-    private static final double DATA_READED = 29 ;
+    private static final double DATA_READED = 29;
 
     /** The Constant READVALUES_METHOD. */
     private static final String READVALUE_METHOD = "readValue";
@@ -84,21 +83,20 @@ public class DHT11V2Tests {
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LogManager
             .getLogger(DHT11V2Tests.class.getName());
-    
+
     /**
      * Setup.
      */
     @BeforeClass
     public static void setup() {
         // create a mock gpio provider and controller
-        provider = MockGpioFactory.getMockProvider(); 
+        provider = MockGpioFactory.getMockProvider();
         gpio = MockGpioFactory.getInstance();
 
         // provision pin for testing
         pin = gpio.provisionDigitalMultipurposePin(MockPin.DIGITAL_INPUT_PIN,
                 PinMode.DIGITAL_INPUT, PinPullResistance.PULL_UP);
 
-        
         // register pin listener
         pin.addListener(new GpioPinListenerDigital() {
             public void handleGpioPinDigitalStateChangeEvent(
@@ -112,7 +110,7 @@ public class DHT11V2Tests {
             }
         });
     }
-    
+
     /**
      * Test pin provisioned.
      */
@@ -128,29 +126,28 @@ public class DHT11V2Tests {
      */
     @Test
     public void testGetTemperatureInCelsius() {
-        //suppress(constructor(DHT11V2.class));
+        // suppress(constructor(DHT11V2.class));
         DHT11V2 dht11 = PowerMockito.spy(new DHT11V2(DEFAULT_PIN));
-        
+
         try {
-            PowerMockito.whenNew(DHT11V2.class).withNoArguments().thenReturn(dht11);
+            PowerMockito.whenNew(DHT11V2.class).withNoArguments()
+                    .thenReturn(dht11);
             PowerMockito.verifyNew(DHT11V2.class).withNoArguments();
         } catch (Exception e) {
             // TODO Auto-generated catch block
             LOGGER.debug("exception when verifying: " + e.getMessage(), e);
         }
 
-        /*DHT11Temperature dht11 = PowerMockito.spy(new DHT11Temperature());*/
-       /* 
-        try {
-            when(dht11, method(DHT11V2.class, READVALUE_METHOD))
-                    .withNoArguments().thenReturn(DATA_READED);
-        } catch (Exception e) {
-            LOGGER.error(
-                    "Exception: Could not test the method " + e.getMessage(), e);
-        }
-
-        Assert.assertEquals(29, dht11.getTemperatureInCelsius(), 0);*/
-        Assert.assertEquals(29,29);
+        /* DHT11Temperature dht11 = PowerMockito.spy(new DHT11Temperature()); */
+        /*
+         * try { when(dht11, method(DHT11V2.class, READVALUE_METHOD))
+         * .withNoArguments().thenReturn(DATA_READED); } catch (Exception e) {
+         * LOGGER.error( "Exception: Could not test the method " +
+         * e.getMessage(), e); }
+         * 
+         * Assert.assertEquals(29, dht11.getTemperatureInCelsius(), 0);
+         */
+        Assert.assertEquals(29, 29);
         /*
          * DHT11Temperature dht11 =
          * PowerMock.createPartialMock(DHT11Temperature.class,
@@ -167,18 +164,17 @@ public class DHT11V2Tests {
      */
     @Test
     public void testGetTemperatureInFahrenheit() {
-        /*DHT11V2 dht11 = PowerMockito.spy(new DHT11V2());
-
-        try {
-            when(dht11, method(DHT11V2.class, READVALUE_METHOD))
-                    .withNoArguments().thenReturn(DATA_READED);
-        } catch (Exception e) {
-            LOGGER.error(
-                    "Exception: Could not test the method " + e.getMessage(), e);
-        }
-
-        Assert.assertEquals(84.2, dht11.getTemperatureInFahrenheit(), 0);*/
-        Assert.assertEquals(29,29);
+        /*
+         * DHT11V2 dht11 = PowerMockito.spy(new DHT11V2());
+         * 
+         * try { when(dht11, method(DHT11V2.class, READVALUE_METHOD))
+         * .withNoArguments().thenReturn(DATA_READED); } catch (Exception e) {
+         * LOGGER.error( "Exception: Could not test the method " +
+         * e.getMessage(), e); }
+         * 
+         * Assert.assertEquals(84.2, dht11.getTemperatureInFahrenheit(), 0);
+         */
+        Assert.assertEquals(29, 29);
 
     }
 
@@ -187,18 +183,17 @@ public class DHT11V2Tests {
      */
     @Test
     public void testGetTemperatureInKelvin() {
-       /* DHT11V2 dht11 = PowerMockito.spy(new DHT11V2());
-
-        try {
-            when(dht11, method(DHT11V2.class, READVALUE_METHOD))
-                    .withNoArguments().thenReturn(DATA_READED);
-        } catch (Exception e) {
-            LOGGER.error(
-                    "Exception: Could not test the method " + e.getMessage(), e);
-        }
-
-        Assert.assertEquals(302.15, dht11.getTemperatureInKelvin(), 0);*/
-        Assert.assertEquals(29,29);
+        /*
+         * DHT11V2 dht11 = PowerMockito.spy(new DHT11V2());
+         * 
+         * try { when(dht11, method(DHT11V2.class, READVALUE_METHOD))
+         * .withNoArguments().thenReturn(DATA_READED); } catch (Exception e) {
+         * LOGGER.error( "Exception: Could not test the method " +
+         * e.getMessage(), e); }
+         * 
+         * Assert.assertEquals(302.15, dht11.getTemperatureInKelvin(), 0);
+         */
+        Assert.assertEquals(29, 29);
 
     }
 }

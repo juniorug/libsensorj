@@ -20,10 +20,9 @@
 package com.libsensorj.listeners;
 
 /**
- * The listener interface for receiving rotaryEncoder events.
- * The class that is interested in processing a rotaryEncoder
- * event implements this interface, and the object created
- * with that class is registered with a component using the
+ * The listener interface for receiving rotaryEncoder events. The class that is
+ * interested in processing a rotaryEncoder event implements this interface, and
+ * the object created with that class is registered with a component using the
  * component's <code>addRotaryEncoderListener<code> method. When
  * the rotaryEncoder event occurs, that object's appropriate
  * method is invoked.
@@ -31,18 +30,20 @@ package com.libsensorj.listeners;
  * @see RotaryEncoderEvent
  */
 public interface RotaryEncoderListener {
-    
+
     /**
      * Turned clockwise.
      *
-     * @param encoderValue the encoder value
+     * @param encoderValue
+     *            the encoder value
      */
     void turnedClockwise(long encoderValue);
-    
+
     /**
      * Turned counterclockwise.
      *
-     * @param encoderValue the encoder value
+     * @param encoderValue
+     *            the encoder value
      */
     void turnedCounterclockwise(long encoderValue);
 

@@ -46,30 +46,32 @@ package com.libsensorj.mock;
  * #L%
  */
 
-
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.impl.GpioControllerImpl;
 
 /**
  * <p>
- * This factory class provides a static method to create new 'GpioController' instances.
+ * This factory class provides a static method to create new 'GpioController'
+ * instances.
  * </p>
  * 
  * <p>
- * Before using the Pi4J library, you need to ensure that the Java VM in configured with access to
- * the following system libraries:
+ * Before using the Pi4J library, you need to ensure that the Java VM in
+ * configured with access to the following system libraries:
  * <ul>
  * <li>pi4j</li>
  * <li>wiringPi</li>
  * </ul>
- * <blockquote> This library depends on the wiringPi native system library.</br> (developed by
- * Gordon Henderson @ <a href="https://projects.drogon.net/">https://projects.drogon.net/</a>)
+ * <blockquote> This library depends on the wiringPi native system library.</br>
+ * (developed by Gordon Henderson @ <a
+ * href="https://projects.drogon.net/">https://projects.drogon.net/</a>)
  * </blockquote>
  * </p>
  *
  * @author Robert Savage (<a
- *         href="http://www.savagehomeautomation.com">http://www.savagehomeautomation.com</a>)
- * @see #com.pi4j.io.gpio.Gpio
+ *         href="http://www.savagehomeautomation.com">http://www
+ *         .savagehomeautomation.com</a>)
+ * @see #com
  * @see <a href="http://www.pi4j.com/">http://www.pi4j.com/</a>
  */
 public class MockGpioFactory {
@@ -77,15 +79,15 @@ public class MockGpioFactory {
     // we only allow a single default provider to exists
     /** The provider. */
     private static MockGpioProvider provider = null;
-    
-    // private constructor 
+
+    // private constructor
     /**
      * Instantiates a new mock gpio factory.
      */
     private MockGpioFactory() {
-        // forbid object construction 
+        // forbid object construction
     }
-    
+
     /**
      * Create New GPIO Controller instance.
      *
@@ -95,8 +97,7 @@ public class MockGpioFactory {
         // return a new instance of the GPIO controller
         return new GpioControllerImpl(getMockProvider());
     }
-    
-    
+
     /**
      * Gets the mock provider.
      *

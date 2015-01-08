@@ -1,3 +1,22 @@
+/*
+ * #%L
+ * **********************************************************************
+ * ORGANIZATION  :  IFBA
+ * PROJECT       :  libsensorj
+ * FILENAME      :  HCSR04NoSensorClass.java
+ *
+ * This file is part of the LibsensorJ project,
+ * An extensible library for sensors / actuators using the Pi4J framework of the Raspberry Pi.
+ * **********************************************************************
+ *
+ * Created:      [yyyy/mm/dd creation date]
+ * Last Changed: 07/01/2015
+ *
+ * @author: Júnior Mascarenhas       <A HREF="mailto:[juniorug@gmail.com]">[Júnior]</A>
+ * @see [https://github.com/juniorug/libsensorj]
+ *
+ * #L%
+ */
 package com.libsensorj.examples;
 
 import com.pi4j.io.gpio.GpioController;
@@ -11,18 +30,34 @@ import java.text.DecimalFormat;
 import java.text.Format;
 
 /**
- * @see https
+ * The Class HCSR04NoSensorClass.
+ *
+ * @see https 
  *      ://www.modmypi.com/blog/hc-sr04-ultrasonic-range-sensor-on-the-raspberry
  *      -pi
- * 
  */
 public class HCSR04NoSensorClass {
 
+    /** The Constant DF22. */
     private final static Format DF22 = new DecimalFormat("#0.00");
+
+    /** The Constant SOUND_SPEED. */
     private final static double SOUND_SPEED = 34300; // in cm, 343 m/s
+
+    /** The Constant DIST_FACT. */
     private final static double DIST_FACT = SOUND_SPEED / 2; // round trip
+
+    /** The Constant MIN_DIST. */
     private final static int MIN_DIST = 5;
 
+    /**
+     * The main method.
+     *
+     * @param args
+     *            the arguments
+     * @throws InterruptedException
+     *             the interrupted exception
+     */
     public static void main(String[] args) throws InterruptedException {
         System.out.println("GPIO Control - Range Sensor HC-SR04.");
         System.out.println("Will stop if distance is smaller than " + MIN_DIST
@@ -31,11 +66,12 @@ public class HCSR04NoSensorClass {
         // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
 
-        /*final GpioPinDigitalOutput trigPin = gpio.provisionDigitalOutputPin(
-                RaspiPin.GPIO_04, "Trig", PinState.LOW);
-        final GpioPinDigitalInput echoPin = gpio.provisionDigitalInputPin(
-                RaspiPin.GPIO_05, "Echo");*/
-        
+        /*
+         * final GpioPinDigitalOutput trigPin = gpio.provisionDigitalOutputPin(
+         * RaspiPin.GPIO_04, "Trig", PinState.LOW); final GpioPinDigitalInput
+         * echoPin = gpio.provisionDigitalInputPin( RaspiPin.GPIO_05, "Echo");
+         */
+
         final GpioPinDigitalOutput trigPin = gpio.provisionDigitalOutputPin(
                 RaspiPin.GPIO_01, "Trig", PinState.LOW);
         final GpioPinDigitalInput echoPin = gpio.provisionDigitalInputPin(
@@ -67,20 +103,26 @@ public class HCSR04NoSensorClass {
                 System.out.println(ex.getMessage() + ex);
             }
             trigPin.low();
-            System.out.println("trigger is low now. will receive data. echopin.islow = " + echoPin.isLow());
+            System.out
+                    .println("trigger is low now. will receive data. echopin.islow = "
+                            + echoPin.isLow());
             // Wait for the signal to return
-            while (echoPin.isLow()){
+            while (echoPin.isLow()) {
                 start = System.nanoTime();
                 // There it is
             }
-            System.out.println("fora do primeiro while. echopin.ishigh = " + echoPin.isHigh());
+            System.out.println("fora do primeiro while. echopin.ishigh = "
+                    + echoPin.isHigh());
             while (echoPin.isHigh()) {
                 end = System.nanoTime();
             }
-            System.out.println("fora do segundo while. echopin.islow = " + echoPin.isLow());
+            System.out.println("fora do segundo while. echopin.islow = "
+                    + echoPin.isLow());
             if (end > 0 && start > 0) {
-                double pulseDuration = (end - start) / 1000000000d; // in seconds
-                System.out.println("[start: " + start + "] [end: " + end + "] [ pulseDuration: " + pulseDuration + "]");
+                double pulseDuration = (end - start) / 1000000000d; // in
+                                                                    // seconds
+                System.out.println("[start: " + start + "] [end: " + end
+                        + "] [ pulseDuration: " + pulseDuration + "]");
                 double distance = pulseDuration * DIST_FACT;
                 System.out.println("distance: " + distance);
                 if (distance < 1000) { // Less than 10 meters

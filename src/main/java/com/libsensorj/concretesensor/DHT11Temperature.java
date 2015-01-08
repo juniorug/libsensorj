@@ -44,22 +44,22 @@ public class DHT11Temperature implements ISensor {
 
     /** The Constant TEMP_STR. */
     private static final String TEMP_STR = "Temp =";
-    
+
     /** The last value. */
     private String lastValue;
-    
+
     /** The last check. */
     private long lastCheck;
-    
+
     /** The gpio pin. */
     private final int gpioPin;
-    
+
     /** The Constant DEFAULT_PIN. */
     private static final int DEFAULT_PIN = 4;
-    
+
     /** The Constant LAST_CHECK_DIFF. */
     private static final long LAST_CHECK_DIFF = 3000;
-    
+
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LogManager
             .getLogger(DHT11Temperature.class.getName());
@@ -67,7 +67,8 @@ public class DHT11Temperature implements ISensor {
     /**
      * Instantiates a new DHt11 temperature.
      *
-     * @param gpioPin the gpio pin
+     * @param gpioPin
+     *            the gpio pin
      */
     public DHT11Temperature(int gpioPin) {
         this.gpioPin = gpioPin;
@@ -82,7 +83,9 @@ public class DHT11Temperature implements ISensor {
         this.lastCheck = System.currentTimeMillis() - LAST_CHECK_DIFF;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.libsensorj.interfaces.ISensor#getInstance()
      */
     @Override
@@ -102,13 +105,13 @@ public class DHT11Temperature implements ISensor {
             public void handleGpioPinDigitalStateChangeEvent(
                     GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
-                System.out.println(" --> GPIO PIN STATE CHANGE: " + event.getPin()
-                        + " = " + event.getState());
+                System.out.println(" --> GPIO PIN STATE CHANGE: "
+                        + event.getPin() + " = " + event.getState());
             }
         });
 
-        // configure the pin shutdown behavior; these settings will be 
-        // automatically applied to the pin when the application is terminated 
+        // configure the pin shutdown behavior; these settings will be
+        // automatically applied to the pin when the application is terminated
         dht11Temp.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
@@ -125,7 +128,7 @@ public class DHT11Temperature implements ISensor {
      * Check for updates.
      */
     private void checkForUpdates() {
-    	System.out.println("inside checkForUpdate");
+        System.out.println("inside checkForUpdate");
         long now = System.currentTimeMillis();
         if (now - lastCheck > LAST_CHECK_DIFF) {
             String newValues = readValues();
@@ -168,7 +171,8 @@ public class DHT11Temperature implements ISensor {
     /**
      * Gets the temperature.
      *
-     * @param from the from
+     * @param from
+     *            the from
      * @return the temperature
      */
     private double getTemperature(TemperatureScale from) {
@@ -191,7 +195,8 @@ public class DHT11Temperature implements ISensor {
     /**
      * Parses the temperature.
      *
-     * @param value the value
+     * @param value
+     *            the value
      * @return the double
      */
     private double parseTemperature(String value) {
@@ -221,7 +226,7 @@ public class DHT11Temperature implements ISensor {
      * @return the value readed as a string
      */
     private String readValues() {
-    	System.out.println("inside readValues");
+        System.out.println("inside readValues");
         String result = "";
         try {
             Process p = Runtime.getRuntime().exec(

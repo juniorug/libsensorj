@@ -19,7 +19,6 @@
  */
 package com.libsensorj.concretesensor.test;
 
-
 import static org.junit.Assert.assertTrue;
 import static org.powermock.api.mockito.PowerMockito.when;
 import static org.powermock.api.support.membermodification.MemberMatcher.method;
@@ -55,7 +54,6 @@ import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(UltrasonicHcsr04Tests.class)
 @PowerMockIgnore({ "javax.management.*" })
-
 public class UltrasonicHcsr04Tests {
 
     /** The provider. */

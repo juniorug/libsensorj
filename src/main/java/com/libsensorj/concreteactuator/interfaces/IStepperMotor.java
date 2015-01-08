@@ -32,54 +32,61 @@ public interface IStepperMotor extends Motor {
      * @return the steps per revolution
      */
     float getStepsPerRevolution();
-    
+
     /**
      * Sets the steps per revolution.
      *
-     * @param steps the new steps per revolution
+     * @param steps
+     *            the new steps per revolution
      */
-    void setStepsPerRevolution(int steps);    
-    
+    void setStepsPerRevolution(int steps);
+
     /**
      * Sets the step interval.
      *
-     * @param milliseconds the new step interval
+     * @param milliseconds
+     *            the new step interval
      */
     void setStepInterval(long milliseconds);
-    
+
     /**
      * Sets the step interval.
      *
-     * @param milliseconds the milliseconds
-     * @param nanoseconds the nanoseconds
+     * @param milliseconds
+     *            the milliseconds
+     * @param nanoseconds
+     *            the nanoseconds
      */
     void setStepInterval(long milliseconds, int nanoseconds);
-    
+
     /**
      * Sets the step sequence.
      *
-     * @param sequence the new step sequence
+     * @param sequence
+     *            the new step sequence
      */
     void setStepSequence(byte[] sequence);
-    
+
     /**
      * Gets the step sequence.
      *
      * @return the step sequence
      */
     byte[] getStepSequence();
-    
+
     /**
      * Rotate.
      *
-     * @param revolutions the revolutions
+     * @param revolutions
+     *            the revolutions
      */
     void rotate(double revolutions);
-    
+
     /**
      * Step.
      *
-     * @param steps the steps
+     * @param steps
+     *            the steps
      */
     void step(long steps);
 }

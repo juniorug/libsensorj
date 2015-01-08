@@ -46,7 +46,6 @@ package com.libsensorj.mock;
  * #L%
  */
 
-
 import com.pi4j.io.gpio.GpioProvider;
 import com.pi4j.io.gpio.GpioProviderBase;
 import com.pi4j.io.gpio.Pin;
@@ -60,40 +59,46 @@ public class MockGpioProvider extends GpioProviderBase implements GpioProvider {
     /** The Constant NAME. */
     public static final String NAME = "MockGpioProvider";
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.pi4j.io.gpio.GpioProviderBase#getName()
      */
     @Override
     public String getName() {
         return NAME;
     }
-    
+
     /**
      * Sets the mock state.
      *
-     * @param pin the pin
-     * @param state the state
+     * @param pin
+     *            the pin
+     * @param state
+     *            the state
      */
     public void setMockState(Pin pin, PinState state) {
         // cache pin state
-        getPinCache(pin).setState(state);    
-        
+        getPinCache(pin).setState(state);
+
         // dispatch event
         dispatchPinDigitalStateChangeEvent(pin, state);
     }
-    
+
     /**
      * Sets the mock analog value.
      *
-     * @param pin the pin
-     * @param value the value
+     * @param pin
+     *            the pin
+     * @param value
+     *            the value
      */
     public void setMockAnalogValue(Pin pin, double value) {
         // cache pin state
-        getPinCache(pin).setAnalogValue(value);    
-        
+        getPinCache(pin).setAnalogValue(value);
+
         // dispatch event
         dispatchPinAnalogValueChangeEvent(pin, value);
     }
-    
+
 }

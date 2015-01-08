@@ -28,24 +28,31 @@ import org.apache.logging.log4j.Logger;
 public class RotaryEncoderListenerImpl implements RotaryEncoderListener {
 
     /** The Constant LOGGER. */
-    private static final Logger LOGGER = LogManager.getLogger(RotaryEncoderListenerImpl.class.getName());
-    
-    /* (non-Javadoc)
+    private static final Logger LOGGER = LogManager
+            .getLogger(RotaryEncoderListenerImpl.class.getName());
+
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.libsensorj.listeners.RotaryEncoderListener#turnedClockwise(long)
      */
     @Override
     public void turnedClockwise(long encoderValue) {
         LOGGER.info("turned clockwise. Value: " + encoderValue);
-        
+
     }
 
-    /* (non-Javadoc)
-     * @see com.libsensorj.listeners.RotaryEncoderListener#turnedCounterclockwise(long)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.libsensorj.listeners.RotaryEncoderListener#turnedCounterclockwise
+     * (long)
      */
     @Override
     public void turnedCounterclockwise(long encoderValue) {
-       LOGGER.info("turned Counterclockwise. Value: " + encoderValue);
-        
+        LOGGER.info("turned Counterclockwise. Value: " + encoderValue);
+
     }
 
 }

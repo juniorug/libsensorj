@@ -149,7 +149,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:adc7f82436f61b2a32539f5af34b1c681"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor.html#adc7f82436f61b2a32539f5af34b1c681">sequenceIndex</a> = 0</td></tr>
 <tr class="separator:adc7f82436f61b2a32539f5af34b1c681"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The Class <a class="el" href="classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor.html">StepperMotor</a>. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a8b5f85a0849fd8de39b415e5cb2903ba"></a>
 <div class="memitem">
 <div class="memproto">
@@ -179,7 +181,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>using this constructor requires that the consumer define the STEP ON and STEP OFF pin states</p>
+<p>using this constructor requires that the consumer define the STEP ON and STEP OFF pin states.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pins</td><td>GPIO digital output pins for each controller in the stepper motor </td></tr>
@@ -204,7 +206,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>default constructor; using this constructor assumes that: (1) a pin state of HIGH is MOTOR STEP ON (2) a pin state of LOW is MOTOR STEP OFF</p>
+<p>default constructor; using this constructor assumes that: (1) a pin state of HIGH is MOTOR STEP ON (2) a pin state of LOW is MOTOR STEP OFF.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pins</td><td>GPIO digital output pins for each controller in the stepper motor </td></tr>
@@ -236,10 +238,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>this method performs the calculations and work to control the GPIO pins to move the stepper motor forward or reverse</p>
+<p>this method performs the calculations and work to control the GPIO pins to move the stepper motor forward or reverse.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">forward</td><td></td></tr>
+    <tr><td class="paramname">forward</td><td>the forward </td></tr>
   </table>
   </dd>
 </dl>
@@ -258,7 +260,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Return the current motor state</p>
+<p>Return the current motor state.</p>
 <dl class="section return"><dt>Returns</dt><dd>MotorState </dd></dl>
 
 </div>
@@ -284,6 +286,13 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Motor start.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>the state </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -307,6 +316,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Motor stop. </p>
 
 </div>
 </div>
@@ -323,7 +333,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>change the current stepper motor state</p>
+<p>change the current stepper motor state.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">state</td><td>new motor state to apply </td></tr>
@@ -367,6 +377,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The control thread. </p>
 
 </div>
 </div>
@@ -387,6 +398,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The current state. </p>
 
 </div>
 </div>
@@ -407,6 +419,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The off state. </p>
 
 </div>
 </div>
@@ -427,6 +440,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The on state. </p>
 
 </div>
 </div>
@@ -447,6 +461,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The pins. </p>
 
 </div>
 </div>
@@ -467,6 +482,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The sequence index. </p>
 
 </div>
 </div>
@@ -476,7 +492,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jan 7 2015 21:43:06 for libsensorj by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jan 7 2015 22:23:50 for libsensorj by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

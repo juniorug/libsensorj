@@ -89,8 +89,10 @@ public class UltrasonicHcsr04 implements ISensor {
     /**
      * Instantiates a new ultrasonic hcsr04.
      *
-     * @param trigger the trigger
-     * @param echo the echo
+     * @param trigger
+     *            the trigger
+     * @param echo
+     *            the echo
      */
     public UltrasonicHcsr04(Pin trigger, Pin echo) {
         final GpioController gpio = GpioFactory.getInstance();
