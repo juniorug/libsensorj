@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['maxtimings',['MAXTIMINGS',['../classcom_1_1libsensorj_1_1concretesensor_1_1DHT11.html#ad986e37718b89038ff2702c80a2bb320',1,'com.libsensorj.concretesensor.DHT11.MAXTIMINGS()'],['../classcom_1_1libsensorj_1_1concretesensor_1_1DHT11V2.html#ad64749b474c180fea185aecd512eb656',1,'com.libsensorj.concretesensor.DHT11V2.MAXTIMINGS()']]]
+  ['inputa',['inputA',['../classcom_1_1libsensorj_1_1concretesensor_1_1RotaryEncoder.html#a8db79599c8930effdf715796115c6739',1,'com::libsensorj::concretesensor::RotaryEncoder']]],
+  ['inputb',['inputB',['../classcom_1_1libsensorj_1_1concretesensor_1_1RotaryEncoder.html#a7245c0e7d71506be358c5d833332630e',1,'com::libsensorj::concretesensor::RotaryEncoder']]]
 ];

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['readvalues_5fmethod',['READVALUES_METHOD',['../classcom_1_1libsensorj_1_1concretesensor_1_1test_1_1DHT11TemperatureTests.html#a2e6886cd64d8982ff792d10404bca66f',1,'com::libsensorj::concretesensor::test::DHT11TemperatureTests']]],
-  ['result',['result',['../classcom_1_1libsensorj_1_1concretesensor_1_1UltrasonicHcsr04.html#aad32f417f9106fa8f3f2e2a7416f033b',1,'com::libsensorj::concretesensor::UltrasonicHcsr04']]]
+  ['observername',['observerName',['../classcom_1_1libsensorj_1_1model_1_1Observer.html#aa1f9da7634c35f34d5f20d5bc1562428',1,'com::libsensorj::model::Observer']]],
+  ['offstate',['offState',['../classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor.html#a44204d0df9f310e95185bea229c1d23d',1,'com::libsensorj::concreteactuator::StepperMotor']]],
+  ['onstate',['onState',['../classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor.html#abcf0537132ae7308214b40125aaeef27',1,'com::libsensorj::concreteactuator::StepperMotor']]]
 ];

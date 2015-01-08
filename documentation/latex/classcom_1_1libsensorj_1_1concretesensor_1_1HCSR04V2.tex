@@ -1,0 +1,119 @@
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2}{}\section{com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+V2 Class Reference}
+\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2}\index{com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+V2@{com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+V2}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a86f68a051b00b2ec77ce45292a25a0e4}{H\+C\+S\+R04\+V2} (Pin \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a487ee7e6b30c5bdecbeaa51d5c3ee2ec}{echo\+Pin}, Pin \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_af997fea7e3e027fdb73884169208104d}{trig\+Pin})
+\item 
+float \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a44434a5a11a2db761e4c1bbb24972278}{measure\+Distance} ()  throws Timeout\+Exception 
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a0df07b24011800e10088f8ab46785b4e}{trigger\+Sensor} ()
+\item 
+void \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a1c5a84c94eff4a668ba88619f2f4575a}{wait\+For\+Signal} ()  throws Timeout\+Exception 
+\item 
+long \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_afb11bfa1d6f176a9ffed01f15cd054e1}{measure\+Signal} ()  throws Timeout\+Exception 
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final Gpio\+Pin\+Digital\+Input \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a487ee7e6b30c5bdecbeaa51d5c3ee2ec}{echo\+Pin}
+\item 
+final Gpio\+Pin\+Digital\+Output \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_af997fea7e3e027fdb73884169208104d}{trig\+Pin}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final float \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a06bf8f4b228cff0c7722431e1d40313e}{S\+O\+U\+N\+D\+\_\+\+S\+P\+E\+E\+D} = 340.\+29f
+\item 
+static final int \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a069ec2c4a1f2f1646fa38eb438bec15c}{T\+R\+I\+G\+\_\+\+D\+U\+R\+A\+T\+I\+O\+N\+\_\+\+I\+N\+\_\+\+M\+I\+C\+R\+O\+S} = 10
+\item 
+static final int \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_ae1819821d8d91299ef5cd940d8e95454}{T\+I\+M\+E\+O\+U\+T} = 2100
+\item 
+static final Gpio\+Controller \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a348bbc9324e2d0bd93246a9b27568ccd}{G\+P\+I\+O} = Gpio\+Factory.\+get\+Instance()
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a86f68a051b00b2ec77ce45292a25a0e4}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2}!H\+C\+S\+R04\+V2@{H\+C\+S\+R04\+V2}}
+\index{H\+C\+S\+R04\+V2@{H\+C\+S\+R04\+V2}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2}}
+\subsubsection[{H\+C\+S\+R04\+V2}]{\setlength{\rightskip}{0pt plus 5cm}com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+V2.\+H\+C\+S\+R04\+V2 (
+\begin{DoxyParamCaption}
+\item[{Pin}]{echo\+Pin, }
+\item[{Pin}]{trig\+Pin}
+\end{DoxyParamCaption}
+)}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a86f68a051b00b2ec77ce45292a25a0e4}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a44434a5a11a2db761e4c1bbb24972278}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2}!measure\+Distance@{measure\+Distance}}
+\index{measure\+Distance@{measure\+Distance}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2}}
+\subsubsection[{measure\+Distance}]{\setlength{\rightskip}{0pt plus 5cm}float com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+V2.\+measure\+Distance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws Timeout\+Exception}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a44434a5a11a2db761e4c1bbb24972278}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_afb11bfa1d6f176a9ffed01f15cd054e1}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2}!measure\+Signal@{measure\+Signal}}
+\index{measure\+Signal@{measure\+Signal}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2}}
+\subsubsection[{measure\+Signal}]{\setlength{\rightskip}{0pt plus 5cm}long com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+V2.\+measure\+Signal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws Timeout\+Exception\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_afb11bfa1d6f176a9ffed01f15cd054e1}
+\begin{DoxyReturn}{Returns}
+the duration of the signal in micro seconds 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Distance\+Monitor.\+Timeout\+Exception} & if no low appears in time \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a0df07b24011800e10088f8ab46785b4e}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2}!trigger\+Sensor@{trigger\+Sensor}}
+\index{trigger\+Sensor@{trigger\+Sensor}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2}}
+\subsubsection[{trigger\+Sensor}]{\setlength{\rightskip}{0pt plus 5cm}void com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+V2.\+trigger\+Sensor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a0df07b24011800e10088f8ab46785b4e}
+Put a high on the trig pin for T\+R\+I\+G\+\_\+\+D\+U\+R\+A\+T\+I\+O\+N\+\_\+\+I\+N\+\_\+\+M\+I\+C\+R\+O\+S \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a1c5a84c94eff4a668ba88619f2f4575a}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2}!wait\+For\+Signal@{wait\+For\+Signal}}
+\index{wait\+For\+Signal@{wait\+For\+Signal}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2}}
+\subsubsection[{wait\+For\+Signal}]{\setlength{\rightskip}{0pt plus 5cm}void com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+V2.\+wait\+For\+Signal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throws Timeout\+Exception\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a1c5a84c94eff4a668ba88619f2f4575a}
+Wait for a high on the echo pin
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Distance\+Monitor.\+Timeout\+Exception} & if no high appears in time \\
+\hline
+\end{DoxyExceptions}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a487ee7e6b30c5bdecbeaa51d5c3ee2ec}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2}!echo\+Pin@{echo\+Pin}}
+\index{echo\+Pin@{echo\+Pin}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2}}
+\subsubsection[{echo\+Pin}]{\setlength{\rightskip}{0pt plus 5cm}final Gpio\+Pin\+Digital\+Input com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+V2.\+echo\+Pin\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a487ee7e6b30c5bdecbeaa51d5c3ee2ec}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a348bbc9324e2d0bd93246a9b27568ccd}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2}!G\+P\+I\+O@{G\+P\+I\+O}}
+\index{G\+P\+I\+O@{G\+P\+I\+O}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2}}
+\subsubsection[{G\+P\+I\+O}]{\setlength{\rightskip}{0pt plus 5cm}final Gpio\+Controller com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+V2.\+G\+P\+I\+O = Gpio\+Factory.\+get\+Instance()\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a348bbc9324e2d0bd93246a9b27568ccd}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a06bf8f4b228cff0c7722431e1d40313e}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2}!S\+O\+U\+N\+D\+\_\+\+S\+P\+E\+E\+D@{S\+O\+U\+N\+D\+\_\+\+S\+P\+E\+E\+D}}
+\index{S\+O\+U\+N\+D\+\_\+\+S\+P\+E\+E\+D@{S\+O\+U\+N\+D\+\_\+\+S\+P\+E\+E\+D}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2}}
+\subsubsection[{S\+O\+U\+N\+D\+\_\+\+S\+P\+E\+E\+D}]{\setlength{\rightskip}{0pt plus 5cm}final float com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+V2.\+S\+O\+U\+N\+D\+\_\+\+S\+P\+E\+E\+D = 340.\+29f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a06bf8f4b228cff0c7722431e1d40313e}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_ae1819821d8d91299ef5cd940d8e95454}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2}!T\+I\+M\+E\+O\+U\+T@{T\+I\+M\+E\+O\+U\+T}}
+\index{T\+I\+M\+E\+O\+U\+T@{T\+I\+M\+E\+O\+U\+T}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2}}
+\subsubsection[{T\+I\+M\+E\+O\+U\+T}]{\setlength{\rightskip}{0pt plus 5cm}final int com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+V2.\+T\+I\+M\+E\+O\+U\+T = 2100\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_ae1819821d8d91299ef5cd940d8e95454}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a069ec2c4a1f2f1646fa38eb438bec15c}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2}!T\+R\+I\+G\+\_\+\+D\+U\+R\+A\+T\+I\+O\+N\+\_\+\+I\+N\+\_\+\+M\+I\+C\+R\+O\+S@{T\+R\+I\+G\+\_\+\+D\+U\+R\+A\+T\+I\+O\+N\+\_\+\+I\+N\+\_\+\+M\+I\+C\+R\+O\+S}}
+\index{T\+R\+I\+G\+\_\+\+D\+U\+R\+A\+T\+I\+O\+N\+\_\+\+I\+N\+\_\+\+M\+I\+C\+R\+O\+S@{T\+R\+I\+G\+\_\+\+D\+U\+R\+A\+T\+I\+O\+N\+\_\+\+I\+N\+\_\+\+M\+I\+C\+R\+O\+S}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2}}
+\subsubsection[{T\+R\+I\+G\+\_\+\+D\+U\+R\+A\+T\+I\+O\+N\+\_\+\+I\+N\+\_\+\+M\+I\+C\+R\+O\+S}]{\setlength{\rightskip}{0pt plus 5cm}final int com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+V2.\+T\+R\+I\+G\+\_\+\+D\+U\+R\+A\+T\+I\+O\+N\+\_\+\+I\+N\+\_\+\+M\+I\+C\+R\+O\+S = 10\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_a069ec2c4a1f2f1646fa38eb438bec15c}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_af997fea7e3e027fdb73884169208104d}{}\index{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2}!trig\+Pin@{trig\+Pin}}
+\index{trig\+Pin@{trig\+Pin}!com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2@{com\+::libsensorj\+::concretesensor\+::\+H\+C\+S\+R04\+V2}}
+\subsubsection[{trig\+Pin}]{\setlength{\rightskip}{0pt plus 5cm}final Gpio\+Pin\+Digital\+Output com.\+libsensorj.\+concretesensor.\+H\+C\+S\+R04\+V2.\+trig\+Pin\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04V2_af997fea7e3e027fdb73884169208104d}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+main/java/com/libsensorj/concretesensor/\hyperlink{HCSR04V2_8java}{H\+C\+S\+R04\+V2.\+java}\end{DoxyCompactItemize}

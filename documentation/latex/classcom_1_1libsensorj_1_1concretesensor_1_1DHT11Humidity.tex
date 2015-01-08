@@ -9,19 +9,85 @@ Inheritance diagram for com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Humidity\
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a86e81ac52b8c579b5025c33a8a64c360}{D\+H\+T11\+Humidity} (int \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_af27f27bf207dc6ef458fcf276657ac87}{gpio\+Pin})
+\item 
+\hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_ad6a87900c7551436bfcc1dc319f16aea}{D\+H\+T11\+Humidity} ()
+\item 
 void \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a2355dc003abad8d519440e9f6871c422}{get\+Instance} ()
+\item 
+double \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a66ffb0fb3155c71e84298dd95aaf0ef8}{get\+Humidity} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a847ff0c615dff56ae8d5da3208c3ba03}{check\+For\+Updates} ()
+\item 
+double \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a2eab8bb7fa064b72a28ac8fc3cc00378}{parse\+Humidity} (String value)
+\item 
+String \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a121d9c798d12d6f0fa7cd1257ffa1edf}{read\+Values} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+String \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a88a634746e0b70f8845fc8cddcab0cd9}{last\+Value}
+\item 
+long \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_ab366586f1db5139d46a33d8404610618}{last\+Check}
+\item 
+final int \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_af27f27bf207dc6ef458fcf276657ac87}{gpio\+Pin}
 \end{DoxyCompactItemize}
 \subsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 static final Logger \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a80655575ba16db014b7a1a797e030eae}{L\+O\+G\+G\+E\+R}
+\item 
+static final String \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_ae8dbe4074dc20cff07fe6b80c419e94c}{H\+U\+M\+\_\+\+S\+T\+R} = \char`\"{}Hum =\char`\"{}
+\item 
+static final int \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a3c903f57ebd6754e89fef43ff955d8f7}{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+I\+N} = 4
+\item 
+static final long \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_abe7a38f0bad502d03d31fa7da4025dbf}{L\+A\+S\+T\+\_\+\+C\+H\+E\+C\+K\+\_\+\+D\+I\+F\+F} = 3000
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 The Class \hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity}{D\+H\+T11\+Humidity}. 
 
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a86e81ac52b8c579b5025c33a8a64c360}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}!D\+H\+T11\+Humidity@{D\+H\+T11\+Humidity}}
+\index{D\+H\+T11\+Humidity@{D\+H\+T11\+Humidity}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}}
+\subsubsection[{D\+H\+T11\+Humidity}]{\setlength{\rightskip}{0pt plus 5cm}com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Humidity.\+D\+H\+T11\+Humidity (
+\begin{DoxyParamCaption}
+\item[{int}]{gpio\+Pin}
+\end{DoxyParamCaption}
+)}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a86e81ac52b8c579b5025c33a8a64c360}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_ad6a87900c7551436bfcc1dc319f16aea}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}!D\+H\+T11\+Humidity@{D\+H\+T11\+Humidity}}
+\index{D\+H\+T11\+Humidity@{D\+H\+T11\+Humidity}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}}
+\subsubsection[{D\+H\+T11\+Humidity}]{\setlength{\rightskip}{0pt plus 5cm}com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Humidity.\+D\+H\+T11\+Humidity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_ad6a87900c7551436bfcc1dc319f16aea}
+Instantiates a new D\+Ht11 temperature. 
+
 \subsection{Member Function Documentation}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a847ff0c615dff56ae8d5da3208c3ba03}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}!check\+For\+Updates@{check\+For\+Updates}}
+\index{check\+For\+Updates@{check\+For\+Updates}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}}
+\subsubsection[{check\+For\+Updates}]{\setlength{\rightskip}{0pt plus 5cm}void com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Humidity.\+check\+For\+Updates (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a847ff0c615dff56ae8d5da3208c3ba03}
+Check for updates. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a66ffb0fb3155c71e84298dd95aaf0ef8}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}!get\+Humidity@{get\+Humidity}}
+\index{get\+Humidity@{get\+Humidity}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}}
+\subsubsection[{get\+Humidity}]{\setlength{\rightskip}{0pt plus 5cm}double com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Humidity.\+get\+Humidity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a66ffb0fb3155c71e84298dd95aaf0ef8}
+Gets the humidity.
+
+\begin{DoxyReturn}{Returns}
+the humidity 
+\end{DoxyReturn}
 \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a2355dc003abad8d519440e9f6871c422}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}!get\+Instance@{get\+Instance}}
 \index{get\+Instance@{get\+Instance}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}}
 \subsubsection[{get\+Instance}]{\setlength{\rightskip}{0pt plus 5cm}void com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Humidity.\+get\+Instance (
@@ -38,16 +104,63 @@ single instance of I\+Sensor
 
 Implements \hyperlink{interfacecom_1_1libsensorj_1_1interfaces_1_1ISensor_a3c3db93a33adecde81a528651790f75e}{com.\+libsensorj.\+interfaces.\+I\+Sensor}.
 
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a2eab8bb7fa064b72a28ac8fc3cc00378}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}!parse\+Humidity@{parse\+Humidity}}
+\index{parse\+Humidity@{parse\+Humidity}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}}
+\subsubsection[{parse\+Humidity}]{\setlength{\rightskip}{0pt plus 5cm}double com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Humidity.\+parse\+Humidity (
+\begin{DoxyParamCaption}
+\item[{String}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a2eab8bb7fa064b72a28ac8fc3cc00378}
+Parses the Humidity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the string returned by adafruit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the humidity in percent. 
+\end{DoxyReturn}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a121d9c798d12d6f0fa7cd1257ffa1edf}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}!read\+Values@{read\+Values}}
+\index{read\+Values@{read\+Values}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}}
+\subsubsection[{read\+Values}]{\setlength{\rightskip}{0pt plus 5cm}String com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Humidity.\+read\+Values (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a121d9c798d12d6f0fa7cd1257ffa1edf}
+Read values.
+
+\begin{DoxyReturn}{Returns}
+the value read as a string 
+\end{DoxyReturn}
 
 
 \subsection{Member Data Documentation}
-\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a80655575ba16db014b7a1a797e030eae}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}!L\+O\+G\+G\+E\+R@{L\+O\+G\+G\+E\+R}}
+\hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a3c903f57ebd6754e89fef43ff955d8f7}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}!D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+I\+N@{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+I\+N}}
+\index{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+I\+N@{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+I\+N}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}}
+\subsubsection[{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+I\+N}]{\setlength{\rightskip}{0pt plus 5cm}final int com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Humidity.\+D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+I\+N = 4\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a3c903f57ebd6754e89fef43ff955d8f7}
+The Constant D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+I\+N. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_af27f27bf207dc6ef458fcf276657ac87}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}!gpio\+Pin@{gpio\+Pin}}
+\index{gpio\+Pin@{gpio\+Pin}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}}
+\subsubsection[{gpio\+Pin}]{\setlength{\rightskip}{0pt plus 5cm}final int com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Humidity.\+gpio\+Pin\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_af27f27bf207dc6ef458fcf276657ac87}
+The gpio pin. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_ae8dbe4074dc20cff07fe6b80c419e94c}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}!H\+U\+M\+\_\+\+S\+T\+R@{H\+U\+M\+\_\+\+S\+T\+R}}
+\index{H\+U\+M\+\_\+\+S\+T\+R@{H\+U\+M\+\_\+\+S\+T\+R}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}}
+\subsubsection[{H\+U\+M\+\_\+\+S\+T\+R}]{\setlength{\rightskip}{0pt plus 5cm}final String com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Humidity.\+H\+U\+M\+\_\+\+S\+T\+R = \char`\"{}Hum =\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_ae8dbe4074dc20cff07fe6b80c419e94c}
+The Constant T\+E\+M\+P\+\_\+\+S\+T\+R. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_abe7a38f0bad502d03d31fa7da4025dbf}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}!L\+A\+S\+T\+\_\+\+C\+H\+E\+C\+K\+\_\+\+D\+I\+F\+F@{L\+A\+S\+T\+\_\+\+C\+H\+E\+C\+K\+\_\+\+D\+I\+F\+F}}
+\index{L\+A\+S\+T\+\_\+\+C\+H\+E\+C\+K\+\_\+\+D\+I\+F\+F@{L\+A\+S\+T\+\_\+\+C\+H\+E\+C\+K\+\_\+\+D\+I\+F\+F}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}}
+\subsubsection[{L\+A\+S\+T\+\_\+\+C\+H\+E\+C\+K\+\_\+\+D\+I\+F\+F}]{\setlength{\rightskip}{0pt plus 5cm}final long com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Humidity.\+L\+A\+S\+T\+\_\+\+C\+H\+E\+C\+K\+\_\+\+D\+I\+F\+F = 3000\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_abe7a38f0bad502d03d31fa7da4025dbf}
+The Constant L\+A\+S\+T\+\_\+\+C\+H\+E\+C\+K\+\_\+\+D\+I\+F\+F. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_ab366586f1db5139d46a33d8404610618}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}!last\+Check@{last\+Check}}
+\index{last\+Check@{last\+Check}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}}
+\subsubsection[{last\+Check}]{\setlength{\rightskip}{0pt plus 5cm}long com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Humidity.\+last\+Check\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_ab366586f1db5139d46a33d8404610618}
+The last check. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a88a634746e0b70f8845fc8cddcab0cd9}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}!last\+Value@{last\+Value}}
+\index{last\+Value@{last\+Value}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}}
+\subsubsection[{last\+Value}]{\setlength{\rightskip}{0pt plus 5cm}String com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Humidity.\+last\+Value\hspace{0.3cm}{\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a88a634746e0b70f8845fc8cddcab0cd9}
+The last value. \hypertarget{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a80655575ba16db014b7a1a797e030eae}{}\index{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}!L\+O\+G\+G\+E\+R@{L\+O\+G\+G\+E\+R}}
 \index{L\+O\+G\+G\+E\+R@{L\+O\+G\+G\+E\+R}!com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity@{com\+::libsensorj\+::concretesensor\+::\+D\+H\+T11\+Humidity}}
 \subsubsection[{L\+O\+G\+G\+E\+R}]{\setlength{\rightskip}{0pt plus 5cm}final Logger com.\+libsensorj.\+concretesensor.\+D\+H\+T11\+Humidity.\+L\+O\+G\+G\+E\+R\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_a80655575ba16db014b7a1a797e030eae}
 {\bfseries Initial value\+:}
 \begin{DoxyCode}
 = LogManager
-            .getLogger(DHT11Humidity.class.getName())
+            .getLogger(\hyperlink{classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity_ad6a87900c7551436bfcc1dc319f16aea}{DHT11Humidity}.class.getName())
 \end{DoxyCode}
 The Constant L\+O\+G\+G\+E\+R. 
 

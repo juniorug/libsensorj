@@ -1,7 +1,8 @@
 var searchData=
 [
+  ['parsehumidity',['parseHumidity',['../classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Humidity.html#a2eab8bb7fa064b72a28ac8fc3cc00378',1,'com::libsensorj::concretesensor::DHT11Humidity']]],
   ['parsetemperature',['parseTemperature',['../classcom_1_1libsensorj_1_1concretesensor_1_1DHT11Temperature.html#a061220e6439c2014ab81384738c07734',1,'com::libsensorj::concretesensor::DHT11Temperature']]],
-  ['pin',['pin',['../classcom_1_1libsensorj_1_1concretesensor_1_1test_1_1DHT11TemperatureTests.html#a539cfe245f8a95e61ba9fbee05ae4f22',1,'com::libsensorj::concretesensor::test::DHT11TemperatureTests']]],
+  ['pin',['pin',['../classcom_1_1libsensorj_1_1concretesensor_1_1test_1_1DHT11HumidityTests.html#a9c5ef0f8073d54cec2b80c9b54aef2d1',1,'com.libsensorj.concretesensor.test.DHT11HumidityTests.pin()'],['../classcom_1_1libsensorj_1_1concretesensor_1_1test_1_1DHT11TemperatureTests.html#a539cfe245f8a95e61ba9fbee05ae4f22',1,'com.libsensorj.concretesensor.test.DHT11TemperatureTests.pin()'],['../classcom_1_1libsensorj_1_1concretesensor_1_1test_1_1DHT11V2Tests.html#a4bb6a57ac9ed185e3afc96371eff0d0e',1,'com.libsensorj.concretesensor.test.DHT11V2Tests.pin()'],['../classcom_1_1libsensorj_1_1concretesensor_1_1test_1_1DHT11V3Tests.html#aa313c38ed46c638515f7f43b5458f728',1,'com.libsensorj.concretesensor.test.DHT11V3Tests.pin()']]],
   ['pin_5f00',['PIN_00',['../enumcom_1_1libsensorj_1_1utils_1_1PinNumbers.html#a3ef0e0eade17450513e7722a45850223',1,'com::libsensorj::utils::PinNumbers']]],
   ['pin_5f01',['PIN_01',['../enumcom_1_1libsensorj_1_1utils_1_1PinNumbers.html#a685c54b4b889232a644256053628b751',1,'com::libsensorj::utils::PinNumbers']]],
   ['pin_5f02',['PIN_02',['../enumcom_1_1libsensorj_1_1utils_1_1PinNumbers.html#afb610737394f458dff87b1df785b75ea',1,'com::libsensorj::utils::PinNumbers']]],
@@ -32,12 +33,13 @@ var searchData=
   ['pin_5f27',['PIN_27',['../enumcom_1_1libsensorj_1_1utils_1_1PinNumbers.html#ac5368fe64b7b6003c89065bea9e7ca49',1,'com::libsensorj::utils::PinNumbers']]],
   ['pin_5f28',['PIN_28',['../enumcom_1_1libsensorj_1_1utils_1_1PinNumbers.html#af7bec7611fed7e9b64e25485f2378f81',1,'com::libsensorj::utils::PinNumbers']]],
   ['pin_5f29',['PIN_29',['../enumcom_1_1libsensorj_1_1utils_1_1PinNumbers.html#a78cc24e6c72e7dceb4a9a152cc9da41f',1,'com::libsensorj::utils::PinNumbers']]],
-  ['pinmonitoredstate',['pinMonitoredState',['../classcom_1_1libsensorj_1_1concretesensor_1_1test_1_1DHT11TemperatureTests.html#a0b1e8ff10deeef685ecc52fe4254e239',1,'com::libsensorj::concretesensor::test::DHT11TemperatureTests']]],
+  ['pinmonitoredstate',['pinMonitoredState',['../classcom_1_1libsensorj_1_1concretesensor_1_1test_1_1DHT11HumidityTests.html#aa4907b3b4ddbc118b0bb5a8571d17202',1,'com.libsensorj.concretesensor.test.DHT11HumidityTests.pinMonitoredState()'],['../classcom_1_1libsensorj_1_1concretesensor_1_1test_1_1DHT11TemperatureTests.html#a0b1e8ff10deeef685ecc52fe4254e239',1,'com.libsensorj.concretesensor.test.DHT11TemperatureTests.pinMonitoredState()'],['../classcom_1_1libsensorj_1_1concretesensor_1_1test_1_1DHT11V2Tests.html#a85488d302d4cba874540ea6a2fe4f33d',1,'com.libsensorj.concretesensor.test.DHT11V2Tests.pinMonitoredState()'],['../classcom_1_1libsensorj_1_1concretesensor_1_1test_1_1DHT11V3Tests.html#a326b78365c6bfa39eea9b86c28a6b780',1,'com.libsensorj.concretesensor.test.DHT11V3Tests.pinMonitoredState()']]],
   ['pinnumber',['pinNumber',['../enumcom_1_1libsensorj_1_1utils_1_1PinNumbers.html#a82cad4bc9bde38b8b6e9f33f5ce8bf3d',1,'com::libsensorj::utils::PinNumbers']]],
-  ['pinnumbers',['PinNumbers',['../enumcom_1_1libsensorj_1_1utils_1_1PinNumbers.html',1,'com::libsensorj::utils']]],
   ['pinnumbers',['PinNumbers',['../enumcom_1_1libsensorj_1_1utils_1_1PinNumbers.html#a968a61df9cb0d58d376afe58c0e819a1',1,'com::libsensorj::utils::PinNumbers']]],
+  ['pinnumbers',['PinNumbers',['../enumcom_1_1libsensorj_1_1utils_1_1PinNumbers.html',1,'com::libsensorj::utils']]],
   ['pinnumbers_2ejava',['PinNumbers.java',['../PinNumbers_8java.html',1,'']]],
-  ['provider',['provider',['../classcom_1_1libsensorj_1_1concretesensor_1_1test_1_1DHT11TemperatureTests.html#ada4cbdf40a6bcf6a09aff3cf8603f649',1,'com.libsensorj.concretesensor.test.DHT11TemperatureTests.provider()'],['../classcom_1_1libsensorj_1_1mock_1_1MockGpioFactory.html#aa7cf0e5787b3ffe138f0cea0668df93e',1,'com.libsensorj.mock.MockGpioFactory.provider()']]],
+  ['pins',['pins',['../classcom_1_1libsensorj_1_1concreteactuator_1_1StepperMotor.html#aefca907f907fd398b7bcdd902e04b928',1,'com::libsensorj::concreteactuator::StepperMotor']]],
+  ['provider',['provider',['../classcom_1_1libsensorj_1_1concretesensor_1_1test_1_1DHT11V2Tests.html#a7aed1b77856a182c560a5c52da10cf65',1,'com.libsensorj.concretesensor.test.DHT11V2Tests.provider()'],['../classcom_1_1libsensorj_1_1mock_1_1MockGpioFactory.html#aa7cf0e5787b3ffe138f0cea0668df93e',1,'com.libsensorj.mock.MockGpioFactory.provider()']]],
   ['pulse_5ftime',['PULSE_TIME',['../classcom_1_1libsensorj_1_1concretesensor_1_1HCSR04Device.html#aaa527e39259b9e1be1b6360a397b3d30',1,'com::libsensorj::concretesensor::HCSR04Device']]],
   ['pwm_5foutput_5fpin',['PWM_OUTPUT_PIN',['../classcom_1_1libsensorj_1_1mock_1_1MockPin.html#af15fcc7a04ad7751ca96f968d1ac1b91',1,'com::libsensorj::mock::MockPin']]]
 ];

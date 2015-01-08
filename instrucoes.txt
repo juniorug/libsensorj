@@ -21,5 +21,7 @@ http://localhost:8080/
 # instalando o adafruit_DHT
 https://learn.adafruit.com/dht-humidity-sensing-on-raspberry-pi-with-gdocs-logging/software-install-updated
 
+#Doxygen (em /src):
+doxygen Doxyfile
 
 
