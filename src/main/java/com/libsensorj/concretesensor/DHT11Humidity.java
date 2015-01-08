@@ -62,6 +62,11 @@ public class DHT11Humidity implements ISensor {
     /** The Constant LAST_CHECK_DIFF. */
     private static final long LAST_CHECK_DIFF = 3000;
     
+    /**
+     * Instantiates a new DH t11 humidity.
+     *
+     * @param gpioPin the gpio pin
+     */
     public DHT11Humidity(int gpioPin) {
         this.gpioPin = gpioPin;
         this.lastCheck = System.currentTimeMillis() - LAST_CHECK_DIFF;

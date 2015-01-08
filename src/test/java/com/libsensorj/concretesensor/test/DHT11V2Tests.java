@@ -66,6 +66,7 @@ public class DHT11V2Tests {
     /** The gpio. */
     private static GpioController gpio;
     
+    /** The Constant DEFAULT_PIN. */
     private static final Pin DEFAULT_PIN = RaspiPin.GPIO_04;
 
     /** The pin. */

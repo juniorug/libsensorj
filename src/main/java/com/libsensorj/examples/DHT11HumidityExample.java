@@ -1,3 +1,22 @@
+/*
+ * #%L
+ * **********************************************************************
+ * ORGANIZATION  :  IFBA
+ * PROJECT       :  libsensorj
+ * FILENAME      :  DHT11HumidityExample.java  
+ * 
+ * This file is part of the LibsensorJ project,
+ * An extensible library for sensors / actuators using the Pi4J framework of the Raspberry Pi.
+ * **********************************************************************
+ * 
+ * Created:      [yyyy/mm/dd creation date]
+ * Last Changed: 07/01/2015 
+ * 
+ * @author: Júnior Mascarenhas       <A HREF="mailto:[juniorug@gmail.com]">[Júnior]</A>
+ * @see [https://github.com/juniorug/libsensorj]
+ * 
+ * #L%
+ */
 package com.libsensorj.examples;
 
 import org.apache.logging.log4j.LogManager;
@@ -8,6 +27,9 @@ import com.libsensorj.concretesensor.DHT11Humidity;
 import com.libsensorj.interfaces.ISensor;
 import com.libsensorj.interfaces.ISensorFactory;
 
+/**
+ * The Class DHT11HumidityExample.
+ */
 public class DHT11HumidityExample {
 
     /** The Isensor dht11. */
@@ -17,6 +39,11 @@ public class DHT11HumidityExample {
     private static final Logger LOGGER = LogManager
             .getLogger(DHT11TemperatureExample.class.getName());
 
+    /**
+     * The main method.
+     *
+     * @param args the arguments
+     */
     public static void main(String[] args) {
         ISensorFactory isf = new HumiditySensorFactory();
         dht11 = isf.createSensor();

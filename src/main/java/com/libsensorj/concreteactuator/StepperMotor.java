@@ -1,3 +1,22 @@
+/*
+ * #%L
+ * **********************************************************************
+ * ORGANIZATION  :  IFBA
+ * PROJECT       :  libsensorj
+ * FILENAME      :  StepperMotor.java  
+ * 
+ * This file is part of the LibsensorJ project,
+ * An extensible library for sensors / actuators using the Pi4J framework of the Raspberry Pi.
+ * **********************************************************************
+ * 
+ * Created:      [yyyy/mm/dd creation date]
+ * Last Changed: 07/01/2015 
+ * 
+ * @author: Júnior Mascarenhas       <A HREF="mailto:[juniorug@gmail.com]">[Júnior]</A>
+ * @see [https://github.com/juniorug/libsensorj]
+ * 
+ * #L%
+ */
 package com.libsensorj.concreteactuator;
 
 import com.libsensorj.interfaces.IActuator;
@@ -7,27 +26,38 @@ import com.pi4j.io.gpio.GpioPinDigitalOutput;
 import com.pi4j.io.gpio.PinPullResistance;
 import com.pi4j.io.gpio.PinState;
 
+/**
+ * The Class StepperMotor.
+ */
 public class StepperMotor extends StepperMotorBase implements IActuator {
 
     // internal class members
+    /** The pins. */
     private GpioPinDigitalOutput pins[];
+    
+    /** The on state. */
     private PinState onState = PinState.HIGH;
+    
+    /** The off state. */
     private PinState offState = PinState.LOW;
+    
+    /** The current state. */
     private MotorState currentState = MotorState.STOP;
+    
+    /** The control thread. */
     private GpioStepperMotorControl controlThread = new GpioStepperMotorControl();
+    
+    /** The sequence index. */
     private int sequenceIndex = 0;
 
     /**
      * using this constructor requires that the consumer define the STEP ON and
-     * STEP OFF pin states
-     * 
-     * @param pins
-     *            GPIO digital output pins for each controller in the stepper
+     * STEP OFF pin states.
+     *
+     * @param pins            GPIO digital output pins for each controller in the stepper
      *            motor
-     * @param onState
-     *            pin state to set when MOTOR STEP is ON
-     * @param offState
-     *            pin state to set when MOTOR STEP is OFF
+     * @param onState            pin state to set when MOTOR STEP is ON
+     * @param offState            pin state to set when MOTOR STEP is OFF
      */
     public StepperMotor(GpioPinDigitalOutput pins[], PinState onState,
             PinState offState) {
@@ -43,10 +73,9 @@ public class StepperMotor extends StepperMotorBase implements IActuator {
 
     /**
      * default constructor; using this constructor assumes that: (1) a pin state
-     * of HIGH is MOTOR STEP ON (2) a pin state of LOW is MOTOR STEP OFF
-     * 
-     * @param pins
-     *            GPIO digital output pins for each controller in the stepper
+     * of HIGH is MOTOR STEP ON (2) a pin state of LOW is MOTOR STEP OFF.
+     *
+     * @param pins            GPIO digital output pins for each controller in the stepper
      *            motor
      */
     public StepperMotor(GpioPinDigitalOutput pins[]) {
@@ -58,8 +87,8 @@ public class StepperMotor extends StepperMotorBase implements IActuator {
     }
 
     /**
-     * Return the current motor state
-     * 
+     * Return the current motor state.
+     *
      * @return MotorState
      */
     @Override
@@ -68,10 +97,9 @@ public class StepperMotor extends StepperMotorBase implements IActuator {
     }
 
     /**
-     * change the current stepper motor state
-     * 
-     * @param state
-     *            new motor state to apply
+     * change the current stepper motor state.
+     *
+     * @param state            new motor state to apply
      */
     @Override
     public void setState(MotorState state) {
@@ -98,6 +126,9 @@ public class StepperMotor extends StepperMotorBase implements IActuator {
         }
     }
 
+    /**
+     * Motor stop.
+     */
     private void motorStop() {
         // set internal tracking state
         currentState = MotorState.STOP;
@@ -108,6 +139,11 @@ public class StepperMotor extends StepperMotorBase implements IActuator {
         }
     }
 
+    /**
+     * Motor start.
+     *
+     * @param state the state
+     */
     private void motorStart(MotorState state) {
         // set internal tracking state
         currentState = state;
@@ -120,7 +156,14 @@ public class StepperMotor extends StepperMotorBase implements IActuator {
 
     }
 
+    /**
+     * The Class GpioStepperMotorControl.
+     */
     private class GpioStepperMotorControl extends Thread {
+        
+        /* (non-Javadoc)
+         * @see java.lang.Thread#run()
+         */
         public void run() {
 
             // continuous loop until stopped
@@ -141,6 +184,9 @@ public class StepperMotor extends StepperMotorBase implements IActuator {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.pi4j.component.motor.StepperMotorBase#step(long)
+     */
     @Override
     public void step(long steps) {
         // validate parameters
@@ -166,9 +212,9 @@ public class StepperMotor extends StepperMotorBase implements IActuator {
 
     /**
      * this method performs the calculations and work to control the GPIO pins
-     * to move the stepper motor forward or reverse
-     * 
-     * @param forward
+     * to move the stepper motor forward or reverse.
+     *
+     * @param forward the forward
      */
     private void doStep(boolean forward) {
 

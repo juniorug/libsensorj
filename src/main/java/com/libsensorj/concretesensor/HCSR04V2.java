@@ -1,3 +1,22 @@
+/*
+ * #%L
+ * **********************************************************************
+ * ORGANIZATION  :  IFBA
+ * PROJECT       :  libsensorj
+ * FILENAME      :  HCSR04V2.java  
+ * 
+ * This file is part of the LibsensorJ project,
+ * An extensible library for sensors / actuators using the Pi4J framework of the Raspberry Pi.
+ * **********************************************************************
+ * 
+ * Created:      [yyyy/mm/dd creation date]
+ * Last Changed: 07/01/2015 
+ * 
+ * @author: Júnior Mascarenhas       <A HREF="mailto:[juniorug@gmail.com]">[Júnior]</A>
+ * @see [https://github.com/juniorug/libsensorj]
+ * 
+ * #L%
+ */
 package com.libsensorj.concretesensor;
 
 import java.util.concurrent.TimeoutException;
@@ -12,17 +31,35 @@ import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 
+/**
+ * The Class HCSR04V2.
+ */
 public class HCSR04V2 {
+    
+    /** The Constant SOUND_SPEED. */
     private final static float SOUND_SPEED = 340.29f; // speed of sound in m/s
 
+    /** The Constant TRIG_DURATION_IN_MICROS. */
     private final static int TRIG_DURATION_IN_MICROS = 10; // trigger duration
+    
+    /** The Constant TIMEOUT. */
     private final static int TIMEOUT = 2100;
 
+    /** The Constant GPIO. */
     private final static GpioController GPIO = GpioFactory.getInstance();
 
+    /** The echo pin. */
     private final GpioPinDigitalInput echoPin;
+    
+    /** The trig pin. */
     private final GpioPinDigitalOutput trigPin;
 
+    /**
+     * Instantiates a new HCS r04 v2.
+     *
+     * @param echoPin the echo pin
+     * @param trigPin the trig pin
+     */
     public HCSR04V2(Pin echoPin, Pin trigPin) {
         this.echoPin = GPIO.provisionDigitalInputPin(echoPin);
         this.trigPin = GPIO.provisionDigitalOutputPin(trigPin);
@@ -70,6 +107,12 @@ public class HCSR04V2 {
      * 
      * @throws TimeoutException if a timeout occurs
      */
+    /**
+     * Measure distance.
+     *
+     * @return the float
+     * @throws TimeoutException the timeout exception
+     */
     public float measureDistance() throws TimeoutException {
         System.out.println("dentro do measureDistance. chamando método triggerSensor");
         this.triggerSensor();
@@ -83,7 +126,7 @@ public class HCSR04V2 {
     }
 
     /**
-     * Put a high on the trig pin for TRIG_DURATION_IN_MICROS
+     * Put a high on the trig pin for TRIG_DURATION_IN_MICROS.
      */
     private void triggerSensor() {
         try {
@@ -98,10 +141,9 @@ public class HCSR04V2 {
     }
 
     /**
-     * Wait for a high on the echo pin
-     * 
-     * @throws DistanceMonitor.TimeoutException
-     *             if no high appears in time
+     * Wait for a high on the echo pin.
+     *
+     * @throws TimeoutException the timeout exception
      */
     private void waitForSignal() throws TimeoutException {
         System.out.println("inside waitforsingnal");
@@ -118,9 +160,10 @@ public class HCSR04V2 {
     }
 
     /**
+     * Measure signal.
+     *
      * @return the duration of the signal in micro seconds
-     * @throws DistanceMonitor.TimeoutException
-     *             if no low appears in time
+     * @throws TimeoutException the timeout exception
      */
     private long measureSignal() throws TimeoutException {
         System.out.println("inside measureSignal");
