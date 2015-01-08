@@ -16,7 +16,7 @@ import java.text.Format;
  *      -pi
  * 
  */
-public class HC_SR04_NOSENSORCLASS {
+public class HCSR04NoSensorClass {
 
     private final static Format DF22 = new DecimalFormat("#0.00");
     private final static double SOUND_SPEED = 34300; // in cm, 343 m/s
@@ -64,7 +64,7 @@ public class HC_SR04_NOSENSORCLASS {
             try {
                 Thread.sleep(0, 10000);
             } catch (Exception ex) {
-                ex.printStackTrace();
+                System.out.println(ex.getMessage() + ex);
             }
             trigPin.low();
             System.out.println("trigger is low now. will receive data. echopin.islow = " + echoPin.isLow());
@@ -83,19 +83,22 @@ public class HC_SR04_NOSENSORCLASS {
                 System.out.println("[start: " + start + "] [end: " + end + "] [ pulseDuration: " + pulseDuration + "]");
                 double distance = pulseDuration * DIST_FACT;
                 System.out.println("distance: " + distance);
-                if (distance < 1000) // Less than 10 meters
+                if (distance < 1000) { // Less than 10 meters
                     System.out.println("Distance: " + DF22.format(distance)
                             + " cm."); // + " (" + pulseDuration + " = " + end +
                                        // " - " + start + ")");
-                if (distance > 0 && distance < MIN_DIST)
+                }
+                if (distance > 0 && distance < MIN_DIST) {
                     go = false;
-                else {
-                    if (distance < 0)
+                } else {
+                    if (distance < 0) {
                         System.out.println("Dist:" + distance + ", start:"
                                 + start + ", end:" + end);
+                    }
                     try {
                         Thread.sleep(1000L);
                     } catch (Exception ex) {
+                        System.out.println(ex.getMessage() + ex);
                     }
                 }
             } else {
@@ -103,6 +106,7 @@ public class HC_SR04_NOSENSORCLASS {
                 try {
                     Thread.sleep(2000L);
                 } catch (Exception ex) {
+                    System.out.println(ex.getMessage() + ex);
                 }
             }
         }

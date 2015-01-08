@@ -38,11 +38,11 @@ public class StepperMotorExample {
         // every time.
         // This sequence requires the least amount of energy and generates the
         // smoothest movement.)
-        byte[] single_step_sequence = new byte[4];
-        single_step_sequence[0] = (byte) 0b0001;
-        single_step_sequence[1] = (byte) 0b0010;
-        single_step_sequence[2] = (byte) 0b0100;
-        single_step_sequence[3] = (byte) 0b1000;
+        byte[] singleStepSequence = new byte[4];
+        singleStepSequence[0] = (byte) 0b0001;
+        singleStepSequence[1] = (byte) 0b0010;
+        singleStepSequence[2] = (byte) 0b0100;
+        singleStepSequence[3] = (byte) 0b1000;
 
         // create byte array to demonstrate a double-step sequencing
         // (In this method two coils are turned on simultaneously. This method
@@ -50,11 +50,11 @@ public class StepperMotorExample {
         // a smooth movement as the previous method, and it requires double the
         // current, but as
         // return it generates double the torque.)
-        byte[] double_step_sequence = new byte[4];
-        double_step_sequence[0] = (byte) 0b0011;
-        double_step_sequence[1] = (byte) 0b0110;
-        double_step_sequence[2] = (byte) 0b1100;
-        double_step_sequence[3] = (byte) 0b1001;
+        byte[] doubleStepSequence = new byte[4];
+        doubleStepSequence[0] = (byte) 0b0011;
+        doubleStepSequence[1] = (byte) 0b0110;
+        doubleStepSequence[2] = (byte) 0b1100;
+        doubleStepSequence[3] = (byte) 0b1001;
 
         // create byte array to demonstrate a half-step sequencing
         // (In this method two coils are turned on simultaneously. This method
@@ -62,21 +62,21 @@ public class StepperMotorExample {
         // a smooth movement as the previous method, and it requires double the
         // current, but as
         // return it generates double the torque.)
-        byte[] half_step_sequence = new byte[8];
-        half_step_sequence[0] = (byte) 0b0001;
-        half_step_sequence[1] = (byte) 0b0011;
-        half_step_sequence[2] = (byte) 0b0010;
-        half_step_sequence[3] = (byte) 0b0110;
-        half_step_sequence[4] = (byte) 0b0100;
-        half_step_sequence[5] = (byte) 0b1100;
-        half_step_sequence[6] = (byte) 0b1000;
-        half_step_sequence[7] = (byte) 0b1001;
+        byte[] halfStepSequence = new byte[8];
+        halfStepSequence[0] = (byte) 0b0001;
+        halfStepSequence[1] = (byte) 0b0011;
+        halfStepSequence[2] = (byte) 0b0010;
+        halfStepSequence[3] = (byte) 0b0110;
+        halfStepSequence[4] = (byte) 0b0100;
+        halfStepSequence[5] = (byte) 0b1100;
+        halfStepSequence[6] = (byte) 0b1000;
+        halfStepSequence[7] = (byte) 0b1001;
 
         // define stepper parameters before attempting to control motor
         // anything lower than 2 ms does not work for my sample motor using
         // single step sequence
         motor.setStepInterval(2);
-        motor.setStepSequence(single_step_sequence);
+        motor.setStepSequence(singleStepSequence);
 
         // There are 32 steps per revolution on my sample motor,
         // and inside is a ~1/64 reduction gear set.
@@ -127,7 +127,7 @@ public class StepperMotorExample {
         // sequence
         System.out
                 .println("   Motor FORWARD with slower speed and higher torque for 1 revolution.");
-        motor.setStepSequence(double_step_sequence);
+        motor.setStepSequence(doubleStepSequence);
         motor.setStepInterval(10);
         motor.rotate(1);
         System.out.println("   Motor STOPPED.");

@@ -18,25 +18,25 @@ public class HCSR04V3Example {
 
 		// range sensor pins
 		/*
-		 * GpioPinDigitalOutput sensor_trigger =
+		 * GpioPinDigitalOutput trigger =
 		 * gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "Sensor Trigger",
 		 * PinState.LOW);
 		 * 
-		 * GpioPinDigitalInput sensor_result =
+		 * GpioPinDigitalInput echo =
 		 * gpio.provisionDigitalInputPin(RaspiPin.GPIO_04, "Sensor Result",
 		 * PinPullResistance.PULL_DOWN);
 		 */
 
-		GpioPinDigitalOutput sensor_trigger = gpio.provisionDigitalOutputPin(
+		GpioPinDigitalOutput trigger = gpio.provisionDigitalOutputPin(
 				RaspiPin.GPIO_01, "Sensor Trigger", PinState.LOW);
 
-		GpioPinDigitalInput sensor_result = gpio.provisionDigitalInputPin(
+		GpioPinDigitalInput echo = gpio.provisionDigitalInputPin(
 				RaspiPin.GPIO_02, "Sensor Result", PinPullResistance.PULL_DOWN);
 
 		// configure the pins shutdown behavior; these settings will be 
         // automatically applied to the pin when the application is terminated 
-        sensor_trigger.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-        sensor_result.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+        trigger.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+        echo.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 			public void run() {
 				System.out.println("Oops!");
@@ -45,7 +45,7 @@ public class HCSR04V3Example {
 			}
 		});
 		// Create the range sensor
-		HCSR04V3 rangesensor = new HCSR04V3(sensor_trigger, sensor_result);
+		HCSR04V3 rangesensor = new HCSR04V3(trigger, echo);
 
 		do {
 			// Get the range
@@ -55,7 +55,7 @@ public class HCSR04V3Example {
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+			    System.out.println(e.getMessage());
 			}
 
 		} while (true);

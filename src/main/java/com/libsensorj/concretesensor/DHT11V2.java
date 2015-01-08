@@ -50,8 +50,8 @@ public class DHT11V2 implements ISensor {
     /** The Constant MAXTIMINGS. */
     private static final int MAXTIMINGS = 85;
     
-    /** The dht11_dat. */
-    private int[] dht11_dat = { 0, 0, 0, 0, 0 };
+    /** The dht11Dat. */
+    private int[] dht11Dat = { 0, 0, 0, 0, 0 };
     
     /** The dht11 pin. */
     private GpioPinDigitalMultipurpose dht11Pin;
@@ -116,7 +116,7 @@ public class DHT11V2 implements ISensor {
     public double readValue() {
         PinState laststate = PinState.HIGH;
         int j = 0;
-        dht11_dat[0] = dht11_dat[1] = dht11_dat[2] = dht11_dat[3] = dht11_dat[4] = 0;
+        dht11Dat[0] = dht11Dat[1] = dht11Dat[2] = dht11Dat[3] = dht11Dat[4] = 0;
         StringBuilder value = new StringBuilder();
         try {
 
@@ -148,9 +148,9 @@ public class DHT11V2 implements ISensor {
                 /* ignore first 3 transitions */
                 if ((i >= 4) && (i % 2 == 0)) {
                     /* shove each bit into the storage bytes */
-                    dht11_dat[j / 8] <<= 1;
+                    dht11Dat[j / 8] <<= 1;
                     if (counter > 16) {
-                        dht11_dat[j / 8] |= 1;
+                        dht11Dat[j / 8] |= 1;
                     }
                     j++;
                 }
@@ -158,7 +158,7 @@ public class DHT11V2 implements ISensor {
             // check we read 40 bits (8bit x 5 ) + verify checksum in the last
             // byte
             if ((j >= 40) && checkParity()) {
-                value.append(dht11_dat[2]).append(".").append(dht11_dat[3]);
+                value.append(dht11Dat[2]).append(".").append(dht11Dat[3]);
                 System.out.println("temperature value readed: " + value.toString());
             }
 
@@ -227,7 +227,7 @@ public class DHT11V2 implements ISensor {
      * @return true, if successful
      */
     private boolean checkParity() {
-        return (dht11_dat[4] == ((dht11_dat[0] + dht11_dat[1] + dht11_dat[2] + dht11_dat[3]) & 0xFF));
+        return (dht11Dat[4] == ((dht11Dat[0] + dht11Dat[1] + dht11Dat[2] + dht11Dat[3]) & 0xFF));
     }
 
     /* (non-Javadoc)

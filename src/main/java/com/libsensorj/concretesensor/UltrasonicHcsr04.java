@@ -42,25 +42,25 @@ public class UltrasonicHcsr04 implements ISensor {
 
     /** The result. */
     private double result = 0;
-    
+
     /** The trigger. */
     private GpioPinDigitalOutput trigger;
-    
+
     /** The echo. */
     private GpioPinDigitalInput echo;
-    
+
     /** The Constant TWENTY. */
     private static final int TWENTY = 20;
-    
+
     /** The Constant FORTY. */
     private static final int FORTY = 40;
-    
+
     /** The Constant THIRTY_EIGHT. */
     private static final int THIRTY_EIGHT = 38;
-    
+
     /** The Constant DISTANCE_FACTOR. */
     private static final double DISTANCE_FACTOR = 165.7;
-    
+
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LogManager
             .getLogger(UltrasonicHcsr04.class.getName());
@@ -76,51 +76,56 @@ public class UltrasonicHcsr04 implements ISensor {
     /**
      * Instantiates a new ultrasonic hcsr04.
      *
-     * @param _trigger the trigger pin
-     * @param _echo the echo pin
+     * @param trigger
+     *            the trigger pin
+     * @param echo
+     *            the echo pin
      */
-    public UltrasonicHcsr04(int _trigger, int _echo) {
+    public UltrasonicHcsr04(int trigger, int echo) {
 
-        this(LibPins.getPin(_trigger), LibPins.getPin(_echo));
+        this(LibPins.getPin(trigger), LibPins.getPin(echo));
     }
 
     /**
      * Instantiates a new ultrasonic hcsr04.
      *
-     * @param _trigger the trigger pin
-     * @param _echo the echo pin
+     * @param _trigger
+     *            the trigger pin
+     * @param _echo
+     *            the echo pin
      */
-    public UltrasonicHcsr04(Pin _trigger, Pin _echo) {
+    public UltrasonicHcsr04(Pin trigger, Pin echo) {
         final GpioController gpio = GpioFactory.getInstance();
-        trigger = gpio.provisionDigitalOutputPin(_trigger, PinState.LOW);
-        echo = gpio
-                .provisionDigitalInputPin(_echo, PinPullResistance.PULL_DOWN);
+        this.trigger = gpio.provisionDigitalOutputPin(trigger, PinState.LOW);
+        this.echo = gpio.provisionDigitalInputPin(echo,
+                PinPullResistance.PULL_DOWN);
 
         // create and register gpio pin listener
-        echo.addListener(new GpioPinListenerDigital() {
+        this.echo.addListener(new GpioPinListenerDigital() {
             @Override
             public void handleGpioPinDigitalStateChangeEvent(
                     GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
-            	System.out.println(" --> GPIO ECHO PIN STATE CHANGE: " + event.getPin()
-                        + " = " + event.getState());
+                System.out.println(" --> GPIO ECHO PIN STATE CHANGE: "
+                        + event.getPin() + " = " + event.getState());
             }
         });
-        
-        trigger.addListener(new GpioPinListenerDigital() {
+
+        this.trigger.addListener(new GpioPinListenerDigital() {
             @Override
             public void handleGpioPinDigitalStateChangeEvent(
                     GpioPinDigitalStateChangeEvent event) {
                 // display pin state on console
-            	System.out.println(" --> GPIO TRIGGER PIN STATE CHANGE: " + event.getPin()
-                        + " = " + event.getState());
+                System.out.println(" --> GPIO TRIGGER PIN STATE CHANGE: "
+                        + event.getPin() + " = " + event.getState());
             }
         });
-        
-        // configure the pins shutdown behavior; these settings will be 
-        // automatically applied to the pin when the application is terminated 
-        echo.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-        trigger.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+
+        // configure the pins shutdown behavior; these settings will be
+        // automatically applied to the pin when the application is terminated
+        this.echo.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+        this.trigger.setShutdownOptions(true, PinState.LOW,
+                PinPullResistance.OFF);
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
                 System.out.println("Oops!");
@@ -130,7 +135,9 @@ public class UltrasonicHcsr04 implements ISensor {
         });
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.libsensorj.interfaces.ISensor#getInstance()
      */
     public void getInstance() {
@@ -157,7 +164,8 @@ public class UltrasonicHcsr04 implements ISensor {
                             + e.getMessage(), e);
         }
         trigger.low();
-        System.out.println("inside getRange. trigger is low now = " + trigger.isLow());
+        System.out.println("inside getRange. trigger is low now = "
+                + trigger.isLow());
         // wait for the result
 
         double startTime = System.currentTimeMillis();
@@ -175,10 +183,11 @@ public class UltrasonicHcsr04 implements ISensor {
         // to -1 to show it timed out.
 
         if ((stopTime - startTime) <= THIRTY_EIGHT) {
-            System.out.println("stop - start < 38. result = " + ((stopTime - startTime) * DISTANCE_FACTOR));
+            System.out.println("stop - start < 38. result = "
+                    + ((stopTime - startTime) * DISTANCE_FACTOR));
             result = (stopTime - startTime) * DISTANCE_FACTOR;
         } else {
-        	System.out.println("Timed out");
+            System.out.println("Timed out");
             result = -1;
         }
 

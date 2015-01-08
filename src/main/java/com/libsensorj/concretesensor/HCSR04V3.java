@@ -5,12 +5,12 @@ import com.pi4j.io.gpio.GpioPinDigitalOutput;
 
 public class HCSR04V3 {
 
-    GpioPinDigitalOutput firepulse;
-    GpioPinDigitalInput result_pin;
+    GpioPinDigitalOutput trigger;
+    GpioPinDigitalInput echo;
     
-    public HCSR04V3(GpioPinDigitalOutput trigger, GpioPinDigitalInput result_pin) {
-        this.firepulse = trigger;
-        this.result_pin = result_pin;
+    public HCSR04V3(GpioPinDigitalOutput trigger, GpioPinDigitalInput echo) {
+        this.trigger = trigger;
+        this.echo = echo;
       }
     
     /**
@@ -23,18 +23,18 @@ public class HCSR04V3 {
       long diff = 0;
 
       try {
-        firepulse.high();
-        System.out.println("firepulse is high = " + firepulse.isHigh());
+        trigger.high();
+        System.out.println("trigger is high = " + trigger.isHigh());
         Thread.sleep(10);
-        firepulse.low();
-        System.out.println("firepulse is low = " + firepulse.isLow());
+        trigger.low();
+        System.out.println("trigger is low = " + trigger.isLow());
 
-        while (result_pin.isLow()) {
+        while (echo.isLow()) {
           start = System.nanoTime();
         }
 
         System.out.println("fora do primeiro while");
-        while (result_pin.isHigh()) {
+        while (echo.isHigh()) {
         }
 
         diff = (System.nanoTime() - start) / 58000;

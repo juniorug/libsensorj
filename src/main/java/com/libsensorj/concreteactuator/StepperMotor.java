@@ -34,11 +34,11 @@ public class StepperMotor extends StepperMotorBase implements IActuator {
         this.pins = pins;
         this.onState = onState;
         this.offState = offState;
-        
-        for(GpioPinDigitalOutput pin: pins) {
+
+        for (GpioPinDigitalOutput pin : pins) {
             pin.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
         }
-        
+
     }
 
     /**
@@ -51,8 +51,8 @@ public class StepperMotor extends StepperMotorBase implements IActuator {
      */
     public StepperMotor(GpioPinDigitalOutput pins[]) {
         this.pins = pins;
-        
-        for(GpioPinDigitalOutput pin: pins) {
+
+        for (GpioPinDigitalOutput pin : pins) {
             pin.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
         }
     }
@@ -78,37 +78,17 @@ public class StepperMotor extends StepperMotorBase implements IActuator {
 
         switch (state) {
         case STOP: {
-            // set internal tracking state
-            currentState = MotorState.STOP;
-
-            // turn all GPIO pins to OFF state
-            for (GpioPinDigitalOutput pin : pins)
-                pin.setState(offState);
-
+            motorStop();
             break;
         }
         case FORWARD: {
             // set internal tracking state
-            currentState = MotorState.FORWARD;
-
-            // start control thread if not already running
-            if (!controlThread.isAlive()) {
-                controlThread = new GpioStepperMotorControl();
-                controlThread.start();
-            }
-
+            motorStart(MotorState.FORWARD);
             break;
         }
         case REVERSE: {
             // set internal tracking state
-            currentState = MotorState.REVERSE;
-
-            // start control thread if not already running
-            if (!controlThread.isAlive()) {
-                controlThread = new GpioStepperMotorControl();
-                controlThread.start();
-            }
-
+            motorStart(MotorState.REVERSE);
             break;
         }
         default: {
@@ -118,6 +98,28 @@ public class StepperMotor extends StepperMotorBase implements IActuator {
         }
     }
 
+    private void motorStop() {
+        // set internal tracking state
+        currentState = MotorState.STOP;
+
+        // turn all GPIO pins to OFF state
+        for (GpioPinDigitalOutput pin : pins) {
+            pin.setState(offState);
+        }
+    }
+
+    private void motorStart(MotorState state) {
+        // set internal tracking state
+        currentState = state;
+
+        // start control thread if not already running
+        if (!controlThread.isAlive()) {
+            controlThread = new GpioStepperMotorControl();
+            controlThread.start();
+        }
+
+    }
+
     private class GpioStepperMotorControl extends Thread {
         public void run() {
 
@@ -125,15 +127,17 @@ public class StepperMotor extends StepperMotorBase implements IActuator {
             while (currentState != MotorState.STOP) {
 
                 // control direction
-                if (currentState == MotorState.FORWARD)
+                if (currentState == MotorState.FORWARD) {
                     doStep(true);
-                else if (currentState == MotorState.REVERSE)
+                } else if (currentState == MotorState.REVERSE) {
                     doStep(false);
+                }
             }
 
             // turn all GPIO pins to OFF state
-            for (GpioPinDigitalOutput pin : pins)
+            for (GpioPinDigitalOutput pin : pins) {
                 pin.setState(offState);
+            }
         }
     }
 
@@ -147,11 +151,13 @@ public class StepperMotor extends StepperMotorBase implements IActuator {
 
         // perform step in positive or negative direction from current position
         if (steps > 0) {
-            for (long index = 1; index <= steps; index++)
+            for (long index = 1; index <= steps; index++) {
                 doStep(true);
+            }
         } else {
-            for (long index = steps; index < 0; index++)
+            for (long index = steps; index < 0; index++) {
                 doStep(false);
+            }
         }
 
         // stop motor movement
@@ -167,29 +173,32 @@ public class StepperMotor extends StepperMotorBase implements IActuator {
     private void doStep(boolean forward) {
 
         // increment or decrement sequence
-        if (forward)
+        if (forward) {
             sequenceIndex++;
-        else
+        } else {
             sequenceIndex--;
+        }
 
         // check sequence bounds; rollover if needed
-        if (sequenceIndex >= stepSequence.length)
+        if (sequenceIndex >= stepSequence.length) {
             sequenceIndex = 0;
-        else if (sequenceIndex < 0)
+        } else if (sequenceIndex < 0) {
             sequenceIndex = (stepSequence.length - 1);
-
+        }
         // start cycling GPIO pins to move the motor forward or reverse
         for (int pinIndex = 0; pinIndex < pins.length; pinIndex++) {
             // apply step sequence
             double nib = Math.pow(2, pinIndex);
-            if ((stepSequence[sequenceIndex] & (int) nib) > 0)
+            if ((stepSequence[sequenceIndex] & (int) nib) > 0) {
                 pins[pinIndex].setState(onState);
-            else
+            } else {
                 pins[pinIndex].setState(offState);
+            }
         }
         try {
             Thread.sleep(stepIntervalMilliseconds, stepIntervalNanoseconds);
         } catch (InterruptedException e) {
+            System.out.println(e.getMessage());
         }
     }
 }

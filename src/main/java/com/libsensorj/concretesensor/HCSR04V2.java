@@ -18,18 +18,18 @@ public class HCSR04V2 {
     private final static int TRIG_DURATION_IN_MICROS = 10; // trigger duration
     private final static int TIMEOUT = 2100;
 
-    private final static GpioController gpio = GpioFactory.getInstance();
+    private final static GpioController GPIO = GpioFactory.getInstance();
 
     private final GpioPinDigitalInput echoPin;
     private final GpioPinDigitalOutput trigPin;
 
     public HCSR04V2(Pin echoPin, Pin trigPin) {
-        this.echoPin = gpio.provisionDigitalInputPin(echoPin);
-        this.trigPin = gpio.provisionDigitalOutputPin(trigPin);
+        this.echoPin = GPIO.provisionDigitalInputPin(echoPin);
+        this.trigPin = GPIO.provisionDigitalOutputPin(trigPin);
         this.trigPin.low();
         
         
-     // create and register gpio pin listener
+     // create and register GPIO pin listener
         this.echoPin.addListener(new GpioPinListenerDigital() {
             @Override
             public void handleGpioPinDigitalStateChangeEvent(
@@ -38,6 +38,7 @@ public class HCSR04V2 {
                 System.out.println(" --> GPIO ECHO PIN STATE CHANGE: " + event.getPin()
                         + " = " + event.getState());
             }
+           
         });
         
         this.trigPin.addListener(new GpioPinListenerDigital() {
@@ -58,7 +59,7 @@ public class HCSR04V2 {
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
                 System.out.println("Oops!");
-                gpio.shutdown();
+                GPIO.shutdown();
                 System.out.println("Exiting nicely.");
             }
         });

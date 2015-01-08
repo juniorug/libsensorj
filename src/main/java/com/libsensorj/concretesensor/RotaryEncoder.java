@@ -31,7 +31,7 @@ public class RotaryEncoder implements ISensor{
     private RotaryEncoderListener listener;
     
     // based on [lastEncoded][encoded] lookup
-    private static final int stateTable[][]= {
+    private static final int STATE_TABLE[][]= {
         {0, 1, 1, -1},
         {-1, 0, 1, -1},
         {-1, 1, 0, -1},
@@ -112,7 +112,7 @@ public class RotaryEncoder implements ISensor{
         } else {
             // going up states, 01, 11
             // going down states 00, 10
-            int state = stateTable[lastEncoded][encoded];
+            int state = STATE_TABLE[lastEncoded][encoded];
             encoderValue += state;
             if (listener != null) {
                 if (state == -1) {
