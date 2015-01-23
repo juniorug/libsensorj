@@ -127,7 +127,7 @@ public class DHT11V2 implements ISensor {
             dht11Pin.low();
             Thread.sleep(18);
             dht11Pin.high();
-            TimeUnit.MICROSECONDS.sleep(40);
+           // TimeUnit.MICROSECONDS.sleep(40);
             dht11Pin.setMode(PinMode.DIGITAL_INPUT);
 
             for (int i = 0; i < MAXTIMINGS; i++) {
