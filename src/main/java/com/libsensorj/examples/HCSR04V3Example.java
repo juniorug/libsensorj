@@ -64,7 +64,6 @@ public class HCSR04V3Example {
         // configure the pins shutdown behavior; these settings will be
         // automatically applied to the pin when the application is terminated
         trigger.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-        echo.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
                 System.out.println("Oops!");

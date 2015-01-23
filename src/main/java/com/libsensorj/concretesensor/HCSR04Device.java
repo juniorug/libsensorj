@@ -121,7 +121,7 @@ public class HCSR04Device implements ISensor {
 
         // configure the pins shutdown behavior; these settings will be
         // automatically applied to the pin when the application is terminated
-        this.echo.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+       
         this.trigger.setShutdownOptions(true, PinState.LOW,
                 PinPullResistance.OFF);
         Runtime.getRuntime().addShutdownHook(new Thread() {

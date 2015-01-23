@@ -23,6 +23,7 @@ import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalInput;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
+import com.pi4j.io.gpio.PinPullResistance;
 import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 
@@ -77,6 +78,9 @@ public class HCSR04NoSensorClass {
         final GpioPinDigitalInput echoPin = gpio.provisionDigitalInputPin(
                 RaspiPin.GPIO_02, "Echo");
 
+        // configure the pins shutdown behavior; these settings will be
+        // automatically applied to the pin when the application is terminated
+        trigPin.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
                 System.out.println("Oops!");
